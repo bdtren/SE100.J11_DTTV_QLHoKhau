@@ -11,12 +11,13 @@ namespace DTO
 {
     public class DBConnection_MySQL
     {
-        static string MySQLConnectionString = "datasource=db4free.net;port=3306;username=dbquanlynhankhau;password=123Ren123;database=dbquanlynhankhau; old guids = true;";
+        //static string MySQLConnectionString = "datasource=db4free.net;port=3306;username=dbquanlynhankhau;password=123Ren123;database=dbquanlynhankhau; old guids = true;"; //Database online
+        static string MySQLConnectionString = "datasource=localhost;port=3306;username=root;password=;database=dbquanlynhankhau;SslMode=none";//Database offline
         protected static MySqlConnection connection = new MySqlConnection(MySQLConnectionString);
         private static string errorString = "";
 
-        public static string ErrorString { get => errorString; }
-
+        public static string ErrorString { get => errorString; } 
+         
         public static bool openConnection()
         {
             try
@@ -51,7 +52,7 @@ namespace DTO
             }
         }
 
-        public static MySqlDataReader Query(string query)
+        public static MySqlDataReader Query_MySQL(string query)
         {
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.CommandTimeout = 60;

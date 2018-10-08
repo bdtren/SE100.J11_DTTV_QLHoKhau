@@ -51,7 +51,7 @@ namespace GUI
                     + tbUsername.Text + "' AND MATKHAU='" + tbPassword.Text + "'");
                 if (ds == null || ds.Tables[0].Rows.Count == 0)
                 {
-                    MessageBox.Show(this, "Tài khoản hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Tài khoản hoặc mật khẩu không đúng!\n"+DBConnection_MySQL.ErrorString, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
