@@ -22,8 +22,8 @@ namespace GUI_DX
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            //Application.Run(new LoginGUI());
-            Application.Run(new MainGUI());
+            Application.Run(new LoginGUI());
+            //Application.Run(new MainGUI());
         }
     }
 }

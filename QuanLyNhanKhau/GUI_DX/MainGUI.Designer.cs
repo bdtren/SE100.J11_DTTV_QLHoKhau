@@ -33,10 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbbTables = new System.Windows.Forms.ComboBox();
-            this.dgvContent = new System.Windows.Forms.DataGridView();
             this.btnGetData = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvQueryResult = new System.Windows.Forms.DataGridView();
             this.btnQuery = new System.Windows.Forms.Button();
             this.rtbQuery = new System.Windows.Forms.RichTextBox();
             this.menuAdmin = new System.Windows.Forms.MenuStrip();
@@ -45,13 +43,21 @@
             this.miThem = new System.Windows.Forms.ToolStripMenuItem();
             this.miSua = new System.Windows.Forms.ToolStripMenuItem();
             this.miXoa = new System.Windows.Forms.ToolStripMenuItem();
+            this.gvContent = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcContent = new DevExpress.XtraGrid.GridControl();
+            this.gcQueryResult = new DevExpress.XtraGrid.GridControl();
+            this.gvQueryResult = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContent)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQueryResult)).BeginInit();
             this.menuAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcContent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcQueryResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvQueryResult)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -61,7 +67,7 @@
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(555, 365);
+            this.groupControl1.Size = new System.Drawing.Size(528, 347);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "layoutControlGroup";
             // 
@@ -77,8 +83,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.gcContent);
             this.tabPage1.Controls.Add(this.cbbTables);
-            this.tabPage1.Controls.Add(this.dgvContent);
             this.tabPage1.Controls.Add(this.btnGetData);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -96,14 +102,6 @@
             this.cbbTables.Size = new System.Drawing.Size(202, 21);
             this.cbbTables.TabIndex = 3;
             // 
-            // dgvContent
-            // 
-            this.dgvContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContent.Location = new System.Drawing.Point(6, 61);
-            this.dgvContent.Name = "dgvContent";
-            this.dgvContent.Size = new System.Drawing.Size(494, 181);
-            this.dgvContent.TabIndex = 2;
-            // 
             // btnGetData
             // 
             this.btnGetData.Location = new System.Drawing.Point(425, 22);
@@ -116,7 +114,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dgvQueryResult);
+            this.tabPage2.Controls.Add(this.gcQueryResult);
             this.tabPage2.Controls.Add(this.btnQuery);
             this.tabPage2.Controls.Add(this.rtbQuery);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -127,17 +125,9 @@
             this.tabPage2.Text = "Xem bằng truy vấn";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dgvQueryResult
-            // 
-            this.dgvQueryResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvQueryResult.Location = new System.Drawing.Point(16, 97);
-            this.dgvQueryResult.Name = "dgvQueryResult";
-            this.dgvQueryResult.Size = new System.Drawing.Size(484, 150);
-            this.dgvQueryResult.TabIndex = 2;
-            // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(425, 42);
+            this.btnQuery.Location = new System.Drawing.Point(428, 6);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 1;
@@ -147,9 +137,9 @@
             // 
             // rtbQuery
             // 
-            this.rtbQuery.Location = new System.Drawing.Point(16, 18);
+            this.rtbQuery.Location = new System.Drawing.Point(6, 6);
             this.rtbQuery.Name = "rtbQuery";
-            this.rtbQuery.Size = new System.Drawing.Size(403, 72);
+            this.rtbQuery.Size = new System.Drawing.Size(413, 69);
             this.rtbQuery.TabIndex = 0;
             this.rtbQuery.Text = "";
             // 
@@ -160,7 +150,7 @@
             this.miChinhSua});
             this.menuAdmin.Location = new System.Drawing.Point(0, 0);
             this.menuAdmin.Name = "menuAdmin";
-            this.menuAdmin.Size = new System.Drawing.Size(555, 24);
+            this.menuAdmin.Size = new System.Drawing.Size(528, 24);
             this.menuAdmin.TabIndex = 8;
             this.menuAdmin.Text = "Menu Quản trị viên";
             // 
@@ -198,13 +188,50 @@
             this.miXoa.Size = new System.Drawing.Size(105, 22);
             this.miXoa.Text = "Xóa";
             // 
+            // gvContent
+            // 
+            this.gvContent.GridControl = this.gcContent;
+            this.gvContent.Name = "gvContent";
+            this.gvContent.OptionsView.ShowFooter = true;
+            // 
+            // gridView2
+            // 
+            this.gridView2.GridControl = this.gcContent;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gcContent
+            // 
+            this.gcContent.Location = new System.Drawing.Point(6, 49);
+            this.gcContent.MainView = this.gvContent;
+            this.gcContent.Name = "gcContent";
+            this.gcContent.Size = new System.Drawing.Size(494, 200);
+            this.gcContent.TabIndex = 0;
+            this.gcContent.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2,
+            this.gvContent});
+            // 
+            // gcQueryResult
+            // 
+            this.gcQueryResult.Location = new System.Drawing.Point(6, 81);
+            this.gcQueryResult.MainView = this.gvQueryResult;
+            this.gcQueryResult.Name = "gcQueryResult";
+            this.gcQueryResult.Size = new System.Drawing.Size(494, 176);
+            this.gcQueryResult.TabIndex = 0;
+            this.gcQueryResult.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvQueryResult});
+            // 
+            // gvQueryResult
+            // 
+            this.gvQueryResult.GridControl = this.gcQueryResult;
+            this.gvQueryResult.Name = "gvQueryResult";
+            // 
             // MainGUI
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 365);
+            this.ClientSize = new System.Drawing.Size(528, 347);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuAdmin);
             this.Controls.Add(this.groupControl1);
@@ -213,11 +240,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContent)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvQueryResult)).EndInit();
             this.menuAdmin.ResumeLayout(false);
             this.menuAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcContent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcQueryResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvQueryResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,10 +258,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox cbbTables;
-        private System.Windows.Forms.DataGridView dgvContent;
         private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dgvQueryResult;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.RichTextBox rtbQuery;
         private System.Windows.Forms.MenuStrip menuAdmin;
@@ -240,5 +268,10 @@
         private System.Windows.Forms.ToolStripMenuItem miThem;
         private System.Windows.Forms.ToolStripMenuItem miSua;
         private System.Windows.Forms.ToolStripMenuItem miXoa;
+        private DevExpress.XtraGrid.GridControl gcContent;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvContent;
+        private DevExpress.XtraGrid.GridControl gcQueryResult;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvQueryResult;
     }
 }
