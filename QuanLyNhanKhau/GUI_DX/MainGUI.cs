@@ -26,6 +26,10 @@ namespace GUI_DX
             {
                 cbbTables.Items.Add(item[0].ToString());
             }
+
+            //Chỉ cho phép đọc, copy. Không cho phép chỉnh sửa
+            gvContent.OptionsBehavior.ReadOnly = true;
+            gvQueryResult.OptionsBehavior.ReadOnly = true;
         }
 
         private void btnGetData_Click(object sender, EventArgs e)
@@ -55,16 +59,22 @@ namespace GUI_DX
             }
             string query = "SELECT * FROM " + selected;
             DataSet ds = DBConnection_MySQL.getData(query);
-            dgvContent.DataSource = ds.Tables[0];
+            gcContent.DataSource = ds.Tables[0];
 
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            if ((rtbQuery.Text.ToLower()).IndexOf("select")<0)
+            {
+                MessageBox.Show(this, "Không thể thực hiện câu lệnh cho truy vấn xem dữ liệu", "Lỗi nhập liệu",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 DataSet ds = DBConnection_MySQL.getData(rtbQuery.Text);
-                dgvQueryResult.DataSource = ds.Tables[0];
+                gcQueryResult.DataSource = ds.Tables[0];
             }
             catch (Exception ex)
             {
