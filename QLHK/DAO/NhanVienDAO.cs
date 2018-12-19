@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
-using MySql.Data.MySqlClient;
 
 namespace DAO
 {
@@ -14,12 +13,12 @@ namespace DAO
     {
 
         public NhanVienDAO(): base() { }
-        public DataTable GetAllNhanVien()
+        public DataSet GetAllNhanVien()
         {
-            string query = "SELECT * FROM NHANVIEN";
+            string query = "SELECT *, 'Delete' as Deleete FROM NHANVIEN;";
             return getQuery(query);
         }
-
+        public void SetDataset(int rowindex) => UpdateDataset(rowindex);
 
     }
 }

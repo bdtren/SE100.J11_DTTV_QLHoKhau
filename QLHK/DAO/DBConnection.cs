@@ -33,9 +33,15 @@ namespace DAO
             }
         }
 
-        MySqlDataAdapter sqlda;
-        DataTable dataset = null;
-        protected DataTable getQuery(string query)
+        protected MySqlDataAdapter sqlda;
+        protected DataSet dataset = null;
+        protected MySqlCommandBuilder cmdbuilder;
+        protected void UpdateDataset(int rowindex)
+        {
+            dataset.Tables["nhanvien"].Rows[rowindex].Delete();
+            sqlda.Update(dataset, "nhanvien");
+        }
+        protected DataSet getQuery(string query)
         {
             try
             {
@@ -44,13 +50,13 @@ namespace DAO
                     conn.Open();
 
                 }
-                //sqlcommand = new MySqlCommand("SELECT * FROM qlhk.nhanvien", conn);
-                //sqlAdapter.InsertCommand = sqlCommand.GetInsertCommand();
-                //sqlAdapter.UpdateCommand = sqlCommand.GetUpdateCommand();
-                //sqlAdapter.DeleteCommand = sqlCommand.GetDeleteCommand();
                 sqlda = new MySqlDataAdapter(query, conn);
-                dataset = new DataTable();
-                sqlda.Fill(dataset);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset,"nhanvien");
                 return dataset;
             }
             catch (Exception e)

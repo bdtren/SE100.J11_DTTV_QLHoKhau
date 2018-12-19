@@ -15,9 +15,10 @@ namespace BUS
         {
             nhanvienDAO = new NhanVienDAO();
         }
-        public DataTable GetAllNhanVien()
+        public DataSet GetAllNhanVien()
         {
             return nhanvienDAO.GetAllNhanVien();
         }
+        public void SetDataset(int rowindex) => nhanvienDAO.SetDataset(rowindex);
     }
 }
