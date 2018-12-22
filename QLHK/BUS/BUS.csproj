@@ -45,6 +45,7 @@
     <Compile Include="CanBoBUS.cs" />
     <Compile Include="DanTocBUS.cs" />
     <Compile Include="HocSinhSinhVienBUS.cs" />
+    <Compile Include="NhanKhauBUS.cs" />
     <Compile Include="NhanVienBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanHeBUS.cs" />

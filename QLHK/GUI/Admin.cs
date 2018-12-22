@@ -294,7 +294,7 @@ namespace GUI
                     }
                     break;
                 case "Học sinh, sinh viên":
-                    {
+                    /*{
                         try
                         {
                             if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
@@ -348,8 +348,8 @@ namespace GUI
                         {
                             MessageBox.Show(ex.Message);
                         }
-                    }
-                    break;
+                    }*/
+                    //break;
                 case "Nhân khẩu":
 
                     break;

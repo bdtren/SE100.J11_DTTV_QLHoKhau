@@ -16,7 +16,7 @@ namespace GUI
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Dark Style");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sauwr());
+            Application.Run(new Form_NhanKhau());
         }
     }
 }
