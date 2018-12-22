@@ -154,7 +154,8 @@ create table TIENANTIENSU
 create table ADMIN1
 (
     MACANBO                 char(9),
-    MABAOMAT                text
+    MABAOMAT                text,
+    primary key (MACANBO)
 );
 
 /*==============================================================*/

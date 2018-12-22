@@ -12,10 +12,11 @@ namespace DTO
         public string MaBaoMat { get; set; }
 
         public Admin() { }
-        public Admin(string macanbo, string mabaomat)
+
+        public Admin(string maCanBo, string maBaoMat)
         {
-            MaCanBo = macanbo;
-            MaBaoMat = mabaomat;
+            MaCanBo = maCanBo;
+            MaBaoMat = maBaoMat;
         }
     }
 }

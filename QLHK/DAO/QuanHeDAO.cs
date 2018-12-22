@@ -4,16 +4,15 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql;
 using DTO;
 using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class CanBoDAO : DBConnection
+    public class QuanHeDAO:DBConnection
     {
-        public CanBoDAO() : base() { }
-        public DataSet GetAllCanBo()
+        public QuanHeDAO() : base() { }
+        public DataSet GetAllQuanHe()
         {
             try
             {
@@ -22,13 +21,13 @@ namespace DAO
                     conn.Open();
 
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM canbo", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM quanhe", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "canbo");
+                sqlda.Fill(dataset, "quanhe");
                 return dataset;
             }
             catch (Exception e)
@@ -41,17 +40,16 @@ namespace DAO
             }
             return null;
         }
-        public bool AddCanBo( CanBo cb)
+        public bool AddQuanHe(QuanHe qh)
         {
             try
             {
-                DataRow dr = dataset.Tables["canbo"].NewRow();
-                dr["macanbo"] = cb.MaCanBo;
-                dr["tendangnhap"] = cb.TenDangNhap;
-                dr["matkhau"] = cb.MatKhau;
-                dataset.Tables["canbo"].Rows.Add(dr);
-                dataset.Tables["canbo"].Rows.RemoveAt(dataset.Tables["canbo"].Rows.Count - 1);
-                sqlda.Update(dataset, "canbo");
+                DataRow dr = dataset.Tables["quanhe"].NewRow();
+                dr["maquanhe"] = qh.MaQuanHe;
+                dr["tenquanhe"] = qh.TenQuanHe;
+                dataset.Tables["quanhe"].Rows.Add(dr);
+                dataset.Tables["quanhe"].Rows.RemoveAt(dataset.Tables["quanhe"].Rows.Count - 1);
+                sqlda.Update(dataset, "quanhe");
             }
             catch (Exception e)
             {
@@ -64,12 +62,12 @@ namespace DAO
             return true;
 
         }
-        public bool XoaCanBo(int row)
+        public bool XoaQuanHe(int row)
         {
             try
             {
-                dataset.Tables["canbo"].Rows[row].Delete();
-                sqlda.Update(dataset, "canbo");
+                dataset.Tables["quanhe"].Rows[row].Delete();
+                sqlda.Update(dataset, "quanhe");
                 return true;
             }
             catch (Exception e)
@@ -79,7 +77,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaCanBo(CanBo cb, int r)
+        public bool SuaQuanHe(QuanHe qh, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -88,11 +86,10 @@ namespace DAO
             }
             try
             {
-                string sql= "update canbo set tendangnhap =@tencb , matkhau=@mk where macanbo =@macb";
+                string sql = "update quanhe set  tenquanhe=@tenquanhe where maquanhe =@maquanhe";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@tencb", cb.TenDangNhap);
-                cmd.Parameters.AddWithValue("@mk", cb.MatKhau);
-                cmd.Parameters.AddWithValue("@macb", cb.MaCanBo);
+                cmd.Parameters.AddWithValue("@tenquanhe", qh.TenQuanHe.ToString());
+                cmd.Parameters.AddWithValue("@madantoc", qh.MaQuanHe.ToString());
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 using DAO;
 using System.Data;
 
@@ -10,15 +11,22 @@ namespace BUS
 {
     public class NhanVienBUS
     {
-        private NhanVienDAO nhanvienDAO;
-        public NhanVienBUS()
-        {
-            nhanvienDAO = new NhanVienDAO();
-        }
+        NhanVienDAO objnvdao = new NhanVienDAO();
         public DataSet GetAllNhanVien()
         {
-            return nhanvienDAO.GetAllNhanVien();
+            return objnvdao.GetAllNhanVien();
         }
-        public void SetDataset(int rowindex) => nhanvienDAO.SetDataset(rowindex);
+        public bool AddNhanVien(NhanVien nv)
+        {
+            return objnvdao.AddNhanVien(nv);
+        }
+        public bool XoaNhanVien(int r)
+        {
+            return objnvdao.XoaNhanVien(r);
+        }
+        public bool SuaNhanVien(NhanVien nv, int r)
+        {
+            return objnvdao.SuaNhanVien(nv, r);
+        }
     }
 }

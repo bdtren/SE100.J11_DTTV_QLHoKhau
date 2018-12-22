@@ -43,8 +43,11 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="CanBo.cs" />
+    <Compile Include="DanToc.cs" />
+    <Compile Include="HocSinhSinhVien.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanHe.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

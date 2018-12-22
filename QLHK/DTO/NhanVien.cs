@@ -10,16 +10,17 @@ namespace DTO
     {
         public string MaNV { get; set; }
         public string HoTen { get; set; }
-        public string NgaySinh { get; set; }
+        public DateTime NgaySinh { get; set; }
         public string DiaChi { get; set; }
         public string SDT { get; set; }
         public string GioiTinh { get; set; }
         public string Email { get; set; }
         public string Avatar { get; set; }
-        public string NgayVL { get; set; }
+        public DateTime NgayVL { get; set; }
 
         public NhanVien() { }
-        public NhanVien(string maNV, string hoTen, string ngaySinh, string diaChi, string sDT, string gioiTinh, string email, string avatar, string ngayVL)
+
+        public NhanVien(string maNV, string hoTen, DateTime ngaySinh, string diaChi, string sDT, string gioiTinh, string email, string avatar, DateTime ngayVL)
         {
             MaNV = maNV;
             HoTen = hoTen;

@@ -36,38 +36,5 @@ namespace DAO
         protected MySqlDataAdapter sqlda;
         protected DataSet dataset = null;
         protected MySqlCommandBuilder cmdbuilder;
-        protected void UpdateDataset(int rowindex)
-        {
-            dataset.Tables["nhanvien"].Rows[rowindex].Delete();
-            sqlda.Update(dataset, "nhanvien");
-        }
-        protected DataSet getQuery(string query)
-        {
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-
-                }
-                sqlda = new MySqlDataAdapter(query, conn);
-                cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
-                dataset = new DataSet();
-                sqlda.Fill(dataset,"nhanvien");
-                return dataset;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return null;
-        }
     }
 }
