@@ -1,15 +1,26 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 4.0                                    */
+/* DBMS name:      Quan Ly Ho Khau                              */
 /* Created on:     10/20/2018 12:11:22 PM                       */
 /*==============================================================*/
 
+/*==============================================================*/
+/* Table: NGHE NGHIEP                                           */
+/*==============================================================*/
+create table NGHENGHIEP
+(
+    MANGHENGHIEP                       char(9),
+    TENNGHENGHIEP                       text,
+
+    primary key (MANGHENGHIEP)
+);
 
 /*==============================================================*/
 /* Table: HOC SINH SINH VIEN                                    */
 /*==============================================================*/
 create table HOCSINHSINHVIEN
 (
-    MANHANKHAU                          char(9),
+    MAHSSV                              char(9),
+    MANGHENGHIEP                        char(9),
     MSSV                                varchar(10),
     TRUONG                              text,
     DIACHITHUONGTRU                     text,
@@ -17,7 +28,7 @@ create table HOCSINHSINHVIEN
     THOIGIANKETTHUCTAMTRUTHUONGTRU      date,
     VIPHAM                              text,
 
-    primary key (MSSV)
+    primary key (MAHSSV)
 );
 
 /*==============================================================*/
@@ -41,21 +52,24 @@ create table NHANKHAU
     NOICAP              text,
     NGAYCAP             text,
 
-    primary key (SOCMND)
+    primary key (MANHANKHAU)
 );
 
 
 /*==============================================================*/
 /* Table:   TAM VANG                                            */
 /*==============================================================*/
-create table TAMVANG
+create table NHANKHAUTAMVANG
 (
-    MANHANKHAU              char(9),
+    MANHANKHAUTAMVANG       char(9),         
+    MANHANKHAUTHUONGTRU     char(9),
     NOITHUONGTRUTAMTRU      text,
     NGAYBATDAUTAMVANG       date,
     THOIGIANKETTHUCTAMVANG  date,
     LYDO                    text,
-    NOIDEN                  text
+    NOIDEN                  text,
+
+    primary key (MANHANKHAUTAMVANG)
 );
 
 /*==============================================================*/
@@ -76,8 +90,11 @@ create table SOHOKHAU
 /*==============================================================*/
 create table NHANKHAUTAMTRU
 (
-    MANHAKHAU               char(9),
-    DIACHITHUONGTRU         text
+    MANHAKHAUTAMTRU         char(9),
+    DIACHITHUONGTRU         text,
+    SOSOTAMTRU              char(9),
+
+    primary key (MANHAKHAUTAMTRU)
 );
 
 /*==============================================================*/
@@ -85,11 +102,13 @@ create table NHANKHAUTAMTRU
 /*==============================================================*/
 create table SOTAMTRU
 (
-    MANHANHKHAU             char(9),
+    SOSOTAMTRU              char(9),
     CHOOHIENNAY             text,
     TUNGAY                  date,
     DENNGAY                 date,
-    LYDO                    text   
+    LYDO                    text,
+
+    primary key (SOSOTAMTRU)   
 );
 
 /*==============================================================*/
@@ -97,6 +116,7 @@ create table SOTAMTRU
 /*==============================================================*/
 create table NHANKHAUTHUONGTRU
 (
+    MANHANKHAUTHUONGTRU     char(9),
     MANHANKHAU              char(9),
     NOITHUONGTRUTAMTRU      text,
     DIACHIHIENTAI           text,
@@ -104,10 +124,12 @@ create table NHANKHAUTHUONGTRU
     TRINHDOCHUYENMON        text,
     BIETTIENGDANTOC         text,
     TRINHDONGOAINGU         text,
-    NGHENGHIEP              text,
+    MAHENGHIEP              text,
     NOILAMVIEC              text,
     QUANHEVOICHUHO          text,
-    LACHUHO                 text
+    LACHUHO                 text,
+
+    primary key (MANHANKHAUTHUONGTRU)
 );
 
 /*==============================================================*/
@@ -115,7 +137,8 @@ create table NHANKHAUTHUONGTRU
 /*==============================================================*/
 create table CANBO
 (
-    MACANBO                 varchar(10),
+    MACANBO                 char(9),
+    MANHANKHAUTHUONGTRU     char(9),
     TENDANGNHAP             varchar(20),
     MATKHAU                 varchar(40),
 
@@ -123,16 +146,30 @@ create table CANBO
 );
 
 /*==============================================================*/
+/* Table: CAN BO HO TICH                                               */
+/*==============================================================*/
+create table CANBO
+(
+    MACANBOHOTICH           char(9),
+    MACANBO                 char(9),
+
+    primary key (MACANBOHOTICH)
+);
+
+/*==============================================================*/
 /* Table: TIEU SU                                               */
 /*==============================================================*/
 create table TIEUSU
 (
+    MATIEUSU                char(9),
     MANHANKHAU              char(9),
     THOIGIANBATDAU          date,
     THOIGIANKETTHUC         date,
     CHOO                    text,
     NGHENGHIEP              text,
-    NOILAMVIEC              text
+    NOILAMVIEC              text,
+
+    primary key (MATIEUSU)
 );
 
 /*==============================================================*/
@@ -140,12 +177,15 @@ create table TIEUSU
 /*==============================================================*/
 create table TIENANTIENSU
 (
-    MANHANHKHAU             char(9),
+    MATIENANTIENSU          char(9),
+    MANHANKHAU              char(9),
     BANAN                   text,
     TOIDANH                 text,
     HINHPHAT                text,
     NGAYPHAT                date,
-    GHICHU                  text
+    GHICHU                  text,
+
+    primary key (MATIENANTIENSU)
 );
 
 /*==============================================================*/
@@ -153,9 +193,11 @@ create table TIENANTIENSU
 /*==============================================================*/
 create table ADMIN1
 (
+    MAADMIN                 char(9),
     MACANBO                 char(9),
     MABAOMAT                text,
-    primary key (MACANBO)
+
+    primary key (MAADMIN)
 );
 
 /*==============================================================*/
