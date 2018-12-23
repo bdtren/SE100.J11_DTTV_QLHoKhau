@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Sauwr
+    partial class AdminGUI
     {
         /// <summary>
         /// Required designer variable.

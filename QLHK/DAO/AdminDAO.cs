@@ -9,11 +9,11 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class AdminDAO : DBConnection
+    public class AdminDAO : DBConnection<Admin>
     {
         public AdminDAO(): base() {}
 
-        public DataSet GetAllAdmin()
+        public override DataSet getAll()
         {
             try
             {
@@ -42,7 +42,7 @@ namespace DAO
             }
             
         }
-        public bool AddAdmin(Admin ad)
+        public override bool insert(Admin ad)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace DAO
             return true;
 
         }
-        public bool XoaAdmin(int row)
+        public override bool delete(int row)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaAdmin(Admin ad, int r)
+        public override bool update(Admin ad, int r)
         {
             if (conn.State != ConnectionState.Open)
             {

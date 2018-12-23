@@ -20,7 +20,7 @@ namespace GUI
         public Form_NhanKhau()
         {
             InitializeComponent();
-            dataGridView1.DataSource = nhankhaubus.GetAllNhanKhau().Tables["nhankhau"];
+            dataGridView1.DataSource = nhankhaubus.GetAll().Tables["nhankhau"];
         }
 
         private void groupControl1_Paint(object sender, PaintEventArgs e)
@@ -54,8 +54,8 @@ namespace GUI
             string sdt = textBox_sodienthoai.Text.ToString();
             string tongiao = textBox_tongiao.Text.ToString();
             nk = new NhanKhau(madinhdanh,hoten,gioitinh,dantoc,hochieu,ngaycap,ngaysinh,nguyenquan,noicap,noisinh,quoctich,sdt,tongiao);
-            nhankhaubus.AddNhanKhau(nk);
-            dataGridView1.DataSource = nhankhaubus.GetAllNhanKhau();
+            nhankhaubus.Add(nk);
+            dataGridView1.DataSource = nhankhaubus.GetAll();
         }
     }
 }

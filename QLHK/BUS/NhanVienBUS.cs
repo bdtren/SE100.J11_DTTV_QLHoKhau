@@ -9,24 +9,24 @@ using System.Data;
 
 namespace BUS
 {
-    public class NhanVienBUS
+    public class NhanVienBUS:AbstractFormBUS<NhanVien>
     {
         NhanVienDAO objnvdao = new NhanVienDAO();
-        public DataSet GetAllNhanVien()
+        public override DataSet GetAll()
         {
-            return objnvdao.GetAllNhanVien();
+            return objnvdao.getAll();
         }
-        public bool AddNhanVien(NhanVien nv)
+        public override bool Add(NhanVien nv)
         {
-            return objnvdao.AddNhanVien(nv);
+            return objnvdao.insert(nv);
         }
-        public bool XoaNhanVien(int r)
+        public override bool Delete(int r)
         {
-            return objnvdao.XoaNhanVien(r);
+            return objnvdao.delete(r);
         }
-        public bool SuaNhanVien(NhanVien nv, int r)
+        public override bool Update(NhanVien nv, int r)
         {
-            return objnvdao.SuaNhanVien(nv, r);
+            return objnvdao.update(nv, r);
         }
     }
 }

@@ -49,6 +49,8 @@
     <Compile Include="CanBoDAO.cs" />
     <Compile Include="DanTocDAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="QuanHuyenDAO.cs" />
+    <Compile Include="TinhThanhPhoDAO.cs" />
     <Compile Include="HocSinhSinhVienDAO.cs" />
     <Compile Include="NhanKhauDAO.cs" />
     <Compile Include="NhanVienDAO.cs" />

@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +47,9 @@
     <Compile Include="CanBo.cs" />
     <Compile Include="DanToc.cs" />
     <Compile Include="HocSinhSinhVien.cs" />
+    <Compile Include="QuanHuyenDTO.cs" />
+    <Compile Include="TinhThanhPhoDTO.cs" />
+    <Compile Include="NhanKhauThuongTruDTO.cs" />
     <Compile Include="NhanKhau.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,24 +9,24 @@ using DTO;
 
 namespace BUS
 {
-    public class AdminBUS
+    public class AdminBUS:AbstractFormBUS<Admin>
     {
         AdminDAO objadmin = new AdminDAO();
-        public DataSet GetAllAdmin()
+        public override DataSet GetAll()
         {
-            return objadmin.GetAllAdmin();
+            return objadmin.getAll();
         }
-        public bool AddAdmin(Admin ad)
+        public override bool Add(Admin ad)
         {
-            return objadmin.AddAdmin(ad);
+            return objadmin.insert(ad);
         }
-        public bool XoaAdmin(int r)
+        public override bool Delete(int r)
         {
-            return objadmin.XoaAdmin(r);
+            return objadmin.delete(r);
         }
-        public bool SuaAdmin(Admin ad, int r)
+        public override bool Update(Admin ad, int r)
         {
-            return objadmin.SuaAdmin(ad, r);
+            return objadmin.update(ad, r);
         }
     }
 }

@@ -9,25 +9,25 @@ using System.Data;
 
 namespace BUS
 {
-    public class QuanHeBUS
+    public class QuanHeBUS:AbstractFormBUS<QuanHe>
     {
 
         QuanHeDAO objquanhe = new QuanHeDAO();
-        public DataSet GetAllQuanHe()
+        public override DataSet GetAll()
         {
-            return objquanhe.GetAllQuanHe();
+            return objquanhe.getAll();
         }
-        public bool AddQuanHe(QuanHe qh)
+        public override bool Add(QuanHe qh)
         {
-            return objquanhe.AddQuanHe(qh);
+            return objquanhe.insert(qh);
         }
-        public bool XoaQuanHe(int r)
+        public override bool Delete(int r)
         {
-            return objquanhe.XoaQuanHe(r);
+            return objquanhe.delete(r);
         }
-        public bool SuaQuanHe(QuanHe qh, int r)
+        public override bool Update(QuanHe qh, int r)
         {
-            return objquanhe.SuaQuanHe(qh, r);
+            return objquanhe.update(qh, r);
         }
     }
 }

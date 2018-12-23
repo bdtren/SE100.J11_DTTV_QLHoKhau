@@ -14,7 +14,7 @@ using BUS;
 
 namespace GUI
 {
-    public partial class Sauwr : DevExpress.XtraEditors.XtraForm
+    public partial class AdminGUI : DevExpress.XtraEditors.XtraForm
     {
         CanBoBUS canbobus;
         CanBo canbo;
@@ -28,7 +28,7 @@ namespace GUI
         NhanVienBUS nvbus;
         QuanHe qh;
         QuanHeBUS qhbus;
-        public Sauwr()
+        public AdminGUI()
         {
             InitializeComponent();
             canbobus = new CanBoBUS();
@@ -46,7 +46,7 @@ namespace GUI
                 case "Cán bộ":
                         try
                         {
-                            dataGridView1.DataSource = canbobus.GetAllCanBo().Tables["canbo"];
+                            dataGridView1.DataSource = canbobus.GetAll().Tables["canbo"];
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {
                                 DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -61,7 +61,7 @@ namespace GUI
                 case "Admin":
                     try
                     {
-                        dataGridView1.DataSource = adminbus.GetAllAdmin().Tables["admin1"];
+                        dataGridView1.DataSource = adminbus.GetAll().Tables["admin1"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -76,7 +76,7 @@ namespace GUI
                 case "Dân tộc":
                     try
                     {
-                        dataGridView1.DataSource = dantocbus.GetAllDanToc().Tables["dantoc"];
+                        dataGridView1.DataSource = dantocbus.GetAll().Tables["dantoc"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -91,7 +91,7 @@ namespace GUI
                 case "Học sinh, sinh viên":
                     try
                     {
-                        dataGridView1.DataSource = hssvbus.GetAllHSSV().Tables["hocsinhsinhvien"];
+                        dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -116,7 +116,7 @@ namespace GUI
                 case "Nhân viên":
                     try
                     {
-                        dataGridView1.DataSource = nvbus.GetAllNhanVien().Tables["nhanvien"];
+                        dataGridView1.DataSource = nvbus.GetAll().Tables["nhanvien"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -131,7 +131,7 @@ namespace GUI
                 case "Quan hệ":
                     try
                     {
-                        dataGridView1.DataSource = qhbus.GetAllQuanHe().Tables["quanhe"];
+                        dataGridView1.DataSource = qhbus.GetAll().Tables["quanhe"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -186,14 +186,14 @@ namespace GUI
                                     if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         int rowIndex = e.RowIndex;
-                                        canbobus.XoaCanBo(rowIndex);
+                                        canbobus.Delete(rowIndex);
                                     }
                                 }
                                 else if (Task == "Insert")
                                 {
                                     int row = dataGridView1.Rows.Count - 2;
                                     canbo = new CanBo(dataGridView1.Rows[row].Cells["macanbo"].Value.ToString(), dataGridView1.Rows[row].Cells["tendangnhap"].Value.ToString(), dataGridView1.Rows[row].Cells["matkhau"].Value.ToString());
-                                    canbobus.AddCanBo(canbo);
+                                    canbobus.Add(canbo);
                                     dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                     dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                 }
@@ -201,7 +201,7 @@ namespace GUI
                                 {
                                     int r = e.RowIndex;
                                     canbo = new CanBo(dataGridView1.Rows[r].Cells["macanbo"].Value.ToString(), dataGridView1.Rows[r].Cells["tendangnhap"].Value.ToString(), dataGridView1.Rows[r].Cells["matkhau"].Value.ToString());
-                                    canbobus.SuaCanBo(canbo, r);
+                                    canbobus.Update(canbo, r);
                                     dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                     LoadData();
                                 }
@@ -225,7 +225,7 @@ namespace GUI
                                     if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         int rowIndex = e.RowIndex;
-                                        adminbus.XoaAdmin(rowIndex);
+                                        adminbus.Delete(rowIndex);
                                         LoadData();
                                     }
                                 }
@@ -233,7 +233,7 @@ namespace GUI
                                 {
                                     int row = dataGridView1.Rows.Count - 2;
                                     admin = new Admin(dataGridView1.Rows[row].Cells["macanbo"].Value.ToString(), dataGridView1.Rows[row].Cells["mabaomat"].Value.ToString());
-                                    adminbus.AddAdmin(admin);
+                                    adminbus.Add(admin);
                                     dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                     dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                 }
@@ -241,7 +241,7 @@ namespace GUI
                                 {
                                     int r = e.RowIndex;
                                     admin = new Admin(dataGridView1.Rows[r].Cells["macanbo"].Value.ToString(), dataGridView1.Rows[r].Cells["mabaomat"].Value.ToString());
-                                    adminbus.SuaAdmin(admin, r);
+                                    adminbus.Update(admin, r);
                                     dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                     LoadData();
                                 }
@@ -265,7 +265,7 @@ namespace GUI
                                     if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         int rowIndex = e.RowIndex;
-                                        dantocbus.XoaDanToc(rowIndex);
+                                        dantocbus.Delete(rowIndex);
                                         LoadData();
                                     }
                                 }
@@ -273,7 +273,7 @@ namespace GUI
                                 {
                                     int row = dataGridView1.Rows.Count - 2;
                                     dantoc = new DanToc(dataGridView1.Rows[row].Cells["madantoc"].Value.ToString(), dataGridView1.Rows[row].Cells["tendantoc"].Value.ToString());
-                                    dantocbus.AddDanToc(dantoc);
+                                    dantocbus.Add(dantoc);
                                     dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                     dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                 }
@@ -281,7 +281,7 @@ namespace GUI
                                 {
                                     int r = e.RowIndex;
                                     dantoc = new DanToc(dataGridView1.Rows[r].Cells["madantoc"].Value.ToString(), dataGridView1.Rows[r].Cells["tendantoc"].Value.ToString());
-                                    dantocbus.SuaDanToc(dantoc, r);
+                                    dantocbus.Update(dantoc, r);
                                     dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                     LoadData();
                                 }
@@ -370,7 +370,7 @@ namespace GUI
                                 if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 {
                                     int rowIndex = e.RowIndex;
-                                    qhbus.XoaQuanHe(rowIndex);
+                                    qhbus.Delete(rowIndex);
                                     LoadData();
                                 }
                             }
@@ -378,7 +378,7 @@ namespace GUI
                             {
                                 int row = dataGridView1.Rows.Count - 2;
                                 qh = new QuanHe(dataGridView1.Rows[row].Cells["maquanhe"].Value.ToString(), dataGridView1.Rows[row].Cells["tenquanhe"].Value.ToString());
-                                qhbus.AddQuanHe(qh);
+                                qhbus.Add(qh);
                                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                 dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                             }
@@ -386,7 +386,7 @@ namespace GUI
                             {
                                 int r = e.RowIndex;
                                 qh = new QuanHe(dataGridView1.Rows[r].Cells["maquanhe"].Value.ToString(), dataGridView1.Rows[r].Cells["tenquanhe"].Value.ToString());
-                                qhbus.SuaQuanHe(qh, r);
+                                qhbus.Update(qh, r);
                                 dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                 LoadData();
                             }

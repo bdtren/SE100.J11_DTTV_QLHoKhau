@@ -9,24 +9,24 @@ using System.Data;
 
 namespace BUS
 {
-    public class CanBoBUS
+    public class CanBoBUS:AbstractFormBUS<CanBo>
     {
         CanBoDAO objcb = new CanBoDAO();
-        public DataSet GetAllCanBo()
+        public override DataSet GetAll()
         {
-            return objcb.GetAllCanBo();
+            return objcb.getAll();
         }
-        public bool AddCanBo(CanBo cb)
+        public override bool Add(CanBo cb)
         {
-            return objcb.AddCanBo(cb);
+            return objcb.insert(cb);
         }
-        public bool XoaCanBo(int row)
+        public override bool Delete(int row)
         {
-            return objcb.XoaCanBo(row);
+            return objcb.delete(row);
         }
-        public bool SuaCanBo(CanBo cb, int r)
+        public override bool Update(CanBo cb, int r)
         {
-            return objcb.SuaCanBo(cb, r);
+            return objcb.update(cb, r);
         }
     }
 }

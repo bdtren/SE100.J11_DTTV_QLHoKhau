@@ -9,24 +9,24 @@ using System.Data;
 
 namespace BUS
 {
-    public class HocSinhSinhVienBUS
+    public class HocSinhSinhVienBUS: AbstractFormBUS<HocSinhSinhVien>
     {
         HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
-        public DataSet GetAllHSSV()
+        public override DataSet GetAll()
         {
-            return objhssv.GetAllHSSV();
+            return objhssv.getAll();
         }
-        public bool AddHSSV(HocSinhSinhVien hssv)
+        public override bool Add(HocSinhSinhVien hssv)
         {
-            return objhssv.AddHSSV(hssv);
+            return objhssv.insert(hssv);
         }
-        public bool XoaHSSV(int r)
+        public override bool Delete(int r)
         {
-            return objhssv.XoaHSSV(r);
+            return objhssv.delete(r);
         }
-        public bool SuaHSSV(HocSinhSinhVien hssv, int r)
+        public override bool Update(HocSinhSinhVien hssv, int r)
         {
-            return objhssv.SuaHSSV(hssv, r);
+            return objhssv.update(hssv, r);
         }
 
     }

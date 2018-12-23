@@ -9,11 +9,11 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class HocSinhSinhVienDAO:DBConnection
+    public class HocSinhSinhVienDAO:DBConnection<HocSinhSinhVien>
     {
         public HocSinhSinhVienDAO() : base() { }
 
-        public DataSet GetAllHSSV()
+        public override DataSet getAll()
         {
             try
             {
@@ -42,7 +42,7 @@ namespace DAO
 
         }
 
-        public bool AddHSSV(HocSinhSinhVien hssv)
+        public override bool insert(HocSinhSinhVien hssv)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace DAO
             return true;
 
         }
-        public bool XoaHSSV(int row)
+        public override bool delete(int row)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaHSSV(HocSinhSinhVien hssv, int r)
+        public override bool update(HocSinhSinhVien hssv, int r)
         {
             if (conn.State != ConnectionState.Open)
             {

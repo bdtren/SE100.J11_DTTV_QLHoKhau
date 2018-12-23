@@ -9,10 +9,10 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class QuanHeDAO:DBConnection
+    public class QuanHeDAO:DBConnection<QuanHe>
     {
         public QuanHeDAO() : base() { }
-        public DataSet GetAllQuanHe()
+        public override DataSet getAll()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace DAO
             }
             return null;
         }
-        public bool AddQuanHe(QuanHe qh)
+        public override bool insert(QuanHe qh)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace DAO
             return true;
 
         }
-        public bool XoaQuanHe(int row)
+        public override bool delete(int row)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaQuanHe(QuanHe qh, int r)
+        public override bool update(QuanHe qh, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
