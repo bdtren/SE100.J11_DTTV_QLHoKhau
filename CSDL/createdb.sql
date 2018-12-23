@@ -10,7 +10,6 @@ create table NGHENGHIEP
 (
     MANGHENGHIEP                       char(9),
     TENNGHENGHIEP                       text,
-
     primary key (MANGHENGHIEP)
 );
 
@@ -19,16 +18,14 @@ create table NGHENGHIEP
 /*==============================================================*/
 create table HOCSINHSINHVIEN
 (
-    MAHSSV                              char(9),
-    MANGHENGHIEP                        char(9),
     MSSV                                varchar(10),
+    MANGHENGHIEP                        char(9),
     TRUONG                              text,
     DIACHITHUONGTRU                     text,
     THOIGIANBATDAUTAMTRUTHUONGTRU       date,
     THOIGIANKETTHUCTAMTRUTHUONGTRU      date,
     VIPHAM                              text,
-
-    primary key (MAHSSV)
+    primary key (MSSV)
 );
 
 /*==============================================================*/
@@ -36,23 +33,23 @@ create table HOCSINHSINHVIEN
 /*==============================================================*/
 create table NHANKHAU
 (
-    MANHANKHAU          char(9),
-    SOCMND              char(9),
-    DANTOC              varchar(20),
-    GIOITINH            varchar(10),
-    HOCHIEU             varchar(20),
-    HOTEN               varchar(20),
+    
     MADINHDANH          varchar(20),
-    NOISINH             text,
+    MANGHENGHIEP        char(9),
+    HOTEN               varchar(20),
+    GIOITINH            varchar(10),
+    DANTOC              varchar(20),
+    HOCHIEU             varchar(20),
+    NGAYCAP             date,
     NGAYSINH            date,
     NGUYENQUAN          text,
+    NOICAP              text,
+    NOISINH             text,
     QUOCTICH            varchar(20),
     SDT                 char(10),
     TONGIAO             varchar(20),
-    NOICAP              text,
-    NGAYCAP             text,
-
-    primary key (MANHANKHAU)
+    
+    primary key (MADINHDANH)
 );
 
 
@@ -78,6 +75,7 @@ create table NHANKHAUTAMVANG
 create table SOHOKHAU
 (
     SOSOHOKHAU              char(13),
+    MACHUHO                 char(9),
     DIACHI                  text,
     NGAYCAP                 date,
     SODANGKY                text,
@@ -91,6 +89,7 @@ create table SOHOKHAU
 create table NHANKHAUTAMTRU
 (
     MANHAKHAUTAMTRU         char(9),
+    MADINHDANH              varchar(20),
     DIACHITHUONGTRU         text,
     SOSOTAMTRU              char(9),
 
@@ -103,6 +102,7 @@ create table NHANKHAUTAMTRU
 create table SOTAMTRU
 (
     SOSOTAMTRU              char(9),
+    MACHUHOTAMTRU           char(9),
     CHOOHIENNAY             text,
     TUNGAY                  date,
     DENNGAY                 date,
@@ -117,17 +117,16 @@ create table SOTAMTRU
 create table NHANKHAUTHUONGTRU
 (
     MANHANKHAUTHUONGTRU     char(9),
-    MANHANKHAU              char(9),
+    MADINHDANH              varchar(20),
+    SOSOHOKHAU              char(13),
     NOITHUONGTRUTAMTRU      text,
     DIACHIHIENTAI           text,
     TRINHDOHOCVAN           text,
     TRINHDOCHUYENMON        text,
     BIETTIENGDANTOC         text,
     TRINHDONGOAINGU         text,
-    MAHENGHIEP              text,
     NOILAMVIEC              text,
     QUANHEVOICHUHO          text,
-    LACHUHO                 text,
 
     primary key (MANHANKHAUTHUONGTRU)
 );
@@ -148,7 +147,7 @@ create table CANBO
 /*==============================================================*/
 /* Table: CAN BO HO TICH                                               */
 /*==============================================================*/
-create table CANBO
+create table CANBOHOTICH
 (
     MACANBOHOTICH           char(9),
     MACANBO                 char(9),
@@ -162,11 +161,11 @@ create table CANBO
 create table TIEUSU
 (
     MATIEUSU                char(9),
-    MANHANKHAU              char(9),
+    MADINHDANH              varchar(20),
     THOIGIANBATDAU          date,
     THOIGIANKETTHUC         date,
     CHOO                    text,
-    NGHENGHIEP              text,
+    MANGHENGHIEP            char(9),
     NOILAMVIEC              text,
 
     primary key (MATIEUSU)
@@ -178,7 +177,7 @@ create table TIEUSU
 create table TIENANTIENSU
 (
     MATIENANTIENSU          char(9),
-    MANHANKHAU              char(9),
+    MADINHDANH         		varchar(20),
     BANAN                   text,
     TOIDANH                 text,
     HINHPHAT                text,
@@ -203,48 +202,37 @@ create table ADMIN1
 /*==============================================================*/
 /*==============================================================*/
 /* Table: Đảm bảo dạng chuẩn 3                                  */
-/*==============================================================*/
-/*==============================================================*/
 
-/*==============================================================*/
-/* Table: DAN TOC                                               */
-/*==============================================================*/
-create table DANTOC
+
+
+
+
+CREATE TABLE DEVVN_QUANHUYEN 
 (
-    MADANTOC                char(9),
-    TENDANTOC               text,
-
-    primary key (MADANTOC)
+  MAQH 		varchar(5)  	NOT NULL,
+  TEN		varchar(100) 	NOT NULL,
+  LOAI	 	varchar(30) 	NOT NULL,
+  MATP 		varchar(5)		NOT NULL,
+  
+  PRIMARY KEY (MAQH)
 );
 
-/*==============================================================*/
-/* Table: TON GIAO                                              */
-/*==============================================================*/
-create table TONGIAO
-(
-    MATONGIAO               char(9),
-    TENTONGIAO              text,
 
-    primary key (MATONGIAO)
+CREATE TABLE DEVVN_TINHTHANHPHO
+(
+  MATP 		varchar(5) 		NOT NULL,
+  TEN 		varchar(100) 	NOT NULL,
+  LOAI 		varchar(30) 	NOT NULL,
+  
+  PRIMARY KEY (MATP)
 );
 
-/*==============================================================*/
-/* Table: TRINHDO                                               */
-/*==============================================================*/
-create table TRINHDO
-(
-    MATRINHDO               char(9),
-    TENTRINHDO              text,
-    primary key (MATRINHDO)
-);
 
-/*==============================================================*/
-/* Table: QUAN HE                                               */
-/*==============================================================*/
-create table QUANHE
-(
-    MAQUANHE                char(9),
-    TENQUANHE               text,
-
-    primary key (MAQUANHE)
+CREATE TABLE DEVVN_XAPHUONGTHITRAN (
+  XAID 		varchar(5) 		NOT NULL,
+  TEN	 	varchar(100) 	NOT NULL,
+  LOAI 		varchar(30) 	NOT NULL,
+  MAQH 		varchar(5) 		NOT NULL,
+  
+  PRIMARY KEY (XAID)
 );
