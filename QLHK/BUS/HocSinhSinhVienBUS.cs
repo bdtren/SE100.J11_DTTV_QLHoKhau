@@ -9,25 +9,28 @@ using System.Data;
 
 namespace BUS
 {
-    public class HocSinhSinhVienBUS
+    public class HocSinhSinhVienBUS:NgheNghiepBUS
     {
-        HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
+        HocSinhSinhVienDAO objHSSV = new HocSinhSinhVienDAO();
         public DataSet GetAllHSSV()
         {
-            return objhssv.GetAllHSSV();
+            return objHSSV.GetAllHSSV();
         }
-        public bool AddHSSV(HocSinhSinhVien hssv)
+        public bool AddHSSV(HocSinhSinhVienDTO hssv)
         {
-            return objhssv.AddHSSV(hssv);
+            return objHSSV.AddHSSV(hssv);
         }
-        public bool XoaHSSV(int r)
+        public bool XoaHSSV(string mssv)
         {
-            return objhssv.XoaHSSV(r);
+            return objHSSV.XoaHHSV(mssv);
         }
-        public bool SuaHSSV(HocSinhSinhVien hssv, int r)
+        public bool SuaHSSV(HocSinhSinhVienDTO hssv)
         {
-            return objhssv.SuaHSSV(hssv, r);
+            return objHSSV.SuaHSSV(hssv);
         }
-
+        public DataSet TimKiem(string mssv)
+        {
+            return objHSSV.TimKiem(mssv);
+        }
     }
 }

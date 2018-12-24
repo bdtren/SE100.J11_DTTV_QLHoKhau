@@ -14,29 +14,19 @@ using BUS;
 
 namespace GUI
 {
-    public partial class Sauwr : DevExpress.XtraEditors.XtraForm
+    public partial class fr_CBDuLieu : DevExpress.XtraEditors.XtraForm
     {
         CanBoBUS canbobus;
         CanBo canbo;
         Admin admin;
         AdminBUS adminbus;
-        DanToc dantoc;
-        DanTocBUS dantocbus;
-        HocSinhSinhVien hssv;
         HocSinhSinhVienBUS hssvbus;
-        NhanVien nv;
-        NhanVienBUS nvbus;
-        QuanHe qh;
-        QuanHeBUS qhbus;
-        public Sauwr()
+        public fr_CBDuLieu()
         {
             InitializeComponent();
             canbobus = new CanBoBUS();
             adminbus = new AdminBUS();
-            dantocbus = new DanTocBUS();
             hssvbus = new HocSinhSinhVienBUS();
-            nvbus = new NhanVienBUS();
-            qhbus = new QuanHeBUS();
         }
         
         private void LoadData()
@@ -73,21 +63,6 @@ namespace GUI
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "Dân tộc":
-                    try
-                    {
-                        dataGridView1.DataSource = dantocbus.GetAllDanToc().Tables["dantoc"];
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
                 case "Học sinh, sinh viên":
                     try
                     {
@@ -112,36 +87,6 @@ namespace GUI
                     break;
                 case "Nhân khẩu tạm trú":
 
-                    break;
-                case "Nhân viên":
-                    try
-                    {
-                        dataGridView1.DataSource = nvbus.GetAllNhanVien().Tables["nhanvien"];
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
-                case "Quan hệ":
-                    try
-                    {
-                        dataGridView1.DataSource = qhbus.GetAllQuanHe().Tables["quanhe"];
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
                     break;
                 case "Sổ hộ khẩu":
 
@@ -253,46 +198,6 @@ namespace GUI
                         }
                     }
                     break;
-                case "Dân tộc":
-                    {
-                        try
-                        {
-                            if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
-                            {
-                                string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
-                                if (Task == "Delete")
-                                {
-                                    if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                    {
-                                        int rowIndex = e.RowIndex;
-                                        dantocbus.XoaDanToc(rowIndex);
-                                        LoadData();
-                                    }
-                                }
-                                else if (Task == "Insert")
-                                {
-                                    int row = dataGridView1.Rows.Count - 2;
-                                    dantoc = new DanToc(dataGridView1.Rows[row].Cells["madantoc"].Value.ToString(), dataGridView1.Rows[row].Cells["tendantoc"].Value.ToString());
-                                    dantocbus.AddDanToc(dantoc);
-                                    dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
-                                    dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
-                                }
-                                else if (Task == "Update")
-                                {
-                                    int r = e.RowIndex;
-                                    dantoc = new DanToc(dataGridView1.Rows[r].Cells["madantoc"].Value.ToString(), dataGridView1.Rows[r].Cells["tendantoc"].Value.ToString());
-                                    dantocbus.SuaDanToc(dantoc, r);
-                                    dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
-                                    LoadData();
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    break;
                 case "Học sinh, sinh viên":
                     /*{
                         try
@@ -359,44 +264,6 @@ namespace GUI
                 case "Nhân khẩu tạm trú":
 
                     break;
-                case "Quan hệ":
-                    try
-                    {
-                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
-                        {
-                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
-                            if (Task == "Delete")
-                            {
-                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    int rowIndex = e.RowIndex;
-                                    qhbus.XoaQuanHe(rowIndex);
-                                    LoadData();
-                                }
-                            }
-                            else if (Task == "Insert")
-                            {
-                                int row = dataGridView1.Rows.Count - 2;
-                                qh = new QuanHe(dataGridView1.Rows[row].Cells["maquanhe"].Value.ToString(), dataGridView1.Rows[row].Cells["tenquanhe"].Value.ToString());
-                                qhbus.AddQuanHe(qh);
-                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
-                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
-                            }
-                            else if (Task == "Update")
-                            {
-                                int r = e.RowIndex;
-                                qh = new QuanHe(dataGridView1.Rows[r].Cells["maquanhe"].Value.ToString(), dataGridView1.Rows[r].Cells["tenquanhe"].Value.ToString());
-                                qhbus.SuaQuanHe(qh, r);
-                                dataGridView1.Rows[r].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
-                                LoadData();
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
                 case "Sổ hộ khẩu":
 
                     break;
@@ -455,5 +322,9 @@ namespace GUI
                     LoadData();
         }
 
+        private void fr_CBDuLieu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

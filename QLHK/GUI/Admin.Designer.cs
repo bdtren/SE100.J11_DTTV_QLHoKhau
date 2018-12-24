@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class Sauwr
+    partial class fr_CBDuLieu
     {
         /// <summary>
         /// Required designer variable.
@@ -80,7 +80,7 @@
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserAddedRow);
             // 
-            // Sauwr
+            // fr_CBDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -88,8 +88,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Sauwr";
+            this.Name = "fr_CBDuLieu";
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.fr_CBDuLieu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
