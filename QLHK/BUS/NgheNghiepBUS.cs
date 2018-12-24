@@ -14,11 +14,11 @@ namespace BUS
         NgheNghiepDAO objnghenghiep = new NgheNghiepDAO();
         public DataSet GetAllNgheNghiep()
         {
-            return objnghenghiep.GetAllNgheNghiep();
+            return objnghenghiep.getAll();
         }
         public bool AddNgheNghiep(NgheNghiepDTO nghenghiep)
         {
-            return objnghenghiep.AddNgheNghiep(nghenghiep);
+            return objnghenghiep.insert(nghenghiep);
         }
         public bool XoaNgheNghiep(string manghenghiep)
         {
@@ -26,7 +26,7 @@ namespace BUS
         }
         public bool SuaNgheNghiep(NgheNghiepDTO nghenghiep)
         {
-            return objnghenghiep.SuaNgheNghiep(nghenghiep);
+            return objnghenghiep.update(nghenghiep, 1);
         }
     }
 }

@@ -66,6 +66,7 @@ namespace DAO
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
             finally
             {

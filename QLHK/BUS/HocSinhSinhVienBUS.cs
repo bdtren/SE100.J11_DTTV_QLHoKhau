@@ -33,5 +33,10 @@ namespace BUS
         {
             return objhssv.update(hssv, r);
         }
+
+        public DataSet TimKiem(string mssv)
+        {
+            return objhssv.TimKiem(mssv);
+        }
     }
 }

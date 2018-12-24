@@ -24,7 +24,7 @@ namespace GUI
             hssvbus = new HocSinhSinhVienBUS();
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = hssvbus.GetAllHSSV().Tables["hocsinhsinhvien"];
+            dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
         }
 
         private void HocSinhSinhVienGUI_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace GUI
             DateTime tgkt=date_ketthuc.Value.Date;
             string vipham = textBox_vipham.Text.ToString();
             hssvdto = new HocSinhSinhVienDTO(mssv, madinhdanh, truong, diachi, tgbd, tgkt, vipham);
-            if (hssvbus.AddHSSV(hssvdto))
+            if (hssvbus.Add(hssvdto))
             {
                 MessageBox.Show("Them thanh cong");
                 textBox_mssv.Clear();
