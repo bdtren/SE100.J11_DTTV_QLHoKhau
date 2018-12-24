@@ -47,7 +47,6 @@
     <Compile Include="CanBo.cs" />
     <Compile Include="HocSinhSinhVienDTO.cs" />
     <Compile Include="NgheNghiepDTO.cs" />
-    <Compile Include="HocSinhSinhVien.cs" />
     <Compile Include="QuanHuyenDTO.cs" />
     <Compile Include="TinhThanhPhoDTO.cs" />
     <Compile Include="NhanKhauThuongTruDTO.cs" />

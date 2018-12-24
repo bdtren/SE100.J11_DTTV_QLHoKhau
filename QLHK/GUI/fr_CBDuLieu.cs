@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using BUS;
+using DAO;
 
 
 namespace GUI
@@ -27,6 +28,12 @@ namespace GUI
             canbobus = new CanBoBUS();
             adminbus = new AdminBUS();
             hssvbus = new HocSinhSinhVienBUS();
+
+            DataSet tables = DBConnection<int>.getData("show tables from qlhk");
+            foreach (DataRow item in tables.Tables[0].Rows)
+            {
+                comboBox1.Items.Add(item[0].ToString());
+            }
         }
         
         private void LoadData()
