@@ -38,6 +38,11 @@ namespace GUI
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = hssvbus.TimKiem(mssv).Tables["hocsinhsinhvien"];
+            textBox_mssv.Clear();
+            textBox_madinhdanh.Clear();
+            textBox_truong.Clear();
+            textBox_diachithuongtru.Clear();
+            textBox_vipham.Clear();
         }
 
         private void button_Them_Click(object sender, EventArgs e)
@@ -58,11 +63,36 @@ namespace GUI
                 textBox_truong.Clear();
                 textBox_diachithuongtru.Clear();
                 textBox_vipham.Clear();
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
             }
             else
             {
                 MessageBox.Show("Them khong thanh cong");
             }
+        }
+
+        private void button_xoa_Click(object sender, EventArgs e)
+        {
+            string mssv = textBox_mssv.Text.ToString();
+            if(hssvbus.XoaHSSV(mssv))
+            {
+                MessageBox.Show("Xoa Thanh Cong");
+                textBox_mssv.Clear();
+                textBox_madinhdanh.Clear();
+                textBox_truong.Clear();
+                textBox_diachithuongtru.Clear();
+                textBox_vipham.Clear();
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+            }
+            else
+            {
+                MessageBox.Show("Xoa khong thanh cong");
+            }
+
         }
     }
 }

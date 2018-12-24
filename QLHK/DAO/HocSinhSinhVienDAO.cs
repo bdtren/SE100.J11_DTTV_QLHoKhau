@@ -83,7 +83,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "delete from hocsinhsinhvien where mmssv=@mssv";
+                string sql = "delete from hocsinhsinhvien where mssv=@mssv";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@mssv", mssv);
                 cmd.ExecuteNonQuery();
