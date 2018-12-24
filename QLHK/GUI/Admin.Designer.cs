@@ -47,6 +47,22 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Admin",
+            "Cán bộ",
+            "Dân tộc",
+            "Học sinh, sinh viên",
+            "Nhân khẩu",
+            "Nhân khẩu tạm trú",
+            "Nhân khẩu thường trú",
+            "Quan hệ",
+            "Sổ hộ khẩu",
+            "Sổ tạm trú",
+            "Tạm vắng",
+            "Tiền án tiền sự",
+            "Tiểu sử",
+            "Tôn giáo",
+            "Trình độ"});
             this.comboBox1.Location = new System.Drawing.Point(67, 40);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);

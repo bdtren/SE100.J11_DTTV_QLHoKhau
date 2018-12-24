@@ -25,6 +25,7 @@ namespace GUI
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+            
         }
 
         private void HocSinhSinhVienGUI_Load(object sender, EventArgs e)
@@ -93,6 +94,26 @@ namespace GUI
                 MessageBox.Show("Xoa khong thanh cong");
             }
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            int r = e.RowIndex;
+            string mssv = dataGridView1.Rows[r].Cells["mssv"].Value.ToString();
+            string madinhdanh = dataGridView1.Rows[r].Cells["madinhdanh"].Value.ToString();
+            string truong = dataGridView1.Rows[r].Cells["truong"].Value.ToString();
+            string diachi = dataGridView1.Rows[r].Cells["diachithuongtru"].Value.ToString();
+            DateTime tgbd = DateTime.Parse(dataGridView1.Rows[r].Cells["thoigianbatdautamtruthuongtru"].Value.ToString());
+            DateTime tgkt = DateTime.Parse(dataGridView1.Rows[r].Cells["thoigianketthuctamtruthuongtru"].Value.ToString());
+            string vipham= dataGridView1.Rows[r].Cells["vipham"].Value.ToString();
+
+
+            HocSinhSinhVienDTO hssv = new HocSinhSinhVienDTO(mssv, madinhdanh, truong, diachi, tgbd, tgkt, vipham);
+            textBox_mssv.Text=hssv.MSSV;
+
+        
+        
         }
     }
 }

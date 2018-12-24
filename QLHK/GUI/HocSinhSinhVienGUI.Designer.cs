@@ -47,7 +47,7 @@
             this.button_Them = new System.Windows.Forms.Button();
             this.button_xoa = new System.Windows.Forms.Button();
             this.button_timkiem = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_sua = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(801, 200);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox1
             // 
@@ -225,21 +226,21 @@
             this.button_timkiem.UseVisualStyleBackColor = true;
             this.button_timkiem.Click += new System.EventHandler(this.button_timkiem_Click);
             // 
-            // button4
+            // button_sua
             // 
-            this.button4.Location = new System.Drawing.Point(660, 345);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 59);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Sửa";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_sua.Location = new System.Drawing.Point(660, 345);
+            this.button_sua.Name = "button_sua";
+            this.button_sua.Size = new System.Drawing.Size(140, 59);
+            this.button_sua.TabIndex = 5;
+            this.button_sua.Text = "Sửa";
+            this.button_sua.UseVisualStyleBackColor = true;
             // 
             // HocSinhSinhVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_timkiem);
             this.Controls.Add(this.button_xoa);
             this.Controls.Add(this.button_Them);
@@ -273,7 +274,7 @@
         private System.Windows.Forms.Button button_Them;
         private System.Windows.Forms.Button button_xoa;
         private System.Windows.Forms.Button button_timkiem;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_sua;
         private System.Windows.Forms.DateTimePicker date_batdau;
         private System.Windows.Forms.DateTimePicker date_ketthuc;
     }

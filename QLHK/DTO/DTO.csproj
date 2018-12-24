@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="CanBo.cs" />
+    <Compile Include="NhanKhauTamTruDTO.cs" />
     <Compile Include="HocSinhSinhVienDTO.cs" />
     <Compile Include="NgheNghiepDTO.cs" />
     <Compile Include="QuanHuyenDTO.cs" />
