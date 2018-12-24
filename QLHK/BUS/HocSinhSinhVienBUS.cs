@@ -9,44 +9,27 @@ using System.Data;
 
 namespace BUS
 {
-    public class HocSinhSinhVienBUS:NgheNghiepBUS
-    {
-        HocSinhSinhVienDAO objHSSV = new HocSinhSinhVienDAO();
-        public DataSet GetAllHSSV()
-        {
-            return objHSSV.GetAllHSSV();
-        }
-        public bool AddHSSV(HocSinhSinhVienDTO hssv)
-        {
-            return objHSSV.AddHSSV(hssv);
-        }
-        public bool XoaHSSV(string mssv)
-        {
-            return objHSSV.XoaHHSV(mssv);
-        }
-        public bool SuaHSSV(HocSinhSinhVienDTO hssv)
-        {
-            return objHSSV.SuaHSSV(hssv);
-        }
-        public DataSet TimKiem(string mssv)
-        {
-            return objHSSV.TimKiem(mssv);
-    public class HocSinhSinhVienBUS: AbstractFormBUS<HocSinhSinhVien>
+    public class HocSinhSinhVienBUS: AbstractFormBUS<HocSinhSinhVienDTO>
     {
         HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
         public override DataSet GetAll()
         {
             return objhssv.getAll();
         }
-        public override bool Add(HocSinhSinhVien hssv)
+        public override bool Add(HocSinhSinhVienDTO hssv)
         {
             return objhssv.insert(hssv);
+        }
+
+        public bool XoaHSSV(string mssv)
+        {
+            return objhssv.XoaHHSV(mssv);
         }
         public override bool Delete(int r)
         {
             return objhssv.delete(r);
         }
-        public override bool Update(HocSinhSinhVien hssv, int r)
+        public override bool Update(HocSinhSinhVienDTO hssv, int r)
         {
             return objhssv.update(hssv, r);
         }

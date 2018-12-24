@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAO
 {
-    public class HocSinhSinhVienDAO:DBConnection<HocSinhSinhVien>
+    public class HocSinhSinhVienDAO:DBConnection<HocSinhSinhVienDTO>
     {
         public HocSinhSinhVienDAO() : base() { }
 
@@ -43,7 +43,7 @@ namespace DAO
             return null;
         }
 
-        public override bool insert(HocSinhSinhVien hssv)
+        public override bool insert(HocSinhSinhVienDTO hssv)
         {
             try
             {
@@ -75,7 +75,6 @@ namespace DAO
 
         }
         public bool XoaHHSV(string mssv)
-        public override bool delete(int row)
         {
             try
             {
@@ -98,10 +97,24 @@ namespace DAO
                 conn.Close();
             }
             return true;
+        }
+        public override bool delete(int row)
+        {
+            try
+            {
+                dataset.Tables["hocsinhsinhvien"].Rows[row].Delete();
+                sqlda.Update(dataset, "hocsinhsinhvien");
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
 
         }
-        public bool SuaHSSV(HocSinhSinhVienDTO hssv)
-        public override bool update(HocSinhSinhVien hssv, int r)
+
+        public override bool update(HocSinhSinhVienDTO hssv, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
