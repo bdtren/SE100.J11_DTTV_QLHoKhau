@@ -9,9 +9,10 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class DanTocDAO: DBConnection<DanToc>
+    public class QuanHuyenDAO:DBConnection<QuanHuyenDTO>
     {
-        public DanTocDAO():base() { }
+        public QuanHuyenDAO() : base() { }
+
         public override DataSet getAll()
         {
             try
@@ -19,37 +20,44 @@ namespace DAO
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
-
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM dantoc", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM quanhuyen", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "dantoc");
+                sqlda.Fill(dataset, "quanhuyen");
                 return dataset;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return null;
             }
             finally
             {
                 conn.Close();
             }
-            return null;
         }
-        public override bool insert(DanToc dt)
+
+        public override bool insert(QuanHuyenDTO quanHuyen)
         {
             try
             {
-                DataRow dr = dataset.Tables["dantoc"].NewRow();
-                dr["madantoc"] = dt.MaDanToc;
-                dr["tendantoc"] = dt.TenDanToc;
-                dataset.Tables["dantoc"].Rows.Add(dr);
-                dataset.Tables["dantoc"].Rows.RemoveAt(dataset.Tables["dantoc"].Rows.Count - 1);
-                sqlda.Update(dataset, "dantoc");
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["quanhuyen"].NewRow();
+                dr["maqh"] = quanHuyen.MaQH;
+                dr["matp"] = quanHuyen.MaTP;
+                dr["ten"] = quanHuyen.Ten;
+                dr["kieu"] = quanHuyen.Kieu;
+
+                dataset.Tables["quanhuyen"].Rows.Add(dr);
+                dataset.Tables["v"].Rows.RemoveAt(dataset.Tables["quanhuyen"].Rows.Count - 1);
+                sqlda.Update(dataset, "quanhuyen");
             }
             catch (Exception e)
             {
@@ -60,14 +68,14 @@ namespace DAO
                 conn.Close();
             }
             return true;
-
         }
+
         public override bool delete(int row)
         {
             try
             {
-                dataset.Tables["dantoc"].Rows[row].Delete();
-                sqlda.Update(dataset, "dantoc");
+                dataset.Tables["quanhuyen"].Rows[row].Delete();
+                sqlda.Update(dataset, "quanhuyen");
                 return true;
             }
             catch (Exception e)
@@ -75,9 +83,9 @@ namespace DAO
                 Console.WriteLine(e.Message);
             }
             return false;
-
         }
-        public override bool update(DanToc dt, int r)
+
+        public override bool update(QuanHuyenDTO quanHuyen, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -86,15 +94,23 @@ namespace DAO
             }
             try
             {
-                string sql = "update dantoc set  tendantoc=@tendantoc where madantoc =@madantoc";
+                string sql = "update quanhuyen set maqh =@maqh,  ten=@ten, kieu=@kieu, matp =@matp";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@tendantoc", dt.TenDanToc.ToString());
-                cmd.Parameters.AddWithValue("@madantoc", dt.MaDanToc.ToString());
+                cmd.Parameters.AddWithValue("@maqh", quanHuyen.MaQH.ToString());
+                cmd.Parameters.AddWithValue("@matp", quanHuyen.MaTP.ToString());
+                cmd.Parameters.AddWithValue("@ten", quanHuyen.Ten.ToString());
+                cmd.Parameters.AddWithValue("@kieu", quanHuyen.Kieu.ToString());
+
                 cmd.ExecuteNonQuery();
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
             return false;
         }

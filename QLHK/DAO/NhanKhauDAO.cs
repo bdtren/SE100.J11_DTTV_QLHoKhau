@@ -9,10 +9,10 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class NhanKhauDAO:DBConnection
+    public class NhanKhauDAO:DBConnection<NhanKhau>
     {
         public NhanKhauDAO() : base() { }
-        public DataSet GetAllNhanKhau()
+        public override DataSet getAll()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace DAO
             }
             return null;
         }
-        public bool AddNhanKhau(NhanKhau nk)
+        public override bool insert(NhanKhau nk)
         {
             try
             {
@@ -71,7 +71,22 @@ namespace DAO
             return true;
 
         }
-        public bool XoaNhanKhau(string madinhdanh)
+        public override bool delete(int row)
+        {
+            try
+            {
+                dataset.Tables["nhankhau"].Rows[row].Delete();
+                sqlda.Update(dataset, "nhankhau");
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
+
+        }
+        public bool delete(string madinhdanh)
         {
             try
             {
@@ -91,7 +106,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaNhanKhau(NhanKhau nk)
+        public override bool update(NhanKhau nk, int r)
         {
             if (conn.State != ConnectionState.Open)
             {

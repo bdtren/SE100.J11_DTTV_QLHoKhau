@@ -16,7 +16,11 @@ namespace GUI
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Dark Style");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new HocSinhSinhVienGUI());
+=======
+            Application.Run(new AdminGUI());
+>>>>>>> KienTrucMoi
         }
     }
 }

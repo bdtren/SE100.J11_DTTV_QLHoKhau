@@ -10,7 +10,7 @@ using System.Data;
 
 namespace DAO
 {
-    public class DBConnection
+    public abstract class DBConnection<T>
     {
 
         protected MySqlConnection conn;
@@ -21,8 +21,8 @@ namespace DAO
             //string database = "qlhk";
             //string username = "root";
             //string password = "";
-            //string connstring = "server=" + host + ";database=" + database
-            //    + ";port=" + port + ";user id=" + username + ";password=" + password;
+            ////String connString = "Server=" + host + ";Database=" + database
+            //    + ";port=" + port + ";User Id=" + username + ";password=" + password;
             string connString = "datasource=localhost;port=3306;username=root;password=;database=qlhk;SslMode=none";
             try
             {
@@ -37,5 +37,10 @@ namespace DAO
         protected MySqlDataAdapter sqlda;
         protected DataSet dataset = null;
         protected MySqlCommandBuilder cmdbuilder;
+
+        public abstract DataSet getAll();
+        public abstract bool insert(T data);
+        public abstract bool delete(int row);
+        public abstract bool update(T data, int r);
     }
 }

@@ -9,10 +9,10 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class NhanVienDAO:DBConnection
+    public class NhanVienDAO:DBConnection<NhanVien>
     {
         public NhanVienDAO() : base() { }
-        public DataSet GetAllNhanVien()
+        public override DataSet getAll()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace DAO
             }
             return null;
         }
-        public bool AddNhanVien(NhanVien nv)
+        public override bool insert(NhanVien nv)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace DAO
             return true;
 
         }
-        public bool XoaNhanVien(int row)
+        public override bool delete(int row)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace DAO
             return false;
 
         }
-        public bool SuaNhanVien(NhanVien nv, int r)
+        public override bool update(NhanVien nv, int r)
         {
             if (conn.State != ConnectionState.Open)
             {

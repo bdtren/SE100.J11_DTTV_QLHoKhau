@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="AdminBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
+    <Compile Include="DanTocBUS.cs" />
+    <Compile Include="QuanHuyenBUS.cs" />
+    <Compile Include="TinhThanhPhoBUS.cs" />
     <Compile Include="HocSinhSinhVienBUS.cs" />
     <Compile Include="NgheNghiepBUS.cs" />
     <Compile Include="NhanKhauBUS.cs" />

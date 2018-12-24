@@ -9,10 +9,11 @@ using DTO;
 
 namespace DAO
 {
-    public class HocSinhSinhVienDAO: NgheNghiepDAO
+    public class HocSinhSinhVienDAO:DBConnection<HocSinhSinhVien>
     {
         public HocSinhSinhVienDAO() : base() { }
-        public DataSet GetAllHSSV()
+
+        public override DataSet getAll()
         {
             try
             {
@@ -41,7 +42,8 @@ namespace DAO
             }
             return null;
         }
-        public bool AddHSSV(HocSinhSinhVienDTO hssv)
+
+        public override bool insert(HocSinhSinhVien hssv)
         {
             try
             {
@@ -73,6 +75,7 @@ namespace DAO
 
         }
         public bool XoaHHSV(string mssv)
+        public override bool delete(int row)
         {
             try
             {
@@ -98,6 +101,7 @@ namespace DAO
 
         }
         public bool SuaHSSV(HocSinhSinhVienDTO hssv)
+        public override bool update(HocSinhSinhVien hssv, int r)
         {
             if (conn.State != ConnectionState.Open)
             {

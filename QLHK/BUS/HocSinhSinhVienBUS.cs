@@ -31,6 +31,24 @@ namespace BUS
         public DataSet TimKiem(string mssv)
         {
             return objHSSV.TimKiem(mssv);
+    public class HocSinhSinhVienBUS: AbstractFormBUS<HocSinhSinhVien>
+    {
+        HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
+        public override DataSet GetAll()
+        {
+            return objhssv.getAll();
+        }
+        public override bool Add(HocSinhSinhVien hssv)
+        {
+            return objhssv.insert(hssv);
+        }
+        public override bool Delete(int r)
+        {
+            return objhssv.delete(r);
+        }
+        public override bool Update(HocSinhSinhVien hssv, int r)
+        {
+            return objhssv.update(hssv, r);
         }
     }
 }

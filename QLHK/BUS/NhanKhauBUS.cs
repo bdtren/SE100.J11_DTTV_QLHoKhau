@@ -10,24 +10,32 @@ using System.Data;
 
 namespace BUS
 {
-    public class NhanKhauBUS
+    public class NhanKhauBUS:AbstractFormBUS<NhanKhau>
     {
         NhanKhauDAO objnhankhau = new NhanKhauDAO();
-        public DataSet GetAllNhanKhau()
+        public override DataSet GetAll()
         {
-            return objnhankhau.GetAllNhanKhau();
+            return objnhankhau.getAll();
         }
-        public bool AddNhanKhau(NhanKhau nk)
+        public override bool Add(NhanKhau nk)
         {
-            return objnhankhau.AddNhanKhau(nk);
+            return objnhankhau.insert(nk);
         }
-        public bool XoaNhanKhau(string madinhdanh)
+          public override bool Delete(int madinhdanh)
         {
-            return objnhankhau.XoaNhanKhau(madinhdanh);
+            return objnhankhau.delete(madinhdanh);
         }
-        public bool SuaNhanKhau(NhanKhau nk)
+        public override bool Update(NhanKhau nk, int r)
         {
-            return objnhankhau.SuaNhanKhau(nk);
+            return objnhankhau.update(nk, r);
+        }
+        public bool Delete(string madinhdanh)
+        {
+            return false;
+        }
+        public bool Update(NhanKhau nk)
+        {
+            return false;
         }
     }
 }

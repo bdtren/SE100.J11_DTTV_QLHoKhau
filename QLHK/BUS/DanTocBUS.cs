@@ -9,25 +9,25 @@ using System.Data;
 
 namespace BUS
 {
-    public class DanTocBUS
+    public class DanTocBUS:AbstractFormBUS<DanToc>
     {
         DanTocDAO objDantoc = new DanTocDAO();
         public DanTocBUS() { }
-        public DataSet GetAllDanToc()
+        public override DataSet GetAll()
         {
-            return objDantoc.GetAllDanToc();
+            return objDantoc.getAll();
         }
-        public bool AddDanToc(DanToc dt)
+        public override bool Add(DanToc dt)
         {
-            return objDantoc.AddDanToc(dt);
+            return objDantoc.insert(dt);
         }
-        public bool XoaDanToc(int r)
+        public override bool Delete(int r)
         {
-            return objDantoc.XoaDanToc(r);
+            return objDantoc.delete(r);
         }
-        public bool SuaDanToc(DanToc dt, int r)
+        public override bool Update(DanToc dt, int r)
         {
-            return objDantoc.SuaDanToc(dt, r);
+            return objDantoc.update(dt, r);
         }
     }
 }
