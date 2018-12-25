@@ -77,12 +77,12 @@ namespace DAO
         {
             try
             {
+                NhanKhauDAO nk = new NhanKhauDAO();
+                nk.insert(nktt);
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                NhanKhauDAO nk = new NhanKhauDAO();
-                nk.insert(nktt);
 
                 string sql = "insert into nhankhauthuongtru values(@manhankhauthuongtru, @sosohokhau, @noithuongtrutamtru, @diachihientai," +
                     " @trinhdohocvan, @trinhdochuyenmon, @biettiengdantoc, @trinhdongoaingu, @noilamviec, @quanhevoichuho)";

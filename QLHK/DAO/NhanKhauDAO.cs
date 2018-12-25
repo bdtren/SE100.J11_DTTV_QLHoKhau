@@ -43,6 +43,10 @@ namespace DAO
         {
             try
             {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
                 string sql = "insert into nhankhau values(@madinhdanh,@hoten,@gioitinh,@dantoc,@hochieu,@ngaycap,@ngaysinh,@nguyenquan,@noicap,@noisinh,@quoctich,@sdt,@tongiao);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@madinhdanh", nk.MaDinhDanh.ToString());
