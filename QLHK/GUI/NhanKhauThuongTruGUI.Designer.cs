@@ -95,7 +95,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 451);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 28;
             // 
             // groupBox1
             // 
@@ -130,7 +130,7 @@
             this.groupBox1.Location = new System.Drawing.Point(6, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(362, 411);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phần thông tin nhân khẩu";
             // 
@@ -140,7 +140,7 @@
             this.dtpNgayCap.Location = new System.Drawing.Point(83, 203);
             this.dtpNgayCap.Name = "dtpNgayCap";
             this.dtpNgayCap.Size = new System.Drawing.Size(132, 20);
-            this.dtpNgayCap.TabIndex = 25;
+            this.dtpNgayCap.TabIndex = 8;
             // 
             // dtpNgaySinh
             // 
@@ -148,21 +148,21 @@
             this.dtpNgaySinh.Location = new System.Drawing.Point(233, 91);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(118, 20);
-            this.dtpNgaySinh.TabIndex = 25;
+            this.dtpNgaySinh.TabIndex = 4;
             // 
             // tbtongiao
             // 
             this.tbtongiao.Location = new System.Drawing.Point(83, 340);
             this.tbtongiao.Name = "tbtongiao";
             this.tbtongiao.Size = new System.Drawing.Size(268, 20);
-            this.tbtongiao.TabIndex = 23;
+            this.tbtongiao.TabIndex = 14;
             // 
             // tbnguyenquan
             // 
             this.tbnguyenquan.Location = new System.Drawing.Point(83, 239);
             this.tbnguyenquan.Name = "tbnguyenquan";
             this.tbnguyenquan.Size = new System.Drawing.Size(268, 20);
-            this.tbnguyenquan.TabIndex = 24;
+            this.tbnguyenquan.TabIndex = 10;
             // 
             // label13
             // 
@@ -178,14 +178,14 @@
             this.tbsodienthoai.Location = new System.Drawing.Point(83, 307);
             this.tbsodienthoai.Name = "tbsodienthoai";
             this.tbsodienthoai.Size = new System.Drawing.Size(268, 20);
-            this.tbsodienthoai.TabIndex = 22;
+            this.tbsodienthoai.TabIndex = 13;
             // 
             // tbquoctich
             // 
             this.tbquoctich.Location = new System.Drawing.Point(266, 274);
             this.tbquoctich.Name = "tbquoctich";
             this.tbquoctich.Size = new System.Drawing.Size(85, 20);
-            this.tbquoctich.TabIndex = 21;
+            this.tbquoctich.TabIndex = 12;
             // 
             // label9
             // 
@@ -210,14 +210,14 @@
             this.tbnoisinh.Location = new System.Drawing.Point(83, 274);
             this.tbnoisinh.Name = "tbnoisinh";
             this.tbnoisinh.Size = new System.Drawing.Size(102, 20);
-            this.tbnoisinh.TabIndex = 20;
+            this.tbnoisinh.TabIndex = 11;
             // 
             // tbmadinhdanh
             // 
             this.tbmadinhdanh.Location = new System.Drawing.Point(83, 25);
             this.tbmadinhdanh.Name = "tbmadinhdanh";
             this.tbmadinhdanh.Size = new System.Drawing.Size(178, 20);
-            this.tbmadinhdanh.TabIndex = 13;
+            this.tbmadinhdanh.TabIndex = 1;
             // 
             // label10
             // 
@@ -233,7 +233,7 @@
             this.tbnoicap.Location = new System.Drawing.Point(266, 202);
             this.tbnoicap.Name = "tbnoicap";
             this.tbnoicap.Size = new System.Drawing.Size(85, 20);
-            this.tbnoicap.TabIndex = 19;
+            this.tbnoicap.TabIndex = 9;
             // 
             // label2
             // 
@@ -258,7 +258,7 @@
             this.tbhoten.Location = new System.Drawing.Point(83, 57);
             this.tbhoten.Name = "tbhoten";
             this.tbhoten.Size = new System.Drawing.Size(268, 20);
-            this.tbhoten.TabIndex = 14;
+            this.tbhoten.TabIndex = 2;
             // 
             // label3
             // 
@@ -274,7 +274,7 @@
             this.tbgioitinh.Location = new System.Drawing.Point(83, 90);
             this.tbgioitinh.Name = "tbgioitinh";
             this.tbgioitinh.Size = new System.Drawing.Size(60, 20);
-            this.tbgioitinh.TabIndex = 15;
+            this.tbgioitinh.TabIndex = 3;
             // 
             // label12
             // 
@@ -290,7 +290,7 @@
             this.tbhochieu.Location = new System.Drawing.Point(83, 167);
             this.tbhochieu.Name = "tbhochieu";
             this.tbhochieu.Size = new System.Drawing.Size(268, 20);
-            this.tbhochieu.TabIndex = 17;
+            this.tbhochieu.TabIndex = 7;
             // 
             // label6
             // 
@@ -306,7 +306,7 @@
             this.tbdantoc.Location = new System.Drawing.Point(83, 132);
             this.tbdantoc.Name = "tbdantoc";
             this.tbdantoc.Size = new System.Drawing.Size(60, 20);
-            this.tbdantoc.TabIndex = 16;
+            this.tbdantoc.TabIndex = 5;
             // 
             // label5
             // 
@@ -349,7 +349,7 @@
             this.button_sua.Location = new System.Drawing.Point(718, 421);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(72, 24);
-            this.button_sua.TabIndex = 9;
+            this.button_sua.TabIndex = 26;
             this.button_sua.Text = "SỬA";
             this.button_sua.UseVisualStyleBackColor = true;
             this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
@@ -359,7 +359,7 @@
             this.button_xoa.Location = new System.Drawing.Point(797, 421);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(72, 24);
-            this.button_xoa.TabIndex = 8;
+            this.button_xoa.TabIndex = 27;
             this.button_xoa.Text = "XÓA";
             this.button_xoa.UseVisualStyleBackColor = true;
             this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
@@ -369,7 +369,7 @@
             this.button_them.Location = new System.Drawing.Point(640, 421);
             this.button_them.Name = "button_them";
             this.button_them.Size = new System.Drawing.Size(72, 24);
-            this.button_them.TabIndex = 7;
+            this.button_them.TabIndex = 25;
             this.button_them.Text = "THÊM";
             this.button_them.UseVisualStyleBackColor = true;
             this.button_them.Click += new System.EventHandler(this.button_them_Click);
@@ -399,7 +399,7 @@
             this.groupBox3.Location = new System.Drawing.Point(392, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(465, 411);
-            this.groupBox3.TabIndex = 26;
+            this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phần thông tin thường trú";
             // 
@@ -408,14 +408,14 @@
             this.tbQHVoiCH.Location = new System.Drawing.Point(142, 340);
             this.tbQHVoiCH.Name = "tbQHVoiCH";
             this.tbQHVoiCH.Size = new System.Drawing.Size(268, 20);
-            this.tbQHVoiCH.TabIndex = 23;
+            this.tbQHVoiCH.TabIndex = 24;
             // 
             // tbBietTiengDanToc
             // 
             this.tbBietTiengDanToc.Location = new System.Drawing.Point(142, 239);
             this.tbBietTiengDanToc.Name = "tbBietTiengDanToc";
             this.tbBietTiengDanToc.Size = new System.Drawing.Size(268, 20);
-            this.tbBietTiengDanToc.TabIndex = 24;
+            this.tbBietTiengDanToc.TabIndex = 21;
             // 
             // label14
             // 
@@ -431,7 +431,7 @@
             this.tbNoiLamViec.Location = new System.Drawing.Point(142, 307);
             this.tbNoiLamViec.Name = "tbNoiLamViec";
             this.tbNoiLamViec.Size = new System.Drawing.Size(268, 20);
-            this.tbNoiLamViec.TabIndex = 22;
+            this.tbNoiLamViec.TabIndex = 23;
             // 
             // label15
             // 
@@ -456,14 +456,14 @@
             this.tbTrinhDoNN.Location = new System.Drawing.Point(142, 274);
             this.tbTrinhDoNN.Name = "tbTrinhDoNN";
             this.tbTrinhDoNN.Size = new System.Drawing.Size(102, 20);
-            this.tbTrinhDoNN.TabIndex = 20;
+            this.tbTrinhDoNN.TabIndex = 22;
             // 
             // tbMaNKTT
             // 
             this.tbMaNKTT.Location = new System.Drawing.Point(142, 25);
             this.tbMaNKTT.Name = "tbMaNKTT";
             this.tbMaNKTT.Size = new System.Drawing.Size(178, 20);
-            this.tbMaNKTT.TabIndex = 13;
+            this.tbMaNKTT.TabIndex = 15;
             // 
             // label18
             // 
@@ -488,7 +488,7 @@
             this.tbSoSHK.Location = new System.Drawing.Point(142, 60);
             this.tbSoSHK.Name = "tbSoSHK";
             this.tbSoSHK.Size = new System.Drawing.Size(268, 20);
-            this.tbSoSHK.TabIndex = 14;
+            this.tbSoSHK.TabIndex = 16;
             // 
             // label20
             // 
@@ -504,14 +504,14 @@
             this.tbTrinhDoCM.Location = new System.Drawing.Point(142, 203);
             this.tbTrinhDoCM.Name = "tbTrinhDoCM";
             this.tbTrinhDoCM.Size = new System.Drawing.Size(117, 20);
-            this.tbTrinhDoCM.TabIndex = 18;
+            this.tbTrinhDoCM.TabIndex = 20;
             // 
             // tbDCThuongTru
             // 
             this.tbDCThuongTru.Location = new System.Drawing.Point(142, 90);
             this.tbDCThuongTru.Name = "tbDCThuongTru";
-            this.tbDCThuongTru.Size = new System.Drawing.Size(48, 20);
-            this.tbDCThuongTru.TabIndex = 15;
+            this.tbDCThuongTru.Size = new System.Drawing.Size(268, 20);
+            this.tbDCThuongTru.TabIndex = 17;
             this.tbDCThuongTru.Enter += new System.EventHandler(this.tbDCThuongTru_Enter);
             // 
             // tbTrinhDoHocVan
@@ -519,14 +519,14 @@
             this.tbTrinhDoHocVan.Location = new System.Drawing.Point(142, 167);
             this.tbTrinhDoHocVan.Name = "tbTrinhDoHocVan";
             this.tbTrinhDoHocVan.Size = new System.Drawing.Size(268, 20);
-            this.tbTrinhDoHocVan.TabIndex = 17;
+            this.tbTrinhDoHocVan.TabIndex = 19;
             // 
             // tbDCHienTai
             // 
             this.tbDCHienTai.Location = new System.Drawing.Point(142, 132);
             this.tbDCHienTai.Name = "tbDCHienTai";
             this.tbDCHienTai.Size = new System.Drawing.Size(268, 20);
-            this.tbDCHienTai.TabIndex = 16;
+            this.tbDCHienTai.TabIndex = 18;
             // 
             // label23
             // 
@@ -569,7 +569,7 @@
             this.tbNgheNghiep.Location = new System.Drawing.Point(233, 129);
             this.tbNgheNghiep.Name = "tbNgheNghiep";
             this.tbNgheNghiep.Size = new System.Drawing.Size(118, 20);
-            this.tbNgheNghiep.TabIndex = 14;
+            this.tbNgheNghiep.TabIndex = 6;
             // 
             // label16
             // 
@@ -585,7 +585,7 @@
             this.btnOk.Location = new System.Drawing.Point(823, 511);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(87, 38);
-            this.btnOk.TabIndex = 8;
+            this.btnOk.TabIndex = 29;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
@@ -594,7 +594,7 @@
             this.btnHuy.Location = new System.Drawing.Point(823, 563);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(87, 38);
-            this.btnHuy.TabIndex = 8;
+            this.btnHuy.TabIndex = 30;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             // 

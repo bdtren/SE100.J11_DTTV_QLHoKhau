@@ -199,6 +199,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
+                if (!String.IsNullOrEmpty(query)) query = "where " + query;
                 sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru " + query, conn); /*where manhankhauthuongtru IS NOT NULL*/
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();

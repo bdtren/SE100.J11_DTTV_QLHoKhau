@@ -13,15 +13,15 @@ namespace BUS
         
         XaPhuongThiTranBUS: AbstractFormBUS<XaPhuongThiTranDTO>
     {
-        XaPhuongThiTranDAO objtp = new XaPhuongThiTranDAO();
+        XaPhuongThiTranDAO obj = new XaPhuongThiTranDAO();
 
         public override DataSet GetAll()
         {
-            return objtp.getAll();
+            return obj.getAll();
         }
         public override bool Add(XaPhuongThiTranDTO data)
         {
-            return objtp.insert(data);
+            return obj.insert(data);
         }
         public override bool Add_Table(XaPhuongThiTranDTO data)
         {
@@ -29,12 +29,17 @@ namespace BUS
         }
         public override bool Delete(int r)
         {
-            return objtp.delete(r);
+            return obj.delete(r);
         }
 
         public override bool Update(XaPhuongThiTranDTO data, int r)
         {
-            return objtp.update(data, r);
+            return obj.update(data, r);
+        }
+
+        public DataSet TimKiem(string query)
+        {
+            return obj.TimKiem(query);
         }
     }
 }

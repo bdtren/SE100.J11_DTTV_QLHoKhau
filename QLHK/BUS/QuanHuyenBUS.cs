@@ -11,29 +11,34 @@ namespace BUS
 {
     public class QuanHuyenBUS: AbstractFormBUS<QuanHuyenDTO>
     {
-        QuanHuyenDAO objtp = new QuanHuyenDAO();
+        QuanHuyenDAO obj = new QuanHuyenDAO();
 
         public override DataSet GetAll()
         {
-            return objtp.getAll();
+            return obj.getAll();
         }
         public override bool Add(QuanHuyenDTO data)
         {
-            return objtp.insert(data);
+            return obj.insert(data);
         }
 
         public override bool Delete(int r)
         {
-            return objtp.delete(r);
+            return obj.delete(r);
         }
 
         public override bool Update(QuanHuyenDTO data, int r)
         {
-            return objtp.update(data, r);
+            return obj.update(data, r);
         }
         public override bool Add_Table(QuanHuyenDTO data)
         {
             throw new NotImplementedException();
+        }
+
+        public DataSet TimKiem(string query)
+        {
+            return obj.TimKiem(query);
         }
     }
 }

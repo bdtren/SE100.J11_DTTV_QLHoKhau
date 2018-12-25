@@ -29,8 +29,6 @@ namespace DAO
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "hocsinhsinhvien");
                 return dataset;
-
-
             }
             catch (Exception e)
             {

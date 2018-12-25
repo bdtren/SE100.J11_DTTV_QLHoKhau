@@ -71,7 +71,7 @@ namespace GUI
         {
             if (String.IsNullOrEmpty(tbMaNKTT.Text))
             {
-                MessageBox.Show(this, "Thiếu!", "Vui Lòng nhập mã nhân khẩu thường trú", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Thiếu!", "Vui Lòng nhập mã nhân khẩu hoặc mã thường trú", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (nktt.XoaNKTT(tbMaNKTT.Text))
@@ -87,11 +87,10 @@ namespace GUI
         private void tbDCThuongTru_Enter(object sender, EventArgs e)
         {
             
-            string x;
-            using (fr_CBDuLieu a = new fr_CBDuLieu())
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
             {
                 a.ShowDialog(this);
-                x = a.Text;
+                tbDCThuongTru.Text = a.diaChi;
             }
         }
     }

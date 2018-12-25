@@ -23,9 +23,7 @@ namespace DAO
                 }
                 sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM xaphuongthitran", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "xaphuongthitran");
                 return dataset;
@@ -97,9 +95,9 @@ namespace DAO
             }
             try
             {
-                string sql = "update xaphuongthitran set maxa =@maxa,  ten=@ten, kieu=@kieu, maqh =@mqah";
+                string sql = "update xaphuongthitran set maxp =@maxp,  ten=@ten, kieu=@kieu, maqh =@mqah";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@maxa", xaphuong.MaQH.ToString());
+                cmd.Parameters.AddWithValue("@maxp", xaphuong.MaQH.ToString());
                 cmd.Parameters.AddWithValue("@maqh", xaphuong.MaQH.ToString());
                 cmd.Parameters.AddWithValue("@ten", xaphuong.Ten.ToString());
                 cmd.Parameters.AddWithValue("@kieu", xaphuong.Kieu.ToString());
@@ -116,6 +114,35 @@ namespace DAO
                 conn.Close();
             }
             return false;
+        }
+
+        public DataSet TimKiem(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM xaphuongthitran" + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "xaphuongthitran");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

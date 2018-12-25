@@ -32,7 +32,7 @@ namespace BUS
         }
         public bool XoaNKTT(string maNKTT)
         {
-            DataSet search = obj.TimKiem("where manhankhauthuongtru='" + maNKTT + "'");
+            DataSet search = obj.TimKiem("manhankhauthuongtru='" + maNKTT + "'");
             if (search==null||search.Tables[0].Rows.Count == 0) return false;
             NhanKhauDAO nk = new NhanKhauDAO();
             return obj.XoaNKTT(maNKTT)&&nk.delete(search.Tables[0].Rows[0][1].ToString());
