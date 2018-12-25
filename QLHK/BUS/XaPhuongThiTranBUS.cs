@@ -9,7 +9,9 @@ using System.Data;
 
 namespace BUS
 {
-    public class XaPhuongThiTranBUS: AbstractFormBUS<XaPhuongThiTranDTO>
+    public class 
+        
+        XaPhuongThiTranBUS: AbstractFormBUS<XaPhuongThiTranDTO>
     {
         XaPhuongThiTranDAO objtp = new XaPhuongThiTranDAO();
 
@@ -21,7 +23,10 @@ namespace BUS
         {
             return objtp.insert(data);
         }
-
+        public override bool Add_Table(XaPhuongThiTranDTO data)
+        {
+            throw new NotImplementedException();
+        }
         public override bool Delete(int r)
         {
             return objtp.delete(r);

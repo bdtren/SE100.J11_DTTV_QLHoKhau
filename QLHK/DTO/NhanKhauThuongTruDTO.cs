@@ -21,12 +21,12 @@ namespace DTO
         public string SoSoHoKhau { get; set; }
 
         public NhanKhauThuongTruDTO() { }
-        public NhanKhauThuongTruDTO(string maDinhDanh, string hoTen, string gioiTinh, string danToc, string hoChieu, DateTime ngayCap,
+        public NhanKhauThuongTruDTO(string maDinhDanh,string ngheNghiep, string hoTen, string gioiTinh, string danToc, string hoChieu, DateTime ngayCap,
             DateTime ngaySinh, string nguyenQuan, string noiCap, string noiSinh, string quocTich, string sDT, string tonGiao,
 
             string maNKThuongTru, string bietTiengDanToc, string diaChiHienTai, bool laChuHo, string noiLamViec,
             string noiThuongTru, string quanHeVoiChuHo, string trinhDoChuyenMon, string trinhDoNgoaiNgu,
-            string trinhDoHocVan, string soSoHoKhau): base(maDinhDanh, hoTen, gioiTinh, danToc, hoChieu, ngayCap, ngaySinh, nguyenQuan, noiCap, noiSinh, quocTich, sDT, tonGiao)
+            string trinhDoHocVan, string soSoHoKhau): base(maDinhDanh, ngheNghiep, hoTen, gioiTinh, danToc, hoChieu, ngayCap, ngaySinh, nguyenQuan, noiCap, noiSinh, quocTich, sDT, tonGiao)
         {
             this.MaNhanKhauThuongTru = maNKThuongTru;
             this.BietTiengDanToc = bietTiengDanToc;

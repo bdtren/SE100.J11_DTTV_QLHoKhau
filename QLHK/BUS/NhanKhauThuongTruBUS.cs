@@ -22,12 +22,20 @@ namespace BUS
         }
         public override bool Add(NhanKhauThuongTruDTO nktt)
         {
-            return obj.insert(nktt);
+            NhanKhauDAO nk = new NhanKhauDAO();
+            
+            return nk.insert(nktt)&&obj.insert(nktt);
         }
-
+        public override bool Add_Table(NhanKhauThuongTruDTO data)
+        {
+            throw new NotImplementedException();
+        }
         public bool XoaNKTT(string maNKTT)
         {
-            return obj.XoaNKTT(maNKTT);
+            DataSet search = obj.TimKiem("where manhankhauthuongtru='" + maNKTT + "'");
+            if (search==null||search.Tables[0].Rows.Count == 0) return false;
+            NhanKhauDAO nk = new NhanKhauDAO();
+            return obj.XoaNKTT(maNKTT)&&nk.delete(search.Tables[0].Rows[0][1].ToString());
         }
         public override bool Delete(int r)
         {
@@ -35,7 +43,9 @@ namespace BUS
         }
         public override bool Update(NhanKhauThuongTruDTO nktt, int r)
         {
-            return obj.update(nktt, r);
+            NhanKhauDAO nk = new NhanKhauDAO();
+            
+            return nk.update(nktt, r)&& obj.update(nktt, r);
         }
 
         public DataSet TimKiem(string maNKTT)

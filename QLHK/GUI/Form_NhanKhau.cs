@@ -53,7 +53,7 @@ namespace GUI
             string quoctich = textBox_quoctich.Text.ToString();
             string sdt = textBox_sodienthoai.Text.ToString();
             string tongiao = textBox_tongiao.Text.ToString();
-            nk = new NhanKhau(madinhdanh,hoten,gioitinh,dantoc,hochieu,ngaycap,ngaysinh,nguyenquan,noicap,noisinh,quoctich,sdt,tongiao);
+            //nk = new NhanKhau(madinhdanh,hoten,gioitinh,dantoc,hochieu,ngaycap,ngaysinh,nguyenquan,noicap,noisinh,quoctich,sdt,tongiao);
             nhankhaubus.Add(nk);
             dataGridView1.DataSource = nhankhaubus.GetAll();
         }

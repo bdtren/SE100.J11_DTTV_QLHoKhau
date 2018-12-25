@@ -26,10 +26,14 @@ namespace GUI
             //dataGridView1.DataSource = nktt.GetAll().Tables["nhankhauthuongtru"];
             dataGridView1.DataSource = nktt.GetAllJoinNhanKhau().Tables[0];
         }
+        private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbhoten.Text, tbgioitinh.Text,
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
                 tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
                 tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
@@ -42,7 +46,52 @@ namespace GUI
             }
             else{
                 MessageBox.Show(this,"Lỗi!","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void button_sua_Click(object sender, EventArgs e)
+        {
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
+                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
+                tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
+                tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
+                tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
+                tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
 
+            if (nktt.Update(nkttDTO,-1))
+            {
+                MessageBox.Show(this, "Thành công!");
+            }
+            else
+            {
+                MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_xoa_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tbMaNKTT.Text))
+            {
+                MessageBox.Show(this, "Thiếu!", "Vui Lòng nhập mã nhân khẩu thường trú", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (nktt.XoaNKTT(tbMaNKTT.Text))
+            {
+                MessageBox.Show(this, "Thành công!");
+            }
+            else
+            {
+                MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tbDCThuongTru_Enter(object sender, EventArgs e)
+        {
+            
+            string x;
+            using (fr_CBDuLieu a = new fr_CBDuLieu())
+            {
+                a.ShowDialog(this);
+                x = a.Text;
             }
         }
     }
