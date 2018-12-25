@@ -21,7 +21,7 @@ namespace BUS
         {
             return objnhankhau.insert(nk);
         }
-          public override bool Delete(int madinhdanh)
+          public  bool Delete(string madinhdanh)
         {
             return objnhankhau.delete(madinhdanh);
         }
@@ -29,13 +29,17 @@ namespace BUS
         {
             return objnhankhau.update(nk, r);
         }
-        public bool Delete(string madinhdanh)
+        public override bool Delete(int row)
         {
-            return false;
+            return objnhankhau.delete(row);
         }
         public bool Update(NhanKhau nk)
         {
             return false;
+        }
+        public override bool Add_Table(NhanKhau data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

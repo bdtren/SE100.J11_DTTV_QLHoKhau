@@ -38,5 +38,9 @@ namespace BUS
         {
             return objnktt.TimKiem(mssv);
         }
+        public override bool Add_Table(NhanKhauTamTruDTO data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

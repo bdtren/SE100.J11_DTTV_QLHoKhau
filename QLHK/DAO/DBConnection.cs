@@ -135,8 +135,9 @@ namespace DAO
 
 
         public abstract DataSet getAll();
-        public abstract bool insert(T data);
-        public abstract bool delete(int row);
+        public abstract bool insert(T data);//can bo thao tac
+        public abstract bool insert_table(T data);//admin thao tac
+        public abstract bool delete(int row);//admin thao tac
         public abstract bool update(T data, int r);
     }
 }

@@ -88,6 +88,7 @@ namespace DAO
             }
             try
             {
+                
                 string sql= "update canbo set tendangnhap =@tencb , matkhau=@mk where macanbo =@macb";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@tencb", cb.TenDangNhap);
@@ -100,6 +101,10 @@ namespace DAO
                 Console.WriteLine(e.Message);
             }
             return false;
+        }
+        public override bool insert_table(CanBo data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

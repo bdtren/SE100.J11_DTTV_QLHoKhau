@@ -69,6 +69,10 @@ namespace DAO
             }
             return true;
         }
+        public override bool insert_table(QuanHuyenDTO data)
+        {
+            throw new NotImplementedException();
+        }
 
         public override bool delete(int row)
         {

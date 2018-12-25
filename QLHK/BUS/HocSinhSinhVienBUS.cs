@@ -20,7 +20,6 @@ namespace BUS
         {
             return objhssv.insert(hssv);
         }
-
         public bool XoaHSSV(string mssv)
         {
             return objhssv.XoaHHSV(mssv);
@@ -34,9 +33,13 @@ namespace BUS
             return objhssv.update(hssv, r);
         }
 
-        public DataSet TimKiem(string mssv)
+        public DataSet TimKiem(string query)
         {
-            return objhssv.TimKiem(mssv);
+            return objhssv.TimKiem(query);
+        }
+        public override bool Add_Table(HocSinhSinhVienDTO hssv)
+        {
+            return objhssv.insert_table(hssv);
         }
     }
 }

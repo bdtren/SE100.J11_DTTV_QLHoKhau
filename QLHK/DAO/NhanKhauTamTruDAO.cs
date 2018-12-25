@@ -21,7 +21,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhautamtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhautamtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -119,7 +119,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update hocsinhsinhvien set truong=@truong, diachithuongtru=@diachithuongtru, tgbdtttt=@tgbdtttt, tgkttttt=@tgkttttt, vipham=@vipham where mssv=@mssv";
+                /*string sql = "update hocsinhsinhvien set truong=@truong, diachithuongtru=@diachithuongtru, tgbdtttt=@tgbdtttt, tgkttttt=@tgkttttt, vipham=@vipham where mssv=@mssv";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@mssv", hssv.MSSV);
                 cmd.Parameters.AddWithValue("@truong", hssv.Truong);
@@ -127,7 +127,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@tgbdtttt", hssv.TGBDTTTT.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@tgkttttt", hssv.TGKTTTTT.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@vipham)", hssv.ViPham);
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();*/
             }
             catch (Exception e)
             {
@@ -166,6 +166,10 @@ namespace DAO
                 conn.Close();
             }
             return null;
+        }
+        public override bool insert_table(NhanKhauTamTruDTO data)
+        {
+            throw new NotImplementedException();
         }
     }
     
