@@ -826,7 +826,7 @@ INSERT INTO `TINHTHANHPHO` VALUES ('96', 'Tỉnh Cà Mau', 'Tỉnh');
 -- ----------------------------
 DROP TABLE IF EXISTS `XAPHUONGTHITRAN`;
 CREATE TABLE `XAPHUONGTHITRAN` (
-  `xaid` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `maxa` varchar(5) CHARACTER SET utf8 NOT NULL,
   `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
   `kieu` varchar(30) CHARACTER SET utf8 NOT NULL,
   `maqh` varchar(5) CHARACTER SET utf8 NOT NULL,

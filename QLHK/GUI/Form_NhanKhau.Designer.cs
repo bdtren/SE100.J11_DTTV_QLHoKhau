@@ -360,7 +360,7 @@
             this.button_them.UseVisualStyleBackColor = true;
             this.button_them.Click += new System.EventHandler(this.button_them_Click);
             // 
-            // NhanKhau
+            // Form_NhanKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -368,7 +368,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "NhanKhau";
+            this.Name = "Form_NhanKhau";
             this.Text = "NhanKhau";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
