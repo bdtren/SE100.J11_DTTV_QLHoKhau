@@ -109,6 +109,10 @@ namespace DAO
             }
             return false;
         }
+        public override bool insert_table(Admin data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

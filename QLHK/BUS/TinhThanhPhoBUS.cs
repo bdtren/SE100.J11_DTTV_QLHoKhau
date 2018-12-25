@@ -31,5 +31,11 @@ namespace BUS
         {
             return objtp.update(data, r);
         }
+        public override bool Add_Table(TinhThanhPhoDTO data)
+        {
+            throw new NotImplementedException();
+
+        }
+
     }
 }

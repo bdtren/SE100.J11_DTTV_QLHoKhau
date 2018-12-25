@@ -20,7 +20,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhau", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhau", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -38,6 +38,10 @@ namespace DAO
                 conn.Close();
             }
             return null;
+        }
+        public override bool insert_table(NhanKhau data)
+        {
+            throw new NotImplementedException();
         }
         public override bool insert(NhanKhau nk)
         {

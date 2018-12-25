@@ -28,5 +28,9 @@ namespace BUS
         {
             return objcb.update(cb, r);
         }
+        public override bool Add_Table(CanBo data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
