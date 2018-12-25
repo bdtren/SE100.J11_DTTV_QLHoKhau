@@ -40,7 +40,10 @@ namespace DAO
                 conn.Close();
             }
         }
-
+        public override bool insert_table(TinhThanhPhoDTO data)
+        {
+            throw new NotImplementedException();
+        }
         public override bool insert(TinhThanhPhoDTO tinhThanh)
         {
             try

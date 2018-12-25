@@ -21,7 +21,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhautamtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhautamtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -119,12 +119,14 @@ namespace DAO
             }
             try
             {
+
                 string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where manhankhautamtru=@manhankhautamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
                 cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru);
                 cmd.ExecuteNonQuery();
+
             }
             catch (Exception e)
             {
@@ -163,6 +165,10 @@ namespace DAO
                 conn.Close();
             }
             return null;
+        }
+        public override bool insert_table(NhanKhauTamTruDTO data)
+        {
+            throw new NotImplementedException();
         }
     }
     

@@ -20,6 +20,10 @@ namespace BUS
         {
             return objadmin.insert(ad);
         }
+        public override bool Add_Table(Admin data)
+        {
+            throw new NotImplementedException();
+        }
         public override bool Delete(int r)
         {
             return objadmin.delete(r);

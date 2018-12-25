@@ -21,13 +21,17 @@ namespace GUI
         CanBo canbo;
         Admin admin;
         AdminBUS adminbus;
+        HocSinhSinhVienDTO hssv;
         HocSinhSinhVienBUS hssvbus;
+        NhanKhauBUS nhankhaubus;
+        NhanKhau nhankhau;
         public fr_CBDuLieu()
         {
             InitializeComponent();
             canbobus = new CanBoBUS();
             adminbus = new AdminBUS();
             hssvbus = new HocSinhSinhVienBUS();
+            nhankhaubus = new NhanKhauBUS();
 
             DataSet tables = DBConnection<int>.getData("show tables from qlhk");
             foreach (DataRow item in tables.Tables[0].Rows)
@@ -40,7 +44,7 @@ namespace GUI
         {
             switch (comboBox1.Text)
             {
-                case "Cán bộ":
+                case "canbo":
                         try
                         {
                             dataGridView1.DataSource = canbobus.GetAll().Tables["canbo"];
@@ -55,7 +59,7 @@ namespace GUI
                             MessageBox.Show(ex.Message);
                         }
                     break;
-                case "Admin":
+                case "admin1":
                     try
                     {
                         dataGridView1.DataSource = adminbus.GetAll().Tables["admin1"];
@@ -70,7 +74,7 @@ namespace GUI
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "Học sinh, sinh viên":
+                case "hocsinhsinhvien":
                     try
                     {
                         dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
@@ -86,8 +90,21 @@ namespace GUI
                     }
                     break;
 
-                case "Nhân khẩu":
-
+                case "nhankhau":
+                    try
+                    {
+                        dataGridView1.DataSource = nhankhaubus.GetAll().Tables["nhankhau"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+              
                     break;
                 case "Nhân khẩu thường trú":
 
@@ -126,7 +143,7 @@ namespace GUI
         {
             switch (comboBox1.Text)
             {
-                case "Cán bộ":
+                case "canbo":
                     {
                         try
                         {
@@ -165,7 +182,7 @@ namespace GUI
                         }
                     }
                     break;
-                case "Admin":
+                case "admin1":
                     {
                         try
                         {
@@ -205,8 +222,8 @@ namespace GUI
                         }
                     }
                     break;
-                case "Học sinh, sinh viên":
-                    /*{
+                case "hocsinhsinhvien":
+                    {
                         try
                         {
                             if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
@@ -217,13 +234,13 @@ namespace GUI
                                     if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
                                         int rowIndex = e.RowIndex;
-                                        hssvbus.XoaHSSV(rowIndex);
+                                        hssvbus.Delete(rowIndex);
                                     }
                                 }
                                 else if (Task == "Insert")
                                 {
                                     int row = dataGridView1.Rows.Count - 2;
-                                    string str_manhankhau = dataGridView1.Rows[row].Cells["manhankhau"].Value.ToString();
+                                    string str_madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
                                     string str_mssv = dataGridView1.Rows[row].Cells["mssv"].Value.ToString();
                                     string str_truong = dataGridView1.Rows[row].Cells["truong"].Value.ToString();
                                     string str_diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
@@ -232,15 +249,17 @@ namespace GUI
                                     string str_tgkttt = dataGridView1.Rows[row].Cells["thoigianketthuctamtruthuongtru"].Value.ToString();
                                     DateTime date_tgkttt = DateTime.Parse(str_tgkttt);
                                     string str_vipham= dataGridView1.Rows[row].Cells["vipham"].Value.ToString();
-                                    hssv = new HocSinhSinhVien(str_manhankhau, str_mssv, str_truong, str_diachithuongtru, date_tgbdtt,date_tgkttt, str_vipham);
-                                    hssvbus.AddHSSV(hssv);
+                                    hssv = new HocSinhSinhVienDTO(str_mssv,str_madinhdanh, str_truong, str_diachithuongtru, date_tgbdtt,date_tgkttt, str_vipham);
+                                    hssvbus.Add(hssv);
                                     dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                     dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
+
+
                                 }
                                 else if (Task == "Update")
                                 {
                                     int row = e.RowIndex;
-                                    string str_manhankhau = dataGridView1.Rows[row].Cells["manhankhau"].Value.ToString();
+                                    string str_madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
                                     string str_mssv = dataGridView1.Rows[row].Cells["mssv"].Value.ToString();
                                     string str_truong = dataGridView1.Rows[row].Cells["truong"].Value.ToString();
                                     string str_diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
@@ -249,9 +268,8 @@ namespace GUI
                                     string str_tgkttt = dataGridView1.Rows[row].Cells["thoigianketthuctamtruthuongtru"].Value.ToString();
                                     DateTime date_tgkttt = DateTime.Parse(str_tgkttt);
                                     string str_vipham = dataGridView1.Rows[row].Cells["vipham"].Value.ToString();
-                                    hssv = new HocSinhSinhVien(str_manhankhau, str_mssv, str_truong, str_diachithuongtru, date_tgbdtt, date_tgkttt, str_vipham);
-                                    hssvbus.SuaHSSV(hssv, row);
-                                    dataGridView1.Rows[row].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
+                                    hssv = new HocSinhSinhVienDTO(str_mssv,str_madinhdanh, str_truong, str_diachithuongtru, date_tgbdtt, date_tgkttt, str_vipham);
+                                    hssvbus.Update(hssv,row);
                                     LoadData();
                                 }
                             }
@@ -260,10 +278,71 @@ namespace GUI
                         {
                             MessageBox.Show(ex.Message);
                         }
-                    }*/
-                    //break;
-                case "Nhân khẩu":
+                    }
+                    break;
+                case "nhankhau":
+                    try
+                    {
+                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
+                        {
+                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
+                            if (Task == "Delete")
+                            {
+                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    int rowIndex = e.RowIndex;
+                                    nhankhaubus.Delete(rowIndex);
+                                }
+                            }
+                            else if (Task == "Insert")
+                            {
+                                int row = dataGridView1.Rows.Count - 2;
+                                string str_madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string str_manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
+                                string str_hoten = dataGridView1.Rows[row].Cells["hoten"].Value.ToString();
+                                string str_gioitinh = dataGridView1.Rows[row].Cells["gioitinh"].Value.ToString();
+                                string str_dantoc = dataGridView1.Rows[row].Cells["dantoc"].Value.ToString();
+                                string str_hochieu = dataGridView1.Rows[row].Cells["hochieu"].Value.ToString();
+                                
+                                string str_ngaycap = dataGridView1.Rows[row].Cells["ngaycap"].Value.ToString();
+                                DateTime date_ngaycap = DateTime.Parse(str_ngaycap);
+                                string str_ngaysinh = dataGridView1.Rows[row].Cells["ngaysinh"].Value.ToString();
+                                DateTime date_ngaysinh = DateTime.Parse(str_ngaysinh);
+                                string str_nguyenquan = dataGridView1.Rows[row].Cells["nguyenquan"].Value.ToString();
+                                string str_noicap = dataGridView1.Rows[row].Cells["noicap"].Value.ToString();
+                                string str_noisinh = dataGridView1.Rows[row].Cells["noisinh"].Value.ToString();
+                                string str_quoctich = dataGridView1.Rows[row].Cells["quoctich"].Value.ToString();
+                                string str_sdt = dataGridView1.Rows[row].Cells["sdt"].Value.ToString();
+                                string str_tongiao = dataGridView1.Rows[row].Cells["tongiao"].Value.ToString();
+                                nhankhau = new NhanKhau(str_madinhdanh, str_manghenghiep, str_hoten, str_gioitinh, str_dantoc, str_hochieu, date_ngaycap, date_ngaysinh, str_nguyenquan, str_noicap, str_noisinh, str_quoctich, str_sdt, str_tongiao);
+                                nhankhaubus.Add(nhankhau);
+                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
 
+
+                            }
+                            else if (Task == "Update")
+                            {
+                                int row = e.RowIndex;
+                                string str_madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string str_mssv = dataGridView1.Rows[row].Cells["mssv"].Value.ToString();
+                                string str_truong = dataGridView1.Rows[row].Cells["truong"].Value.ToString();
+                                string str_diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string str_tgbdtt = dataGridView1.Rows[row].Cells["thoigianbatdautamtruthuongtru"].Value.ToString();
+                                DateTime date_tgbdtt = DateTime.Parse(str_tgbdtt);
+                                string str_tgkttt = dataGridView1.Rows[row].Cells["thoigianketthuctamtruthuongtru"].Value.ToString();
+                                DateTime date_tgkttt = DateTime.Parse(str_tgkttt);
+                                string str_vipham = dataGridView1.Rows[row].Cells["vipham"].Value.ToString();
+                                hssv = new HocSinhSinhVienDTO(str_mssv, str_madinhdanh, str_truong, str_diachithuongtru, date_tgbdtt, date_tgkttt, str_vipham);
+                                hssvbus.Update(hssv, row);
+                                LoadData();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "Nhân khẩu thường trú":
 

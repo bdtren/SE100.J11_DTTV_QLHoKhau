@@ -21,7 +21,7 @@ namespace DAO
                     conn.Open();
 
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM nghenghiep", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nghenghiep", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -40,7 +40,7 @@ namespace DAO
             }
             return null;
         }
-        public override bool insert(NgheNghiepDTO nn)
+        public override bool insert_table(NgheNghiepDTO nn)
         {
             try
             {
@@ -130,6 +130,28 @@ namespace DAO
                 conn.Close();
             }
             return false;
+        }
+        public override bool insert(NgheNghiepDTO data)
+        {
+            try
+            {
+                DataRow dr = dataset.Tables["nghenghiep"].NewRow();
+                dr["manghenghiep"] = data.MaNgheNghiep;
+                dr["tennghenghiep"] = data.TenNgheNghiep;
+                dataset.Tables["nghenghiep"].Rows.Add(dr);
+                dataset.Tables["nghenghiep"].Rows.RemoveAt(dataset.Tables["nghenghiep"].Rows.Count - 1);
+                sqlda.Update(dataset, "nghenghiep");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
     }
 }

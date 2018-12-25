@@ -9,6 +9,7 @@ namespace DTO
     public class NhanKhau
     {
         public string MaDinhDanh { get; set; }
+        public string MaNgheNghiep { get; set; }
         public string HoTen { get; set; }
         public string  GioiTinh { get; set; }
         public string DanToc { get; set; }
@@ -23,9 +24,11 @@ namespace DTO
         public string TonGiao { get; set; }
 
         public NhanKhau() { }
-        public NhanKhau(string maDinhDanh, string hoTen, string gioiTinh, string danToc, string hoChieu, DateTime ngayCap, DateTime ngaySinh, string nguyenQuan, string noiCap, string noiSinh, string quocTich, string sDT, string tonGiao)
+
+        public NhanKhau(string maDinhDanh, string maNgheNghiep, string hoTen, string gioiTinh, string danToc, string hoChieu, DateTime ngayCap, DateTime ngaySinh, string nguyenQuan, string noiCap, string noiSinh, string quocTich, string sDT, string tonGiao)
         {
             MaDinhDanh = maDinhDanh;
+            MaNgheNghiep = maNgheNghiep;
             HoTen = hoTen;
             GioiTinh = gioiTinh;
             DanToc = danToc;

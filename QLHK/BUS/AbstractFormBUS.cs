@@ -13,6 +13,7 @@ namespace BUS
     {
         public abstract DataSet GetAll();
         public abstract bool Add(T data);
+        public abstract bool Add_Table(T data);
         public abstract bool Delete(int r);
         public abstract bool Update(T data, int r);
     }
