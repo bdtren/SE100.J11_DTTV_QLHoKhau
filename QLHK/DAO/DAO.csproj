@@ -50,6 +50,8 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="NhanKhauTamTruDAO.cs" />
     <Compile Include="QuanHuyenDAO.cs" />
+    <Compile Include="TienAnTienSuDAO.cs" />
+    <Compile Include="TieuSuDAO.cs" />
     <Compile Include="TinhThanhPhoDAO.cs" />
     <Compile Include="HocSinhSinhVienDAO.cs" />
     <Compile Include="NgheNghiepDAO.cs" />
