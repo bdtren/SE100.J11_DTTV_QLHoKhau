@@ -44,6 +44,7 @@
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="AdminBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
+    <Compile Include="SoTamTruBUS.cs" />
     <Compile Include="NhanKhauTamTruBUS.cs" />
     <Compile Include="QuanHuyenBUS.cs" />
     <Compile Include="TienAnTienSuBUS.cs" />

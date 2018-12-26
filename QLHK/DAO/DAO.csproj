@@ -48,6 +48,7 @@
     <Compile Include="AdminDAO.cs" />
     <Compile Include="CanBoDAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="SoTamTruDAO.cs" />
     <Compile Include="NhanKhauTamTruDAO.cs" />
     <Compile Include="QuanHuyenDAO.cs" />
     <Compile Include="TienAnTienSuDAO.cs" />
