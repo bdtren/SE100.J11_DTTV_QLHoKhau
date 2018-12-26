@@ -43,7 +43,9 @@
             this.tbmadinhdanh = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbnoicap = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tbNgheNghiep = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbhoten = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.tbNgheNghiep = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -163,6 +163,7 @@
             this.tbnguyenquan.Name = "tbnguyenquan";
             this.tbnguyenquan.Size = new System.Drawing.Size(268, 20);
             this.tbnguyenquan.TabIndex = 10;
+            this.tbnguyenquan.Enter += new System.EventHandler(this.tbnguyenquan_Enter);
             // 
             // label13
             // 
@@ -235,6 +236,15 @@
             this.tbnoicap.Size = new System.Drawing.Size(85, 20);
             this.tbnoicap.TabIndex = 9;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(159, 135);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(68, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Nghề nghiệp";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -243,6 +253,13 @@
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Họ tên";
+            // 
+            // tbNgheNghiep
+            // 
+            this.tbNgheNghiep.Location = new System.Drawing.Point(233, 129);
+            this.tbNgheNghiep.Name = "tbNgheNghiep";
+            this.tbNgheNghiep.Size = new System.Drawing.Size(118, 20);
+            this.tbNgheNghiep.TabIndex = 6;
             // 
             // label11
             // 
@@ -527,6 +544,7 @@
             this.tbDCHienTai.Name = "tbDCHienTai";
             this.tbDCHienTai.Size = new System.Drawing.Size(268, 20);
             this.tbDCHienTai.TabIndex = 18;
+            this.tbDCHienTai.Enter += new System.EventHandler(this.tbDCHienTai_Enter);
             // 
             // label23
             // 
@@ -564,22 +582,6 @@
             this.label26.TabIndex = 5;
             this.label26.Text = "Trình độ chuyên môn";
             // 
-            // tbNgheNghiep
-            // 
-            this.tbNgheNghiep.Location = new System.Drawing.Point(233, 129);
-            this.tbNgheNghiep.Name = "tbNgheNghiep";
-            this.tbNgheNghiep.Size = new System.Drawing.Size(118, 20);
-            this.tbNgheNghiep.TabIndex = 6;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(159, 135);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(68, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Nghề nghiệp";
-            // 
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(823, 511);
@@ -588,6 +590,7 @@
             this.btnOk.TabIndex = 29;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnHuy
             // 
@@ -597,6 +600,7 @@
             this.btnHuy.TabIndex = 30;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // NhanKhauThuongTruGUI
             // 

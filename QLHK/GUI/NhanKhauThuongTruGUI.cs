@@ -16,7 +16,8 @@ namespace GUI
     {
         NhanKhauBUS nk;
         NhanKhauThuongTruBUS nktt;
-        NhanKhauThuongTruDTO nkttDTO;
+        public NhanKhauThuongTruDTO nkttDTO;
+
         public NhanKhauThuongTruGUI()
         {
             InitializeComponent();
@@ -90,8 +91,41 @@ namespace GUI
             using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
             {
                 a.ShowDialog(this);
-                tbDCThuongTru.Text = a.diaChi;
+                if(a.diaChi!="")
+                    tbDCThuongTru.Text = a.diaChi;
             }
+        }
+
+        private void tbDCHienTai_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    tbDCHienTai.Text = a.diaChi;
+            }
+        }
+
+        private void tbnguyenquan_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    tbnguyenquan.Text = a.diaChi;
+            }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            nktt.XoaNKTT(nkttDTO.MaNhanKhauThuongTru);
+            nkttDTO = null;
+            this.Close();
         }
     }
 }
