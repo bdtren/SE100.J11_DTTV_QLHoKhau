@@ -29,7 +29,7 @@ namespace GUI
         {
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = nkttBus.GetAll().Tables["nhankhautamtru"];
+            dataGridView1.DataSource = nkttBus.GetAll().Tables[0];
         }
 
         public NhanKhauTamTruGUI()

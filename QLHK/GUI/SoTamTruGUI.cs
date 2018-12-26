@@ -112,10 +112,9 @@ namespace GUI
         private void btnTim_Click(object sender, EventArgs e)
         {
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
-           dataGridView1.DataSource = null;
+            dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = sotamtruBus.TimKiem(sosotamtru);
-            ResetValueInput();
+            dataGridView1.DataSource = sotamtruBus.TimKiem(sosotamtru).Tables["sotamtru"];
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,6 +134,12 @@ namespace GUI
             txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
             dt_TuNgay.Value = sotamtruDto.TuNgay;
             dt_DenNgay.Value = sotamtruDto.DenNgay;
+        }
+
+        private void btnThemNhanKhau_Click(object sender, EventArgs e)
+        {
+            NhanKhauTamTruGUI nhankhautamtrufrm = new NhanKhauTamTruGUI();
+            nhankhautamtrufrm.ShowDialog();
         }
     }
 }

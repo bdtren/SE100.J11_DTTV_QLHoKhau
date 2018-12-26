@@ -149,7 +149,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru where sosotamtru='" + sosotamtru + "'", conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru WHERE sosotamtru="+sosotamtru+"", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -167,6 +167,10 @@ namespace DAO
                 conn.Close();
             }
             return null;
+        }
+        public override bool insert_table(SoTamTruDTO data)
+        {
+            throw new NotImplementedException();
         }
     }
     

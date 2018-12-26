@@ -17,7 +17,7 @@ namespace GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new NhanKhauTamTruGUI());
+            Application.Run(new SoTamTruGUI());
 
         }
     }

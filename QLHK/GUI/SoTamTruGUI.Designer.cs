@@ -45,6 +45,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
+            this.btnThemNhanKhau = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,7 +176,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(438, 289);
+            this.btnXoa.Location = new System.Drawing.Point(438, 263);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 15;
@@ -185,7 +186,7 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(613, 287);
+            this.btnTim.Location = new System.Drawing.Point(613, 263);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 23);
             this.btnTim.TabIndex = 16;
@@ -193,11 +194,22 @@
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
+            // btnThemNhanKhau
+            // 
+            this.btnThemNhanKhau.Location = new System.Drawing.Point(438, 320);
+            this.btnThemNhanKhau.Name = "btnThemNhanKhau";
+            this.btnThemNhanKhau.Size = new System.Drawing.Size(136, 29);
+            this.btnThemNhanKhau.TabIndex = 17;
+            this.btnThemNhanKhau.Text = "Thêm nhân khẩu tạm trú";
+            this.btnThemNhanKhau.UseVisualStyleBackColor = true;
+            this.btnThemNhanKhau.Click += new System.EventHandler(this.btnThemNhanKhau_Click);
+            // 
             // SoTamTruGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnThemNhanKhau);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnTim;
+        private System.Windows.Forms.Button btnThemNhanKhau;
     }
 }

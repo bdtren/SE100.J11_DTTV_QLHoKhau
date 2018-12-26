@@ -20,7 +20,10 @@ namespace BUS
         {
             return SoTamTru.insert(sotamtru);
         }
-
+        public override bool Add_Table(SoTamTruDTO data)
+        {
+            throw new NotImplementedException();
+        }
         public bool XoaSoTamTru(string manhankhautamtru)
         {
             return SoTamTru.XoaSoTamTru(manhankhautamtru);

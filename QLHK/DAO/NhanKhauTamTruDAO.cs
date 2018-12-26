@@ -13,6 +13,7 @@ namespace DAO
     {
         public NhanKhauTamTruDAO() : base() { }
 
+
         public override DataSet getAll()
         {
             try
@@ -21,16 +22,12 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhautamtru", conn);
-                cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "nhankhautamtru");
+                string sql = "SELECT * FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dataset);
                 return dataset;
-
-
             }
             catch (Exception e)
             {
@@ -42,6 +39,8 @@ namespace DAO
             }
             return null;
         }
+
+
 
         public override bool insert(NhanKhauTamTruDTO nktt)
         {
@@ -57,6 +56,9 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
                 cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
+
+
+
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
