@@ -9,31 +9,32 @@ using System.Data;
 
 namespace BUS
 {
-    public class QuanHuyenBUS: AbstractFormBUS<QuanHuyenDTO>
+    public class 
+        
+        XaPhuongThiTranBUS: AbstractFormBUS<XaPhuongThiTranDTO>
     {
-        QuanHuyenDAO obj = new QuanHuyenDAO();
+        XaPhuongThiTranDAO obj = new XaPhuongThiTranDAO();
 
         public override DataSet GetAll()
         {
             return obj.getAll();
         }
-        public override bool Add(QuanHuyenDTO data)
+        public override bool Add(XaPhuongThiTranDTO data)
         {
             return obj.insert(data);
         }
-
+        public override bool Add_Table(XaPhuongThiTranDTO data)
+        {
+            throw new NotImplementedException();
+        }
         public override bool Delete(int r)
         {
             return obj.delete(r);
         }
 
-        public override bool Update(QuanHuyenDTO data, int r)
+        public override bool Update(XaPhuongThiTranDTO data, int r)
         {
             return obj.update(data, r);
-        }
-        public override bool Add_Table(QuanHuyenDTO data)
-        {
-            throw new NotImplementedException();
         }
 
         public DataSet TimKiem(string query)

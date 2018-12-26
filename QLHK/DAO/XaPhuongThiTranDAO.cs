@@ -9,9 +9,9 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class QuanHuyenDAO:DBConnection<QuanHuyenDTO>
+    public class XaPhuongThiTranDAO:DBConnection<XaPhuongThiTranDTO>
     {
-        public QuanHuyenDAO() : base() { }
+        public XaPhuongThiTranDAO() : base() { }
 
         public override DataSet getAll()
         {
@@ -21,13 +21,11 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM quanhuyen", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM xaphuongthitran", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "quanhuyen");
+                sqlda.Fill(dataset, "xaphuongthitran");
                 return dataset;
             }
             catch (Exception e)
@@ -41,7 +39,7 @@ namespace DAO
             }
         }
 
-        public override bool insert(QuanHuyenDTO quanHuyen)
+        public override bool insert(XaPhuongThiTranDTO xaphuong)
         {
             try
             {
@@ -49,15 +47,15 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                DataRow dr = dataset.Tables["quanhuyen"].NewRow();
-                dr["maqh"] = quanHuyen.MaQH;
-                dr["matp"] = quanHuyen.MaTP;
-                dr["ten"] = quanHuyen.Ten;
-                dr["kieu"] = quanHuyen.Kieu;
+                DataRow dr = dataset.Tables["xaphuongthitran"].NewRow();
+                dr["maxa"] = xaphuong.MaQH;
+                dr["maqh"] = xaphuong.MaQH;
+                dr["ten"] = xaphuong.Ten;
+                dr["kieu"] = xaphuong.Kieu;
 
-                dataset.Tables["quanhuyen"].Rows.Add(dr);
-                dataset.Tables["v"].Rows.RemoveAt(dataset.Tables["quanhuyen"].Rows.Count - 1);
-                sqlda.Update(dataset, "quanhuyen");
+                dataset.Tables["xaphuongthitran"].Rows.Add(dr);
+                dataset.Tables["v"].Rows.RemoveAt(dataset.Tables["xaphuongthitran"].Rows.Count - 1);
+                sqlda.Update(dataset, "xaphuongthitran");
             }
             catch (Exception e)
             {
@@ -69,17 +67,16 @@ namespace DAO
             }
             return true;
         }
-        public override bool insert_table(QuanHuyenDTO data)
+        public override bool insert_table(XaPhuongThiTranDTO data)
         {
             throw new NotImplementedException();
         }
-
         public override bool delete(int row)
         {
             try
             {
-                dataset.Tables["quanhuyen"].Rows[row].Delete();
-                sqlda.Update(dataset, "quanhuyen");
+                dataset.Tables["xaphuongthitran"].Rows[row].Delete();
+                sqlda.Update(dataset, "xaphuongthitran");
                 return true;
             }
             catch (Exception e)
@@ -89,7 +86,7 @@ namespace DAO
             return false;
         }
 
-        public override bool update(QuanHuyenDTO quanHuyen, int r)
+        public override bool update(XaPhuongThiTranDTO xaphuong, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -98,12 +95,12 @@ namespace DAO
             }
             try
             {
-                string sql = "update quanhuyen set maqh =@maqh,  ten=@ten, kieu=@kieu, matp =@matp";
+                string sql = "update xaphuongthitran set maxp =@maxp,  ten=@ten, kieu=@kieu, maqh =@mqah";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@maqh", quanHuyen.MaQH.ToString());
-                cmd.Parameters.AddWithValue("@matp", quanHuyen.MaTP.ToString());
-                cmd.Parameters.AddWithValue("@ten", quanHuyen.Ten.ToString());
-                cmd.Parameters.AddWithValue("@kieu", quanHuyen.Kieu.ToString());
+                cmd.Parameters.AddWithValue("@maxp", xaphuong.MaQH.ToString());
+                cmd.Parameters.AddWithValue("@maqh", xaphuong.MaQH.ToString());
+                cmd.Parameters.AddWithValue("@ten", xaphuong.Ten.ToString());
+                cmd.Parameters.AddWithValue("@kieu", xaphuong.Kieu.ToString());
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -128,11 +125,13 @@ namespace DAO
                     conn.Open();
                 }
                 if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM quanhuyen"+query, conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM xaphuongthitran" + query, conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
-
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "quanhuyen");
+                sqlda.Fill(dataset, "xaphuongthitran");
                 return dataset;
             }
             catch (Exception e)

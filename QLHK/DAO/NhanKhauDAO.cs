@@ -78,9 +78,14 @@ namespace DAO
         {
             try
             {
-                string sql = "insert into nhankhau values(@madinhdanh,@hoten,@gioitinh,@dantoc,@hochieu,@ngaycap,@ngaysinh,@nguyenquan,@noicap,@noisinh,@quoctich,@sdt,@tongiao);";
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sql = "insert into nhankhau values(@madinhdanh,@manghenghiep, @hoten,@gioitinh,@dantoc,@hochieu,@ngaycap,@ngaysinh,@nguyenquan,@noicap,@noisinh,@quoctich,@sdt,@tongiao);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@madinhdanh", nk.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@hoten", nk.HoTen.ToString());
                 cmd.Parameters.AddWithValue("@gioitinh", nk.GioiTinh.ToString());
                 cmd.Parameters.AddWithValue("@dantoc", nk.DanToc.ToString());
@@ -91,7 +96,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@noicap", nk.NoiCap.ToString());
                 cmd.Parameters.AddWithValue("@noisinh", nk.NoiSinh.ToString());
                 cmd.Parameters.AddWithValue("@quoctich", nk.QuocTich.ToString());
-                cmd.Parameters.AddWithValue("@sdtc", nk.SDT.ToString());
+                cmd.Parameters.AddWithValue("@sdt", nk.SDT.ToString());
                 cmd.Parameters.AddWithValue("@tongiao", nk.TonGiao.ToString());
                 cmd.ExecuteNonQuery();
             }
@@ -137,8 +142,9 @@ namespace DAO
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
-            return false;
+            return true;
 
         }
         public override bool update(NhanKhau nk, int r)
@@ -154,6 +160,7 @@ namespace DAO
 
                 cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@madinhdanh", nk.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@hoten", nk.HoTen.ToString());
                 cmd.Parameters.AddWithValue("@gioitinh", nk.GioiTinh.ToString());
                 cmd.Parameters.AddWithValue("@dantoc", nk.DanToc.ToString());
@@ -171,12 +178,13 @@ namespace DAO
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
             finally
             {
                 conn.Close();
             }
-            return false;
+            return true;
         }
     }
 }
