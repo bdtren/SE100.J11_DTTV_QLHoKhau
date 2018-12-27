@@ -44,8 +44,6 @@
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="AdminBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
-    <Compile Include="SoTamTruBUS.cs" />
-    <Compile Include="NhanKhauThuongTruBUS.cs" />
     <Compile Include="NhanKhauTamTruBUS.cs" />
     <Compile Include="QuanHuyenBUS.cs" />
     <Compile Include="TienAnTienSuBUS.cs" />
@@ -55,7 +53,6 @@
     <Compile Include="NgheNghiepBUS.cs" />
     <Compile Include="NhanKhauBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XaPhuongThiTranBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">

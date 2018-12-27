@@ -49,15 +49,12 @@
     <Compile Include="HocSinhSinhVienDTO.cs" />
     <Compile Include="NgheNghiepDTO.cs" />
     <Compile Include="QuanHuyenDTO.cs" />
-    <Compile Include="SoTamTruDTO.cs" />
     <Compile Include="TienAnTienSuDTO.cs" />
     <Compile Include="TieuSuDTO.cs" />
-
     <Compile Include="TinhThanhPhoDTO.cs" />
     <Compile Include="NhanKhauThuongTruDTO.cs" />
     <Compile Include="NhanKhau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XaPhuongThiTranDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

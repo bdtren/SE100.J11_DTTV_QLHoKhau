@@ -118,32 +118,5 @@ namespace DAO
             }
             return false;
         }
-
-        public DataSet TimKiem(string query)
-        {
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM quanhuyen"+query, conn);
-                cmdbuilder = new MySqlCommandBuilder(sqlda);
-
-                dataset = new DataSet();
-                sqlda.Fill(dataset, "quanhuyen");
-                return dataset;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
     }
 }

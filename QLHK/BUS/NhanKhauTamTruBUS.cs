@@ -16,27 +16,27 @@ namespace BUS
         {
             return objnktt.getAll();
         }
-        public override bool Add(NhanKhauTamTruDTO nhankhautamtru)
+        public override bool Add(NhanKhauTamTruDTO hssv)
         {
-            return objnktt.insert(nhankhautamtru);
+            return objnktt.insert(hssv);
         }
 
-        public bool XoaNKTT(string manhankhautamtru)
+        public bool XoaHSSV(string mssv)
         {
-            return objnktt.XoaNKTT(manhankhautamtru);
+            return objnktt.XoaHHSV(mssv);
         }
         public override bool Delete(int r)
         {
             return objnktt.delete(r);
         }
-        public override bool Update(NhanKhauTamTruDTO nhankhautamtru, int r)
+        public override bool Update(NhanKhauTamTruDTO hssv, int r)
         {
-            return objnktt.update(nhankhautamtru, r);
+            return objnktt.update(hssv, r);
         }
 
-        public DataSet TimKiem(string manhankhautamtru)
+        public DataSet TimKiem(string mssv)
         {
-            return objnktt.TimKiem(manhankhautamtru);
+            return objnktt.TimKiem(mssv);
         }
         public override bool Add_Table(NhanKhauTamTruDTO data)
         {
