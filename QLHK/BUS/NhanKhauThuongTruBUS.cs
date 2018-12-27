@@ -48,9 +48,9 @@ namespace BUS
             return nk.update(nktt, r)&& obj.update(nktt, r);
         }
 
-        public DataSet TimKiem(string maNKTT)
+        public DataSet TimKiem(string query)
         {
-            return obj.TimKiem(maNKTT);
+            return obj.TimKiem(query);
         }
     }
 }
