@@ -138,7 +138,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@noicap", nk.NoiCap.ToString());
                 cmd.Parameters.AddWithValue("@noisinh", nk.NoiSinh.ToString());
                 cmd.Parameters.AddWithValue("@quoctich", nk.QuocTich.ToString());
-                cmd.Parameters.AddWithValue("@sdt", nk.SDT.ToString());
+                cmd.Parameters.AddWithValue("@sdtc", nk.SDT.ToString());
                 cmd.Parameters.AddWithValue("@tongiao", nk.TonGiao.ToString());
                 cmd.ExecuteNonQuery();
             }
