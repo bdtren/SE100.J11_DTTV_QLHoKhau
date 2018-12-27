@@ -9,33 +9,24 @@ using System.Data;
 
 namespace BUS
 {
-    public class NgheNghiepBUS:AbstractFormBUS<NgheNghiepDTO>
+    public class NgheNghiepBUS
     {
         NgheNghiepDAO objnghenghiep = new NgheNghiepDAO();
-
-        public override bool Add(NgheNghiepDTO data)
-        {
-            return objnghenghiep.insert(data);
-        }
-
-        public override bool Add_Table(NgheNghiepDTO data)
-        {
-            return objnghenghiep.insert_table(data);
-        }
-
-        public override bool Delete(int r)
-        {
-            return objnghenghiep.delete(r);
-        }
-
-        public override DataSet GetAll()
+        public DataSet GetAllNgheNghiep()
         {
             return objnghenghiep.getAll();
         }
-
-        public override bool Update(NgheNghiepDTO data, int r)
+        public bool AddNgheNghiep(NgheNghiepDTO nghenghiep)
         {
-            return objnghenghiep.update(data, r);
+            return objnghenghiep.insert(nghenghiep);
+        }
+        public bool XoaNgheNghiep(string manghenghiep)
+        {
+            return objnghenghiep.XoaNgheNghiep(manghenghiep);
+        }
+        public bool SuaNgheNghiep(NgheNghiepDTO nghenghiep)
+        {
+            return objnghenghiep.update(nghenghiep, 1);
         }
     }
 }
