@@ -41,6 +41,18 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cbb_DC_QuanHuyen = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cbb_DC_XaPhuong = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cbb_DC_TinhThanh = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cbb_NS_QuanHuyen = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cbb_NS_XaPhuong = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cbb_NS_TinhThanh = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.cbb_NQ_QuanHuyen = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -71,18 +83,7 @@
             this.txt_HoTen = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_MaNgheNghiep = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cbb_NS_QuanHuyen = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.cbb_NS_XaPhuong = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cbb_NS_TinhThanh = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.cbb_DC_QuanHuyen = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cbb_DC_XaPhuong = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.cbb_DC_TinhThanh = new System.Windows.Forms.ComboBox();
+            this.btnXong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +186,7 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(831, 323);
+            this.btnTim.Location = new System.Drawing.Point(831, 115);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 23);
             this.btnTim.TabIndex = 12;
@@ -250,6 +251,112 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhân khẩu tạm trú";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(511, 214);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(69, 13);
+            this.label24.TabIndex = 48;
+            this.label24.Text = "Quận/Huyện";
+            // 
+            // cbb_DC_QuanHuyen
+            // 
+            this.cbb_DC_QuanHuyen.FormattingEnabled = true;
+            this.cbb_DC_QuanHuyen.Location = new System.Drawing.Point(615, 211);
+            this.cbb_DC_QuanHuyen.Name = "cbb_DC_QuanHuyen";
+            this.cbb_DC_QuanHuyen.Size = new System.Drawing.Size(156, 21);
+            this.cbb_DC_QuanHuyen.TabIndex = 47;
+            this.cbb_DC_QuanHuyen.SelectedIndexChanged += new System.EventHandler(this.cbb_DC_QuanHuyen_SelectedIndexChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(511, 241);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(103, 13);
+            this.label25.TabIndex = 46;
+            this.label25.Text = "Xã,Phường,Thị Trấn";
+            // 
+            // cbb_DC_XaPhuong
+            // 
+            this.cbb_DC_XaPhuong.FormattingEnabled = true;
+            this.cbb_DC_XaPhuong.Location = new System.Drawing.Point(615, 238);
+            this.cbb_DC_XaPhuong.Name = "cbb_DC_XaPhuong";
+            this.cbb_DC_XaPhuong.Size = new System.Drawing.Size(156, 21);
+            this.cbb_DC_XaPhuong.TabIndex = 45;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(510, 187);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(85, 13);
+            this.label26.TabIndex = 44;
+            this.label26.Text = "Tỉnh/Thành phố";
+            // 
+            // cbb_DC_TinhThanh
+            // 
+            this.cbb_DC_TinhThanh.FormattingEnabled = true;
+            this.cbb_DC_TinhThanh.Location = new System.Drawing.Point(615, 184);
+            this.cbb_DC_TinhThanh.Name = "cbb_DC_TinhThanh";
+            this.cbb_DC_TinhThanh.Size = new System.Drawing.Size(156, 21);
+            this.cbb_DC_TinhThanh.TabIndex = 43;
+            this.cbb_DC_TinhThanh.SelectedIndexChanged += new System.EventHandler(this.cbb_DC_TinhThanh_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(511, 130);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(69, 13);
+            this.label21.TabIndex = 42;
+            this.label21.Text = "Quận/Huyện";
+            // 
+            // cbb_NS_QuanHuyen
+            // 
+            this.cbb_NS_QuanHuyen.FormattingEnabled = true;
+            this.cbb_NS_QuanHuyen.Location = new System.Drawing.Point(615, 127);
+            this.cbb_NS_QuanHuyen.Name = "cbb_NS_QuanHuyen";
+            this.cbb_NS_QuanHuyen.Size = new System.Drawing.Size(156, 21);
+            this.cbb_NS_QuanHuyen.TabIndex = 41;
+            this.cbb_NS_QuanHuyen.SelectedIndexChanged += new System.EventHandler(this.cbb_NS_QuanHuyen_SelectedIndexChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(511, 157);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(103, 13);
+            this.label22.TabIndex = 40;
+            this.label22.Text = "Xã,Phường,Thị Trấn";
+            // 
+            // cbb_NS_XaPhuong
+            // 
+            this.cbb_NS_XaPhuong.FormattingEnabled = true;
+            this.cbb_NS_XaPhuong.Location = new System.Drawing.Point(615, 154);
+            this.cbb_NS_XaPhuong.Name = "cbb_NS_XaPhuong";
+            this.cbb_NS_XaPhuong.Size = new System.Drawing.Size(156, 21);
+            this.cbb_NS_XaPhuong.TabIndex = 39;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(510, 103);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(85, 13);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Tỉnh/Thành phố";
+            // 
+            // cbb_NS_TinhThanh
+            // 
+            this.cbb_NS_TinhThanh.FormattingEnabled = true;
+            this.cbb_NS_TinhThanh.Location = new System.Drawing.Point(615, 100);
+            this.cbb_NS_TinhThanh.Name = "cbb_NS_TinhThanh";
+            this.cbb_NS_TinhThanh.Size = new System.Drawing.Size(156, 21);
+            this.cbb_NS_TinhThanh.TabIndex = 37;
+            this.cbb_NS_TinhThanh.SelectedIndexChanged += new System.EventHandler(this.cbb_NS_TinhThanh_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -498,117 +605,22 @@
             this.txt_MaNgheNghiep.Size = new System.Drawing.Size(200, 20);
             this.txt_MaNgheNghiep.TabIndex = 6;
             // 
-            // label21
+            // btnXong
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(511, 130);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(69, 13);
-            this.label21.TabIndex = 42;
-            this.label21.Text = "Quận/Huyện";
-            // 
-            // cbb_NS_QuanHuyen
-            // 
-            this.cbb_NS_QuanHuyen.FormattingEnabled = true;
-            this.cbb_NS_QuanHuyen.Location = new System.Drawing.Point(615, 127);
-            this.cbb_NS_QuanHuyen.Name = "cbb_NS_QuanHuyen";
-            this.cbb_NS_QuanHuyen.Size = new System.Drawing.Size(156, 21);
-            this.cbb_NS_QuanHuyen.TabIndex = 41;
-            this.cbb_NS_QuanHuyen.SelectedIndexChanged += new System.EventHandler(this.cbb_NS_QuanHuyen_SelectedIndexChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(511, 157);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(103, 13);
-            this.label22.TabIndex = 40;
-            this.label22.Text = "Xã,Phường,Thị Trấn";
-            // 
-            // cbb_NS_XaPhuong
-            // 
-            this.cbb_NS_XaPhuong.FormattingEnabled = true;
-            this.cbb_NS_XaPhuong.Location = new System.Drawing.Point(615, 154);
-            this.cbb_NS_XaPhuong.Name = "cbb_NS_XaPhuong";
-            this.cbb_NS_XaPhuong.Size = new System.Drawing.Size(156, 21);
-            this.cbb_NS_XaPhuong.TabIndex = 39;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(510, 103);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(85, 13);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "Tỉnh/Thành phố";
-            // 
-            // cbb_NS_TinhThanh
-            // 
-            this.cbb_NS_TinhThanh.FormattingEnabled = true;
-            this.cbb_NS_TinhThanh.Location = new System.Drawing.Point(615, 100);
-            this.cbb_NS_TinhThanh.Name = "cbb_NS_TinhThanh";
-            this.cbb_NS_TinhThanh.Size = new System.Drawing.Size(156, 21);
-            this.cbb_NS_TinhThanh.TabIndex = 37;
-            this.cbb_NS_TinhThanh.SelectedIndexChanged += new System.EventHandler(this.cbb_NS_TinhThanh_SelectedIndexChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(511, 214);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(69, 13);
-            this.label24.TabIndex = 48;
-            this.label24.Text = "Quận/Huyện";
-            // 
-            // cbb_DC_QuanHuyen
-            // 
-            this.cbb_DC_QuanHuyen.FormattingEnabled = true;
-            this.cbb_DC_QuanHuyen.Location = new System.Drawing.Point(615, 211);
-            this.cbb_DC_QuanHuyen.Name = "cbb_DC_QuanHuyen";
-            this.cbb_DC_QuanHuyen.Size = new System.Drawing.Size(156, 21);
-            this.cbb_DC_QuanHuyen.TabIndex = 47;
-            this.cbb_DC_QuanHuyen.SelectedIndexChanged += new System.EventHandler(this.cbb_DC_QuanHuyen_SelectedIndexChanged);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(511, 241);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(103, 13);
-            this.label25.TabIndex = 46;
-            this.label25.Text = "Xã,Phường,Thị Trấn";
-            // 
-            // cbb_DC_XaPhuong
-            // 
-            this.cbb_DC_XaPhuong.FormattingEnabled = true;
-            this.cbb_DC_XaPhuong.Location = new System.Drawing.Point(615, 238);
-            this.cbb_DC_XaPhuong.Name = "cbb_DC_XaPhuong";
-            this.cbb_DC_XaPhuong.Size = new System.Drawing.Size(156, 21);
-            this.cbb_DC_XaPhuong.TabIndex = 45;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(510, 187);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(85, 13);
-            this.label26.TabIndex = 44;
-            this.label26.Text = "Tỉnh/Thành phố";
-            // 
-            // cbb_DC_TinhThanh
-            // 
-            this.cbb_DC_TinhThanh.FormattingEnabled = true;
-            this.cbb_DC_TinhThanh.Location = new System.Drawing.Point(615, 184);
-            this.cbb_DC_TinhThanh.Name = "cbb_DC_TinhThanh";
-            this.cbb_DC_TinhThanh.Size = new System.Drawing.Size(156, 21);
-            this.cbb_DC_TinhThanh.TabIndex = 43;
-            this.cbb_DC_TinhThanh.SelectedIndexChanged += new System.EventHandler(this.cbb_DC_TinhThanh_SelectedIndexChanged);
+            this.btnXong.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnXong.Location = new System.Drawing.Point(831, 320);
+            this.btnXong.Name = "btnXong";
+            this.btnXong.Size = new System.Drawing.Size(75, 23);
+            this.btnXong.TabIndex = 15;
+            this.btnXong.Text = "XONG";
+            this.btnXong.UseVisualStyleBackColor = true;
             // 
             // NhanKhauTamTruGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 606);
+            this.Controls.Add(this.btnXong);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.dataGridView1);
@@ -682,5 +694,6 @@
         private System.Windows.Forms.ComboBox cbb_DC_XaPhuong;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cbb_DC_TinhThanh;
+        private System.Windows.Forms.Button btnXong;
     }
 }

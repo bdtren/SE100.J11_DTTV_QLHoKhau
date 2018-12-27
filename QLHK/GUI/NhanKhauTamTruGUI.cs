@@ -17,6 +17,16 @@ namespace GUI
         NhanKhauTamTruBUS nkttBus;
         NhanKhauTamTruDTO nkttDto;
 
+        private string machuho = "";
+        private string sosotamtru = "";
+        public string Machuho
+        {
+            get { return machuho; }
+            set { machuho = Machuho; }
+        }
+        private int count = 0;  //Xác định chủ hộ nếu count = 0;
+
+
         public void ResetValueInput()
         {
             txt_MaDinhDanh.Clear();
@@ -47,11 +57,11 @@ namespace GUI
             dataGridView1.DataSource = nkttBus.GetAll().Tables[0];
         }
 
-        public NhanKhauTamTruGUI()
+        public NhanKhauTamTruGUI(string Sosotamtru)
         {
             InitializeComponent();
+            this.sosotamtru = Sosotamtru;
         }
-
 
 
         private void NhanKhauTamTruGUI_Load(object sender, EventArgs e)
@@ -62,6 +72,7 @@ namespace GUI
             cbb_NQ_TinhThanhPho.DataSource = nkttBus.Get_TinhThanhPho();
             cbb_NS_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
             cbb_DC_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
+            txt_SoSoTamTru.Text = sosotamtru;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -91,6 +102,10 @@ namespace GUI
                 MessageBox.Show("Thêm nhân khẩu tạm trú thành công");
                 ResetValueInput();
                 LoadDataGridView();
+                if (count == 0) //người đầu tiên làm chủ hộ
+                {
+                    machuho = manhankhautamtru;
+                }
             }
             else
             {
@@ -101,7 +116,7 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             int r = dataGridView1.CurrentCell.RowIndex;
-            string diachithuongtru = "";
+            string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
             string manghenghiep = txt_MaNgheNghiep.Text.ToString();
             string hoten = txt_HoTen.Text.ToString();
@@ -110,9 +125,9 @@ namespace GUI
             string hochieu = txt_HoChieu.Text.ToString();
             DateTime ngaycap = dt_NgayCapHoChieu.Value.Date;
             DateTime ngaysinh = dt_NgaySinh.Value.Date;
-            string nguyenquan = "";
+            string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
             string noicap = txt_NoiCap.Text.ToString();
-            string noisinh ="";
+            string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
             string quoctich = txt_QuocTich.Text.ToString();
             string sdt = txt_SoDienThoai.Text.ToString();
             string tongiao = txt_TonGiao.Text.ToString();

@@ -23,7 +23,7 @@ namespace DAO
             //string password = "";
             ////String connString = "Server=" + host + ";Database=" + database
             //    + ";port=" + port + ";User Id=" + username + ";password=" + password;
-            string connString = "datasource=localhost;port=3306;username=root;password=;database=qlhk;SslMode=none";
+            string connString = "datasource=localhost;port=3306;username=root;password=;database=qlhk;SslMode=none;charset=utf8;";
             try
             {
                 conn = new MySqlConnection(connString);

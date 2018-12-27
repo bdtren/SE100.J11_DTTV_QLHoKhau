@@ -172,6 +172,104 @@ namespace DAO
         {
             throw new NotImplementedException();
         }
+
+
+        //Lấy thông tin của Chỗ ở trong bảng thành phố, quận huyện, xã phường thị trấn
+
+        public List<string> GetListTinhThanh()
+        {
+            DataTable dt = new DataTable();
+            List<string> tinhthanh_list = new List<string>();
+
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            string sql = "SELECT ten FROM tinhthanhpho";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            tinhthanh_list = dt.AsEnumerable()
+                      .Select(r => r.Field<string>("ten"))
+                      .ToList();
+            return tinhthanh_list;
+        }
+
+
+        public string GetID_DiaChi(string table, string value, string nameColumn)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string find = value;
+                string ID;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT " + nameColumn + " FROM " + table + " WHERE ten='" + find + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
+        public List<string> GetListQuanHuyen(string tentinhthanhpho)
+        {
+            DataTable dt = new DataTable();
+            List<string> quanhuyen_list = new List<string>();
+
+            string ID_TP = GetID_DiaChi("tinhthanhpho", tentinhthanhpho, "matp");
+
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            string sql = "SELECT ten FROM quanhuyen WHERE matp='" + ID_TP + "' ";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            quanhuyen_list = dt.AsEnumerable()
+                      .Select(r => r.Field<string>("ten"))
+                      .ToList();
+            return quanhuyen_list;
+        }
+
+
+        public List<string> GetListXaPhuong(string tenquanhuyen)
+        {
+            DataTable dt = new DataTable();
+            List<string> xaphuong_list = new List<string>();
+
+            string ID_QH = GetID_DiaChi("quanhuyen", tenquanhuyen, "maqh");
+
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            string sql = "SELECT ten FROM xaphuongthitran WHERE maqh='" + ID_QH + "' ";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            xaphuong_list = dt.AsEnumerable()
+                      .Select(r => r.Field<string>("ten"))
+                      .ToList();
+            return xaphuong_list;
+        }
+
+
+
     }
-    
+
 }

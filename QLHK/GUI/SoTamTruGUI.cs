@@ -17,13 +17,13 @@ namespace GUI
     {
         SoTamTruDTO sotamtruDto;
         SoTamTruBUS sotamtruBus;
+        private string sosotamtru = "";
 
         public void ResetValueInput()
         {
             txt_MaChuHoTamTru.Clear();
             txt_SoSoTamTru.Clear();
             txt_LyDo.Clear();
-            txt_ChoOHienNay.Clear();
             dt_DenNgay.ResetText();
             dt_TuNgay.ResetText();
         }
@@ -44,13 +44,14 @@ namespace GUI
         {
             sotamtruBus = new SoTamTruBUS();
             LoadDataGridView();
+            cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
             string machuhotamtru = txt_MaChuHoTamTru.Text.ToString();
-            string choohiennay = txt_ChoOHienNay.Text.ToString();
+            string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
             string lydo = txt_LyDo.Text.ToString();
             DateTime tungay = dt_TuNgay.Value.Date;
             DateTime denngay = dt_DenNgay.Value.Date;
@@ -75,7 +76,7 @@ namespace GUI
             string sosotamtru = dataGridView1.Rows[r].Cells[0].Value.ToString(); //Lấy số sổ tạm trú
             string machuhotamtru = dataGridView1.Rows[r].Cells[1].Value.ToString(); //Lấy mã sổ chủ hộ tạm trú
 
-            string choohiennay = txt_ChoOHienNay.Text.ToString();
+            string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
             DateTime tungay = dt_TuNgay.Value.Date;
             DateTime denngay = dt_DenNgay.Value.Date;
             string lydo = txt_LyDo.Text.ToString();
@@ -128,18 +129,43 @@ namespace GUI
 
             sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
-            txt_ChoOHienNay.Text = sotamtruDto.ChoOHienNay;
+            string[] ChoOHienNay = sotamtruBus.SplitDiaChi(choohiennay);
+
             txt_LyDo.Text = sotamtruDto.LyDo;
             txt_MaChuHoTamTru.Text = sotamtruDto.MaChuHoTamTru;
             txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
             dt_TuNgay.Value = sotamtruDto.TuNgay;
             dt_DenNgay.Value = sotamtruDto.DenNgay;
+
+            txt_SoNha.Text = ChoOHienNay[0];
+            cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
+            cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(ChoOHienNay[2]);
+            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]);
         }
 
         private void btnThemNhanKhau_Click(object sender, EventArgs e)
         {
-            NhanKhauTamTruGUI nhankhautamtrufrm = new NhanKhauTamTruGUI();
-            nhankhautamtrufrm.ShowDialog();
+            sosotamtru = txt_SoSoTamTru.Text.ToString();
+            NhanKhauTamTruGUI nhankhautamtrufrm = new NhanKhauTamTruGUI(sosotamtru);
+
+            if (nhankhautamtrufrm.ShowDialog() == DialogResult.OK)
+            {
+                if (nhankhautamtrufrm.Machuho != "")
+                {
+                    txt_MaChuHoTamTru.Text = nhankhautamtrufrm.Machuho;
+                }
+            }
+        }
+
+        private void cbb_ChoO_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cbb_ChoO_QuanHuyen.DataSource = sotamtruBus.GetListQuanHuyen(cbb_ChoO_TinhThanh.Text);
+        }
+
+        private void cbb_ChoO_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbb_ChoO_XaPhuong.DataSource = sotamtruBus.GetListXaPhuong(cbb_ChoO_QuanHuyen.Text);
         }
     }
 }
