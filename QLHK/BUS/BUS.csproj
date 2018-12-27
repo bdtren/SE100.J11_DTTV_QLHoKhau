@@ -45,12 +45,9 @@
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="AdminBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
-    <Compile Include="SoHoKhauBUS.cs" />
-    <Compile Include="NhanKhauThuongTruBUS.cs" />
+    <Compile Include="SoTamTruBUS.cs" />
     <Compile Include="NhanKhauTamTruBUS.cs" />
     <Compile Include="QuanHuyenBUS.cs" />
-    <Compile Include="TienAnTienSuBUS.cs" />
-    <Compile Include="TieuSuBUS.cs" />
     <Compile Include="TinhThanhPhoBUS.cs" />
     <Compile Include="HocSinhSinhVienBUS.cs" />
     <Compile Include="NgheNghiepBUS.cs" />

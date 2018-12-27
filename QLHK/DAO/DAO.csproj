@@ -48,12 +48,9 @@
     <Compile Include="AdminDAO.cs" />
     <Compile Include="CanBoDAO.cs" />
     <Compile Include="DBConnection.cs" />
-    <Compile Include="SoHoKhauDAO.cs" />
-    <Compile Include="NhanKhauThuongTruDAO.cs" />
+    <Compile Include="SoTamTruDAO.cs" />
     <Compile Include="NhanKhauTamTruDAO.cs" />
     <Compile Include="QuanHuyenDAO.cs" />
-    <Compile Include="TienAnTienSuDAO.cs" />
-    <Compile Include="TieuSuDAO.cs" />
     <Compile Include="TinhThanhPhoDAO.cs" />
     <Compile Include="HocSinhSinhVienDAO.cs" />
     <Compile Include="NgheNghiepDAO.cs" />

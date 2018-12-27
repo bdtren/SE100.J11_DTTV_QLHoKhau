@@ -13,6 +13,7 @@ namespace DAO
     {
         public NhanKhauTamTruDAO() : base() { }
 
+
         public override DataSet getAll()
         {
             try
@@ -21,19 +22,12 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhautamtru", conn);
-                cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
                 string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(dataset);
                 return dataset;
-
-
             }
             catch (Exception e)
             {
@@ -45,6 +39,8 @@ namespace DAO
             }
             return null;
         }
+
+
 
         public override bool insert(NhanKhauTamTruDTO nktt)
         {
@@ -118,8 +114,8 @@ namespace DAO
         {
             try
             {
-                dataset.Tables["hocsinhsinhvien"].Rows[row].Delete();
-                sqlda.Update(dataset, "hocsinhsinhvien");
+                dataset.Tables["nhankhautamtru"].Rows[row].Delete();
+                sqlda.Update(dataset, "nhankhautamtru");
                 return true;
             }
             catch (Exception e)
@@ -171,7 +167,7 @@ namespace DAO
             {
                 conn.Close();
             }
-            return false;
+            return true;
         }
         public DataSet TimKiem(string madinhdanh)
         {
