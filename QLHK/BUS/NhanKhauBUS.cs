@@ -33,9 +33,13 @@ namespace BUS
         {
             return objnhankhau.delete(row);
         }
+        public bool Update(NhanKhau nk)
+        {
+            return false;
+        }
         public override bool Add_Table(NhanKhau data)
         {
-            return objnhankhau.insert_table(data);
+            throw new NotImplementedException();
         }
     }
 }

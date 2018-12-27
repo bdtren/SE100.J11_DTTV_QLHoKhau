@@ -50,13 +50,12 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into admin1 values(@maadmin,@macanbo,@mabaomat)";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@maadmin", ad.MaAdmin);
-                cmd.Parameters.AddWithValue("@macanbo", ad.MaCanBo);
-                cmd.Parameters.AddWithValue("@mabaomat", ad.MaBaoMat);
-
-                cmd.ExecuteNonQuery();
+                DataRow dr = dataset.Tables["admin1"].NewRow();
+                dr["macanbo"] = ad.MaCanBo;
+                dr["mabaomat"] = ad.MaBaoMat;
+                dataset.Tables["admin1"].Rows.Add(dr);
+                dataset.Tables["admin1"].Rows.RemoveAt(dataset.Tables["admin1"].Rows.Count - 1);
+                sqlda.Update(dataset, "admin1");
             }
             catch (Exception e)
             {
@@ -110,30 +109,9 @@ namespace DAO
             }
             return false;
         }
-        public override bool insert_table(Admin ad)
+        public override bool insert_table(Admin data)
         {
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                DataRow dr = dataset.Tables["admin1"].NewRow();
-                dr["macanbo"] = ad.MaCanBo;
-                dr["mabaomat"] = ad.MaBaoMat;
-                dataset.Tables["admin1"].Rows.Add(dr);
-                dataset.Tables["admin1"].Rows.RemoveAt(dataset.Tables["admin1"].Rows.Count - 1);
-                sqlda.Update(dataset, "admin1");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return true;
+            throw new NotImplementedException();
         }
     }
 }
