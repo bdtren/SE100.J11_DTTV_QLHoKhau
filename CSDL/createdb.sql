@@ -89,7 +89,7 @@ create table SOHOKHAU
 /*==============================================================*/
 create table NHANKHAUTAMTRU
 (
-    MANHAKHAUTAMTRU         char(9),
+    MANHANKHAUTAMTRU         char(9),
     MADINHDANH              varchar(20),
     DIACHITHUONGTRU         text,
     SOSOTAMTRU              char(9),

@@ -32,6 +32,7 @@ namespace DTO
             this.HoTen = HoTen;
             this.TonGiao = TonGiao;
             this.DanToc = DanToc;
+            this.GioiTinh = GioiTinh;
             this.HoChieu = HoChieu;
             this.NgayCap = NgayCap;
             this.NgaySinh = NgaySinh;
