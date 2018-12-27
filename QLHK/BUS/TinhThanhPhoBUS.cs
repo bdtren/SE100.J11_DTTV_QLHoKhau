@@ -11,30 +11,35 @@ namespace BUS
 {
     public class TinhThanhPhoBUS: AbstractFormBUS<TinhThanhPhoDTO>
     {
-        TinhThanhPhoDAO objtp = new TinhThanhPhoDAO();
+        TinhThanhPhoDAO obj = new TinhThanhPhoDAO();
 
         public override DataSet GetAll()
         {
-            return objtp.getAll();
+            return obj.getAll();
         }
         public override bool Add(TinhThanhPhoDTO data)
         {
-            return objtp.insert(data);
+            return obj.insert(data);
         }
 
         public override bool Delete(int r)
         {
-            return objtp.delete(r);
+            return obj.delete(r);
         }
 
         public override bool Update(TinhThanhPhoDTO data, int r)
         {
-            return objtp.update(data, r);
+            return obj.update(data, r);
         }
         public override bool Add_Table(TinhThanhPhoDTO data)
         {
             throw new NotImplementedException();
 
+        }
+
+        public DataSet TimKiem(string query)
+        {
+            return obj.TimKiem(query);
         }
 
     }

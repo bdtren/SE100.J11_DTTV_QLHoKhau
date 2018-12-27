@@ -23,9 +23,7 @@ namespace DAO
                 }
                 sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM tinhthanhpho", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "tinhthanhpho");
                 return dataset;
@@ -115,5 +113,34 @@ namespace DAO
             }
             return false;
         }
+        public DataSet TimKiem(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM tinhthanhpho" + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "tinhthanhpho");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

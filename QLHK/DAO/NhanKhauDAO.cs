@@ -41,46 +41,20 @@ namespace DAO
         }
         public override bool insert_table(NhanKhau data)
         {
-            try
-            {
-                DataRow dr = dataset.Tables["nhankhau"].NewRow();
-                dr["madinhdanh"] = data.MaDinhDanh;
-                dr["manghenghiep"] = data.MaNgheNghiep;
-                dr["hoten"] = data.HoTen;
-                dr["gioitinh"] = data.GioiTinh;
-                dr["dantoc"] = data.DanToc;
-                dr["hochieu"] = data.HoChieu;
-                dr["ngaycap"] = data.NgayCap;
-                dr["ngaysinh"] = data.NgaySinh;
-                dr["nguyenquan"] = data.NguyenQuan;
-                dr["noicap"] = data.NoiCap;
-                dr["noisinh"] = data.NoiSinh;
-                dr["quoctich"] = data.QuocTich;
-                dr["sdt"] = data.SDT;
-                dr["tongiao"] = data.TonGiao;
-
-                dataset.Tables["nhankhau"].Rows.Add(dr);
-                dataset.Tables["nhankhau"].Rows.RemoveAt(dataset.Tables["nhankhau"].Rows.Count - 1);
-                sqlda.Update(dataset, "nhankhau");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return true;
+            throw new NotImplementedException();
         }
         public override bool insert(NhanKhau nk)
         {
             try
             {
-                string sql = "insert into nhankhau values(@madinhdanh,@hoten,@gioitinh,@dantoc,@hochieu,@ngaycap,@ngaysinh,@nguyenquan,@noicap,@noisinh,@quoctich,@sdt,@tongiao);";
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sql = "insert into nhankhau values(@madinhdanh,@manghenghiep, @hoten,@gioitinh,@dantoc,@hochieu,@ngaycap,@ngaysinh,@nguyenquan,@noicap,@noisinh,@quoctich,@sdt,@tongiao);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@madinhdanh", nk.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@hoten", nk.HoTen.ToString());
                 cmd.Parameters.AddWithValue("@gioitinh", nk.GioiTinh.ToString());
                 cmd.Parameters.AddWithValue("@dantoc", nk.DanToc.ToString());
@@ -91,7 +65,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@noicap", nk.NoiCap.ToString());
                 cmd.Parameters.AddWithValue("@noisinh", nk.NoiSinh.ToString());
                 cmd.Parameters.AddWithValue("@quoctich", nk.QuocTich.ToString());
-                cmd.Parameters.AddWithValue("@sdtc", nk.SDT.ToString());
+                cmd.Parameters.AddWithValue("@sdt", nk.SDT.ToString());
                 cmd.Parameters.AddWithValue("@tongiao", nk.TonGiao.ToString());
                 cmd.ExecuteNonQuery();
             }
@@ -137,8 +111,9 @@ namespace DAO
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
-            return false;
+            return true;
 
         }
         public override bool update(NhanKhau nk, int r)
@@ -149,11 +124,10 @@ namespace DAO
             }
             try
             {
-                string sql = "update nhankhau set manghenghiep=@manghenghiep, hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh";
+                string sql = "update nhankhau set manghenghiep=@manghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@madinhdanh", nk.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@manghenghiep", nk.MaNgheNghiep.ToString());
                 cmd.Parameters.AddWithValue("@hoten", nk.HoTen.ToString());
                 cmd.Parameters.AddWithValue("@gioitinh", nk.GioiTinh.ToString());
                 cmd.Parameters.AddWithValue("@dantoc", nk.DanToc.ToString());
@@ -171,12 +145,13 @@ namespace DAO
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
             finally
             {
                 conn.Close();
             }
-            return false;
+            return true;
         }
     }
 }

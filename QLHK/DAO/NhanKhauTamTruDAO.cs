@@ -119,15 +119,15 @@ namespace DAO
             }
             try
             {
-                /*string sql = "update hocsinhsinhvien set truong=@truong, diachithuongtru=@diachithuongtru, tgbdtttt=@tgbdtttt, tgkttttt=@tgkttttt, vipham=@vipham where mssv=@mssv";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", hssv.MSSV);
-                cmd.Parameters.AddWithValue("@truong", hssv.Truong);
-                cmd.Parameters.AddWithValue("@diachithuongtru", hssv.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@tgbdtttt", hssv.TGBDTTTT.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@tgkttttt", hssv.TGKTTTTT.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@vipham)", hssv.ViPham);
-                cmd.ExecuteNonQuery();*/
+                //string sql = "update hocsinhsinhvien set truong=@truong, diachithuongtru=@diachithuongtru, tgbdtttt=@tgbdtttt, tgkttttt=@tgkttttt, vipham=@vipham where mssv=@mssv";
+                //MySqlCommand cmd = new MySqlCommand(sql, conn);
+                //cmd.Parameters.AddWithValue("@mssv", hssv.MSSV);
+                //cmd.Parameters.AddWithValue("@truong", hssv.Truong);
+                //cmd.Parameters.AddWithValue("@diachithuongtru", hssv.DiaChiThuongTru);
+                //cmd.Parameters.AddWithValue("@tgbdtttt", hssv.TGBDTTTT.ToString("yyyy/MM/dd"));
+                //cmd.Parameters.AddWithValue("@tgkttttt", hssv.TGKTTTTT.ToString("yyyy/MM/dd"));
+                //cmd.Parameters.AddWithValue("@vipham)", hssv.ViPham);
+                //cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
