@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DTO;
 using DAO;
 using System.Data;
-using System.Windows.Forms;
 
 namespace BUS
 {
@@ -17,76 +16,31 @@ namespace BUS
         {
             return objnktt.getAll();
         }
-        public override bool Add(NhanKhauTamTruDTO nhankhautamtru)
+        public override bool Add(NhanKhauTamTruDTO hssv)
         {
-            return objnktt.insert(nhankhautamtru);
+            return objnktt.insert(hssv);
         }
 
-        public bool XoaNKTT(string madinhdanh)
+        public bool XoaHSSV(string mssv)
         {
-            return objnktt.XoaNKTT(madinhdanh);
+            return objnktt.XoaHHSV(mssv);
         }
         public override bool Delete(int r)
         {
             return objnktt.delete(r);
         }
-        public override bool Update(NhanKhauTamTruDTO nhankhautamtru, int r)
+        public override bool Update(NhanKhauTamTruDTO hssv, int r)
         {
-            return objnktt.update(nhankhautamtru, r);
+            return objnktt.update(hssv, r);
         }
 
-        public DataSet TimKiem(string madinhdanh)
+        public DataSet TimKiem(string mssv)
         {
-            return objnktt.TimKiem(madinhdanh);
+            return objnktt.TimKiem(mssv);
         }
         public override bool Add_Table(NhanKhauTamTruDTO data)
         {
             throw new NotImplementedException();
         }
-
-
-        //Load Data For Combobox
-        //Lấy mã tỉnh thành phố
-        public BindingSource Get_TinhThanhPho()
-        {
-
-            List<string> TinhThanh_List = new List<string>();
-            TinhThanh_List = objnktt.GetListTinhThanh();
-
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = TinhThanh_List;
-            return bindingSource;
-        }
-
-
-        public BindingSource GetListQuanHuyen(string tentinhthanhpho)
-        {
-            List<string> QuanHuyen_List = new List<string>();
-            QuanHuyen_List = objnktt.GetListQuanHuyen(tentinhthanhpho);
-
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = QuanHuyen_List;
-            return bindingSource;
-        }
-
-        public BindingSource GetListXaPhuong(string tenquanhuyen)
-        {
-            List<string> XaPhuong_List = new List<string>();
-            XaPhuong_List = objnktt.GetListXaPhuong(tenquanhuyen);
-
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = XaPhuong_List;
-            return bindingSource;
-        }
-
-
-        public string[] SplitDiaChi(string diachi)
-        {
-            string data = diachi;
-            string[] result = data.Split(',');
-            return result;
-        }
-
-
     }
 }

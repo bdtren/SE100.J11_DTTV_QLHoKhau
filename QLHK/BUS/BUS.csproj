@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,8 +44,6 @@
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="AdminBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
-    <Compile Include="SoHoKhauBUS.cs" />
-    <Compile Include="NhanKhauThuongTruBUS.cs" />
     <Compile Include="NhanKhauTamTruBUS.cs" />
     <Compile Include="QuanHuyenBUS.cs" />
     <Compile Include="TienAnTienSuBUS.cs" />
