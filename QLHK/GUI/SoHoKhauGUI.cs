@@ -38,7 +38,7 @@ namespace GUI
             using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI())
             {
                 a.ShowDialog(this);
-                if (a.nkttDTO != null)
+                if (a.nkttDTO != null&& !String.IsNullOrEmpty(a.nkttDTO.MaNhanKhauThuongTru))
                     shkDTO.NhanKhau.Add(a.nkttDTO);
 
                 var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
