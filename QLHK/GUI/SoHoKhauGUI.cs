@@ -21,6 +21,11 @@ namespace GUI
             shk = new SoHoKhauBUS();
             shkDTO = new SoHoKhauDTO();
             InitializeComponent();
+
+            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
+            var source = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = source;
+
         }
 
         private void SoHoKhauGUI_Load(object sender, EventArgs e)

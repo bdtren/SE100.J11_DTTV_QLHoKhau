@@ -94,7 +94,7 @@ create table NHANKHAUTAMTRU
     DIACHITHUONGTRU         text,
     SOSOTAMTRU              char(9),
 
-    primary key (MANHAKHAUTAMTRU)
+    primary key (MANHANKHAUTAMTRU)
 );
 
 /*==============================================================*/
