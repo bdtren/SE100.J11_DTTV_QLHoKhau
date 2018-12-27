@@ -37,7 +37,7 @@ create table NHANKHAU
     
     MADINHDANH          varchar(20),
     MANGHENGHIEP        char(9),
-    HOTEN               varchar(20),
+    HOTEN               varchar(20) CHARACTER SET utf8,
     GIOITINH            varchar(10),
     DANTOC              varchar(20),
     HOCHIEU             varchar(20),
@@ -120,13 +120,13 @@ create table NHANKHAUTHUONGTRU
     MANHANKHAUTHUONGTRU     char(9),
     MADINHDANH              varchar(20),
     SOSOHOKHAU              char(13),
-    NOITHUONGTRUTAMTRU      text,
-    DIACHIHIENTAI           text,
+    NOITHUONGTRUTAMTRU      text CHARACTER SET utf8,
+    DIACHIHIENTAI           text CHARACTER SET utf8,
     TRINHDOHOCVAN           text,
     TRINHDOCHUYENMON        text,
     BIETTIENGDANTOC         text,
     TRINHDONGOAINGU         text,
-    NOILAMVIEC              text,
+    NOILAMVIEC              text CHARACTER SET utf8,
     QUANHEVOICHUHO          text,
 
     primary key (MANHANKHAUTHUONGTRU)

@@ -9,9 +9,9 @@ using DTO;
 
 namespace DAO
 {
-    public class NhanKhauTamTruDAO:DBConnection<NhanKhauTamTruDTO>
+    public class SoTamTruDAO:DBConnection<SoTamTruDTO>
     {
-        public NhanKhauTamTruDAO() : base() { }
+        public SoTamTruDAO() : base() { }
 
         public override DataSet getAll()
         {
@@ -21,13 +21,13 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhautamtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "nhankhautamtru");
+                sqlda.Fill(dataset, "sotamtru");
                 return dataset;
 
 
@@ -43,7 +43,7 @@ namespace DAO
             return null;
         }
 
-        public override bool insert(NhanKhauTamTruDTO nktt)
+        public override bool insert(SoTamTruDTO sotamtru)
         {
             try
             {
@@ -51,12 +51,14 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into nhankhautamtru values(@manhankhautamtru, @madinhdanh, @diachithuongtru, @sosotamtru)";
+                string sql = "insert into sotamtru values(@sosotamtru, @machuhotamtru, @choohiennay, @tungay, @denngay, @lydo)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru);
-                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
+                cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
+                cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
+                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
+                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
+                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
+                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -71,7 +73,7 @@ namespace DAO
             return true;
 
         }
-        public bool XoaHHSV(string mssv)
+        public bool XoaSoTamTru(string sosotamtru)
         {
             try
             {
@@ -79,9 +81,9 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "delete from hocsinhsinhvien where mssv=@mssv";
+                string sql = "delete from sotamtru where sosotamtru=@sosotamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", mssv);
+                cmd.Parameters.AddWithValue("@sosotamtru", sosotamtru);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -99,8 +101,8 @@ namespace DAO
         {
             try
             {
-                dataset.Tables["hocsinhsinhvien"].Rows[row].Delete();
-                sqlda.Update(dataset, "hocsinhsinhvien");
+                dataset.Tables["sotamtru"].Rows[row].Delete();
+                sqlda.Update(dataset, "sotamtru");
                 return true;
             }
             catch (Exception e)
@@ -111,7 +113,7 @@ namespace DAO
 
         }
 
-        public override bool update(NhanKhauTamTruDTO hssv, int r)
+        public override bool update(SoTamTruDTO sotamtru, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -119,15 +121,14 @@ namespace DAO
             }
             try
             {
-                /*string sql = "update hocsinhsinhvien set truong=@truong, diachithuongtru=@diachithuongtru, tgbdtttt=@tgbdtttt, tgkttttt=@tgkttttt, vipham=@vipham where mssv=@mssv";
+                string sql = "update sotamtru set choohiennay=@choohiennay, tungay=@tungay, denngay=@denngay, lydo=@lydo where sosotamtru=@sosotamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", hssv.MSSV);
-                cmd.Parameters.AddWithValue("@truong", hssv.Truong);
-                cmd.Parameters.AddWithValue("@diachithuongtru", hssv.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@tgbdtttt", hssv.TGBDTTTT.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@tgkttttt", hssv.TGKTTTTT.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@vipham)", hssv.ViPham);
-                cmd.ExecuteNonQuery();*/
+                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
+                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
+                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
+                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
+                cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -138,9 +139,9 @@ namespace DAO
             {
                 conn.Close();
             }
-            return false;
+            return true;
         }
-        public DataSet TimKiem(string mssv)
+        public DataSet TimKiem(string sosotamtru)
         {
             try
             {
@@ -148,13 +149,13 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM hocsinhsinhvien where mssv='"+mssv+"'", conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru WHERE sosotamtru="+sosotamtru+"", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
-                sqlda.Fill(dataset, "hocsinhsinhvien");
+                sqlda.Fill(dataset, "sotamtru");
                 return dataset;
             }
             catch (Exception e)
@@ -167,7 +168,7 @@ namespace DAO
             }
             return null;
         }
-        public override bool insert_table(NhanKhauTamTruDTO data)
+        public override bool insert_table(SoTamTruDTO data)
         {
             throw new NotImplementedException();
         }

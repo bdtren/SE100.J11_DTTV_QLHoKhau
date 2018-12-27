@@ -72,12 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChonDonViHanhChinhGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChonDonViHanhChinhGUI.Designer.cs">
-      <DependentUpon>ChonDonViHanhChinhGUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="fr_CBDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,18 +89,6 @@
     </Compile>
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_NhanKhau.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_NhanKhau.Designer.cs">
-      <DependentUpon>Form_NhanKhau.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NhanKhauThuongTruGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanKhauThuongTruGUI.Designer.cs">
-      <DependentUpon>NhanKhauThuongTruGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,12 +109,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_NhanKhau.resx">
-      <DependentUpon>Form_NhanKhau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NhanKhauThuongTruGUI.resx">
-      <DependentUpon>NhanKhauThuongTruGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -195,9 +171,6 @@
       <Project>{b401d09f-8709-410e-a9e4-321e9ee41b32}</Project>
       <Name>DTO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

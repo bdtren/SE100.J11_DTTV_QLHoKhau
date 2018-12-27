@@ -20,11 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `QUANHUYEN`;
 CREATE TABLE `QUANHUYEN` (
   `maqh` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `kieu` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
   `matp` varchar(5) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`maqh`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of QUANHUYEN
@@ -749,10 +749,10 @@ INSERT INTO `QUANHUYEN` VALUES ('973', 'Huyện Ngọc Hiển', 'Huyện', '96')
 DROP TABLE IF EXISTS `TINHTHANHPHO`;
 CREATE TABLE `TINHTHANHPHO` (
   `matp` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `kieu` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`matp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of TINHTHANHPHO
@@ -827,11 +827,11 @@ INSERT INTO `TINHTHANHPHO` VALUES ('96', 'Tỉnh Cà Mau', 'Tỉnh');
 DROP TABLE IF EXISTS `XAPHUONGTHITRAN`;
 CREATE TABLE `XAPHUONGTHITRAN` (
   `maxp` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `kieu` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(30) CHARACTER SET utf8 NOT NULL,
   `maqh` varchar(5) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`maxp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`xaid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of XAPHUONGTHITRAN
