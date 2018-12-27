@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAO
 {
-    public class HocSinhSinhVienDAO:DBConnection<HocSinhSinhVienDTO>
+    public class HocSinhSinhVienDAO : DBConnection<HocSinhSinhVienDTO>
     {
         public HocSinhSinhVienDAO() : base() { }
 
@@ -29,6 +29,8 @@ namespace DAO
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "hocsinhsinhvien");
                 return dataset;
+
+
             }
             catch (Exception e)
             {
@@ -154,7 +156,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM hocsinhsinhvien"+query, conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM hocsinhsinhvien" + query, conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -173,7 +175,7 @@ namespace DAO
             }
             return null;
         }
-       
+
         public override bool insert(HocSinhSinhVienDTO hssv)
         {
             try
@@ -207,5 +209,5 @@ namespace DAO
 
         }
     }
-    
+
 }

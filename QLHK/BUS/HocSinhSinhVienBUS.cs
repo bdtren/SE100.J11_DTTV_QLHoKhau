@@ -9,7 +9,7 @@ using System.Data;
 
 namespace BUS
 {
-    public class HocSinhSinhVienBUS: AbstractFormBUS<HocSinhSinhVienDTO>
+    public class HocSinhSinhVienBUS : AbstractFormBUS<HocSinhSinhVienDTO>
     {
         HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
         public override DataSet GetAll()

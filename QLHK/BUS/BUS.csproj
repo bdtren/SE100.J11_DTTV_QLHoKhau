@@ -50,6 +50,8 @@
     <Compile Include="SoTamTruBUS.cs" />
     <Compile Include="NhanKhauTamTruBUS.cs" />
     <Compile Include="QuanHuyenBUS.cs" />
+    <Compile Include="TienAnTienSuBUS.cs" />
+    <Compile Include="TieuSuBUS.cs" />
     <Compile Include="TinhThanhPhoBUS.cs" />
     <Compile Include="HocSinhSinhVienBUS.cs" />
     <Compile Include="NgheNghiepBUS.cs" />

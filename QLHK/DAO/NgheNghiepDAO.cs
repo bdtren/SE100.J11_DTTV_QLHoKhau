@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class NgheNghiepDAO: DBConnection<NgheNghiepDTO>
+    public class NgheNghiepDAO : DBConnection<NgheNghiepDTO>
     {
         public NgheNghiepDAO() : base() { }
         public override DataSet getAll()
@@ -42,27 +42,28 @@ namespace DAO
         }
         public override bool insert_table(NgheNghiepDTO nn)
         {
+
             try
             {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                string sql = "insert into nghenghiep values(@manghenghiep,@tennghenghiep)";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@manghenghiep",nn.MaNgheNghiep);
-                cmd.Parameters.AddWithValue("@tennghenghiep",nn.TenNgheNghiep);
-                cmd.ExecuteNonQuery();     
+                DataRow dr = dataset.Tables["nghenghiep"].NewRow();
+                dr["manghenghiep"] = nn.MaNgheNghiep;
+                dr["tennghenghiep"] = nn.TenNgheNghiep;
+
+                dataset.Tables["nghenghiep"].Rows.Add(dr);
+                dataset.Tables["nghenghiep"].Rows.RemoveAt(dataset.Tables["nghenghiep"].Rows.Count - 1);
+                sqlda.Update(dataset, "nghenghiep");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
             finally
             {
                 conn.Close();
             }
             return true;
+
 
         }
         public bool XoaNgheNghiep(string manghenghiep)
@@ -131,21 +132,23 @@ namespace DAO
             }
             return false;
         }
-        public override bool insert(NgheNghiepDTO data)
+        public override bool insert(NgheNghiepDTO nn)
         {
             try
             {
-                DataRow dr = dataset.Tables["nghenghiep"].NewRow();
-                dr["manghenghiep"] = data.MaNgheNghiep;
-                dr["tennghenghiep"] = data.TenNgheNghiep;
-                dataset.Tables["nghenghiep"].Rows.Add(dr);
-                dataset.Tables["nghenghiep"].Rows.RemoveAt(dataset.Tables["nghenghiep"].Rows.Count - 1);
-                sqlda.Update(dataset, "nghenghiep");
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sql = "insert into nghenghiep values(@manghenghiep,@tennghenghiep)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@manghenghiep", nn.MaNgheNghiep);
+                cmd.Parameters.AddWithValue("@tennghenghiep", nn.TenNgheNghiep);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
             }
             finally
             {
