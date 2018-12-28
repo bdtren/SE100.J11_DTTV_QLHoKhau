@@ -21,7 +21,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhauthuongtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();

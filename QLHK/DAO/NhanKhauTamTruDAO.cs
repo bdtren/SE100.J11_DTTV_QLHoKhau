@@ -23,10 +23,10 @@ namespace DAO
                     conn.Open();
                 }
                 dataset = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh";
+                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru, 'Delete' as 'Change' FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
-                adapter.Fill(dataset);
+                adapter.Fill(dataset,"nhankhautamtrujoin");
                 return dataset;
             }
             catch (Exception e)
