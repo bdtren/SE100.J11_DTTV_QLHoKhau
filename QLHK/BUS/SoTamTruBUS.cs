@@ -15,7 +15,7 @@ namespace BUS
         SoTamTruDAO SoTamTru = new SoTamTruDAO();
         public override DataSet GetAll()
         {
-            return SoTamTru.getAll();
+            return SoTamTru.getAllSoTamTru();
         }
         public override bool Add(SoTamTruDTO sotamtru)
         {
@@ -87,6 +87,55 @@ namespace BUS
             string[] result = data.Split(',');
             return result;
         }
+
+
+        //Hàm Phát sinh mã tự động
+        //Lấy số sổ tạm trú cuối cùng từ bảng sổ tạm trú
+        public string getLastID_SoSoTamTru()
+        {
+            return SoTamTru.getLastID_SoSoTamTru();
+        }
+
+
+        //Lấy mã nhân khẩu tạm trú cuối cùng từ bảng nhân khẩu tạm trú
+        public string getLastID_MaNhanKhauTamTru()
+        {
+            return SoTamTru.getLastID_MaNhanKhauTamTru();
+        }
+
+
+        //Lấy mã tiểu sử cuối cùng từ bảng tiểu sử
+        public string getLastID_MaTieuSu()
+        {
+            return SoTamTru.getLastID_MaTieuSu();
+        }
+
+
+        //Lấy mã tiền án tiền sự cuối cùng từ bảng tiền án tiền sự
+        public string getLastID_MaTienAnTienSu()
+        {
+            return SoTamTru.getLastID_MaTienAnTienSu();
+        }
+
+
+        //Lấy mã định danh cuối cùng từ bảng nhân khẩu
+        public string getLastID_MaDinhDanh()
+        {
+            return SoTamTru.getLastID_MaDinhDanh();
+        }
+
+
+        //Phát sinh mã tự động
+        public string Generate7Character(string mabandau)
+        {
+            return SoTamTru.Generate7Character(mabandau);
+        }
+
+        public string GenerateMaDinhDanh(string gioitinh, string namsinh)
+        {
+            return SoTamTru.TangMa12Kytu(gioitinh, namsinh);
+        }
+
 
     }
 }
