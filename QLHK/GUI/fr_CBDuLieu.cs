@@ -35,6 +35,16 @@ namespace GUI
         QuanHuyenBUS quanhuyenbus;
         TinhThanhPhoDTO tinhthanhpho;
         TinhThanhPhoBUS tinhthanhphobus;
+        XaPhuongThiTranDTO xaphuongthitran;
+        XaPhuongThiTranBUS xaphuongthitranbus;
+        NhanKhauTamTruDTO nktamtru;
+        NhanKhauTamTruBUS nktamtrubus;
+        NhanKhauThuongTruDTO nkthuongtru;
+        NhanKhauThuongTruBUS nkthuongtrubus;
+        SoHoKhauDTO sohokhau;
+        SoHoKhauBUS sohokhaubus;
+        SoTamTruDTO sotamtru;
+        SoTamTruBUS sotamtrubus;
 
 
         public fr_CBDuLieu()
@@ -49,6 +59,11 @@ namespace GUI
             nghenghiepbus = new NgheNghiepBUS();
             quanhuyenbus = new QuanHuyenBUS();
             tinhthanhphobus = new TinhThanhPhoBUS();
+            xaphuongthitranbus = new XaPhuongThiTranBUS();
+            nktamtrubus = new NhanKhauTamTruBUS();
+            nkthuongtrubus = new NhanKhauThuongTruBUS();
+            sohokhaubus = new SoHoKhauBUS();
+            sotamtrubus = new SoTamTruBUS();
 
 
             DataSet tables = DBConnection<int>.getData("show tables from qlhk");
@@ -64,34 +79,9 @@ namespace GUI
             {
 
                 case "admin1":
-                    try
-                    {
-                        dataGridView1.DataSource = adminbus.GetAll().Tables["admin1"];
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
                     break;
                 case "canbo":
-                    try
-                    {
-                        dataGridView1.DataSource = canbobus.GetAll().Tables["canbo"];
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+
                     break;
                 case "canbohotich":
 
@@ -147,10 +137,34 @@ namespace GUI
 
                     break;
                 case "nhankhautamtru":
-
+                    try
+                    {
+                        dataGridView1.DataSource = nktamtrubus.GetAll().Tables["nhankhautamtru"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "nhankhauthuongtru":
-
+                    try
+                    {
+                        dataGridView1.DataSource = nkthuongtrubus.GetAll().Tables["nhankhauthuongtru"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "quanhuyen":
                     try
@@ -168,10 +182,34 @@ namespace GUI
                     }
                     break;
                 case "sohokhau":
-
+                    try
+                    {
+                        dataGridView1.DataSource = sohokhaubus.GetAll().Tables["sohokhau"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "sotamtru":
-
+                    try
+                    {
+                        dataGridView1.DataSource = sotamtrubus.GetAll().Tables["sotamtru"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "tienantiensu":
                     try
@@ -221,10 +259,20 @@ namespace GUI
                     }
                     break;
                 case "xaphuongthitran":
-
+                    try
+                    {
+                        dataGridView1.DataSource = xaphuongthitranbus.GetAll().Tables["xaphuongthitran"];
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                            dataGridView1[dataGridView1.ColumnCount - 1, i] = linkCell;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
-
-
             }
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
         }
@@ -490,15 +538,56 @@ namespace GUI
                     }
                     break;
                 case "nhankhautamtru":
+                    try
+                    {
+                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
+                        {
+                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
+                            if (Task == "Delete")
+                            {
+                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    int rowIndex = e.RowIndex;
+                                    nktamtrubus.Delete(rowIndex);
+                                }
+                            }
+                            else if (Task == "Insert")
+                            {
+                                int row = dataGridView1.Rows.Count - 2;
+                                string manhankhautamtru = dataGridView1.Rows[row].Cells["manhankhautamtru"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
+                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                nhankhaubus.Add_Table(nktamtru);
+                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
 
+
+                            }
+                            else if (Task == "Update")
+                            {
+                                int row = e.RowIndex;
+                                string manhankhautamtru = dataGridView1.Rows[row].Cells["manhankhautamtru"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
+                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                nhankhaubus.Add_Table(nktamtru);
+                                nhankhaubus.Update(nktamtru, row);
+                                LoadData();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "nhankhautamvang":
 
                     break;
                 case "nhankhauthuongtru":
-
-                    break;
-                case "quanhuyen":
 
                     break;
                 case "sohokhau":
@@ -619,6 +708,62 @@ namespace GUI
                     }
                     break;
                 case "tinhthanhpho":
+                    try
+                    {
+                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
+                        {
+                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
+                            if (Task == "Delete")
+                            {
+                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    int rowIndex = e.RowIndex;
+                                    tinhthanhphobus.Delete(rowIndex);
+                                }
+                            }
+                            else if (Task == "Insert")
+                            {
+                                int row = dataGridView1.Rows.Count - 2;
+                                string matieusu = dataGridView1.Rows[row].Cells["matieusu"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string thoigianbatdau = dataGridView1.Rows[row].Cells["thoigianbatdau"].Value.ToString();
+                                DateTime date_tgbd = DateTime.Parse(thoigianbatdau);
+                                string thoigianketthuc = dataGridView1.Rows[row].Cells["thoigianketthuc"].Value.ToString();
+                                DateTime date_tgkt = DateTime.Parse(thoigianketthuc);
+                                string choo = dataGridView1.Rows[row].Cells["choo"].Value.ToString();
+                                string manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
+                                string noilamviec = dataGridView1.Rows[row].Cells["noilamviec"].Value.ToString();
+                                tieusu = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, manghenghiep, noilamviec);
+                                tieusubus.Add_Table(tieusu);
+                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
+
+
+                            }
+                            else if (Task == "Update")
+                            {
+                                int row = e.RowIndex;
+                                string matieusu = dataGridView1.Rows[row].Cells["matieusu"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string thoigianbatdau = dataGridView1.Rows[row].Cells["thoigianbatdau"].Value.ToString();
+                                DateTime date_tgbd = DateTime.Parse(thoigianbatdau);
+                                string thoigianketthuc = dataGridView1.Rows[row].Cells["thoigianketthuc"].Value.ToString();
+                                DateTime date_tgkt = DateTime.Parse(thoigianketthuc);
+                                string choo = dataGridView1.Rows[row].Cells["choo"].Value.ToString();
+                                string manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
+                                string noilamviec = dataGridView1.Rows[row].Cells["noilamviec"].Value.ToString();
+                                tieusu = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, manghenghiep, noilamviec);
+                                tieusubus.Update(tieusu, row);
+                                LoadData();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
+                case "quanhuyen":
 
                     break;
                 case "xaphuongthitran":

@@ -51,5 +51,10 @@ namespace GUI
                 dataGridView1.DataSource = source;
             }
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

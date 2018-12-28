@@ -85,16 +85,16 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGVTienAnTienSu = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTieuSu)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTienAnTienSu)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dGVTieuSu
@@ -105,6 +105,9 @@
             this.dGVTieuSu.Name = "dGVTieuSu";
             this.dGVTieuSu.Size = new System.Drawing.Size(776, 150);
             this.dGVTieuSu.TabIndex = 28;
+            this.dGVTieuSu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTieuSu_CellContentClick);
+            this.dGVTieuSu.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTieuSu_CellContentDoubleClick);
+            this.dGVTieuSu.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dGVTieuSu_UserAddedRow);
             // 
             // groupBox1
             // 
@@ -136,7 +139,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(6, 2);
+            this.groupBox1.Location = new System.Drawing.Point(6, -118);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(362, 338);
             this.groupBox1.TabIndex = 0;
@@ -372,7 +375,7 @@
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(700, 347);
+            this.button_sua.Location = new System.Drawing.Point(700, 227);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(72, 24);
             this.button_sua.TabIndex = 26;
@@ -382,7 +385,7 @@
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(778, 347);
+            this.button_xoa.Location = new System.Drawing.Point(778, 227);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(72, 24);
             this.button_xoa.TabIndex = 27;
@@ -392,7 +395,7 @@
             // 
             // button_them
             // 
-            this.button_them.Location = new System.Drawing.Point(622, 347);
+            this.button_them.Location = new System.Drawing.Point(622, 227);
             this.button_them.Name = "button_them";
             this.button_them.Size = new System.Drawing.Size(72, 24);
             this.button_them.TabIndex = 25;
@@ -423,7 +426,7 @@
             this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Location = new System.Drawing.Point(385, 3);
+            this.groupBox3.Location = new System.Drawing.Point(385, -117);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(465, 338);
             this.groupBox3.TabIndex = 15;
@@ -594,7 +597,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(821, 393);
+            this.btnOk.Location = new System.Drawing.Point(821, 273);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(87, 38);
             this.btnOk.TabIndex = 30;
@@ -604,7 +607,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(821, 437);
+            this.btnHuy.Location = new System.Drawing.Point(821, 317);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(87, 38);
             this.btnHuy.TabIndex = 31;
@@ -629,16 +632,6 @@
             this.xtraScrollableControl1.Size = new System.Drawing.Size(937, 512);
             this.xtraScrollableControl1.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dGVTieuSu);
-            this.groupBox2.Location = new System.Drawing.Point(16, 377);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(789, 178);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tiểu sử";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dGVTienAnTienSu);
@@ -657,6 +650,19 @@
             this.dGVTienAnTienSu.Name = "dGVTienAnTienSu";
             this.dGVTienAnTienSu.Size = new System.Drawing.Size(776, 150);
             this.dGVTienAnTienSu.TabIndex = 29;
+            this.dGVTienAnTienSu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTienAnTienSu_CellContentClick);
+            this.dGVTienAnTienSu.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGVTienAnTienSu_CellContentDoubleClick);
+            this.dGVTienAnTienSu.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dGVTienAnTienSu_UserAddedRow);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dGVTieuSu);
+            this.groupBox2.Location = new System.Drawing.Point(16, 378);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(789, 178);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tiểu sử";
             // 
             // NhanKhauThuongTruGUI
             // 
@@ -673,9 +679,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.xtraScrollableControl1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGVTienAnTienSu)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
