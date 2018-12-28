@@ -10,21 +10,27 @@ using System.Windows.Forms;
 using DTO;
 using BUS;
 
+
+
 namespace GUI
 {
     public partial class HocSinhSinhVienGUI : Form
     {
+        NhanKhauThuongTruBUS thuongTru;
+        NhanKhauTamTruBUS tamTru;
         HocSinhSinhVienBUS hssvbus;
         HocSinhSinhVienDTO hssvdto;
+        TienAnTienSuBUS tienAn;
 
         public HocSinhSinhVienGUI()
         {
 
             InitializeComponent();
             hssvbus = new HocSinhSinhVienBUS();
+            tienAn = new TienAnTienSuBUS();
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh=''").Tables["tienantiensu"];
 
         }
 
@@ -33,6 +39,7 @@ namespace GUI
 
         }
 
+        
         private void button_timkiem_Click(object sender, EventArgs e)
         {
             string query = null;
@@ -178,6 +185,13 @@ namespace GUI
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+        }
+
+        private void textBox_madinhdanh_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
         }
     }
 }

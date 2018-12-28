@@ -54,8 +54,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(801, 140);
             this.dataGridView1.TabIndex = 0;
@@ -78,7 +79,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(-1, 146);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(474, 243);
             this.groupBox1.TabIndex = 1;
@@ -126,6 +127,7 @@
             this.textBox_madinhdanh.Name = "textBox_madinhdanh";
             this.textBox_madinhdanh.Size = new System.Drawing.Size(244, 20);
             this.textBox_madinhdanh.TabIndex = 8;
+            this.textBox_madinhdanh.TextChanged += new System.EventHandler(this.textBox_madinhdanh_TextChanged);
             // 
             // textBox_mssv
             // 
@@ -199,7 +201,7 @@
             // 
             // button_Them
             // 
-            this.button_Them.Location = new System.Drawing.Point(479, 150);
+            this.button_Them.Location = new System.Drawing.Point(492, 16);
             this.button_Them.Name = "button_Them";
             this.button_Them.Size = new System.Drawing.Size(140, 59);
             this.button_Them.TabIndex = 2;
@@ -209,7 +211,7 @@
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(635, 150);
+            this.button_xoa.Location = new System.Drawing.Point(648, 16);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(140, 59);
             this.button_xoa.TabIndex = 3;
@@ -219,7 +221,7 @@
             // 
             // button_timkiem
             // 
-            this.button_timkiem.Location = new System.Drawing.Point(479, 234);
+            this.button_timkiem.Location = new System.Drawing.Point(492, 100);
             this.button_timkiem.Name = "button_timkiem";
             this.button_timkiem.Size = new System.Drawing.Size(140, 59);
             this.button_timkiem.TabIndex = 4;
@@ -229,7 +231,7 @@
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(635, 234);
+            this.button_sua.Location = new System.Drawing.Point(648, 100);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(140, 59);
             this.button_sua.TabIndex = 5;
@@ -241,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 463);
+            this.ClientSize = new System.Drawing.Size(800, 418);
             this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_timkiem);
             this.Controls.Add(this.button_xoa);
