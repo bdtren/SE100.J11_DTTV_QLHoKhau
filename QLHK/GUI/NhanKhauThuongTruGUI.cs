@@ -16,20 +16,38 @@ namespace GUI
     {
         NhanKhauBUS nk;
         NhanKhauThuongTruBUS nktt;
+        TieuSuBUS tieuSu;
+        TienAnTienSuBUS tienAn;
         public NhanKhauThuongTruDTO nkttDTO;
 
         public NhanKhauThuongTruGUI()
         {
             InitializeComponent();
             nktt = new NhanKhauThuongTruBUS();
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            //dataGridView1.DataSource = nktt.GetAll().Tables["nhankhauthuongtru"];
-            dataGridView1.DataSource = nktt.GetAllJoinNhanKhau().Tables[0];
+            tieuSu = new TieuSuBUS();
+            tienAn = new TienAnTienSuBUS();
+            dGVTieuSu.DataSource = null;
+            dGVTieuSu.Rows.Clear();
+            //dGVTieuSu.DataSource = nktt.GetAll().Tables["nhankhauthuongtru"];
+            dGVTieuSu.DataSource = tieuSu.GetAll().Tables[0];
+            dGVTienAnTienSu.DataSource = tienAn.GetAll().Tables[0];
+
+            themMaDinhDanhBang();
         }
         private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void themMaDinhDanhBang()
+        {
+            for(int i = 0;i< dGVTieuSu.RowCount;i++)
+                dGVTieuSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+            for (int i = 0; i < dGVTienAnTienSu.RowCount; i++)
+            {
+                dGVTienAnTienSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+
+            }
         }
 
         private void button_them_Click(object sender, EventArgs e)
@@ -44,6 +62,7 @@ namespace GUI
             if (nktt.Add(nkttDTO))
             {
                 MessageBox.Show(this,"Thành công!");
+
             }
             else{
                 MessageBox.Show(this,"Lỗi!","",MessageBoxButtons.OK,MessageBoxIcon.Error);
