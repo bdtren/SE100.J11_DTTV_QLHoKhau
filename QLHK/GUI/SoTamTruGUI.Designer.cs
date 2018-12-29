@@ -55,6 +55,7 @@
             this.txt_MaChuHoTamTru = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,12 +77,15 @@
             // 
             // btnThemNhanKhau
             // 
+            this.btnThemNhanKhau.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnThemNhanKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemNhanKhau.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThemNhanKhau.Location = new System.Drawing.Point(68, 29);
             this.btnThemNhanKhau.Name = "btnThemNhanKhau";
             this.btnThemNhanKhau.Size = new System.Drawing.Size(141, 40);
             this.btnThemNhanKhau.TabIndex = 17;
             this.btnThemNhanKhau.Text = "Thêm nhân khẩu tạm trú";
-            this.btnThemNhanKhau.UseVisualStyleBackColor = true;
+            this.btnThemNhanKhau.UseVisualStyleBackColor = false;
             this.btnThemNhanKhau.Click += new System.EventHandler(this.btnThemNhanKhau_Click);
             // 
             // btnTim
@@ -116,12 +120,15 @@
             // 
             // btnThem
             // 
+            this.btnThem.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThem.Location = new System.Drawing.Point(68, 84);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(141, 36);
             this.btnThem.TabIndex = 13;
             this.btnThem.Text = "Đăng ký tạm trú";
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txt_SoNha
@@ -186,6 +193,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.txt_SoNha);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -207,7 +215,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 300);
+            this.groupBox1.Size = new System.Drawing.Size(464, 300);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sổ tạm trú";
@@ -321,6 +329,16 @@
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(395, 57);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(63, 23);
+            this.btnReset.TabIndex = 21;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // SoTamTruGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,5 +388,6 @@
         private System.Windows.Forms.TextBox txt_MaChuHoTamTru;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnReset;
     }
 }

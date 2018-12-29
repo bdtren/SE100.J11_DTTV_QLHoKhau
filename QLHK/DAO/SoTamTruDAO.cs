@@ -130,6 +130,25 @@ namespace DAO
             return madinhdanh_list;
         }
 
+        public List<string> getListExperiedSoTamTru()
+        {
+            DataTable dt = new DataTable();
+            List<string> sotamtru_list = new List<string>();
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            string sql = "SELECT SOSOTAMTRU FROM `sotamtru` WHERE DENNGAY<CURDATE() ";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            sotamtru_list = dt.AsEnumerable()
+                      .Select(r => r.Field<string>("SOSOTAMTRU"))
+                      .ToList();
+            return sotamtru_list;
+        }
+
 
         public bool XoaSoTamTru(string sosotamtru)
         {
@@ -164,6 +183,38 @@ namespace DAO
             }
             return true;
         }
+
+
+
+        public bool DeleteExperiedSoTamTru()
+        {
+                try
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                     //Lấy list số sổ tạm trú quá hạn
+                    List<string> sosotamtru_list = getListExperiedSoTamTru();
+
+                    //Xóa list số tạm trú quá hạn
+                    for (int i = 0; i < sosotamtru_list.Count; i++)
+                    {
+                            XoaSoTamTru(sosotamtru_list[i]);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            return true;
+        }
+
         public override bool delete(int row)
         {
             try
@@ -399,25 +450,7 @@ namespace DAO
 
 
 
-        /// <summary>
-        /// Hàm tạo mã tự động 7 kí tự
-        /// </summary>
-        /// <param name="mabandau"></param>
-        /// <returns></returns>
-        public string Generate7Character(string mabandau)
-        {
-            string str1 = mabandau.Substring(0, 2);
-            string str2 = mabandau.Substring(2);
-            int i_str2 = Int32.Parse(str2) + 1;
-            string str3 = i_str2.ToString();
-            string str4 = null;
-            for (int i = 0; i < (7 - str3.Length); i++)
-            {
-                str4 = str4 + "0";
-            }
-            string chuoikq = str1 + str4 + str3;
-            return chuoikq;
-        }
+
 
 
         /// <summary>

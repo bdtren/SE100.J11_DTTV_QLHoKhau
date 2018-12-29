@@ -176,6 +176,13 @@ namespace GUI
         {
             string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
+
+            if(manhankhautamtru=="" || madinhdanh=="")
+            {
+                MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
+                return;
+            }
+
             string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
@@ -223,43 +230,57 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             int r = dataGridView1.CurrentCell.RowIndex;
-            string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
-            string manghenghiep = nkttBus.GetMaNgheNghiep(cbbNgheNghiep.Text); 
-            string hoten = txt_HoTen.Text.ToString();
-
-            string gioitinh = "";
-            if (rdNam.Checked) gioitinh = "nam";
-            else gioitinh = "nu";
-
-            string dantoc = txt_DanToc.Text.ToString();
-            string hochieu = txt_HoChieu.Text.ToString();
-            DateTime ngaycap = dt_NgayCapHoChieu.Value.Date;
-            DateTime ngaysinh = dt_NgaySinh.Value.Date;
-            string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
-            string noicap = txt_NoiCap.Text.ToString();
-            string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
-            string quoctich = txt_QuocTich.Text.ToString();
-            string sdt = txt_SoDienThoai.Text.ToString();
-            string tongiao = txt_TonGiao.Text.ToString();
-
-
             string manhankhautamtru = dataGridView1.Rows[r].Cells[1].Value.ToString(); //Lấy mã nhân khẩu tạm trú
             string madinhdanh = dataGridView1.Rows[r].Cells[0].Value.ToString(); //Lấy mã định danh
+            string hoten = txt_HoTen.Text.ToString();
 
-            nkttDto = new NhanKhauTamTruDTO(manghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
-            if (nkttBus.Update(nkttDto, r))
+            if (manhankhautamtru == "" || madinhdanh == "" || hoten=="")
             {
-                MessageBox.Show("Cập nhật dữ liệu thành công");
-                LoadDataGridView();
-                ResetValueInput();
-                GenerateAllID();
-                dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
+                MessageBox.Show("Cần có mã nhân khẩu tạm trú, mã định danh và họ tên để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin nhân khẩu: "+hoten+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Cập nhật không thành công");
+                string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
+                string sosotamtru = txt_SoSoTamTru.Text.ToString();
+                string manghenghiep = nkttBus.GetMaNgheNghiep(cbbNgheNghiep.Text);
+
+                string gioitinh = "";
+                if (rdNam.Checked) gioitinh = "nam";
+                else gioitinh = "nu";
+
+                string dantoc = txt_DanToc.Text.ToString();
+                string hochieu = txt_HoChieu.Text.ToString();
+                DateTime ngaycap = dt_NgayCapHoChieu.Value.Date;
+                DateTime ngaysinh = dt_NgaySinh.Value.Date;
+                string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
+                string noicap = txt_NoiCap.Text.ToString();
+                string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
+                string quoctich = txt_QuocTich.Text.ToString();
+                string sdt = txt_SoDienThoai.Text.ToString();
+                string tongiao = txt_TonGiao.Text.ToString();
+
+                nkttDto = new NhanKhauTamTruDTO(manghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                if (nkttBus.Update(nkttDto, r))
+                {
+                    MessageBox.Show("Cập nhật dữ liệu thành công");
+                    LoadDataGridView();
+                    ResetValueInput();
+                    GenerateAllID();
+                    dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật không thành công");
+                }
             }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+           
         }
 
 
@@ -267,17 +288,33 @@ namespace GUI
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
-            if (nkttBus.XoaNKTT(madinhdanh))
+            string hoten = txt_HoTen.Text.ToString();
+
+            if (madinhdanh == "")
             {
-                MessageBox.Show("Hủy tạm trú thành công!");
-                ResetValueInput();
-                LoadDataGridView();
-                GenerateAllID();
+                MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú cho nhân khẩu: "+hoten+" ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Hủy tạm trú thành công!");
+                if (nkttBus.XoaNKTT(madinhdanh))
+                {
+                    MessageBox.Show("Hủy tạm trú thành công!");
+                    ResetValueInput();
+                    LoadDataGridView();
+                    GenerateAllID();
+                }
+                else
+                {
+                    MessageBox.Show("Hủy tạm trú thành công!");
+                }
             }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
+
         }
 
         //Lấy thông tin từ datagridview vào input
@@ -362,6 +399,11 @@ namespace GUI
         private void btnTim_Click(object sender, EventArgs e)
         {
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            if (madinhdanh == "")
+            {
+                MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
+                return;
+            }
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
@@ -396,6 +438,13 @@ namespace GUI
         private void btnThemTienAn_Click(object sender, EventArgs e)
         {
             string matienan = txt_MaTienAn.Text.ToString();
+
+            if (matienan == "")
+            {
+                MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
+                return;
+            }
+
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
             string banan = txt_BanAn.Text.ToString();
             string toidanh = txtToiDanh.Text.ToString();
@@ -446,41 +495,71 @@ namespace GUI
         private void btnXoaTienAn_Click(object sender, EventArgs e)
         {
             string matienan = txt_MaTienAn.Text.ToString();
-            if (nkttBus.DeleteTienAnTienSu(matienan))
+
+            if (matienan == "")
             {
-                MessageBox.Show("Xóa tiền án tiền sự thành công!");
-                LoadDataGridViewTienAN();
-                ResetInputTienAn();
+                MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiền án tiền sự "+matienan+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Xóa tiền án tiền sự thất bại!");
+                if (nkttBus.DeleteTienAnTienSu(matienan))
+                {
+                    MessageBox.Show("Xóa tiền án tiền sự thành công!");
+                    LoadDataGridViewTienAN();
+                    ResetInputTienAn();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa tiền án tiền sự thất bại!");
+                }
             }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
+
+
         }
         
   
         private void btnSuaTienAn_Click(object sender, EventArgs e)
         {
             string matienan = txt_MaTienAn.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
-            string banan = txt_BanAn.Text.ToString();
-            string toidanh = txtToiDanh.Text.ToString();
-            string hinhphat = txt_HinhPhat.Text.ToString();
-            DateTime ngayphat = dtNgayPhat.Value.Date;
-            string ghichu = txtGhiChu.Text.ToString();
 
-            TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
-
-            TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
-            if (tienanbus.Update(tienan,0))
+            if (matienan == "")
             {
-                MessageBox.Show("Sửa tiền án tiền sự thành công!");
-                ResetInputTienAn();
-                LoadDataGridViewTienAN();
+                MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Sửa tiền án tiền sự thất bại!");
+                string madinhdanh = txt_MaDinhDanh.Text.ToString();
+                string banan = txt_BanAn.Text.ToString();
+                string toidanh = txtToiDanh.Text.ToString();
+                string hinhphat = txt_HinhPhat.Text.ToString();
+                DateTime ngayphat = dtNgayPhat.Value.Date;
+                string ghichu = txtGhiChu.Text.ToString();
+
+                TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
+
+                TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
+                if (tienanbus.Update(tienan, 0))
+                {
+                    MessageBox.Show("Sửa tiền án tiền sự thành công!");
+                    ResetInputTienAn();
+                    LoadDataGridViewTienAN();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa tiền án tiền sự thất bại!");
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
             }
         }
 
@@ -527,6 +606,12 @@ namespace GUI
             string choo = txt_TieuSu_SoNha.Text.ToString() + "," + cbb_TieuSu_XaPhuong.Text.ToString() + "," + cbb_TieuSu_QuanHuyen.Text.ToString() + "," + cbb_TieuSu_TinhThanh.Text.ToString();
             string manghenghiep = nkttBus.GetMaNgheNghiep(cbb_TieuSu_NgheNghiep.Text.ToString());
             string noilamviec = txt_NoiLamViec.Text.ToString();
+
+            if(matieusu=="")
+            {
+                MessageBox.Show("Cần có mã tiểu sử để thực hiện chức năng này");
+                return;
+            }
 
             TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, manghenghiep, noilamviec);
 
@@ -577,41 +662,68 @@ namespace GUI
         private void btnXoaTieuSu_Click(object sender, EventArgs e)
         {
             string matieusu = txt_MaTieuSu.Text.ToString();
-            if (nkttBus.DeleteTieuSu(matieusu))
+            if (matieusu == "")
             {
-                MessageBox.Show("Xóa tiểu sử thành công!");
-                LoadDataGridViewTieuSu();
-                ResetInputTieuSu();
+                MessageBox.Show("Cần có mã tiểu sử để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiểu sử "+matieusu+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Xóa tiểu sử thất bại!");
+                if (nkttBus.DeleteTieuSu(matieusu))
+                {
+                    MessageBox.Show("Xóa tiểu sử thành công!");
+                    LoadDataGridViewTieuSu();
+                    ResetInputTieuSu();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa tiểu sử thất bại!");
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
             }
         }
 
         private void btnSuaTieuSu_Click(object sender, EventArgs e)
         {
             string matieusu = txt_MaTieuSu.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
-            DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
-            DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
-            string choo = txt_TieuSu_SoNha.Text.ToString() + "," + cbb_TieuSu_XaPhuong.Text.ToString() + "," + cbb_TieuSu_QuanHuyen.Text.ToString() + "," + cbb_TieuSu_TinhThanh.Text.ToString();
-            string manghenghiep = nkttBus.GetMaNgheNghiep(cbb_TieuSu_NgheNghiep.Text.ToString());
-            string noilamviec = txt_NoiLamViec.Text.ToString();
 
-            TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, manghenghiep, noilamviec);
-
-            TieuSuBUS tieusuBus = new TieuSuBUS();
-
-            if (tieusuBus.Update(tieusu,0))
+            if (matieusu == "")
             {
-                MessageBox.Show("Sửa tiểu sử thành công !");
-                LoadDataGridViewTieuSu();
-                ResetInputTieuSu();
+                MessageBox.Show("Cần có mã tiểu sử để thực hiện chức năng này");
+                return;
             }
-            else
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiểu sử "+matieusu+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Sửa tiểu sử thất bại !");
+                string madinhdanh = txt_MaDinhDanh.Text.ToString();
+                DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
+                DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
+                string choo = txt_TieuSu_SoNha.Text.ToString() + "," + cbb_TieuSu_XaPhuong.Text.ToString() + "," + cbb_TieuSu_QuanHuyen.Text.ToString() + "," + cbb_TieuSu_TinhThanh.Text.ToString();
+                string manghenghiep = nkttBus.GetMaNgheNghiep(cbb_TieuSu_NgheNghiep.Text.ToString());
+                string noilamviec = txt_NoiLamViec.Text.ToString();
+
+                TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, manghenghiep, noilamviec);
+
+                TieuSuBUS tieusuBus = new TieuSuBUS();
+
+                if (tieusuBus.Update(tieusu, 0))
+                {
+                    MessageBox.Show("Sửa tiểu sử thành công !");
+                    LoadDataGridViewTieuSu();
+                    ResetInputTieuSu();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa tiểu sử thất bại !");
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
             }
         }
 

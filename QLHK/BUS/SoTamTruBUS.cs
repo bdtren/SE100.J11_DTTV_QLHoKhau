@@ -43,6 +43,10 @@ namespace BUS
             return SoTamTru.TimKiem(sosotamtru);
         }
 
+        public bool DeleteExperiedSoTamTru()
+        {
+           return SoTamTru.DeleteExperiedSoTamTru();  
+        }
 
 
         //Load Data For Combobox
@@ -128,7 +132,7 @@ namespace BUS
         //Phát sinh mã tự động
         public string Generate7Character(string mabandau)
         {
-            return SoTamTru.Generate7Character(mabandau);
+            return TangMa7KyTu(mabandau);
         }
 
         public string GenerateMaDinhDanh(string gioitinh, string namsinh)
@@ -137,5 +141,25 @@ namespace BUS
         }
 
 
+
+        /// <summary>
+        /// Hàm tạo mã tự động 7 kí tự
+        /// </summary>
+        /// <param name="mabandau"></param>
+        /// <returns></returns>
+        public string TangMa7KyTu(string mabandau)
+        {
+            string str1 = mabandau.Substring(0, 2);
+            string str2 = mabandau.Substring(2);
+            int i_str2 = Int32.Parse(str2) + 1;
+            string str3 = i_str2.ToString();
+            string str4 = null;
+            for (int i = 0; i < (7 - str3.Length); i++)
+            {
+                str4 = str4 + "0";
+            }
+            string chuoikq = str1 + str4 + str3;
+            return chuoikq;
+        }
     }
 }

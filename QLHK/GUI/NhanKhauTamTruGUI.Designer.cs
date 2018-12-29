@@ -45,6 +45,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.cbb_NQ_QuanHuyen = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdNu = new System.Windows.Forms.RadioButton();
+            this.rdNam = new System.Windows.Forms.RadioButton();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -124,9 +127,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.txt_MaTieuSu = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.rdNam = new System.Windows.Forms.RadioButton();
-            this.rdNu = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -347,6 +347,40 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhân khẩu tạm trú";
             // 
+            // rdNu
+            // 
+            this.rdNu.AutoSize = true;
+            this.rdNu.Location = new System.Drawing.Point(138, 48);
+            this.rdNu.Name = "rdNu";
+            this.rdNu.Size = new System.Drawing.Size(39, 17);
+            this.rdNu.TabIndex = 52;
+            this.rdNu.Text = "Nữ";
+            this.rdNu.UseVisualStyleBackColor = true;
+            this.rdNu.CheckedChanged += new System.EventHandler(this.rdNu_CheckedChanged);
+            // 
+            // rdNam
+            // 
+            this.rdNam.AutoSize = true;
+            this.rdNam.Checked = true;
+            this.rdNam.Location = new System.Drawing.Point(85, 47);
+            this.rdNam.Name = "rdNam";
+            this.rdNam.Size = new System.Drawing.Size(47, 17);
+            this.rdNam.TabIndex = 51;
+            this.rdNam.TabStop = true;
+            this.rdNam.Text = "Nam";
+            this.rdNam.UseVisualStyleBackColor = true;
+            this.rdNam.CheckedChanged += new System.EventHandler(this.rdNam_CheckedChanged);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(392, 357);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 50;
+            this.btnReset.Text = "Reset Mã";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // btnTim
             // 
             this.btnTim.Location = new System.Drawing.Point(302, 357);
@@ -489,6 +523,7 @@
             // 
             this.txt_MaNKTamTru.Location = new System.Drawing.Point(363, 263);
             this.txt_MaNKTamTru.Name = "txt_MaNKTamTru";
+            this.txt_MaNKTamTru.ReadOnly = true;
             this.txt_MaNKTamTru.Size = new System.Drawing.Size(241, 20);
             this.txt_MaNKTamTru.TabIndex = 2;
             // 
@@ -812,6 +847,7 @@
             // 
             this.txt_MaTienAn.Location = new System.Drawing.Point(113, 25);
             this.txt_MaTienAn.Name = "txt_MaTienAn";
+            this.txt_MaTienAn.ReadOnly = true;
             this.txt_MaTienAn.Size = new System.Drawing.Size(217, 20);
             this.txt_MaTienAn.TabIndex = 1;
             // 
@@ -1051,6 +1087,7 @@
             // 
             this.txt_MaTieuSu.Location = new System.Drawing.Point(113, 25);
             this.txt_MaTieuSu.Name = "txt_MaTieuSu";
+            this.txt_MaTieuSu.ReadOnly = true;
             this.txt_MaTieuSu.Size = new System.Drawing.Size(217, 20);
             this.txt_MaTieuSu.TabIndex = 1;
             // 
@@ -1063,40 +1100,6 @@
             this.label38.Size = new System.Drawing.Size(56, 13);
             this.label38.TabIndex = 0;
             this.label38.Text = "Mã tiểu sử";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(392, 357);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 50;
-            this.btnReset.Text = "Reset Mã";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // rdNam
-            // 
-            this.rdNam.AutoSize = true;
-            this.rdNam.Checked = true;
-            this.rdNam.Location = new System.Drawing.Point(85, 47);
-            this.rdNam.Name = "rdNam";
-            this.rdNam.Size = new System.Drawing.Size(47, 17);
-            this.rdNam.TabIndex = 51;
-            this.rdNam.TabStop = true;
-            this.rdNam.Text = "Nam";
-            this.rdNam.UseVisualStyleBackColor = true;
-            this.rdNam.CheckedChanged += new System.EventHandler(this.rdNam_CheckedChanged);
-            // 
-            // rdNu
-            // 
-            this.rdNu.AutoSize = true;
-            this.rdNu.Location = new System.Drawing.Point(138, 48);
-            this.rdNu.Name = "rdNu";
-            this.rdNu.Size = new System.Drawing.Size(39, 17);
-            this.rdNu.TabIndex = 52;
-            this.rdNu.Text = "Nữ";
-            this.rdNu.UseVisualStyleBackColor = true;
-            this.rdNu.CheckedChanged += new System.EventHandler(this.rdNu_CheckedChanged);
             // 
             // NhanKhauTamTruGUI
             // 
