@@ -190,6 +190,20 @@ namespace GUI
 
         private void textBox_madinhdanh_TextChanged(object sender, EventArgs e)
         {
+            DataTable source = hssvbus.TimKiemJoinNhanKhau(" AND nhankhau.madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables[0];
+            if (source.Rows.Count > 0)
+            {
+                DataRow data = source.Rows[0];
+                if (data.ItemArray.Length > 0)
+                {
+                    textBox_mssv.Text = data["mssv"].ToString();
+                    textBox_truong.Text = data["truong"].ToString();
+                    textBox_diachithuongtru.Text = data["diachithuongtru"].ToString();
+                    date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
+                    date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
+                }
+            }
+
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
@@ -244,12 +258,12 @@ namespace GUI
                 string dstPath = System.Windows.Forms.Application.StartupPath + "\\Mau HSSV01_" + textBox_mssv.Text + ".doc";
                 CreateWordHelper.CreateWordDocument(srcPath,dstPath, rg);
 
-                MessageBox.Show(this, "Thành công", "Đã tạo thành công file thông tin với tên: " + dstPath,
+                MessageBox.Show(this, "Đã tạo thành công file thông tin với tên: " + dstPath, "Thành công",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(this, "Không thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "lỗi", "Không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
