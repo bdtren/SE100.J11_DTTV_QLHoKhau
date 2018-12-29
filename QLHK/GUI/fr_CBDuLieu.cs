@@ -139,7 +139,7 @@ namespace GUI
                 case "nhankhautamtru":
                     try
                     {
-                        dataGridView1.DataSource = nktamtrubus.GetAll().Tables["nhankhautamtrujoin"];
+                        dataGridView1.DataSource = nktamtrubus.GetAll().Tables["nhankhautamtru"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -538,7 +538,51 @@ namespace GUI
                     }
                     break;
                 case "nhankhautamtru":
+                    try
+                    {
+                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
+                        {
+                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
+                            if (Task == "Delete")
+                            {
+                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    int rowIndex = e.RowIndex;
+                                    nktamtrubus.Delete(rowIndex);
+                                }
+                            }
+                            else if (Task == "Insert")
+                            {
+                                int row = dataGridView1.Rows.Count - 2;
+                                string manhankhautamtru = dataGridView1.Rows[row].Cells["manhankhautamtru"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
+                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                nhankhaubus.Add_Table(nktamtru);
+                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
 
+
+                            }
+                            else if (Task == "Update")
+                            {
+                                int row = e.RowIndex;
+                                string manhankhautamtru = dataGridView1.Rows[row].Cells["manhankhautamtru"].Value.ToString();
+                                string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
+                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                nhankhaubus.Add_Table(nktamtru);
+                                nhankhaubus.Update(nktamtru, row);
+                                LoadData();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "nhankhautamvang":
 
