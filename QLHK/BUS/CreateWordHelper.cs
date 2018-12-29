@@ -14,21 +14,18 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 ////
+using DTO;
 
 namespace BUS
 {
-    class CreateWordHelper
+    public class CreateWordHelper
     {
-
-        string pathImage = null;
-
-
         /////
         ///Các hàm tạo và chỉnh sửa file word
         /////
 
         //Methode Find and Replace:
-        private void FindAndReplace(Microsoft.Office.Interop.Word.Application wordApp, object findText, object replaceWithText)
+        public static void FindAndReplace(Microsoft.Office.Interop.Word.Application wordApp, object findText, object replaceWithText)
         {
             object matchCase = true;
             object matchWholeWord = true;
@@ -56,15 +53,12 @@ namespace BUS
                         ref matchControl);
         }
 
-        //Methode Create the document :
-        private void CreateWordDocument(object filename, object savaAs, object image)
+        public static void insertPicture(string pathImage, object filename, object saveAs)
         {
             List<int> processesbeforegen = getRunningProcesses();
             object missing = Missing.Value;
             string tempPath = null;
-
             Word.Application wordApp = new Word.Application();
-
             Word.Document aDoc = null;
 
             if (File.Exists((string)filename))
@@ -83,14 +77,6 @@ namespace BUS
                                             ref missing, ref missing, ref missing, ref missing);
 
                 aDoc.Activate();
-
-                //Find and replace:
-                this.FindAndReplace(wordApp, "$$name$$", tFirstname.Text);
-                this.FindAndReplace(wordApp, "$$Lastname$$", tLastname.Text);
-                this.FindAndReplace(wordApp, "$$tel$$", tPhone.Text);
-                this.FindAndReplace(wordApp, "$$Company$$", tCompany.Text);
-                this.FindAndReplace(wordApp, "$$Date$$", DateTime.Now.ToShortDateString());
-
                 //insert the picture:
                 Image img = resizeImage(pathImage, new Size(200, 90));
                 tempPath = System.Windows.Forms.Application.StartupPath + "\\Images\\~Temp\\temp.jpg";
@@ -100,6 +86,65 @@ namespace BUS
                 Object oLinkToFile = false;  //default
                 Object oSaveWithDocument = true;//default
                 aDoc.InlineShapes.AddPicture(tempPath, ref oLinkToFile, ref oSaveWithDocument, ref oMissed);
+            }
+            else
+            {
+                return;
+            }
+
+            //Save as: filename
+            aDoc.SaveAs2(ref saveAs, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing);
+
+            //Close Document:
+            aDoc.Close(ref missing, ref missing, ref missing);
+            File.Delete(tempPath);
+            wordApp.Quit();
+            //MessageBox.Show("File created.");
+            List<int> processesaftergen = getRunningProcesses();
+            killProcesses(processesbeforegen, processesaftergen);
+        }
+
+        //Methode Create the document :
+        public static void CreateWordDocument(object filename, object saveAs, List<ReplacementGroup> replacementGroups)
+        {
+            List<int> processesbeforegen = getRunningProcesses();
+            object missing = Missing.Value;
+            //string tempPath = null;
+
+            Word.Application wordApp = new Word.Application();
+
+            Word.Document aDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                DateTime today = DateTime.Now;
+
+                object readOnly = false; //default
+                object isVisible = false;
+                //tempPath = System.Windows.Forms.Application.StartupPath + "\\Temp\\~Temp\\temp.jpg";
+
+                wordApp.Visible = false;
+
+                aDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                                            ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing, ref missing);
+
+                aDoc.Activate();
+
+                //Find and replace:
+                //FindAndReplace(wordApp, "$$Company$$", tCompany.Text);
+                //FindAndReplace(wordApp, "$$Date$$", DateTime.Now.ToShortDateString());
+                foreach(var item in replacementGroups)
+                {
+                    FindAndReplace(wordApp, item.text, item.replacement);
+                }
+
 
                 #region Print Document :
                 /*object copies = "1";
@@ -132,15 +177,16 @@ namespace BUS
             }
 
             //Save as: filename
-            aDoc.SaveAs2(ref savaAs, ref missing, ref missing, ref missing,
+            aDoc.SaveAs2(ref saveAs, ref missing, ref missing, ref missing,
                     ref missing, ref missing, ref missing,
                     ref missing, ref missing, ref missing,
                     ref missing, ref missing, ref missing,
                     ref missing, ref missing, ref missing);
 
             //Close Document:
-            //aDoc.Close(ref missing, ref missing, ref missing);
-            File.Delete(tempPath);
+            aDoc.Close(ref missing, ref missing, ref missing);
+            wordApp.Quit();
+            //File.Delete(tempPath);
             //MessageBox.Show("File created.");
             List<int> processesaftergen = getRunningProcesses();
             killProcesses(processesbeforegen, processesaftergen);
@@ -178,7 +224,7 @@ namespace BUS
             return (Image)b;
         }
 
-        public List<int> getRunningProcesses()
+        public static List<int> getRunningProcesses()
         {
             List<int> ProcessIDs = new List<int>();
             //here we're going to get a list of all running processes on
@@ -196,7 +242,7 @@ namespace BUS
         }
 
 
-        private void killProcesses(List<int> processesbeforegen, List<int> processesaftergen)
+        private static void killProcesses(List<int> processesbeforegen, List<int> processesaftergen)
         {
             foreach (int pidafter in processesaftergen)
             {

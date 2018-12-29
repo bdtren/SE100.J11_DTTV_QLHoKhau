@@ -43,6 +43,32 @@ namespace DAO
             return null;
         }
 
+        public DataSet getAllJoinNhanKhau()
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM hocsinhsinhvien, nhankhau " +
+                    "where nhankhau.madinhdanh=hocsinhsinhvien.madinhdanh", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "hocsinhsinhvien");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
         public override bool insert_table(HocSinhSinhVienDTO hssv)
         {
             try
@@ -163,6 +189,58 @@ namespace DAO
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "hocsinhsinhvien");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        public DataSet TimKiemJoinNhanKhau(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM hocsinhsinhvien, nhankhau " +
+                    "where nhankhau.madinhdanh=hocsinhsinhvien.madinhdanh " + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset);
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        public DataSet TimKiemJoinNhanKhauCuTru(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM hocsinhsinhvien, nhankhau " +
+                    "where nhankhau.madinhdanh=hocsinhsinhvien.madinhdanh " + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset);
                 return dataset;
             }
             catch (Exception e)

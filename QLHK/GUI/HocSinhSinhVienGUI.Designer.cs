@@ -48,6 +48,7 @@
             this.button_xoa = new System.Windows.Forms.Button();
             this.button_timkiem = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
+            this.btnXuatFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +114,7 @@
             this.textBox_diachithuongtru.Name = "textBox_diachithuongtru";
             this.textBox_diachithuongtru.Size = new System.Drawing.Size(244, 20);
             this.textBox_diachithuongtru.TabIndex = 10;
+            this.textBox_diachithuongtru.Enter += new System.EventHandler(this.textBox_diachithuongtru_Enter);
             // 
             // textBox_truong
             // 
@@ -239,11 +241,22 @@
             this.button_sua.UseVisualStyleBackColor = true;
             this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
+            // btnXuatFile
+            // 
+            this.btnXuatFile.Location = new System.Drawing.Point(492, 232);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatFile.TabIndex = 0;
+            this.btnXuatFile.Text = "Xuất file";
+            this.btnXuatFile.UseVisualStyleBackColor = true;
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
+            // 
             // HocSinhSinhVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 418);
+            this.Controls.Add(this.btnXuatFile);
             this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_timkiem);
             this.Controls.Add(this.button_xoa);
@@ -281,5 +294,6 @@
         private System.Windows.Forms.Button button_sua;
         private System.Windows.Forms.DateTimePicker date_batdau;
         private System.Windows.Forms.DateTimePicker date_ketthuc;
+        private System.Windows.Forms.Button btnXuatFile;
     }
 }

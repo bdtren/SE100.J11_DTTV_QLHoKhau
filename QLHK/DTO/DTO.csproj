@@ -49,6 +49,7 @@
     <Compile Include="HocSinhSinhVienDTO.cs" />
     <Compile Include="NgheNghiepDTO.cs" />
     <Compile Include="QuanHuyenDTO.cs" />
+    <Compile Include="ReplacementGroup.cs" />
     <Compile Include="SoHoKhauDTO.cs" />
     <Compile Include="SoTamTruDTO.cs" />
     <Compile Include="TienAnTienSuDTO.cs" />
