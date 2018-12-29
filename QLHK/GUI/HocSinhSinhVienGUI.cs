@@ -68,7 +68,7 @@ namespace GUI
             if (query != null) query = " where" + query;
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = hssvbus.TimKiem(query).Tables["hocsinhsinhvien"];
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='"+ madinhdanh + "'").Tables["tienantiensu"];
             textBox_mssv.Clear();
             textBox_madinhdanh.Clear();
             textBox_truong.Clear();
@@ -102,7 +102,7 @@ namespace GUI
             textBox_vipham.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + madinhdanh + "'").Tables["tienantiensu"];
         }
 
         private void button_xoa_Click(object sender, EventArgs e)
@@ -117,14 +117,15 @@ namespace GUI
             {
                 MessageBox.Show("Xoa khong thanh cong");
             }
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
             textBox_mssv.Clear();
             textBox_madinhdanh.Clear();
             textBox_truong.Clear();
             textBox_diachithuongtru.Clear();
             textBox_vipham.Clear();
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -182,9 +183,9 @@ namespace GUI
             textBox_truong.Clear();
             textBox_diachithuongtru.Clear();
             textBox_vipham.Clear();
-            //dataGridView1.DataSource = null;
-            //dataGridView1.Rows.Clear();
-            //dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + madinhdanh + "'").Tables["tienantiensu"];
         }
 
         private void textBox_madinhdanh_TextChanged(object sender, EventArgs e)
@@ -209,6 +210,14 @@ namespace GUI
             DataTable source = hssvbus.TimKiemJoinNhanKhau("AND mssv='" + textBox_mssv.Text + "'").Tables[0];
 
             DataRow data = source.Rows[0];
+            List<string> listViPham = new List<string>();
+            foreach(DataGridViewRow item in dataGridView1.Rows)
+            {
+                if(item.Cells["toidanh"].Value!=null)
+                    listViPham.Add(item.Cells["toidanh"].Value.ToString());
+            }
+            string vipham = string.Join(", ",listViPham.ToArray());
+
             if (data.ItemArray.Length > 0)
             {
                 rg.Add(new ReplacementGroup("<ten>", data["hoten"].ToString()));
@@ -217,9 +226,18 @@ namespace GUI
                 rg.Add(new ReplacementGroup("<truong>", data["truong"].ToString()));
                 rg.Add(new ReplacementGroup("<maDinhDanh>", data["madinhdanh"].ToString()));
                 rg.Add(new ReplacementGroup("<ngayCap>", data["ngaycap"].ToString().Split(' ')[0]));
+                rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
+                rg.Add(new ReplacementGroup("<diaChiTamTru>", ""));
+
                 rg.Add(new ReplacementGroup("<tuNgay>", data["thoigianbatdautamtruthuongtru"].ToString().Split(' ')[0]));
                 rg.Add(new ReplacementGroup("<denNgay>", data["thoigianketthuctamtruthuongtru"].ToString().Split(' ')[0]));
 
+                rg.Add(new ReplacementGroup("<viPham>", vipham==""?"Không vi phạm":vipham));
+
+                DateTime today = DateTime.Now;
+                rg.Add(new ReplacementGroup("<ngay>", today.Day.ToString()));
+                rg.Add(new ReplacementGroup("<thang>", today.Month.ToString()));
+                rg.Add(new ReplacementGroup("<nam>", today.Year.ToString()));
 
 
                 string srcPath = System.Windows.Forms.Application.StartupPath + "\\Mau HSSV01.doc";
@@ -233,8 +251,6 @@ namespace GUI
             {
                 MessageBox.Show(this, "Không thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
            
         }
 

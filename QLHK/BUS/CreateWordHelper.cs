@@ -257,8 +257,11 @@ namespace BUS
 
                 if (processfound == false)
                 {
-                    Process clsProcess = Process.GetProcessById(pidafter);
-                    clsProcess.Kill();
+                    try
+                    {
+                        Process clsProcess = Process.GetProcessById(pidafter);
+                        clsProcess.Kill();
+                    }catch (Exception e) {  }
                 }
             }
         }
