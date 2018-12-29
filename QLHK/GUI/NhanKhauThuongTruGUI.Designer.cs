@@ -139,7 +139,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(6, -118);
+            this.groupBox1.Location = new System.Drawing.Point(6, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(362, 338);
             this.groupBox1.TabIndex = 0;
@@ -231,6 +231,7 @@
             this.tbmadinhdanh.Name = "tbmadinhdanh";
             this.tbmadinhdanh.Size = new System.Drawing.Size(178, 20);
             this.tbmadinhdanh.TabIndex = 1;
+            this.tbmadinhdanh.Enter += new System.EventHandler(this.tbmadinhdanh_Enter);
             // 
             // label10
             // 
@@ -375,7 +376,7 @@
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(700, 227);
+            this.button_sua.Location = new System.Drawing.Point(700, 349);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(72, 24);
             this.button_sua.TabIndex = 26;
@@ -385,7 +386,7 @@
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(778, 227);
+            this.button_xoa.Location = new System.Drawing.Point(778, 349);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(72, 24);
             this.button_xoa.TabIndex = 27;
@@ -395,7 +396,7 @@
             // 
             // button_them
             // 
-            this.button_them.Location = new System.Drawing.Point(622, 227);
+            this.button_them.Location = new System.Drawing.Point(622, 349);
             this.button_them.Name = "button_them";
             this.button_them.Size = new System.Drawing.Size(72, 24);
             this.button_them.TabIndex = 25;
@@ -426,7 +427,7 @@
             this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Location = new System.Drawing.Point(385, -117);
+            this.groupBox3.Location = new System.Drawing.Point(385, 9);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(465, 338);
             this.groupBox3.TabIndex = 15;
@@ -597,7 +598,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(821, 273);
+            this.btnOk.Location = new System.Drawing.Point(821, 395);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(87, 38);
             this.btnOk.TabIndex = 30;
@@ -607,7 +608,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(821, 317);
+            this.btnHuy.Location = new System.Drawing.Point(821, 439);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(87, 38);
             this.btnHuy.TabIndex = 31;

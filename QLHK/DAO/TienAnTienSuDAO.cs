@@ -63,7 +63,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into tieusu values(@matienantiensu, @madinhdanh, @banan, @toidanh, @hinhphat, @ngayphat, @ghichu)";
+                string sql = "insert into tienantiensu values(@matienantiensu, @madinhdanh, @banan, @toidanh, @hinhphat, @ngayphat, @ghichu)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matienantiensu", data.MaTienAnTienSu);
                 cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);

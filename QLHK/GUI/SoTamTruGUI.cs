@@ -23,7 +23,7 @@ namespace GUI
         public string GenerateSoSoTamTru()
         {
             string last_sosotamtru= sotamtruBus.getLastID_SoSoTamTru();
-            if (last_sosotamtru == "") last_sosotamtru = "310000000";
+            if (last_sosotamtru == "") last_sosotamtru = "TA0000000";
             return sotamtruBus.Generate7Character(last_sosotamtru);
         }
 

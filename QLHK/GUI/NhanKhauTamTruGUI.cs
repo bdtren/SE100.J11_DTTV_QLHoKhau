@@ -60,7 +60,7 @@ namespace GUI
         {
             sotamtru = new SoTamTruBUS();
             string last_ID = sotamtru.getLastID_MaNhanKhauTamTru();
-            if (last_ID == "") last_ID = "TT0000000";
+            if (last_ID == "") last_ID = "TA0000000";
             return sotamtru.Generate7Character(last_ID);
         }
 
