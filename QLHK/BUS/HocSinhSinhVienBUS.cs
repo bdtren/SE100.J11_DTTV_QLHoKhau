@@ -16,6 +16,10 @@ namespace BUS
         {
             return objhssv.getAll();
         }
+        public DataSet GetAllJoinNhanKhau()
+        {
+            return objhssv.getAllJoinNhanKhau();
+        }
         public override bool Add(HocSinhSinhVienDTO hssv)
         {
             return objhssv.insert(hssv);
@@ -36,6 +40,10 @@ namespace BUS
         public DataSet TimKiem(string query)
         {
             return objhssv.TimKiem(query);
+        }
+        public DataSet TimKiemJoinNhanKhau(string query)
+        {
+            return objhssv.TimKiemJoinNhanKhau(query);
         }
         public override bool Add_Table(HocSinhSinhVienDTO hssv)
         {

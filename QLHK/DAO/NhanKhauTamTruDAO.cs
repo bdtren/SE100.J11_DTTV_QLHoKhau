@@ -13,8 +13,8 @@ namespace DAO
     {
         public NhanKhauTamTruDAO() : base() { }
 
-
-        public override DataSet getAll()
+        //Lấy tất cả nhân khẩu tạm trú nằm trong 1 sổ tạm trú
+        public DataSet getAllNhanKhauTT(string sosotamtru)
         {
             try
             {
@@ -23,10 +23,10 @@ namespace DAO
                     conn.Open();
                 }
                 dataset = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh";
+                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and sosotamtru='"+sosotamtru+"'";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
-                adapter.Fill(dataset);
+                adapter.Fill(dataset,"nhankhautamtrujoin");
                 return dataset;
             }
             catch (Exception e)
@@ -40,6 +40,32 @@ namespace DAO
             return null;
         }
 
+
+        public override DataSet getAll()
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                dataset = new DataSet();
+                string sql = "SELECT *, 'Delete' as 'Change' FROM nhankhautamtru";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dataset, "nhankhautamtru");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
 
 
         public override bool insert(NhanKhauTamTruDTO nktt)
@@ -85,6 +111,8 @@ namespace DAO
             return true;
 
         }
+
+
         public bool XoaNKTT(string madinhdanh)
         {
             try
@@ -93,7 +121,9 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "delete from nhankhautamtru where madinhdanh=@madinhdanh; delete from nhankhau where madinhdanh=@madinhdanh;";
+                string sql = "delete from nhankhautamtru where madinhdanh=@madinhdanh; delete from nhankhau where madinhdanh=@madinhdanh;" +
+                    "delete from tienantiensu where madinhdanh=@madinhdanh;" +
+                    "delete from tieusu where madinhdanh=@madinhdanh;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@madinhdanh", madinhdanh);
                 cmd.ExecuteNonQuery();
@@ -125,7 +155,7 @@ namespace DAO
 
         }
 
-        public override bool update(NhanKhauTamTruDTO nktt, int r)
+        public bool updateNhanKhauTamTru(NhanKhauTamTruDTO nktt, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -168,6 +198,38 @@ namespace DAO
             }
             return true;
         }
+
+
+        public override bool update(NhanKhauTamTruDTO nktt, int r)
+        {
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            try
+            {
+
+                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
+                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
+                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+
+
         public DataSet TimKiem(string madinhdanh)
         {
             try
@@ -293,9 +355,176 @@ namespace DAO
             return xaphuong_list;
         }
 
+        //Tìm mã nghề nghiêp
+        public string FindMaNgheNghiep(string tennghenghiep)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string ID;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT manghenghiep FROM nghenghiep WHERE tennghenghiep='" + tennghenghiep + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
 
+        //Find tên nghề nghiệp
+        public string FindTenNgheNghiep(string manghenghiep)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string ID;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT tennghenghiep FROM nghenghiep WHERE manghenghiep='" + manghenghiep + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
+
+        //
+        //XỬ LÝ VỚI TIỀN ÁN TIỀN SỰ
+        //
+        //Lấy tiền án tiền sự với mã định danh
+        public DataSet getTienAnTienSu(string madinhdanh)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT MaTienAnTienSu,BanAn,ToiDanh,HinhPhat,NgayPhat,GhiChu  FROM tienantiensu WHERE madinhdanh='"+madinhdanh+"'", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "tienantiensu");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        //Xóa tiền án với mã tiền án
+        public bool DeleteTienAn(string matienan)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sql = "delete from tienantiensu where matienantiensu=@matienan";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@matienan", matienan);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+
+
+        //
+        //XỬ LÝ VỚI TIỂU SỬ
+        //
+
+            //Lấy tiểu sử với mã định danh
+        public DataSet getTieuSu(string madinhdanh)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT MaTieuSu,ThoiGianBatDau,ThoiGianKetThuc,ChoO,MaNgheNghiep,NoiLamViec  FROM tieusu WHERE madinhdanh='" + madinhdanh + "'", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "tienantiensu");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        //Xóa tiểu sử với mã tiểu sử
+        public bool DeleteTieuSu(string matieusu)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sql = "delete from tieusu where matieusu=@matieusu";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@matieusu", matieusu);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
 
 
     }
-    
+
 }

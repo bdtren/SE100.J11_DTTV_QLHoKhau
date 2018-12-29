@@ -15,7 +15,7 @@ namespace BUS
         SoTamTruDAO SoTamTru = new SoTamTruDAO();
         public override DataSet GetAll()
         {
-            return SoTamTru.getAll();
+            return SoTamTru.getAllSoTamTru();
         }
         public override bool Add(SoTamTruDTO sotamtru)
         {
@@ -43,6 +43,10 @@ namespace BUS
             return SoTamTru.TimKiem(sosotamtru);
         }
 
+        public bool DeleteExperiedSoTamTru()
+        {
+           return SoTamTru.DeleteExperiedSoTamTru();  
+        }
 
 
         //Load Data For Combobox
@@ -88,5 +92,74 @@ namespace BUS
             return result;
         }
 
+
+        //Hàm Phát sinh mã tự động
+        //Lấy số sổ tạm trú cuối cùng từ bảng sổ tạm trú
+        public string getLastID_SoSoTamTru()
+        {
+            return SoTamTru.getLastID_SoSoTamTru();
+        }
+
+
+        //Lấy mã nhân khẩu tạm trú cuối cùng từ bảng nhân khẩu tạm trú
+        public string getLastID_MaNhanKhauTamTru()
+        {
+            return SoTamTru.getLastID_MaNhanKhauTamTru();
+        }
+
+
+        //Lấy mã tiểu sử cuối cùng từ bảng tiểu sử
+        public string getLastID_MaTieuSu()
+        {
+            return SoTamTru.getLastID_MaTieuSu();
+        }
+
+
+        //Lấy mã tiền án tiền sự cuối cùng từ bảng tiền án tiền sự
+        public string getLastID_MaTienAnTienSu()
+        {
+            return SoTamTru.getLastID_MaTienAnTienSu();
+        }
+
+
+        //Lấy mã định danh cuối cùng từ bảng nhân khẩu
+        public string getLastID_MaDinhDanh()
+        {
+            return SoTamTru.getLastID_MaDinhDanh();
+        }
+
+
+        //Phát sinh mã tự động
+        public string Generate7Character(string mabandau)
+        {
+            return TangMa7KyTu(mabandau);
+        }
+
+        public string GenerateMaDinhDanh(string gioitinh, string namsinh)
+        {
+            return SoTamTru.TangMa12Kytu(gioitinh, namsinh);
+        }
+
+
+
+        /// <summary>
+        /// Hàm tạo mã tự động 7 kí tự
+        /// </summary>
+        /// <param name="mabandau"></param>
+        /// <returns></returns>
+        public string TangMa7KyTu(string mabandau)
+        {
+            string str1 = mabandau.Substring(0, 2);
+            string str2 = mabandau.Substring(2);
+            int i_str2 = Int32.Parse(str2) + 1;
+            string str3 = i_str2.ToString();
+            string str4 = null;
+            for (int i = 0; i < (7 - str3.Length); i++)
+            {
+                str4 = str4 + "0";
+            }
+            string chuoikq = str1 + str4 + str3;
+            return chuoikq;
+        }
     }
 }

@@ -48,16 +48,18 @@
             this.button_xoa = new System.Windows.Forms.Button();
             this.button_timkiem = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
+            this.btnXuatFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(801, 200);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 140);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -78,7 +80,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(-1, 206);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(474, 243);
             this.groupBox1.TabIndex = 1;
@@ -112,6 +114,7 @@
             this.textBox_diachithuongtru.Name = "textBox_diachithuongtru";
             this.textBox_diachithuongtru.Size = new System.Drawing.Size(244, 20);
             this.textBox_diachithuongtru.TabIndex = 10;
+            this.textBox_diachithuongtru.Enter += new System.EventHandler(this.textBox_diachithuongtru_Enter);
             // 
             // textBox_truong
             // 
@@ -126,6 +129,7 @@
             this.textBox_madinhdanh.Name = "textBox_madinhdanh";
             this.textBox_madinhdanh.Size = new System.Drawing.Size(244, 20);
             this.textBox_madinhdanh.TabIndex = 8;
+            this.textBox_madinhdanh.TextChanged += new System.EventHandler(this.textBox_madinhdanh_TextChanged);
             // 
             // textBox_mssv
             // 
@@ -199,7 +203,7 @@
             // 
             // button_Them
             // 
-            this.button_Them.Location = new System.Drawing.Point(492, 233);
+            this.button_Them.Location = new System.Drawing.Point(492, 16);
             this.button_Them.Name = "button_Them";
             this.button_Them.Size = new System.Drawing.Size(140, 59);
             this.button_Them.TabIndex = 2;
@@ -209,7 +213,7 @@
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(660, 233);
+            this.button_xoa.Location = new System.Drawing.Point(648, 16);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(140, 59);
             this.button_xoa.TabIndex = 3;
@@ -219,7 +223,7 @@
             // 
             // button_timkiem
             // 
-            this.button_timkiem.Location = new System.Drawing.Point(492, 345);
+            this.button_timkiem.Location = new System.Drawing.Point(492, 100);
             this.button_timkiem.Name = "button_timkiem";
             this.button_timkiem.Size = new System.Drawing.Size(140, 59);
             this.button_timkiem.TabIndex = 4;
@@ -229,7 +233,7 @@
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(660, 345);
+            this.button_sua.Location = new System.Drawing.Point(648, 100);
             this.button_sua.Name = "button_sua";
             this.button_sua.Size = new System.Drawing.Size(140, 59);
             this.button_sua.TabIndex = 5;
@@ -237,11 +241,22 @@
             this.button_sua.UseVisualStyleBackColor = true;
             this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
+            // btnXuatFile
+            // 
+            this.btnXuatFile.Location = new System.Drawing.Point(492, 232);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatFile.TabIndex = 0;
+            this.btnXuatFile.Text = "Xuất file";
+            this.btnXuatFile.UseVisualStyleBackColor = true;
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
+            // 
             // HocSinhSinhVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 418);
+            this.Controls.Add(this.btnXuatFile);
             this.Controls.Add(this.button_sua);
             this.Controls.Add(this.button_timkiem);
             this.Controls.Add(this.button_xoa);
@@ -279,5 +294,6 @@
         private System.Windows.Forms.Button button_sua;
         private System.Windows.Forms.DateTimePicker date_batdau;
         private System.Windows.Forms.DateTimePicker date_ketthuc;
+        private System.Windows.Forms.Button btnXuatFile;
     }
 }

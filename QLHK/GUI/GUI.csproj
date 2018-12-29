@@ -105,7 +105,9 @@
     <Compile Include="NhanKhauTamTruGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanKhauTamTruGUI.Designer.cs" />
+    <Compile Include="NhanKhauTamTruGUI.Designer.cs">
+      <DependentUpon>NhanKhauTamTruGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanKhauThuongTruGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,7 +125,9 @@
     <Compile Include="SoTamTruGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SoTamTruGUI.Designer.cs" />
+    <Compile Include="SoTamTruGUI.Designer.cs">
+      <DependentUpon>SoTamTruGUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChonDonViHanhChinhGUI.resx">
       <DependentUpon>ChonDonViHanhChinhGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,7 +143,9 @@
     <EmbeddedResource Include="Form_NhanKhau.resx">
       <DependentUpon>Form_NhanKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanKhauTamTruGUI.resx" />
+    <EmbeddedResource Include="NhanKhauTamTruGUI.resx">
+      <DependentUpon>NhanKhauTamTruGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanKhauThuongTruGUI.resx">
       <DependentUpon>NhanKhauThuongTruGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,7 +163,9 @@
     <EmbeddedResource Include="SoHoKhauGUI.resx">
       <DependentUpon>SoHoKhauGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SoTamTruGUI.resx" />
+    <EmbeddedResource Include="SoTamTruGUI.resx">
+      <DependentUpon>SoTamTruGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,6 +216,35 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -17,8 +17,13 @@ namespace BUS
         {
             return objnktt.getAll();
         }
+        public DataSet GetAllNhanKhauTamTru(string sosotamtru)
+        {
+            return objnktt.getAllNhanKhauTT(sosotamtru);
+        }
         public override bool Add(NhanKhauTamTruDTO nhankhautamtru)
         {
+
             return objnktt.insert(nhankhautamtru);
         }
 
@@ -32,7 +37,7 @@ namespace BUS
         }
         public override bool Update(NhanKhauTamTruDTO nhankhautamtru, int r)
         {
-            return objnktt.update(nhankhautamtru, r);
+            return objnktt.updateNhanKhauTamTru(nhankhautamtru, r);
         }
 
         public DataSet TimKiem(string madinhdanh)
@@ -88,5 +93,61 @@ namespace BUS
         }
 
 
+        //Get Nghề nghiệp
+        public BindingSource GetListNgheNghiep()
+        {
+            NgheNghiepBUS busNN = new NgheNghiepBUS();
+            DataSet dtNgheNghiep = busNN.GetAll();
+            List<string> listNghenghiep = new List<string>();
+
+            //Lấy danh sách nghề nghiệp dưới dạng list string từ dataset
+            listNghenghiep = dtNgheNghiep.Tables[0].AsEnumerable()
+                      .Select(r => r.Field<string>("tennghenghiep"))
+                      .ToList();
+
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = listNghenghiep;
+            return bindingSource;
+        }
+
+        //Lấy mã nghề nghiệp từ tên nghề nghiệp
+        public string GetMaNgheNghiep(string tennghenghiep)
+        {
+            return objnktt.FindMaNgheNghiep(tennghenghiep);
+        }
+
+        //Lấy tên nghề từ mã nghề
+        public string GetTenNgheNghiep(string manghenghiep)
+        {
+            return objnktt.FindTenNgheNghiep(manghenghiep);
+        }
+
+        //
+        //XỬ LÍ VỚI TIỀN ÁN TIỀN SỰ
+        //
+        public DataSet GetTienAnTienSu(string madinhdanh)
+        {
+            return objnktt.getTienAnTienSu(madinhdanh);
+        }
+
+        public bool DeleteTienAnTienSu(string matienan)
+        {
+            return objnktt.DeleteTienAn(matienan);
+        }
+
+
+        //
+        //XỬ LÍ VỚI TIỂU SỬ
+        //
+        public DataSet GetTieuSu(string madinhdanh)
+        {
+            return objnktt.getTieuSu(madinhdanh);
+        }
+
+
+        public bool DeleteTieuSu(string matieusu)
+        {
+            return objnktt.DeleteTieuSu(matieusu);
+        }
     }
 }

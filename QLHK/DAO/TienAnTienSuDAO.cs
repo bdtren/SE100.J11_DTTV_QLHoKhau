@@ -63,7 +63,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into tieusu values(@matienantiensu, @madinhdanh, @banan, @toidanh, @hinhphat, @ngayphat, @ghichu)";
+                string sql = "insert into tienantiensu values(@matienantiensu, @madinhdanh, @banan, @toidanh, @hinhphat, @ngayphat, @ghichu)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matienantiensu", data.MaTienAnTienSu);
                 cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
@@ -149,6 +149,35 @@ namespace DAO
                 conn.Close();
             }
             return true;
+        }
+
+        public DataSet TimKiem(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!String.IsNullOrEmpty(query)) query = " where " + query;
+                sqlda = new MySqlDataAdapter("SELECT * FROM tienantiensu" + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "tienantiensu");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
         }
     }
 }

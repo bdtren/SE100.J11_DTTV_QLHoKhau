@@ -21,13 +21,15 @@ namespace GUI
         TienAnTienSuBUS tienAn;
         TienAnTienSuDTO tienanDTO;
         public NhanKhauThuongTruDTO nkttDTO;
-
+        SoHoKhauBUS shk;
         public NhanKhauThuongTruGUI()
         {
             InitializeComponent();
             nktt = new NhanKhauThuongTruBUS();
             tieuSu = new TieuSuBUS();
             tienAn = new TienAnTienSuBUS();
+            shk = new SoHoKhauBUS();
+
             //dGVTieuSu.DataSource = null;
             //dGVTieuSu.Rows.Clear();
             //dGVTieuSu.DataSource = nktt.GetAll().Tables["nhankhauthuongtru"];
@@ -39,6 +41,18 @@ namespace GUI
         private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void themMaDinhDanhBang()
+        {
+            for (int i = 0; i < dGVTieuSu.RowCount; i++)
+                dGVTieuSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+            for (int i = 0; i < dGVTienAnTienSu.RowCount; i++)
+            {
+                dGVTienAnTienSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+
+            }
         }
 
         private void themMaDinhDanhBang()
@@ -341,6 +355,12 @@ namespace GUI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void tbmadinhdanh_Enter(object sender, EventArgs e)
+        {
+            string madinhdanh = shk.TaoMa12KyTu(tbgioitinh.Text, dtpNgaySinh.Value.Year.ToString());
+            MessageBox.Show(madinhdanh);
         }
     }
 }
