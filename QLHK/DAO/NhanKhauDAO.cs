@@ -153,5 +153,66 @@ namespace DAO
             }
             return true;
         }
+        public  DataSet TimKiem(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhau" + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
+                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
+                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "nhankhau");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        public DataSet TimKiemTheoCuTru(string madinhdanh)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhau, nhankhauthuongtru " +
+                    "where nhankhau.madinhdanh=nhankhauthuongtru.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "thuongtru");
+
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM nhankhau, nhankhautamtru " +
+                    "where nhankhau.madinhdanh=nhankhautamtru.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                sqlda.Fill(dataset, "tamtru");
+
+
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
     }
 }

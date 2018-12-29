@@ -43,12 +43,5 @@ namespace BUS
             return obj.TimKiem(query);
         }
 
-        public string TaoMa12KyTu(string gioitinh, string namsinh)
-        {
-            return obj.TangMa12Kytu(gioitinh, namsinh);
-        }
-
-
-
     }
 }

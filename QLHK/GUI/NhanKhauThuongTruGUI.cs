@@ -38,6 +38,18 @@ namespace GUI
             Loadtienantiensu();
             //themMaDinhDanhBang(); hàm này để chạy 2 cái datafridview bị lỗi.... ô sửa lại đi
         }
+        public NhanKhauThuongTruGUI(string sosohokhau)
+        {
+            InitializeComponent();
+            nktt = new NhanKhauThuongTruBUS();
+            tieuSu = new TieuSuBUS();
+            tienAn = new TienAnTienSuBUS();
+            shk = new SoHoKhauBUS();
+            tbSoSHK.Text = sosohokhau;
+            tbSoSHK.Enabled = false;
+            LoadtieuSu();
+            Loadtienantiensu();
+        }
         private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
         {
 
@@ -55,20 +67,10 @@ namespace GUI
             }
         }
 
-        private void themMaDinhDanhBang()
-        {
-            for (int i = 0; i < dGVTieuSu.RowCount; i++)
-                dGVTieuSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
-            for (int i = 0; i < dGVTienAnTienSu.RowCount; i++)
-            {
-                dGVTienAnTienSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
-
-            }
-        }
-
         private void button_them_Click(object sender, EventArgs e)
         {
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
                 tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
                 tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
@@ -87,7 +89,8 @@ namespace GUI
         }
         private void button_sua_Click(object sender, EventArgs e)
         {
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
                 tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
                 tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
@@ -359,8 +362,18 @@ namespace GUI
 
         private void tbmadinhdanh_Enter(object sender, EventArgs e)
         {
-            string madinhdanh = shk.TaoMa12KyTu(tbgioitinh.Text, dtpNgaySinh.Value.Year.ToString());
-            MessageBox.Show(madinhdanh);
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            try
+            {
+                tbmadinhdanh.Text = TrinhTaoMa.TangMa12Kytu(gioiTinh, dtpNgaySinh.Value.Year.ToString());
+                tbmadinhdanh.SelectAll();
+                //tbmadinhdanh.SelectionStart = 0;
+                //tbmadinhdanh.SelectionLength = tbmadinhdanh.Text.Length;
+
+            } catch(Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

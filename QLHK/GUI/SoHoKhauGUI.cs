@@ -25,6 +25,7 @@ namespace GUI
             var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
             var source = new BindingSource(bindingList, null);
             dataGridView1.DataSource = source;
+            tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoSoHoKhau());
 
         }
 
@@ -40,7 +41,13 @@ namespace GUI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI())
+            if (string.IsNullOrEmpty(tbSoSoHoKhau.Text))
+            {
+                MessageBox.Show(this, "Vui lòng tạo mã hộ khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI(tbSoSoHoKhau.Text))
             {
                 a.ShowDialog(this);
                 if (a.nkttDTO != null&& !String.IsNullOrEmpty(a.nkttDTO.MaNhanKhauThuongTru))

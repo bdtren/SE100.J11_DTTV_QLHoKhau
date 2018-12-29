@@ -221,7 +221,9 @@ namespace GUI
         private void btnXuatFile_Click(object sender, EventArgs e)
         {
             List<ReplacementGroup> rg = new List<ReplacementGroup>();
-            DataTable source = hssvbus.TimKiemJoinNhanKhau("AND mssv='" + textBox_mssv.Text + "'").Tables[0];
+            //DataTable source = hssvbus.TimKiemJoinNhanKhau("AND mssv='" + textBox_mssv.Text + "'").Tables[0];
+            DataTable source = hssvbus.TimKiemtheoCuTru(textBox_madinhdanh.Text);
+
 
             DataRow data = source.Rows[0];
             List<string> listViPham = new List<string>();
@@ -231,6 +233,7 @@ namespace GUI
                     listViPham.Add(item.Cells["toidanh"].Value.ToString());
             }
             string vipham = string.Join(", ",listViPham.ToArray());
+            vipham = string.IsNullOrEmpty(textBox_vipham.Text) ? vipham : textBox_vipham.Text + ", " + vipham;
 
             if (data.ItemArray.Length > 0)
             {
@@ -240,7 +243,8 @@ namespace GUI
                 rg.Add(new ReplacementGroup("<truong>", data["truong"].ToString()));
                 rg.Add(new ReplacementGroup("<maDinhDanh>", data["madinhdanh"].ToString()));
                 rg.Add(new ReplacementGroup("<ngayCap>", data["ngaycap"].ToString().Split(' ')[0]));
-                rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
+                //rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
+                rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["noithuongtrutamtru"].ToString()));
                 rg.Add(new ReplacementGroup("<diaChiTamTru>", ""));
 
                 rg.Add(new ReplacementGroup("<tuNgay>", data["thoigianbatdautamtruthuongtru"].ToString().Split(' ')[0]));
