@@ -25,7 +25,7 @@ namespace BUS
         }
         public override bool Add_Table(XaPhuongThiTranDTO data)
         {
-            throw new NotImplementedException();
+            return obj.insert_table(data);
         }
         public override bool Delete(int r)
         {

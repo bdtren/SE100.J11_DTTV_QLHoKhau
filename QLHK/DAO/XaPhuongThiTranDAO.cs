@@ -69,7 +69,31 @@ namespace DAO
         }
         public override bool insert_table(XaPhuongThiTranDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["xaphuongthitran"].NewRow();
+                dr["maxp"] = data.MaXP;
+                dr["ten"] = data.Ten;
+                dr["kieu"] = data.Kieu;
+                dr["maqh"] = data.MaQH;
+
+                dataset.Tables["xaphuongthitran"].Rows.Add(dr);
+                dataset.Tables["xaphuongthitran"].Rows.RemoveAt(dataset.Tables["xaphuongthitran"].Rows.Count - 1);
+                sqlda.Update(dataset, "xaphuongthitran");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
         public override bool delete(int row)
         {
@@ -95,7 +119,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update xaphuongthitran set maxp =@maxp,  ten=@ten, kieu=@kieu, maqh =@mqah";
+                string sql = "update xaphuongthitran set ten=@ten, kieu=@kieu, maqh =@mqah where maxp =@maxp";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@maxp", xaphuong.MaQH.ToString());
                 cmd.Parameters.AddWithValue("@maqh", xaphuong.MaQH.ToString());
