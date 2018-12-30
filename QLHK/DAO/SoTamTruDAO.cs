@@ -449,10 +449,6 @@ namespace DAO
         }
 
 
-
-
-
-
         /// <summary>
         /// Tự động tạo mã 12 ký tự cho mã định danh
         /// </summary>
@@ -572,6 +568,73 @@ namespace DAO
             }
             kq = str_matinh + str_magioitinh + str_manamsinh + str + sausocuoi;
             return kq;
+        }
+
+
+        //Xác định sự tồn tại của một trường trong một bảng
+        public int ExistedValue(string sql)
+        {
+            try
+            {
+                int numrow = 0;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                numrow = Convert.ToInt32(cmd.ExecuteScalar());
+                return numrow;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return 100;
+        }
+
+
+        public int Existed_SoTamTru(string sosotamtru)
+        {
+            string sql = "SELECT COUNT(*) FROM sotamtru WHERE sosotamtru='" + sosotamtru + "'";
+            int num = ExistedValue(sql);
+            return num;
+        }
+
+        public int Existed_NhanKhau(string madinhdanh)
+        {
+            string sql = "SELECT COUNT(*) FROM nhankhau WHERE madinhdanh='" + madinhdanh + "'";
+            int num = ExistedValue(sql);
+            return num;
+        }
+
+        public int Existed_NhanKhauTamTru(string manhankhautamtru)
+        {
+            string sql = "SELECT COUNT(*) FROM nhankhautamtru WHERE manhankhautamtru='" + manhankhautamtru + "'";
+            int num = ExistedValue(sql);
+            return num;
+        }
+
+
+        public int Duplicated_NhanKhauTamTru(string manhankhautamtru, string sosotamtru)
+        {
+            string sql = "SELECT COUNT(*) FROM nhankhautamtru inner join sotamtru ON nhankhautamtru.sosotamtru=sotamtru.sosotamtru WHERE manhankhautamtru='" + manhankhautamtru + "' and sotamtru.sosotamtru!='"+sosotamtru+"'";
+            int num = ExistedValue(sql);
+            return num;
+        }
+
+
+        public int Existed_TieuSu(string matieusu)
+        {
+            string sql = "SELECT COUNT(*) FROM tieusu WHERE matieusu='" + matieusu + "'";
+            int num = ExistedValue(sql);
+            return num;
+        }
+
+        public int Existed_TienAn(string matienan)
+        {
+            string sql = "SELECT COUNT(*) FROM tienantiensu WHERE matienantiensu='" + matienan + "'";
+            int num = ExistedValue(sql);
+            return num;
         }
 
     }

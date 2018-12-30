@@ -54,6 +54,15 @@ namespace GUI
             dataGridView1.DataSource = sotamtruBus.GetAll().Tables["sotamtru"];
         }
 
+        //Kiểm tra nhập đủ thông tin
+        public bool isInputTrueSoTamTru()
+        {
+            if (txt_SoSoTamTru.Text.ToString() == "" || txt_MaChuHoTamTru.Text.ToString() == "")
+            {
+                return false;
+            }
+            return true;
+        }
 
 
 
@@ -151,17 +160,41 @@ namespace GUI
             return true;
         }
 
+
         //Thêm một sổ tạm trú mới
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (FilledInput() == false)
+
+            if (!isInputTrueSoTamTru())
             {
-                MessageBox.Show("Cần có mã chủ hộ và số sổ hộ khẩu để thực hiện chức năng này");
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return;
             }
 
+
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
             string machuhotamtru = txt_MaChuHoTamTru.Text.ToString();
+
+            //Kiểm tra sự tồn tại của mã số sổ tạm trú
+            if (sotamtruBus.ExistedSoTamTru(sosotamtru))
+            {
+                MessageBox.Show("Sổ tạm trú " + sosotamtru + " đã có ! vui lòng kiểm tra lại!");
+                return ;
+            }
+
+            //Kiểm tra sự tồn tại của mã nhân khẩu tạm trú để làm chủ hộ
+            if (!sotamtruBus.Existed_NhanKhauTamTru(machuhotamtru))
+            {
+                MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
+                return;
+            }
+            //Kiểm tra chủ hộ này có nằm trong một sổ tạm trú khác hay không?
+            if (sotamtruBus.Duplicated_NhanKhauTamTru(machuhotamtru, sosotamtru))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
+                return;
+            }
+
             string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
             string lydo = txt_LyDo.Text.ToString();
             DateTime tungay = dt_TuNgay.Value.Date;
@@ -171,13 +204,13 @@ namespace GUI
 
             if (sotamtruBus.Add(sotamtruDto))
             {
-                MessageBox.Show("Đăng ký tạm trú thành công!");
+                MessageBox.Show("Đăng ký tạm trú có sổ tạm trú "+sosotamtru+" thành công!");
                 LoadDataGridView();
                 ResetValueInput();
             }
             else
             {
-                MessageBox.Show("Đăng ký tạm trú thất bại!");
+                MessageBox.Show("Đăng ký tạm trú sổ tạm trú "+sosotamtru+" thất bại!");
             }
         }
 
@@ -185,18 +218,39 @@ namespace GUI
         //Sửa một sổ tạm trú
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (FilledInput() == false)
+            if (!isInputTrueSoTamTru())
             {
-                MessageBox.Show("Cần có mã chủ hộ và số sổ tạm trú để thực hiện chức năng này!");
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin sổ tạm trú "+txt_SoSoTamTru.Text.ToString()+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            string machuhotamtru = txt_MaChuHoTamTru.Text.ToString();
+
+            //Kiểm tra sự tồn tại của mã số sổ tạm trú
+            if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
+            {
+                MessageBox.Show("Sổ tạm trú " + sosotamtru + " chưa tồn tại ! vui lòng kiểm tra lại!");
+                return ;
+            }
+
+            //Kiểm tra sự tồn tại của mã nhân khẩu tạm trú để làm chủ hộ
+            if (!sotamtruBus.Existed_NhanKhauTamTru(machuhotamtru))
+            {
+                MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
+                return ;
+            }
+            //Kiểm tra chủ hộ này có nằm trong một sổ tạm trú khác hay không?
+            if (sotamtruBus.Duplicated_NhanKhauTamTru(machuhotamtru, sosotamtru))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
+                return ;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 int r = dataGridView1.CurrentCell.RowIndex;
-                string sosotamtru = dataGridView1.Rows[r].Cells[0].Value.ToString(); //Lấy số sổ tạm trú, không thể sửa
-                string machuhotamtru = txt_MaChuHoTamTru.Text.ToString();
 
                 string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
                 DateTime tungay = dt_TuNgay.Value.Date;
@@ -207,14 +261,14 @@ namespace GUI
 
                 if (sotamtruBus.Update(sotamtru, r))
                 {
-                    MessageBox.Show("Sửa thông tin tạm trú thành công!");
+                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thành công!");
                     LoadDataGridView();
                     ResetValueInput();
                     dataGridView1.DataSource = sotamtruBus.TimKiem(sotamtru.SoSoTamTru).Tables[0];
                 }
                 else
                 {
-                    MessageBox.Show("Sửa thông tin tạm trú thất bại!");
+                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thất bại!");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -226,26 +280,32 @@ namespace GUI
         //Xóa một sổ tạm trú
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (txt_SoSoTamTru.Text.ToString() == "")
+            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            if (sosotamtru == "")
             {
                 MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
                 return;
             }
 
+            if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
+            {
+                MessageBox.Show("Sổ tạm trú "+sosotamtru+" không tồn tại! Vui lòng kiểm tra lại");
+            }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú nhân khẩu có sổ tạm trú "+txt_SoSoTamTru.Text.ToString()+" không?", "Thông báo", MessageBoxButtons.YesNo);
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú những nhân khẩu có sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string sosotamtru = txt_SoSoTamTru.Text.ToString();
+
                 if (sotamtruBus.XoaSoTamTru(sosotamtru))
                 {
-                    MessageBox.Show("Hủy tạm trú thành công");
+                    MessageBox.Show("Hủy tạm trú "+sosotamtru+" thành công");
                     LoadDataGridView();
                     ResetValueInput();
                 }
                 else
                 {
-                    MessageBox.Show("Hủy tạm trú thất bại");
+                    MessageBox.Show("Hủy tạm trú "+sosotamtru+" thất bại");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -258,15 +318,28 @@ namespace GUI
         //Tìm một sổ tạm trú
         private void btnTim_Click(object sender, EventArgs e)
         {
-            if (txt_SoSoTamTru.Text.ToString() == "")
+            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+
+            if (sosotamtru == "")
             {
                 MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
                 return;
             }
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = sotamtruBus.TimKiem(sosotamtru).Tables["sotamtru"];
+
+
+            if (sotamtruBus.ExistedSoTamTru(sosotamtru))
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = sotamtruBus.TimKiem(sosotamtru).Tables["sotamtru"];
+            }
+            else
+            {
+                MessageBox.Show("Sổ tạm trú "+sosotamtru+" không tồn tại! Vui lòng kiếm tra lại!");
+                return;
+            }
+
+
         }
 
 

@@ -161,5 +161,53 @@ namespace BUS
             string chuoikq = str1 + str4 + str3;
             return chuoikq;
         }
+
+
+
+
+        //XÁC ĐỊNH SỰ TỒN TẠI CỦA CÁC MÃ SỐ
+        public bool ExistedSoTamTru(string sosotamtru)
+        {
+            int num = SoTamTru.Existed_SoTamTru(sosotamtru);
+            if (num > 0) return true;
+            else return false;
+        }
+
+        public bool Existed_NhanKhau(string madinhdanh)
+        {
+            int num = SoTamTru.Existed_NhanKhau(madinhdanh);
+            if (num > 0) return true;
+            else return false;
+        }
+
+        public bool Duplicated_NhanKhauTamTru(string manhankhautamtru, string sosotamtru)
+        {
+            int num = SoTamTru.Duplicated_NhanKhauTamTru(manhankhautamtru, sosotamtru);
+            if (num > 0) return true;
+            else return false;
+        }
+
+        public bool Existed_NhanKhauTamTru(string manhankhautamtru)
+        {
+            int num = SoTamTru.Existed_NhanKhauTamTru(manhankhautamtru);
+            if (num > 0) return true;
+            else return false;
+        }
+
+        public bool Existed_TieuSu(string matieusu)
+        {
+            int num = SoTamTru.Existed_TieuSu(matieusu);
+            if (num > 0) return true;
+            else return false;
+        }
+
+
+        public bool Existed_TienAn(string matienan)
+        {
+            int num = SoTamTru.Existed_TienAn(matienan);
+            if (num > 0) return true;
+            else return false;
+        }
+
     }
 }

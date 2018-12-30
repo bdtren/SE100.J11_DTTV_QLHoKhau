@@ -71,11 +71,40 @@ namespace GUI
             txt_MaTieuSu.Text = GenerateMaTieuSu();
             txt_MaNKTamTru.Text = GenerateMaNhanKhauTamTru();
             TaoMaDinhDanh();
+            LoadDataGridView();
         }
 
-        ///TẠO MÃ TỰ ĐỘNG
+        ///KẾT THÚC TẠO MÃ TỰ ĐỘNG
         ///
 
+
+        ///Kiểm tra null input
+        public bool isInputTrueThongTinTamTru()
+        {
+            if (txt_HoTen.Text.ToString() == "" || txt_DanToc.Text.ToString()=="" || cbbNgheNghiep.Text.ToString()=="" || txt_QuocTich.Text.ToString() == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool isInputTrueTieuSu()
+        {
+            if (cbbNgheNghiep.Text.ToString() == "") return false;
+            return true;
+        }
+
+        public bool isInputTrueTienAn()
+        {
+            if(txt_HinhPhat.Text.ToString()=="" || txt_BanAn.Text.ToString()=="" || txtToiDanh.Text.ToString() == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        ///Kết thúc Kiểm tra null input
 
 
         //Xóa các trường Input
@@ -131,6 +160,7 @@ namespace GUI
             GenerateAllID();
         }
 
+        
         //
         //SỰ KIỆN LIÊN QUAN ĐẾN THAY ĐỔI TRONG COMBOBOX
         //
@@ -183,11 +213,26 @@ namespace GUI
                 return;
             }
 
+            //Nhập không đầy đủ
+            if (!isInputTrueThongTinTamTru())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+            string hoten = txt_HoTen.Text.ToString();
+
+            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            if (sotamtruBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
+                return;
+            }
+
             string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
             string manghenghiep = nkttBus.GetMaNgheNghiep(cbbNgheNghiep.Text);
-            string hoten = txt_HoTen.Text.ToString();
+
 
             string gioitinh = "";
             if (rdNam.Checked) gioitinh = "nam";
@@ -207,7 +252,7 @@ namespace GUI
             nkttDto = new NhanKhauTamTruDTO(manghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
             if (nkttBus.Add(nkttDto))
             {
-                MessageBox.Show("Thêm nhân khẩu tạm trú thành công");
+                MessageBox.Show("Thêm nhân khẩu tạm trú "+hoten+" thành công");
                 ResetValueInput();
                 LoadDataGridView();
 
@@ -216,12 +261,12 @@ namespace GUI
 
                 if (count == 0) //người đầu tiên làm chủ hộ
                 {
-                    machuho = madinhdanh;
+                    machuho = manhankhautamtru;
                 }
             }
             else
             {
-                MessageBox.Show("Thêm không thành công");
+                MessageBox.Show("Thêm nhân khẩu tạm trú " + hoten + "thất bại");
             }
         }
 
@@ -229,14 +274,27 @@ namespace GUI
         //Sửa thông tin nhân khẩu tạm trú
         private void btnSua_Click(object sender, EventArgs e)
         {
-            int r = dataGridView1.CurrentCell.RowIndex;
-            string manhankhautamtru = dataGridView1.Rows[r].Cells[1].Value.ToString(); //Lấy mã nhân khẩu tạm trú
-            string madinhdanh = dataGridView1.Rows[r].Cells[0].Value.ToString(); //Lấy mã định danh
+
+            string manhankhautamtru = txt_MaNKTamTru.Text.ToString(); //Lấy mã nhân khẩu tạm trú
+            string madinhdanh = txt_MaDinhDanh.Text.ToString(); //Lấy mã định danh
             string hoten = txt_HoTen.Text.ToString();
 
             if (manhankhautamtru == "" || madinhdanh == "" || hoten=="")
             {
-                MessageBox.Show("Cần có mã nhân khẩu tạm trú, mã định danh và họ tên để thực hiện chức năng này");
+                MessageBox.Show("Cần có mã định danh và họ tên để thực hiện chức năng này");
+                return;
+            }
+            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú " + hoten + " không tồn tại !");
+                return;
+            }
+
+            //Nhập không đầy đủ
+            if (!isInputTrueThongTinTamTru())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return;
             }
 
@@ -263,9 +321,9 @@ namespace GUI
                 string tongiao = txt_TonGiao.Text.ToString();
 
                 nkttDto = new NhanKhauTamTruDTO(manghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
-                if (nkttBus.Update(nkttDto, r))
+                if (nkttBus.Update(nkttDto, 0))
                 {
-                    MessageBox.Show("Cập nhật dữ liệu thành công");
+                    MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thành công");
                     LoadDataGridView();
                     ResetValueInput();
                     GenerateAllID();
@@ -273,13 +331,13 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật không thành công");
+                    MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thất bại");
                 }
             }
             else if (dialogResult == DialogResult.No)
             {
                 
-            }
+            } 
            
         }
 
@@ -296,19 +354,26 @@ namespace GUI
                 return;
             }
 
+            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú "+hoten+" không tồn tại !");
+                return;
+            }
+
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú cho nhân khẩu: "+hoten+" ?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 if (nkttBus.XoaNKTT(madinhdanh))
                 {
-                    MessageBox.Show("Hủy tạm trú thành công!");
+                    MessageBox.Show("Hủy tạm trú nhân khẩu : "+hoten+" thành công!");
                     ResetValueInput();
                     LoadDataGridView();
                     GenerateAllID();
                 }
                 else
                 {
-                    MessageBox.Show("Hủy tạm trú thành công!");
+                    MessageBox.Show("Hủy tạm trú nhân khẩu : " + hoten + " thất bại!");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -404,6 +469,14 @@ namespace GUI
                 MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
                 return;
             }
+
+            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú có mã định danh: "+madinhdanh+" không tồn tại!");
+                return;
+            }
+
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
@@ -438,14 +511,29 @@ namespace GUI
         private void btnThemTienAn_Click(object sender, EventArgs e)
         {
             string matienan = txt_MaTienAn.Text.ToString();
+            string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            if (matienan == "")
+            if (matienan == "" || madinhdanh == "")
             {
-                MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
+                MessageBox.Show("Cần có mã tiền án tiền sự, mã định danh để thực hiện chức năng này");
                 return;
             }
 
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiền án tiền sự");
+                return;
+            }
+
+            //Nhập không đầy đủ
+            if (!isInputTrueTienAn())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+
+
             string banan = txt_BanAn.Text.ToString();
             string toidanh = txtToiDanh.Text.ToString();
             string hinhphat = txt_HinhPhat.Text.ToString();
@@ -457,13 +545,13 @@ namespace GUI
             TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
             if (tienanbus.Add(tienan))
             {
-                MessageBox.Show("Thêm tiền án tiền sự thành công!");
+                MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
                 ResetInputTienAn();
                 LoadDataGridViewTienAN();             
             }
             else
             {
-                MessageBox.Show("Thêm tiền án tiền sự thất bại!");
+                MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
             }
 
         }
@@ -502,18 +590,25 @@ namespace GUI
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiền án tiền sự "+matienan+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_TienAn(matienan))
+            {
+                MessageBox.Show("Mã tiền án " + matienan + "không tồn tại trong hệ thống!");
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiền án tiền sự "+matienan+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 if (nkttBus.DeleteTienAnTienSu(matienan))
                 {
-                    MessageBox.Show("Xóa tiền án tiền sự thành công!");
+                    MessageBox.Show("Xóa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
                     LoadDataGridViewTienAN();
                     ResetInputTienAn();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa tiền án tiền sự thất bại!");
+                    MessageBox.Show("Xóa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -534,7 +629,21 @@ namespace GUI
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_TienAn(matienan))
+            {
+                MessageBox.Show("Mã tiền án " + matienan + "không tồn tại trong hệ thống!");
+                return;
+            }
+
+            //Nhập không đầy đủ
+            if (!isInputTrueTienAn())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 string madinhdanh = txt_MaDinhDanh.Text.ToString();
@@ -549,13 +658,13 @@ namespace GUI
                 TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
                 if (tienanbus.Update(tienan, 0))
                 {
-                    MessageBox.Show("Sửa tiền án tiền sự thành công!");
+                    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
                     ResetInputTienAn();
                     LoadDataGridViewTienAN();
                 }
                 else
                 {
-                    MessageBox.Show("Sửa tiền án tiền sự thất bại!");
+                    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -613,19 +722,34 @@ namespace GUI
                 return;
             }
 
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiểu sử");
+                return;
+            }
+
+
+            //Nhập không đầy đủ
+            if (!isInputTrueTieuSu())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+
             TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, manghenghiep, noilamviec);
 
             TieuSuBUS tieusuBus = new TieuSuBUS();
 
             if (tieusuBus.Add(tieusu))
             {
-                MessageBox.Show("Thêm tiểu sử thành công !");
+                MessageBox.Show("Thêm tiểu sử "+matieusu+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công !");
                 LoadDataGridViewTieuSu();
                 ResetInputTieuSu();
             }
             else
             {
-                MessageBox.Show("Thêm tiểu sử thất bại !");
+                MessageBox.Show("Thêm tiểu sử "+matieusu+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại !");
             }
 
         }
@@ -667,19 +791,25 @@ namespace GUI
                 MessageBox.Show("Cần có mã tiểu sử để thực hiện chức năng này");
                 return;
             }
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_TieuSu(matieusu))
+            {
+                MessageBox.Show("Tiểu sử có mã " + matieusu + "chưa có trong hệ thống");
+                return;
+            }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiểu sử "+matieusu+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa tiểu sử "+matieusu+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 if (nkttBus.DeleteTieuSu(matieusu))
                 {
-                    MessageBox.Show("Xóa tiểu sử thành công!");
+                    MessageBox.Show("Xóa tiểu sử "+matieusu+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
                     LoadDataGridViewTieuSu();
                     ResetInputTieuSu();
                 }
                 else
                 {
-                    MessageBox.Show("Xóa tiểu sử thất bại!");
+                    MessageBox.Show("Xóa tiểu sử "+matieusu+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
                 }
             }
             else if (dialogResult == DialogResult.No)
@@ -697,7 +827,21 @@ namespace GUI
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiểu sử "+matieusu+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_TieuSu(matieusu))
+            {
+                MessageBox.Show("Tiểu sử có mã " + matieusu + "chưa có trong hệ thống");
+                return;
+            }
+
+            //Nhập không đầy đủ
+            if (!isInputTrueTieuSu())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiểu sử "+matieusu+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 string madinhdanh = txt_MaDinhDanh.Text.ToString();
@@ -713,13 +857,13 @@ namespace GUI
 
                 if (tieusuBus.Update(tieusu, 0))
                 {
-                    MessageBox.Show("Sửa tiểu sử thành công !");
+                    MessageBox.Show("Sửa tiểu sử "+matieusu+" cho nhân khẩu "+txt_HoTen.Text.ToString()+" thành công !");
                     LoadDataGridViewTieuSu();
                     ResetInputTieuSu();
                 }
                 else
                 {
-                    MessageBox.Show("Sửa tiểu sử thất bại !");
+                    MessageBox.Show("Sửa tiểu sử "+matieusu+" cho nhân khẩu "+txt_HoTen.Text.ToString()+" thất bại !");
                 }
             }
             else if (dialogResult == DialogResult.No)

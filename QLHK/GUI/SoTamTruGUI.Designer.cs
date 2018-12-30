@@ -42,6 +42,7 @@
             this.cbb_ChoO_QuanHuyen = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.cbb_ChoO_TinhThanh = new System.Windows.Forms.ComboBox();
             this.dt_DenNgay = new System.Windows.Forms.DateTimePicker();
             this.dt_TuNgay = new System.Windows.Forms.DateTimePicker();
@@ -55,7 +56,6 @@
             this.txt_MaChuHoTamTru = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -220,6 +220,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sổ tạm trú";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(395, 57);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(63, 23);
+            this.btnReset.TabIndex = 21;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // cbb_ChoO_TinhThanh
             // 
             this.cbb_ChoO_TinhThanh.FormattingEnabled = true;
@@ -248,18 +258,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(16, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Đến ngày";
+            this.label6.Text = "Đến ngày (*)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 197);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Từ ngày";
+            this.label5.Text = "Từ ngày (*)";
             // 
             // txt_LyDo
             // 
@@ -282,9 +292,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Chổ ở hiện nay";
+            this.label3.Text = "Chổ ở hiện nay (*)";
             // 
             // txt_SoSoTamTru
             // 
@@ -325,19 +335,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(1, 313);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(724, 184);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(395, 57);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(63, 23);
-            this.btnReset.TabIndex = 21;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // SoTamTruGUI
             // 
