@@ -52,5 +52,9 @@ namespace BUS
         {
             return obj.TimKiem(query);
         }
+        public bool DoiChuHo(List<NhanKhauThuongTruDTO> danhsach, string madinhdanh)
+        {
+            return obj.doiChuHo(danhsach, madinhdanh);
+        }
     }
 }
