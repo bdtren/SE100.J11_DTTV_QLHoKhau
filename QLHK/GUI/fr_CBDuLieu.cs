@@ -81,7 +81,6 @@ namespace GUI
                 case "admin1":
                     break;
                 case "canbo":
-                    
                     break;
                 case "canbohotich":
 

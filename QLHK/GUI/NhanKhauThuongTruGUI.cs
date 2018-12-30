@@ -22,6 +22,7 @@ namespace GUI
         TienAnTienSuDTO tienanDTO;
         public NhanKhauThuongTruDTO nkttDTO;
         SoHoKhauBUS shk;
+        TinhThanhPhoBUS ttp;
         public NhanKhauThuongTruGUI()
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace GUI
             tieuSu = new TieuSuBUS();
             tienAn = new TienAnTienSuBUS();
             shk = new SoHoKhauBUS();
+            tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
+            ttp = new TinhThanhPhoBUS();
 
             //dGVTieuSu.DataSource = null;
             //dGVTieuSu.Rows.Clear();
@@ -37,7 +40,62 @@ namespace GUI
             //dGVTienAnTienSu.DataSource = tienAn.GetAll().Tables[0];
             Loadtienantiensu();
             //themMaDinhDanhBang(); hàm này để chạy 2 cái datafridview bị lỗi.... ô sửa lại đi
+
+            cbbNoiCap.DisplayMember = "ten";
+            cbbNoiCap.ValueMember = "matp";
+            cbbNoiCap.DataSource = ttp.GetAll().Tables[0];
+            cbbNoiSinh.DisplayMember = "ten";
+            cbbNoiSinh.ValueMember = "matp";
+            cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
         }
+        public NhanKhauThuongTruGUI(string sosohokhau)
+        {
+            InitializeComponent();
+            nktt = new NhanKhauThuongTruBUS();
+            tieuSu = new TieuSuBUS();
+            tienAn = new TienAnTienSuBUS();
+            shk = new SoHoKhauBUS();
+            ttp = new TinhThanhPhoBUS();
+
+            tbSoSHK.Text = sosohokhau;
+            tbSoSHK.Enabled = false;
+            tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
+            LoadtieuSu();
+            Loadtienantiensu();
+
+            cbbNoiCap.DisplayMember = "ten";
+            cbbNoiCap.ValueMember = "matp";
+            cbbNoiCap.DataSource = ttp.GetAll().Tables[0];
+            cbbNoiSinh.DisplayMember = "ten";
+            cbbNoiSinh.ValueMember = "matp";
+            cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
+        }
+        public NhanKhauThuongTruGUI(string sosohokhau, string diachithuongtru)
+        {
+            InitializeComponent();
+            nktt = new NhanKhauThuongTruBUS();
+            tieuSu = new TieuSuBUS();
+            tienAn = new TienAnTienSuBUS();
+            shk = new SoHoKhauBUS();
+            ttp = new TinhThanhPhoBUS();
+
+            tbSoSHK.Text = sosohokhau;
+            tbSoSHK.Enabled = false;
+            tbDCThuongTru.Text = diachithuongtru;
+            tbDCThuongTru.Enabled = false;
+
+            tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
+            LoadtieuSu();
+            Loadtienantiensu();
+
+            cbbNoiCap.DisplayMember = "ten";
+            cbbNoiCap.ValueMember = "matp";
+            cbbNoiCap.DataSource = ttp.GetAll().Tables[0];
+            cbbNoiSinh.DisplayMember = "ten";
+            cbbNoiSinh.ValueMember = "matp";
+            cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
+        }
+
         private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
         {
 
@@ -57,9 +115,10 @@ namespace GUI
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
-                tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
+                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
+                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
                 tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
                 tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
                 tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
@@ -76,9 +135,10 @@ namespace GUI
         }
         private void button_sua_Click(object sender, EventArgs e)
         {
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, tbgioitinh.Text,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, tbnoicap.Text,
-                tbnoisinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
+                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
+                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
                 tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
                 tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
                 tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
@@ -348,8 +408,18 @@ namespace GUI
 
         private void tbmadinhdanh_Enter(object sender, EventArgs e)
         {
-            string madinhdanh = shk.TaoMa12KyTu(tbgioitinh.Text, dtpNgaySinh.Value.Year.ToString());
-            MessageBox.Show(madinhdanh);
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            try
+            {
+                tbmadinhdanh.Text = TrinhTaoMa.TangMa12Kytu(gioiTinh, dtpNgaySinh.Value.Year.ToString());
+                tbmadinhdanh.SelectAll();
+                //tbmadinhdanh.SelectionStart = 0;
+                //tbmadinhdanh.SelectionLength = tbmadinhdanh.Text.Length;
+
+            } catch(Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

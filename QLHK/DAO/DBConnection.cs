@@ -14,6 +14,7 @@ namespace DAO
     {
 
         protected MySqlConnection conn;
+        
         public DBConnection()
         {
             //string host = "127.0.0.1";
@@ -45,6 +46,10 @@ namespace DAO
         protected static string connStr = "datasource=localhost;port=3306;username=root;password=;database=qlhk;SslMode=none";
         protected static MySqlConnection connection = new MySqlConnection(connStr);
         private static string errorString = "";
+        public static MySqlConnection getConnection()
+        {
+            return connection;
+        }
 
         public static string ErrorString { get => errorString; }
 

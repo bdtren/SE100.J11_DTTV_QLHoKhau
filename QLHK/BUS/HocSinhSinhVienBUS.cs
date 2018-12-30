@@ -12,6 +12,7 @@ namespace BUS
     public class HocSinhSinhVienBUS : AbstractFormBUS<HocSinhSinhVienDTO>
     {
         HocSinhSinhVienDAO objhssv = new HocSinhSinhVienDAO();
+        NhanKhauDAO objnk = new NhanKhauDAO();
         public override DataSet GetAll()
         {
             return objhssv.getAll();
@@ -44,6 +45,17 @@ namespace BUS
         public DataSet TimKiemJoinNhanKhau(string query)
         {
             return objhssv.TimKiemJoinNhanKhau(query);
+        }
+        public DataTable TimKiemtheoCuTru(string madinhdanh)
+        {
+            DataTable dt1 = objhssv.TimKiem(" WHERE madinhdanh='" + madinhdanh + "'").Tables[0];
+            DataSet nhanKhau = objnk.TimKiemTheoCuTru(madinhdanh);
+            DataTable dt2 = nhanKhau.Tables["thuongtru"].Rows.Count > 0? nhanKhau.Tables["thuongtru"]:nhanKhau.Tables["tamtru"];
+
+            dt1.PrimaryKey = new DataColumn[] { dt1.Columns["madinhdanh"] };
+            dt2.PrimaryKey = new DataColumn[] { dt2.Columns["madinhdanh"] };
+            dt1.Merge(dt2);
+            return dt1;
         }
         public override bool Add_Table(HocSinhSinhVienDTO hssv)
         {

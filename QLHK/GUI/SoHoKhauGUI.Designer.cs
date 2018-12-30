@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tbSoSoHoKhau = new System.Windows.Forms.TextBox();
-            this.tbChuHo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
@@ -39,11 +38,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbSoDangKy = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cbbChuHo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,14 +64,6 @@
             this.tbSoSoHoKhau.Name = "tbSoSoHoKhau";
             this.tbSoSoHoKhau.Size = new System.Drawing.Size(151, 20);
             this.tbSoSoHoKhau.TabIndex = 1;
-            // 
-            // tbChuHo
-            // 
-            this.tbChuHo.Location = new System.Drawing.Point(88, 61);
-            this.tbChuHo.Name = "tbChuHo";
-            this.tbChuHo.Size = new System.Drawing.Size(236, 20);
-            this.tbChuHo.TabIndex = 2;
-            this.tbChuHo.Enter += new System.EventHandler(this.tbChuHo_Enter);
             // 
             // label2
             // 
@@ -97,6 +89,7 @@
             this.tbDiaChi.Name = "tbDiaChi";
             this.tbDiaChi.Size = new System.Drawing.Size(311, 20);
             this.tbDiaChi.TabIndex = 3;
+            this.tbDiaChi.Enter += new System.EventHandler(this.tbDiaChi_Enter);
             // 
             // label4
             // 
@@ -132,6 +125,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbbChuHo);
             this.groupBox1.Controls.Add(this.btnHuy);
             this.groupBox1.Controls.Add(this.btnOK);
             this.groupBox1.Controls.Add(this.label1);
@@ -140,7 +134,6 @@
             this.groupBox1.Controls.Add(this.dtpNgayCap);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.tbChuHo);
             this.groupBox1.Controls.Add(this.tbSoDangKy);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbDiaChi);
@@ -150,6 +143,26 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phần thông tin sổ hộ khẩu";
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Location = new System.Drawing.Point(683, 147);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy.TabIndex = 7;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(587, 147);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 6;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // groupBox2
             // 
@@ -162,14 +175,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phần thông tin nhân khẩu";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(604, 236);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // btnThem
             // 
             this.btnThem.Location = new System.Drawing.Point(632, 30);
@@ -180,23 +185,21 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnOK
+            // dataGridView1
             // 
-            this.btnOK.Location = new System.Drawing.Point(587, 147);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(8, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(604, 236);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // btnHuy
+            // cbbChuHo
             // 
-            this.btnHuy.Location = new System.Drawing.Point(683, 147);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 23);
-            this.btnHuy.TabIndex = 7;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
+            this.cbbChuHo.FormattingEnabled = true;
+            this.cbbChuHo.Location = new System.Drawing.Point(88, 60);
+            this.cbbChuHo.Name = "cbbChuHo";
+            this.cbbChuHo.Size = new System.Drawing.Size(236, 21);
+            this.cbbChuHo.TabIndex = 2;
             // 
             // SoHoKhauGUI
             // 
@@ -220,7 +223,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbSoSoHoKhau;
-        private System.Windows.Forms.TextBox tbChuHo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbDiaChi;
@@ -234,5 +236,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.ComboBox cbbChuHo;
     }
 }

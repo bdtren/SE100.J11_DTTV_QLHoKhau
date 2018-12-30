@@ -41,5 +41,13 @@ namespace BUS
         {
             throw new NotImplementedException();
         }
+        public DataSet TimKiem(string query)
+        {
+            return objnhankhau.TimKiem(query);
+        }
+        public DataSet TimKiemTheoCuTru(string madinhdanh)
+        {
+            return objnhankhau.TimKiemTheoCuTru(madinhdanh);
+        }
     }
 }

@@ -153,7 +153,6 @@ namespace DAO
             return false;
 
         }
-
         public override bool update(NhanKhauThuongTruDTO nktt, int r)
         {
             if (conn.State != ConnectionState.Open)
@@ -190,6 +189,38 @@ namespace DAO
                 conn.Close();
             }
             return true;
+        }
+        public bool doiChuHo(List<NhanKhauThuongTruDTO> danhSach, string maDinhDanhChuHo)
+        {
+            bool contain = false;
+            foreach(NhanKhauThuongTruDTO item in danhSach)
+            {
+                if (item.MaDinhDanh == maDinhDanhChuHo)
+                {
+                    item.LaChuHo = true;
+                    contain = true;
+                    break;
+                }
+                else
+                {
+                    item.LaChuHo = false;
+                }
+            }
+            if (!contain) return false;
+
+            foreach(NhanKhauThuongTruDTO item in danhSach)
+            {
+                try
+                {
+                    update(item,-1);
+                } catch (Exception ex){
+                    return false;
+                }
+
+            }
+
+            return true;
+
         }
         public DataSet TimKiem(string query)
         {
