@@ -56,7 +56,7 @@ namespace DAO
                 dr["kieu"] = quanHuyen.Kieu;
 
                 dataset.Tables["quanhuyen"].Rows.Add(dr);
-                dataset.Tables["v"].Rows.RemoveAt(dataset.Tables["quanhuyen"].Rows.Count - 1);
+                dataset.Tables["quanhuyen"].Rows.RemoveAt(dataset.Tables["quanhuyen"].Rows.Count - 1);
                 sqlda.Update(dataset, "quanhuyen");
             }
             catch (Exception e)
@@ -71,7 +71,31 @@ namespace DAO
         }
         public override bool insert_table(QuanHuyenDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["quanhuyen"].NewRow();
+                dr["maqh"] = data.MaTP;
+                dr["ten"] = data.Ten;
+                dr["kieu"] = data.Kieu;
+                dr["matp"] = data.MaTP;
+                dataset.Tables["quanhuyen"].Rows.Add(dr);
+                dataset.Tables["quanhuyen"].Rows.RemoveAt(dataset.Tables["quanhuyen"].Rows.Count - 1);
+                sqlda.Update(dataset, "quanhuyen");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
 
         public override bool delete(int row)
@@ -98,7 +122,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update quanhuyen set maqh =@maqh,  ten=@ten, kieu=@kieu, matp =@matp";
+                string sql = "update quanhuyen set ten=@ten, kieu=@kieu, matp =@matp where maqh =@maqh";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@maqh", quanHuyen.MaQH.ToString());
                 cmd.Parameters.AddWithValue("@matp", quanHuyen.MaTP.ToString());

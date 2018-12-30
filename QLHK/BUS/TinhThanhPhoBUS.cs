@@ -33,7 +33,7 @@ namespace BUS
         }
         public override bool Add_Table(TinhThanhPhoDTO data)
         {
-            throw new NotImplementedException();
+            return obj.insert_table(data);
 
         }
 
