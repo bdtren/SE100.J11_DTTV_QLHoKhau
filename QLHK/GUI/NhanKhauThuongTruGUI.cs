@@ -119,7 +119,7 @@ namespace GUI
             nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
                 cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
+                tbBietTiengDanToc.Text, tbDCHienTai.Text, null,
                 tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
                 tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
             
@@ -139,7 +139,7 @@ namespace GUI
             nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
                 cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, tbQHVoiCH.Text == "chuho" ? true : false,
+                tbBietTiengDanToc.Text, tbDCHienTai.Text, nkttDTO.maChuHo,
                 tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
                 tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
 
