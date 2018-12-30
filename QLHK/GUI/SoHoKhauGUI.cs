@@ -29,6 +29,12 @@ namespace GUI
             dataGridView1.DataSource = source;
             tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoSoHoKhau());
 
+            cbbChuHo.DisplayMember = "HoTen";
+            cbbChuHo.ValueMember = "MaDinhDanh";
+
+            dataGridView1.DataSource = source;
+
+            cbbChuHo.DataSource = bindingList;
         }
 
         private void SoHoKhauGUI_Load(object sender, EventArgs e)
@@ -51,13 +57,16 @@ namespace GUI
                 {
                     shkDTO.NhanKhau.Add(a.nkttDTO);
 
+                    cbbChuHo.DataSource = null;
+                    cbbChuHo.Items.Clear();
+
                     var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
                     var source = new BindingSource(bindingList, null);
                     dataGridView1.DataSource = source;
 
-                    cbbChuHo.DisplayMember = "hoTen";
-                    cbbChuHo.ValueMember = "maDinhDanh";
-                    cbbChuHo.Items.Add(a.nkttDTO);
+                    cbbChuHo.DisplayMember = "HoTen";
+                    cbbChuHo.ValueMember = "MaDinhDanh";
+                    cbbChuHo.DataSource = bindingList;
                 }
 
 
