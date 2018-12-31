@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class CanBo: NhanKhauThuongTruDTO
+    public class CanBoDTO: NhanKhauThuongTruDTO
     {
         public string MaCanBo { get; set; }
         public string TenTaiKhoan { get; set; }
         public string MatKhau { get; set; }
         public string LoaiCanBo { get; set; }
 
-        public CanBo() : base() { }
+        public CanBoDTO() : base() { }
 
-        public CanBo(string maCanBo, string tenTaiKhoan, string matKhau, string loaiCanBo, string str_manhankhauthuongtru)
+        public CanBoDTO(string maCanBo, string tenTaiKhoan, string matKhau, string loaiCanBo, string str_manhankhauthuongtru)
         {
             MaCanBo = maCanBo;
             TenTaiKhoan = tenTaiKhoan;
@@ -23,5 +23,6 @@ namespace DTO
             LoaiCanBo = loaiCanBo;
             MaNhanKhauThuongTru = str_manhankhauthuongtru;
         }
+
     }
 }

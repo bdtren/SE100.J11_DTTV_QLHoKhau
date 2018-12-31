@@ -18,7 +18,7 @@ namespace GUI
     public partial class fr_CBDuLieu : DevExpress.XtraEditors.XtraForm
     {
         CanBoBUS canbobus;
-        CanBo canbo;
+        CanBoDTO canbo;
         HocSinhSinhVienDTO hssv;
         HocSinhSinhVienBUS hssvbus;
         NhanKhauBUS nhankhaubus;

@@ -42,16 +42,16 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbHoTH = new System.Windows.Forms.TextBox();
-            this.tbNhanKhauTH = new System.Windows.Forms.TextBox();
-            this.tbNKThanhThiTH = new System.Windows.Forms.TextBox();
-            this.tbNKNuTH = new System.Windows.Forms.TextBox();
-            this.tbNK14TH = new System.Windows.Forms.TextBox();
-            this.tbHoKoTH = new System.Windows.Forms.TextBox();
-            this.tbNhanKhauKoTH = new System.Windows.Forms.TextBox();
-            this.tbNKThanhThiKoTH = new System.Windows.Forms.TextBox();
-            this.tbNKNuKoTH = new System.Windows.Forms.TextBox();
             this.tbNK14KoTH = new System.Windows.Forms.TextBox();
+            this.tbNKNuKoTH = new System.Windows.Forms.TextBox();
+            this.tbNKThanhThiKoTH = new System.Windows.Forms.TextBox();
+            this.tbNhanKhauKoTH = new System.Windows.Forms.TextBox();
+            this.tbHoKoTH = new System.Windows.Forms.TextBox();
+            this.tbNK14TH = new System.Windows.Forms.TextBox();
+            this.tbNKNuTH = new System.Windows.Forms.TextBox();
+            this.tbNKThanhThiTH = new System.Windows.Forms.TextBox();
+            this.tbNhanKhauTH = new System.Windows.Forms.TextBox();
+            this.tbHoTH = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tbNK14KoTT = new System.Windows.Forms.TextBox();
             this.tbNKNuKoTT = new System.Windows.Forms.TextBox();
@@ -209,61 +209,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hộ Nhân khẩu đăng ký thường trú";
             // 
-            // tbHoTH
+            // tbNK14KoTH
             // 
-            this.tbHoTH.Location = new System.Drawing.Point(6, 19);
-            this.tbHoTH.Name = "tbHoTH";
-            this.tbHoTH.Size = new System.Drawing.Size(40, 20);
-            this.tbHoTH.TabIndex = 0;
-            // 
-            // tbNhanKhauTH
-            // 
-            this.tbNhanKhauTH.Location = new System.Drawing.Point(69, 19);
-            this.tbNhanKhauTH.Name = "tbNhanKhauTH";
-            this.tbNhanKhauTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNhanKhauTH.TabIndex = 0;
-            // 
-            // tbNKThanhThiTH
-            // 
-            this.tbNKThanhThiTH.Location = new System.Drawing.Point(137, 19);
-            this.tbNKThanhThiTH.Name = "tbNKThanhThiTH";
-            this.tbNKThanhThiTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNKThanhThiTH.TabIndex = 0;
-            // 
-            // tbNKNuTH
-            // 
-            this.tbNKNuTH.Location = new System.Drawing.Point(217, 19);
-            this.tbNKNuTH.Name = "tbNKNuTH";
-            this.tbNKNuTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNKNuTH.TabIndex = 0;
-            // 
-            // tbNK14TH
-            // 
-            this.tbNK14TH.Location = new System.Drawing.Point(288, 19);
-            this.tbNK14TH.Name = "tbNK14TH";
-            this.tbNK14TH.Size = new System.Drawing.Size(40, 20);
-            this.tbNK14TH.TabIndex = 0;
-            // 
-            // tbHoKoTH
-            // 
-            this.tbHoKoTH.Location = new System.Drawing.Point(380, 19);
-            this.tbHoKoTH.Name = "tbHoKoTH";
-            this.tbHoKoTH.Size = new System.Drawing.Size(40, 20);
-            this.tbHoKoTH.TabIndex = 0;
-            // 
-            // tbNhanKhauKoTH
-            // 
-            this.tbNhanKhauKoTH.Location = new System.Drawing.Point(438, 19);
-            this.tbNhanKhauKoTH.Name = "tbNhanKhauKoTH";
-            this.tbNhanKhauKoTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNhanKhauKoTH.TabIndex = 0;
-            // 
-            // tbNKThanhThiKoTH
-            // 
-            this.tbNKThanhThiKoTH.Location = new System.Drawing.Point(527, 19);
-            this.tbNKThanhThiKoTH.Name = "tbNKThanhThiKoTH";
-            this.tbNKThanhThiKoTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNKThanhThiKoTH.TabIndex = 0;
+            this.tbNK14KoTH.Location = new System.Drawing.Point(666, 19);
+            this.tbNK14KoTH.Name = "tbNK14KoTH";
+            this.tbNK14KoTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNK14KoTH.TabIndex = 0;
             // 
             // tbNKNuKoTH
             // 
@@ -272,12 +223,61 @@
             this.tbNKNuKoTH.Size = new System.Drawing.Size(40, 20);
             this.tbNKNuKoTH.TabIndex = 0;
             // 
-            // tbNK14KoTH
+            // tbNKThanhThiKoTH
             // 
-            this.tbNK14KoTH.Location = new System.Drawing.Point(666, 19);
-            this.tbNK14KoTH.Name = "tbNK14KoTH";
-            this.tbNK14KoTH.Size = new System.Drawing.Size(40, 20);
-            this.tbNK14KoTH.TabIndex = 0;
+            this.tbNKThanhThiKoTH.Location = new System.Drawing.Point(527, 19);
+            this.tbNKThanhThiKoTH.Name = "tbNKThanhThiKoTH";
+            this.tbNKThanhThiKoTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNKThanhThiKoTH.TabIndex = 0;
+            // 
+            // tbNhanKhauKoTH
+            // 
+            this.tbNhanKhauKoTH.Location = new System.Drawing.Point(438, 19);
+            this.tbNhanKhauKoTH.Name = "tbNhanKhauKoTH";
+            this.tbNhanKhauKoTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNhanKhauKoTH.TabIndex = 0;
+            // 
+            // tbHoKoTH
+            // 
+            this.tbHoKoTH.Location = new System.Drawing.Point(380, 19);
+            this.tbHoKoTH.Name = "tbHoKoTH";
+            this.tbHoKoTH.Size = new System.Drawing.Size(40, 20);
+            this.tbHoKoTH.TabIndex = 0;
+            // 
+            // tbNK14TH
+            // 
+            this.tbNK14TH.Location = new System.Drawing.Point(288, 19);
+            this.tbNK14TH.Name = "tbNK14TH";
+            this.tbNK14TH.Size = new System.Drawing.Size(40, 20);
+            this.tbNK14TH.TabIndex = 0;
+            // 
+            // tbNKNuTH
+            // 
+            this.tbNKNuTH.Location = new System.Drawing.Point(217, 19);
+            this.tbNKNuTH.Name = "tbNKNuTH";
+            this.tbNKNuTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNKNuTH.TabIndex = 0;
+            // 
+            // tbNKThanhThiTH
+            // 
+            this.tbNKThanhThiTH.Location = new System.Drawing.Point(137, 19);
+            this.tbNKThanhThiTH.Name = "tbNKThanhThiTH";
+            this.tbNKThanhThiTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNKThanhThiTH.TabIndex = 0;
+            // 
+            // tbNhanKhauTH
+            // 
+            this.tbNhanKhauTH.Location = new System.Drawing.Point(69, 19);
+            this.tbNhanKhauTH.Name = "tbNhanKhauTH";
+            this.tbNhanKhauTH.Size = new System.Drawing.Size(40, 20);
+            this.tbNhanKhauTH.TabIndex = 0;
+            // 
+            // tbHoTH
+            // 
+            this.tbHoTH.Location = new System.Drawing.Point(7, 19);
+            this.tbHoTH.Name = "tbHoTH";
+            this.tbHoTH.Size = new System.Drawing.Size(40, 20);
+            this.tbHoTH.TabIndex = 0;
             // 
             // groupBox2
             // 
