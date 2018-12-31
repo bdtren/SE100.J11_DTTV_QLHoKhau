@@ -163,7 +163,7 @@ namespace DAO
             {
 
                 string sql = "update nhankhauthuongtru set sosohokhau=@sosohokhau, noithuongtrutamtru=@noithuongtrutamtru, " +
-                    "diachihientai=@diachihientai, trinhdohocvan=@trinhdohocvan, trinhdochuyenmon=@trinhdochuyenmon, " +
+                    "diachihientai=@diachihientai, trinhdohocvan=@trinhdohocvan, machuho=@machuho, trinhdochuyenmon=@trinhdochuyenmon, " +
                     "biettiengdantoc=@biettiengdantoc, trinhdongoaingu=@trinhdongoaingu, noilamviec=@noilamviec, " +
                     "quanhevoichuho=@quanhevoichuho where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -172,6 +172,7 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@noithuongtrutamtru", nktt.NoiThuongTru);
                 cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
                 cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
+                cmd.Parameters.AddWithValue("@machuho", nktt.maChuHo);
                 cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
                 cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
                 cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
@@ -197,19 +198,20 @@ namespace DAO
             {
                 if (item.MaDinhDanh == maDinhDanhChuHo)
                 {
-                    item.LaChuHo = true;
                     contain = true;
                     break;
                 }
-                else
-                {
-                    item.LaChuHo = false;
-                }
+                //else
+                //{
+                //    item.LaChuHo = false;
+                //}
             }
             if (!contain) return false;
 
             foreach(NhanKhauThuongTruDTO item in danhSach)
             {
+                item.maChuHo = maDinhDanhChuHo;
+
                 try
                 {
                     update(item,-1);

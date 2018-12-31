@@ -160,7 +160,7 @@ namespace DAO
                     conn.Open();
                 }
                 if (!String.IsNullOrEmpty(query)) query = " where " + query;
-                sqlda = new MySqlDataAdapter("SELECT * FROM tienantiensu" + query, conn);
+                sqlda = new MySqlDataAdapter("SELECT *, 'Delete' as 'Change' FROM tienantiensu" + query, conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();

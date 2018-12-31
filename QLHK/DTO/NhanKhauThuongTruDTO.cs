@@ -11,7 +11,7 @@ namespace DTO
         public string MaNhanKhauThuongTru { get; set; }
         public string BietTiengDanToc { get; set; }
         public string DiaChiHienTai { get; set; }
-        public bool  LaChuHo { get; set; }
+        public string  maChuHo { get; set; }
         public string NoiLamViec { get; set; }
         public string NoiThuongTru { get; set; }
         public string QuanHeVoiChuHo { get; set; }
@@ -24,14 +24,14 @@ namespace DTO
         public NhanKhauThuongTruDTO(string maDinhDanh,string ngheNghiep, string hoTen, string gioiTinh, string danToc, string hoChieu, DateTime ngayCap,
             DateTime ngaySinh, string nguyenQuan, string noiCap, string noiSinh, string quocTich, string sDT, string tonGiao,
 
-            string maNKThuongTru, string bietTiengDanToc, string diaChiHienTai, bool laChuHo, string noiLamViec,
+            string maNKThuongTru, string bietTiengDanToc, string diaChiHienTai, string maChuHo, string noiLamViec,
             string noiThuongTru, string quanHeVoiChuHo, string trinhDoChuyenMon, string trinhDoNgoaiNgu,
             string trinhDoHocVan, string soSoHoKhau): base(maDinhDanh, ngheNghiep, hoTen, gioiTinh, danToc, hoChieu, ngayCap, ngaySinh, nguyenQuan, noiCap, noiSinh, quocTich, sDT, tonGiao)
         {
             this.MaNhanKhauThuongTru = maNKThuongTru;
             this.BietTiengDanToc = bietTiengDanToc;
             this.DiaChiHienTai = diaChiHienTai;
-            this.LaChuHo = laChuHo;
+            this.maChuHo = maChuHo;
             this.NoiLamViec = noiLamViec;
             this.NoiThuongTru = noiThuongTru;
             this.QuanHeVoiChuHo = quanHeVoiChuHo;

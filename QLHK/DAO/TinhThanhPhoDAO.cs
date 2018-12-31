@@ -40,7 +40,30 @@ namespace DAO
         }
         public override bool insert_table(TinhThanhPhoDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["tinhthanhpho"].NewRow();
+                dr["matp"] = data.MaTP;
+                dr["ten"] = data.Ten;
+                dr["kieu"] = data.Kieu;
+                dataset.Tables["tinhthanhpho"].Rows.Add(dr);
+                dataset.Tables["tinhthanhpho"].Rows.RemoveAt(dataset.Tables["tinhthanhpho"].Rows.Count - 1);
+                sqlda.Update(dataset, "tinhthanhpho");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
         public override bool insert(TinhThanhPhoDTO tinhThanh)
         {
@@ -94,7 +117,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update tinhthanhpho set matp =@matp, ten=@ten, kieu=@kieu";
+                string sql = "update tinhthanhpho set ten=@ten, kieu=@kieu where matp =@matp";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matp", tinhThanh.MaTP.ToString());
                 cmd.Parameters.AddWithValue("@ten", tinhThanh.Ten.ToString());

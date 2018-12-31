@@ -23,41 +23,53 @@ namespace BUS
         }
         public static string getLastID_SoSoHoKhau()
         {
-            string sql = "SELECT sosohokhau FROM sohokhau ORDER BY sosohokhau DESC LIMIT 1;";
+            string sql = "SELECT sosohokhau FROM sohokhau where sosohokhau LIKE 'SH%' ORDER BY sosohokhau DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
-            return string.IsNullOrEmpty(lastVal) ? "HK0000000" : lastVal;
+            return string.IsNullOrEmpty(lastVal) ? "SH0000000" : lastVal;
         }
         public static string getLastID_MaNhanKhauThuongTru()
         {
-            string sql = "SELECT manhankhauthuongtru FROM nhankhauthuongtru ORDER BY manhankhauthuongtru DESC LIMIT 1;";
+            string sql = "SELECT manhankhauthuongtru FROM nhankhauthuongtru where manhankhauhthuongtru LIKE 'TH%' ORDER BY manhankhauthuongtru DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
             return string.IsNullOrEmpty(lastVal) ? "TH0000000" : lastVal;
         }
         public static string getLastID_SoSoTamTru()
         {
-            string sql = "SELECT sosotamtru FROM sotamtru ORDER BY sosotamtru DESC LIMIT 1;";
+            string sql = "SELECT sosotamtru FROM sotamtru where sosotamtru LIKE 'ST%' ORDER BY sosotamtru DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
-            return string.IsNullOrEmpty(lastVal) ? "TT0000000" : lastVal;
+            return string.IsNullOrEmpty(lastVal) ? "ST0000000" : lastVal;
         }
         public static string getLastID_MaNhanKhauTamTru()
         {
-            string sql = "SELECT manhankhautamtru FROM nhankhautamtru ORDER BY manhankhautamtru DESC LIMIT 1;";
+            string sql = "SELECT manhankhautamtru FROM nhankhautamtru where manhankhautamtru LIKE 'TT%' ORDER BY manhankhautamtru DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
-            return string.IsNullOrEmpty(lastVal) ? "TA0000000" : lastVal;
+            return string.IsNullOrEmpty(lastVal) ? "TT0000000" : lastVal;
         }
 
         public static string getLastID_MaTieuSu()
         {
-            string sql = "SELECT matieusu FROM tieusu ORDER BY matieusu DESC LIMIT 1;";
+            string sql = "SELECT matieusu FROM tieusu where matieusu LIKE 'TS%' ORDER BY matieusu DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
             return string.IsNullOrEmpty(lastVal) ? "TS0000000" : lastVal;
         }
 
         public static string getLastID_MaTienAnTienSu()
         {
-            string sql = "SELECT matienantiensu FROM tienantiensu ORDER BY matienantiensu DESC LIMIT 1;";
+            string sql = "SELECT matienantiensu FROM tienantiensu where matienantiensu LIKE 'TA%' ORDER BY matienantiensu DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
             return string.IsNullOrEmpty(lastVal) ? "TA0000000" : lastVal;
+        }
+        public static string getLastID_CanBo()
+        {
+            string sql = "SELECT macanbo FROM canbo where macanbo LIKE 'CB%' ORDER BY macanbo DESC LIMIT 1;";
+            string lastVal = GetLastValueTable(sql);
+            return string.IsNullOrEmpty(lastVal) ? "CB0000000" : lastVal;
+        }
+        public static string getLastID_NhanKhauTamVang()
+        {
+            string sql = "SELECT manhankhautamvang FROM nhankhautamvang where manhankhautamvang LIKE 'TV%' ORDER BY manhankhautamvang DESC LIMIT 1;";
+            string lastVal = GetLastValueTable(sql);
+            return string.IsNullOrEmpty(lastVal) ? "TV0000000" : lastVal;
         }
 
         public static string GetLastValueTable(string sql)

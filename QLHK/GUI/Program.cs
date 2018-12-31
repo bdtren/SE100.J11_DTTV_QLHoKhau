@@ -17,8 +17,8 @@ namespace GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new SoTamTruGUI());
 
+            Application.Run(new SoTamTruGUI());
         }
     }
 }

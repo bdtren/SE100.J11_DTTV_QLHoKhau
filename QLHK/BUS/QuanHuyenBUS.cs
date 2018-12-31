@@ -33,7 +33,7 @@ namespace BUS
         }
         public override bool Add_Table(QuanHuyenDTO data)
         {
-            throw new NotImplementedException();
+            return obj.insert_table(data);
         }
 
         public DataSet TimKiem(string query)
