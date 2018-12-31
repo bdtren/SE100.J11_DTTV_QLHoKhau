@@ -124,31 +124,34 @@
   <data name="personal-information-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\personal-information-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="them hk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\them hk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="thay doi chu ho" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\thay doi chu ho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sửa nv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sửa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="xoa nv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\xoa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cap lai hk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\cap lai hk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Actions-list-add-user-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Actions-list-add-user-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sửa nv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\sửa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Them nk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Them nk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="xoa nv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\xoa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sửa nv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sửa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="them hk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\them hk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sửa nv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\sửa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cap lai hk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\cap lai hk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xoa nv" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\xoa nv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thay doi chu ho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\thay doi chu ho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Actions-list-add-user-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Actions-list-add-user-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="csdl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\csdl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

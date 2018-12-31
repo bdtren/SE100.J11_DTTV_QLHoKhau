@@ -19,8 +19,6 @@ namespace GUI
     {
         CanBoBUS canbobus;
         CanBo canbo;
-        Admin admin;
-        AdminBUS adminbus;
         HocSinhSinhVienDTO hssv;
         HocSinhSinhVienBUS hssvbus;
         NhanKhauBUS nhankhaubus;
@@ -51,7 +49,6 @@ namespace GUI
         {
             InitializeComponent();
             canbobus = new CanBoBUS();
-            adminbus = new AdminBUS();
             hssvbus = new HocSinhSinhVienBUS();
             nhankhaubus = new NhanKhauBUS();
             tienantiensubus = new TienAnTienSuBUS();
@@ -77,10 +74,10 @@ namespace GUI
         {
             switch (comboBox1.Text)
             {
-                case "hocsinhsinhvien":
+                case "canbo":
                     try
                     {
-                        dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
+                        dataGridView1.DataSource = canbobus.GetAll().Tables["canbo"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -92,10 +89,10 @@ namespace GUI
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "nghenghiep":
+                case "hocsinhsinhvien":
                     try
                     {
-                        dataGridView1.DataSource = nghenghiepbus.GetAll().Tables["nghenghiep"];
+                        dataGridView1.DataSource = hssvbus.GetAll().Tables["hocsinhsinhvien"];
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
                             DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -216,7 +213,6 @@ namespace GUI
                     {
                         MessageBox.Show(ex.Message);
                     }
-
                     break;
                 case "tieusu":
                     try
@@ -232,7 +228,6 @@ namespace GUI
                     {
                         MessageBox.Show(ex.Message);
                     }
-
                     break;
                 case "tinhthanhpho":
                     try
