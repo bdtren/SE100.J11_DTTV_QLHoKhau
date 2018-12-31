@@ -31,5 +31,39 @@ namespace GUI
         {
 
         }
+
+        private void Canbodulieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+        public void ThemForm()
+        {
+           /* fr_CBDuLieu cbdulieu_gui = new fr_CBDuLieu();
+            int index = hamkiemtrtontai(tabControl1, hssv_gui);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = hssv_gui.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                hssv_gui.TopLevel = false;
+                hssv_gui.Parent = mytabpage;
+                hssv_gui.Show();
+                hssv_gui.Dock = DockStyle.Fill;
+            }*/
+
+        }
+        int hamkiemtrtontai(TabControl tbc, Form frm)
+        {
+            for (int i = 0; i < tbc.TabCount; i++)
+            {
+                if (tbc.TabPages[i].Text.Trim() == frm.Text.Trim())
+                    return i;
+            }
+            return -1;
+        }
     }
 }

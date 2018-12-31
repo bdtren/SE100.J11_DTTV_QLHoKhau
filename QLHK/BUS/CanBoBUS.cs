@@ -30,7 +30,7 @@ namespace BUS
         }
         public override bool Add_Table(CanBo data)
         {
-            throw new NotImplementedException();
+            return objcb.insert_table(data);
         }
     }
 }
