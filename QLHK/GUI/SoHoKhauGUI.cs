@@ -58,7 +58,7 @@ namespace GUI
 
             dataGridView1.DataSource = source;
 
-            cbbChuHo.SelectedValue = shkDTO.MaChuHo;
+          //  cbbChuHo.SelectedValue = shkDTO.MaChuHo;
             dtpNgayCap.Value = shkDTO.NgayCap;
             tbDiaChi.Text = shkDTO.DiaChi;
             tbSoDangKy.Text = shkDTO.SoDangKy;

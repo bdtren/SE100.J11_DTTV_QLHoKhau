@@ -23,7 +23,7 @@ namespace DAO
                     conn.Open();
                 }
                 dataset = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, NgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and sosotamtru='"+sosotamtru+"'";
+                string sql = "SELECT nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen,TenKhac,NgaySinh, GioiTinh,NoiSinh, NguyenQuan, DanToc,TonGiao, QuocTich,HoChieu,NoiThuongTru,DiaChiHienNay,SDT, TrinhDoHocVan,TrinhDoChuyenMon,BietTiengDanToc,TrinhDoNgoaiNgu, NgheNghiep,SoSoTamTru,NoiTamTru,TuNgay,DenNgay,LyDo FROM nhankhau inner join nhankhautamtru ON nhankhautamtru.madinhdanh=nhankhau.madinhdanh WHERE sosotamtru='"+sosotamtru+"' ";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(dataset,"nhankhautamtrujoin");
@@ -76,26 +76,38 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into nhankhautamtru values(@manhankhautamtru, @madinhdanh, @diachithuongtru, @sosotamtru);"
-                             + "insert into nhankhau values(@madinhdanh, @nghenghiep, @hoten, @gioitinh, @dantoc, @hochieu, @ngaycap, @ngaysinh, @nguyenquan, @noicap, @noisinh,@quoctich, @sdt, @tongiao)";
+                string sql = "insert into nhankhautamtru values(@manhankhautamtru, @madinhdanh, @noitamtru,@tungay,@denngay,@lydo,@sosotamtru);"
+                             + "insert into nhankhau values(@madinhdanh, @hoten, @tenkhac, @ngaysinh, @gioitinh, @noisinh, @nguyenquan, @dantoc,@tongiao, @quoctich, @hochieu, @noithuongtru, @diachihiennay, @sdt, @trinhdohocvan, @trinhdochuyenmon, @biettiengdantoc, @trinhdongoaingu, @nghenghiep);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru);
-                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
-                cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
-                cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
-                cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
-                cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu);
-                cmd.Parameters.AddWithValue("@ngaycap", nktt.NgayCap);
-                cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh);
-                cmd.Parameters.AddWithValue("@nguyenquan",nktt.NguyenQuan);
-                cmd.Parameters.AddWithValue("@noicap", nktt.NoiCap);
-                cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh);
-                cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich);
-                cmd.Parameters.AddWithValue("@sdt", nktt.SDT);
-                cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao);
+                cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru.ToString());
+                cmd.Parameters.AddWithValue("@noitamtru", nktt.NoiTamTru.ToString());
+                cmd.Parameters.AddWithValue("@tungay", nktt.TuNgay.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@denngay", nktt.DenNgay.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@lydo", nktt.LyDo.ToString());
+                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru.ToString());
+
+                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@hoten", nktt.HoTen.ToString());
+                cmd.Parameters.AddWithValue("@tenkhac", nktt.TenKhac.ToString());
+                cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh.ToString());
+                cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh.ToString());
+                cmd.Parameters.AddWithValue("@nguyenquan", nktt.NguyenQuan.ToString());
+                cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc.ToString());
+                cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao.ToString());
+                cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich.ToString());
+                cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu.ToString());
+                cmd.Parameters.AddWithValue("@noithuongtru", nktt.NoiThuongTru.ToString());
+                cmd.Parameters.AddWithValue("@diachihiennay", nktt.DiaChiHienNay.ToString());
+                cmd.Parameters.AddWithValue("@sdt", nktt.SDT.ToString());
+                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan.ToString());
+                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon.ToString());
+                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc.ToString());
+                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu.ToString());
+                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep.ToString());
+
+
+
 
                 cmd.ExecuteNonQuery();
             }
@@ -164,26 +176,40 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; update nhankhau set nghenghiep=@nghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh;";
+                string sql = "update nhankhautamtru set noitamtru=@noitamtru, tungay=@tungay, denngay=@denngay,lydo=@lydo,sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; " +
+                    "update nhankhau set hoten=@hoten,tenkhac=@tenkhac,ngaysinh=@ngaysinh,gioitinh=@gioitinh," +
+                    "noisinh=@noisinh,nguyenquan=@nguyenquan,dantoc=@dantoc,tongiao=@tongiao,quoctich=@quoctich," +
+                    "hochieu=@hochieu,noithuongtru=@noithuongtru,diachihiennay=@diachihiennay,sdt=@sdt," +
+                    "trinhdohocvan=@trinhdohocvan,trinhdochuyenmon=@trinhdochuyenmon, biettiengdantoc=@biettiengdantoc, " +
+                    "trinhdongoaingu=@trinhdongoaingu ,nghenghiep=@nghenghiep where madinhdanh=@madinhdanh";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
 
-                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.Parameters.AddWithValue("@noitamtru", nktt.NoiTamTru.ToString());
+                cmd.Parameters.AddWithValue("@tungay", nktt.TuNgay.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@denngay", nktt.DenNgay.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@lydo", nktt.LyDo.ToString());
+                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru.ToString());
 
-                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
-                cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
-                cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
-                cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
-                cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu);
-                cmd.Parameters.AddWithValue("@ngaycap", nktt.NgayCap);
-                cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh);
-                cmd.Parameters.AddWithValue("@nguyenquan", nktt.NguyenQuan);
-                cmd.Parameters.AddWithValue("@noicap", nktt.NoiCap);
-                cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh);
-                cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich);
-                cmd.Parameters.AddWithValue("@sdt", nktt.SDT);
-                cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao);
+
+                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh.ToString());
+                cmd.Parameters.AddWithValue("@hoten", nktt.HoTen.ToString());
+                cmd.Parameters.AddWithValue("@tenkhac", nktt.TenKhac.ToString());
+                cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh.ToString());
+                cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh.ToString());
+                cmd.Parameters.AddWithValue("@nguyenquan", nktt.NguyenQuan.ToString());
+                cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc.ToString());
+                cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao.ToString());
+                cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich.ToString());
+                cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu.ToString());
+                cmd.Parameters.AddWithValue("@noithuongtru", nktt.NoiThuongTru.ToString());
+                cmd.Parameters.AddWithValue("@diachihiennay", nktt.DiaChiHienNay.ToString());
+                cmd.Parameters.AddWithValue("@sdt", nktt.SDT.ToString());
+                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan.ToString());
+                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon.ToString());
+                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc.ToString());
+                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu.ToString());
+                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep.ToString());
                 cmd.ExecuteNonQuery();
 
             }
@@ -209,11 +235,13 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh";
+                string sql = "update nhankhautamtru set noitamtru=@noitamtru, tungay=@tungay, denngay=@denngay,lydo=@lydo,sosotamtru=@sosotamtru where madinhdanh=@madinhdanh;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.Parameters.AddWithValue("@noitamtru", nktt.NoiTamTru.ToString());
+                cmd.Parameters.AddWithValue("@tungay", nktt.TuNgay.ToString());
+                cmd.Parameters.AddWithValue("@denngay", nktt.DenNgay.ToString());
+                cmd.Parameters.AddWithValue("@lydo", nktt.LyDo.ToString());
+                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru.ToString());
                 cmd.ExecuteNonQuery();
 
             }
@@ -239,7 +267,11 @@ namespace DAO
                     conn.Open();
                 }
                 DataSet ds = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, NgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'";
+                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen,TenKhac,NgaySinh," +
+                    " GioiTinh,NoiSinh,NguyenQuan,DanToc,TonGiao,QuocTich,HoChieu,NoiThuongTru,DiaChiHienNay," +
+                    "SDT,TrinhDoHocVan,TrinhDoChuyenMon,BietTiengDanToc,TrinhDoNgoaiNgu, NgheNghiep, SoSoTamTru " +
+                    "FROM nhankhautamtru inner join nhankhau " +
+                    "WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(ds);
@@ -368,7 +400,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT MaTienAnTienSu,BanAn,ToiDanh,HinhPhat,NgayPhat,GhiChu  FROM tienantiensu WHERE madinhdanh='"+madinhdanh+"'", conn);
+                sqlda = new MySqlDataAdapter("SELECT *  FROM tienantiensu WHERE madinhdanh='"+madinhdanh+"'", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -428,7 +460,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT MaTieuSu,ThoiGianBatDau,ThoiGianKetThuc,ChoO,MaNgheNghiep,NoiLamViec  FROM tieusu WHERE madinhdanh='" + madinhdanh + "'", conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM tieusu WHERE madinhdanh='" + madinhdanh + "'", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -460,6 +492,77 @@ namespace DAO
                 string sql = "delete from tieusu where matieusu=@matieusu";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matieusu", matieusu);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+
+
+
+
+        //GIA HẠN
+
+        //Lấy thời gian tạm trú
+        public DateTime GetDayFromSoTamTru(string sql)
+        {
+            DateTime date = new DateTime(12 / 12 / 1800);
+            try
+            {
+                DataTable dt = new DataTable();
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+
+                date = Convert.ToDateTime(dt.Rows[0][0]);
+                return date;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return date;
+        }
+
+
+        public DateTime ThoiHanSoTamTru(string madinhdanh)
+        {
+            string sql = "SELECT denngay FROM nhankhautamtru where madinhdanh='" + madinhdanh + "'";
+            return GetDayFromSoTamTru(sql);
+        }
+
+
+        public DateTime NgayDangKyTamTru(string madinhdanh)
+        {
+            string sql = "SELECT tungay FROM nhankhautamtru where madinhdanh='" + madinhdanh + "'";
+            return GetDayFromSoTamTru(sql);
+        }
+
+
+        public bool InsertGiaHan(string madinhdanh, DateTime thoigian)
+        {
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "update nhankhautamtru set denngay=@denngay where madinhdanh=@madinhdanh";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@denngay", thoigian);
+                cmd.Parameters.AddWithValue("@madinhdanh", madinhdanh);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

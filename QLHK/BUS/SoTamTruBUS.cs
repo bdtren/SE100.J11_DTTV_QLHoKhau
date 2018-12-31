@@ -217,6 +217,10 @@ namespace BUS
             return 0;
         }
 
+        public string GetValue_Sub(string table, string value, string namecolumnWhere, string nameColumn)
+        {
+            return SoTamTru.GetValue_Sub(table, value, namecolumnWhere, nameColumn);
+        }
 
     }
 }

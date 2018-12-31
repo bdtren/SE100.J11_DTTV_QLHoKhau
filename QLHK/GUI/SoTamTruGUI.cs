@@ -49,7 +49,6 @@ namespace GUI
         {
 
             txt_SoSoTamTru.Clear();
-            txt_LyDo.Clear();
             dt_DenNgay.ResetText();
             dt_TuNgay.ResetText();
             //Khởi tạo mã số sổ tạm trú
@@ -140,6 +139,7 @@ namespace GUI
                     BindingSource bindingSource = new BindingSource();
                     bindingSource.DataSource = list_tennhankhau;
                     cbb_MaChuHo.DataSource = bindingSource;
+                    InputValueChuHo();
                 }
              }
 
@@ -151,28 +151,26 @@ namespace GUI
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string machuhotamtru = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string choohiennay = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            DateTime tungay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+            string chuho = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string noitamtru = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            DateTime ngaycap = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
             DateTime denngay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-            string lydo = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            sotamtruDto = new SoTamTruDTO(sosotamtru, chuho, noitamtru, ngaycap, denngay);
 
-            string[] ChoOHienNay = sotamtruBus.SplitDiaChi(choohiennay);
+            string[] ChoOHienNay = sotamtruBus.SplitDiaChi(noitamtru);
 
-            txt_LyDo.Text = sotamtruDto.LyDo;
             ImportToComboboxMaChuHo();
 
             txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
-            dt_TuNgay.Value = sotamtruDto.TuNgay;
+            dt_TuNgay.Value = sotamtruDto.NgayCap;
             dt_DenNgay.Value = sotamtruDto.DenNgay;
 
             txt_SoNha.Text = ChoOHienNay[0];
             cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
             cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(ChoOHienNay[2]);
-            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]);
-            ImportToComboboxMaChuHo();
+            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]); 
+            ImportToComboboxMaChuHo(); 
         }
 
         //Kiểm tra mã chủ hộ và số sổ hộ khẩu có bị xóa hay không?
@@ -237,11 +235,10 @@ namespace GUI
             }
 
             string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
-            string lydo = txt_LyDo.Text.ToString();
 
 
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            sotamtruDto = new SoTamTruDTO(sosotamtru,machuhotamtru, choohiennay, tungay, denngay);
 
             if (sotamtruBus.Add(sotamtruDto))
             {
@@ -313,10 +310,9 @@ namespace GUI
                 string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
                 DateTime tungay = TuNgay;
                 DateTime denngay = DenNgay;
-                string lydo = txt_LyDo.Text.ToString();
                 
 
-                SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+                SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay,tungay,denngay);
 
                 if (sotamtruBus.Update(sotamtru, r))
                 {
@@ -468,6 +464,28 @@ namespace GUI
             else if (dialogResult == DialogResult.No)
             {
             }
+        }
+
+        private void InputValueChuHo()
+        {
+            string manhankhautamtru = sotamtruBus.convertTentoMaNhanKhauTamTru(cbb_MaChuHo.Text.ToString(), txt_SoSoTamTru.Text.ToString());
+            string noitamtru = sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "noitamtru");
+            DateTime ngaycap = Convert.ToDateTime(sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "tungay"));
+            DateTime denngay = Convert.ToDateTime(sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "denngay"));
+            //Set To Input
+            string[] Noitamtru_list = sotamtruBus.SplitDiaChi(noitamtru);
+            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(Noitamtru_list[2]);
+            cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(Noitamtru_list[1]);
+            cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(Noitamtru_list[0]);
+
+            dt_TuNgay.Value = ngaycap;
+            dt_DenNgay.Value = denngay;
+
+        }
+
+        private void cbb_MaChuHo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            InputValueChuHo();
         }
     }
 }

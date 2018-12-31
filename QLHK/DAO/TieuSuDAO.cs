@@ -128,14 +128,14 @@ namespace DAO
             try
             {
 
-                string sql = "update tieusu set madinhdanh=@madinhdanh, thoigianketthuc=@thoigianketthuc, choo=@choo, nghenghiep=@nghenghiep, noilamviec=@noilamviec where matieusu=@matieusu";
+                string sql = "update tieusu set madinhdanh=@madinhdanh,thoigianbatdau=@thoigianbatdau, thoigianketthuc=@thoigianketthuc, choo=@choo, nghenghiep=@nghenghiep, noilamviec=@noilamviec where matieusu=@matieusu";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@madinhdanh", tieusu.MaDinhDanh);
                 cmd.Parameters.AddWithValue("@thoigianbatdau", tieusu.ThoiGianBatDau.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@thoigianketthuc", tieusu.ThoiGianKetThuc.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@choo", tieusu.ChoO);
-                cmd.Parameters.AddWithValue("@manghenghiep", tieusu.NgheNghiep);
+                cmd.Parameters.AddWithValue("@nghenghiep", tieusu.NgheNghiep);
                 cmd.Parameters.AddWithValue("@noilamviec", tieusu.NoiLamViec);
                 cmd.Parameters.AddWithValue("@matieusu", tieusu.MaTieuSu);
 

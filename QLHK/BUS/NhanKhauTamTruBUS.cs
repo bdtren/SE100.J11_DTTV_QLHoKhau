@@ -122,5 +122,64 @@ namespace BUS
         {
             return objnktt.DeleteTieuSu(matieusu);
         }
+
+
+        //Tính toán số ngày giửa hai thời điểm
+        public double TimeBetweenTwoDays(DateTime start, DateTime End)
+        {
+            return (End - start).TotalDays;
+        }
+
+        //Đăng ký tạm trú có thời hạn tối đa không quá 2 năm 
+        public bool CheckThoiGianDangKyTamTru(DateTime tungay, DateTime denngay)
+        {
+            double songay = TimeBetweenTwoDays(tungay, denngay);
+            if (songay > 729) { return false; }
+            return true;
+        }
+
+        public bool InsertGiaHan(string sosotamtru, DateTime thoigian)
+        {
+            return objnktt.InsertGiaHan(sosotamtru, thoigian);
+        }
+
+
+        public DateTime TimNgayDangKyTamTru(string madinhdanh)
+        {
+            return objnktt.NgayDangKyTamTru(madinhdanh);
+        }
+
+        public DateTime ThoiHanSoTamTru(string madinhdanh)
+        {
+            return objnktt.ThoiHanSoTamTru(madinhdanh);
+        }
+
+        //Kiểm tra hợp lệ để gia hạn cho sổ tạm trú
+        public double CheckGiaHan(DateTime thoihangiahan, string madinhdanh)
+        {
+            //Kiểm tra thời gian tối đa có thể gia hạn
+            DateTime today = DateTime.Today;
+            DateTime thoigianbatdau = TimNgayDangKyTamTru(madinhdanh);
+
+            //Tính số ngày đã tạm trú
+            double thoigiandatamtru = (today - thoigianbatdau).TotalDays;
+
+            double thoigiantong = 730;
+
+            //Tính số ngày còn lại có thể gia hạn 
+            double songaycothegiahan = thoigiantong - thoigiandatamtru;
+
+            //Thời gian gia hạn thêm
+            double thoigianthem = TimeBetweenTwoDays(today, thoihangiahan);
+
+            //Kiểm tra
+            if (thoigianthem > songaycothegiahan)
+            {
+                return songaycothegiahan;
+            }
+
+            return 0;
+        }
+
     }
 }

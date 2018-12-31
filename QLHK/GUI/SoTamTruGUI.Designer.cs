@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGiaHan = new System.Windows.Forms.Button();
             this.btnThemNhanKhau = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -49,14 +50,11 @@
             this.dt_TuNgay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_LyDo = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_SoSoTamTru = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnGiaHan = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,6 +74,19 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
+            // 
+            // btnGiaHan
+            // 
+            this.btnGiaHan.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiaHan.ForeColor = System.Drawing.Color.White;
+            this.btnGiaHan.Location = new System.Drawing.Point(68, 117);
+            this.btnGiaHan.Name = "btnGiaHan";
+            this.btnGiaHan.Size = new System.Drawing.Size(141, 39);
+            this.btnGiaHan.TabIndex = 18;
+            this.btnGiaHan.Text = "Gia hạn tạm trú";
+            this.btnGiaHan.UseVisualStyleBackColor = false;
+            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
             // btnThemNhanKhau
             // 
@@ -209,8 +220,6 @@
             this.groupBox1.Controls.Add(this.dt_TuNgay);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txt_LyDo);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_SoSoTamTru);
             this.groupBox1.Controls.Add(this.label2);
@@ -229,6 +238,7 @@
             this.cbb_MaChuHo.Name = "cbb_MaChuHo";
             this.cbb_MaChuHo.Size = new System.Drawing.Size(262, 21);
             this.cbb_MaChuHo.TabIndex = 22;
+            this.cbb_MaChuHo.SelectionChangeCommitted += new System.EventHandler(this.cbb_MaChuHo_SelectionChangeCommitted);
             // 
             // btnReset
             // 
@@ -277,34 +287,18 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 197);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Từ ngày (*)";
-            // 
-            // txt_LyDo
-            // 
-            this.txt_LyDo.Location = new System.Drawing.Point(127, 250);
-            this.txt_LyDo.Name = "txt_LyDo";
-            this.txt_LyDo.Size = new System.Drawing.Size(262, 20);
-            this.txt_LyDo.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 253);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Lý do";
+            this.label5.Text = "Ngày cấp (*)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Chổ ở hiện nay (*)";
+            this.label3.Text = "Nơi tạm trú(*)";
             // 
             // txt_SoSoTamTru
             // 
@@ -342,19 +336,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(724, 184);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // btnGiaHan
-            // 
-            this.btnGiaHan.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGiaHan.ForeColor = System.Drawing.Color.White;
-            this.btnGiaHan.Location = new System.Drawing.Point(68, 117);
-            this.btnGiaHan.Name = "btnGiaHan";
-            this.btnGiaHan.Size = new System.Drawing.Size(141, 39);
-            this.btnGiaHan.TabIndex = 18;
-            this.btnGiaHan.Text = "Gia hạn tạm trú";
-            this.btnGiaHan.UseVisualStyleBackColor = false;
-            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
             // SoTamTruGUI
             // 
@@ -397,8 +378,6 @@
         private System.Windows.Forms.DateTimePicker dt_TuNgay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_LyDo;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_SoSoTamTru;
         private System.Windows.Forms.Label label2;

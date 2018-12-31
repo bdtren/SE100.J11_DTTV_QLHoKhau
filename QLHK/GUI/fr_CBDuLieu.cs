@@ -27,8 +27,8 @@ namespace GUI
         TienAnTienSuBUS tienantiensubus;
         TieuSuDTO tieusu;
         TieuSuBUS tieusubus;
-        NgheNghiepDTO nghenghiep;
-        NgheNghiepBUS nghenghiepbus;
+      //  NgheNghiepDTO nghenghiep;
+    //    NgheNghiepBUS nghenghiepbus;
         QuanHuyenDTO quanhuyen;
         QuanHuyenBUS quanhuyenbus;
         TinhThanhPhoDTO tinhthanhpho;
@@ -53,7 +53,7 @@ namespace GUI
             nhankhaubus = new NhanKhauBUS();
             tienantiensubus = new TienAnTienSuBUS();
             tieusubus = new TieuSuBUS();
-            nghenghiepbus = new NgheNghiepBUS();
+           // nghenghiepbus = new NgheNghiepBUS();
             quanhuyenbus = new QuanHuyenBUS();
             tinhthanhphobus = new TinhThanhPhoBUS();
             xaphuongthitranbus = new XaPhuongThiTranBUS();
@@ -265,7 +265,7 @@ namespace GUI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (comboBox1.Text)
+          /* switch (comboBox1.Text)
             {
                 case "hocsinhsinhvien":
                     {
@@ -508,8 +508,8 @@ namespace GUI
                                     sohokhaubus.Delete(rowIndex);
                                 }
                             }
-                            else if (Task == "Insert")
-                            {/*
+                            else if (Task == "Insert") 
+                            { /*
                                 int row = dataGridView1.Rows.Count - 2;
                                 string sosohokhau = dataGridView1.Rows[row].Cells["sosohokhau"].Value.ToString();
                                 string machuho = dataGridView1.Rows[row].Cells["machuho"].Value.ToString();
@@ -519,8 +519,8 @@ namespace GUI
                                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                 dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
                                 */
-
-                            }
+                                
+                /*           }
                             else if (Task == "Update")
                             {
                                 int row = e.RowIndex;
@@ -785,7 +785,7 @@ namespace GUI
                         MessageBox.Show(ex.Message);
                     }
                     break;
-            }
+            } */
         }
 
 

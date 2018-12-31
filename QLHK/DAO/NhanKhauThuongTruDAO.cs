@@ -78,7 +78,7 @@ namespace DAO
         }
         public override bool insert(NhanKhauThuongTruDTO nktt)
         {
-            try
+          /*  try
             {
 
                 if (conn.State != ConnectionState.Open)
@@ -110,7 +110,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }
+            } */
             return true;
 
         }
@@ -155,7 +155,7 @@ namespace DAO
         }
         public override bool update(NhanKhauThuongTruDTO nktt, int r)
         {
-            if (conn.State != ConnectionState.Open)
+           /* if (conn.State != ConnectionState.Open)
             {
                 conn.Open();
             }
@@ -188,12 +188,12 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }
+            } */
             return true;
         }
         public bool doiChuHo(List<NhanKhauThuongTruDTO> danhSach, string maDinhDanhChuHo)
         {
-            bool contain = false;
+         /*   bool contain = false;
             foreach(NhanKhauThuongTruDTO item in danhSach)
             {
                 if (item.MaDinhDanh == maDinhDanhChuHo)
@@ -219,7 +219,7 @@ namespace DAO
                     return false;
                 }
 
-            }
+            }*/
 
             return true;
 

@@ -139,7 +139,7 @@ namespace GUI
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+           /* string gioiTinh = rdNam.Checked ? "nam" : "nu";
             nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
                 tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
                 cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
@@ -191,7 +191,7 @@ namespace GUI
             else
             {
                 MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            } */
         }
 
         private void tbDCThuongTru_Enter(object sender, EventArgs e)
@@ -391,7 +391,7 @@ namespace GUI
                     }
                     else if (Task == "Insert")
                     {
-                        int row = dGVTienAnTienSu.Rows.Count - 2;
+                       /* int row = dGVTienAnTienSu.Rows.Count - 2;
                         string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
                         string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
                         string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
@@ -404,12 +404,12 @@ namespace GUI
                         tienAn.Add_Table(tienanDTO);
                         dGVTienAnTienSu.Rows.RemoveAt(dGVTienAnTienSu.Rows.Count - 2);
                         dGVTienAnTienSu.Rows[e.RowIndex].Cells[dGVTienAnTienSu.ColumnCount - 1].Value = "Delete";
-
+                        */
 
                     }
                     else if (Task == "Update")
                     {
-                        int row = e.RowIndex;
+                      /*  int row = e.RowIndex;
                         string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
                         string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
                         string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
@@ -420,7 +420,7 @@ namespace GUI
                         string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
                         tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
                         tienAn.Update(tienanDTO, row);
-                        Loadtienantiensu();
+                        Loadtienantiensu(); */
                     }
                 }
             }

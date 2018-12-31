@@ -118,7 +118,7 @@
             this.button_sua.TabIndex = 26;
             this.button_sua.Text = "SỬA";
             this.button_sua.UseVisualStyleBackColor = true;
-            this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
+           // this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
             // button_xoa
             // 
@@ -128,7 +128,7 @@
             this.button_xoa.TabIndex = 27;
             this.button_xoa.Text = "XÓA";
             this.button_xoa.UseVisualStyleBackColor = true;
-            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
+            //this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
             // 
             // button_them
             // 

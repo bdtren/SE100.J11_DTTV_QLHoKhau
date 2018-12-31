@@ -83,14 +83,13 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into sotamtru values(@sosotamtru, @machuhotamtru, @choohiennay, @tungay, @denngay, @lydo)";
+                string sql = "insert into sotamtru values(@sosotamtru, @chuhotamtru, @noitamtru, @ngaycap, @denngay)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
-                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
-                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
+                cmd.Parameters.AddWithValue("@chuhotamtru", sotamtru.MaChuHoTamTru);
+                cmd.Parameters.AddWithValue("@noitamtru", sotamtru.NoiTamTru);
+                cmd.Parameters.AddWithValue("@ngaycap", sotamtru.NgayCap);
                 cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
-                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -239,14 +238,13 @@ namespace DAO
             }
             try
             {
-                string sql = "update sotamtru set machuhotamtru=@machuhotamtru, choohiennay=@choohiennay, tungay=@tungay, denngay=@denngay, lydo=@lydo where sosotamtru=@sosotamtru";
+                string sql = "update sotamtru set chuho=@chuho, noitamtru=@noitamtru, ngaycap=@ngaycap, denngay=@denngay where sosotamtru=@sosotamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
-                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
-                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
-                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
                 cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
+                cmd.Parameters.AddWithValue("@chuho", sotamtru.MaChuHoTamTru);
+                cmd.Parameters.AddWithValue("@noitamtru", sotamtru.NoiTamTru);
+                cmd.Parameters.AddWithValue("@ngaycap", sotamtru.NgayCap);
+                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -448,7 +446,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sqltemp = "SELECT machuhotamtru FROM sotamtru where sosotamtru='"+sosotamtru+"'";
+                string sqltemp = "SELECT chuho FROM sotamtru where sosotamtru='"+sosotamtru+"'";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(dt);
@@ -593,7 +591,7 @@ namespace DAO
 
         public DateTime NgayDangKyTamTru(string sosotamtru)
         {
-            string sql = "SELECT tungay FROM sotamtru where sosotamtru='" + sosotamtru + "'";
+            string sql = "SELECT ngaycap FROM sotamtru where sosotamtru='" + sosotamtru + "'";
             return GetDayFromSoTamTru(sql);
         }
 
@@ -623,6 +621,34 @@ namespace DAO
             }
             return true;
         }
+
+
+        public string GetValue_Sub(string table, string value,string namecolumnWhere, string nameColumn)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string find = value;
+                string ID;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT " + nameColumn + " FROM " + table + " WHERE "+ namecolumnWhere + "='" + find + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
 
     }
 
