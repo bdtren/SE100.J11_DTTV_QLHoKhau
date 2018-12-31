@@ -1,32 +1,22 @@
 /*==============================================================*/
-/* DBMS name:      Quan Ly Ho Khau                              */
-/* Created on:     10/20/2018 12:11:22 PM                       */
+/* Data base name:      Quan Ly Ho Khau (qlhk)                  */
+/* Created on:          10/20/2018 12:11:22 PM                  */
 /*==============================================================*/
-
-/*==============================================================*/
-/* Table: NGHE NGHIEP                                           */
-/*==============================================================*/
-create table NGHENGHIEP
-(
-    MANGHENGHIEP                       char(9),
-    TENNGHENGHIEP                       text,
-    primary key (MANGHENGHIEP)
-);
 
 /*==============================================================*/
 /* Table: HOC SINH SINH VIEN                                    */
 /*==============================================================*/
 create table HOCSINHSINHVIEN
 (
-    MSSV                                varchar(10),
-    MADINHDANH          				varchar(20),
-    MANGHENGHIEP                        char(9),
-    TRUONG                              text,
-    DIACHITHUONGTRU                     text,
-    THOIGIANBATDAUTAMTRUTHUONGTRU       date,
-    THOIGIANKETTHUCTAMTRUTHUONGTRU      date,
-    VIPHAM                              text,
-    primary key (MSSV)
+    MAHSSV                              char(9)         not null,
+    MADINHDANH                          char(12)        not null,
+    TRUONG                              text            not null,
+    DIACHITHUONGTRU                     text            not null,
+    THOIGIANBATDAUTAMTRUTHUONGTRU       date            not null,
+    THOIGIANKETTHUCTAMTRUTHUONGTRU      date            not null,
+    VIPHAM                              text                    ,
+
+    primary key (MAHSSV)
 );
 
 /*==============================================================*/
@@ -34,82 +24,27 @@ create table HOCSINHSINHVIEN
 /*==============================================================*/
 create table NHANKHAU
 (
-    
-    MADINHDANH          varchar(20),
-    MANGHENGHIEP        char(9),
-    HOTEN               varchar(20) CHARACTER SET utf8,
-    GIOITINH            varchar(10),
-    DANTOC              varchar(20),
-    HOCHIEU             varchar(20),
-    NGAYCAP             date,
-    NGAYSINH            date,
-    NGUYENQUAN          text,
-    NOICAP              text,
-    NOISINH             text,
-    QUOCTICH            varchar(20),
-    SDT                 char(10),
-    TONGIAO             varchar(20),
-    
+    MADINHDANH          char(9)                         not null,
+    HOTEN               text                            not null,
+    TENKHAC             text                                    ,
+    NGAYSINH            date                            not null,
+    GIOITINH            varchar(10)                     not null,
+    NOISINH             text                            not null,
+    NGUYENQUAN          text                            not null,
+    DANTOC              varchar(20)                     not null,  
+    TONGIAO             varchar(20)                     not null,
+    QUOCTICH            varchar(20)                     not null,
+    HOCHIEU             varchar(20)                             ,
+    NOITHUONGTRU        text                            not null,
+    DIACHIHIENNAY       text                            not null,
+    SDT                 char(10)                                ,
+    TRINHDOHOCVAN       text                                    ,
+    TRINHDOCHUYENMON    text                                    ,
+    BIETTIENGDANTOC     text                                    ,
+    TRINHDONGOAINGU     text                                    ,
+    NGHENGHIEP          text                            not null,
+  
     primary key (MADINHDANH)
-);
-
-
-/*==============================================================*/
-/* Table:   TAM VANG                                            */
-/*==============================================================*/
-create table NHANKHAUTAMVANG
-(
-    MANHANKHAUTAMVANG       char(9),         
-    MANHANKHAUTHUONGTRU     char(9),
-    NOITHUONGTRUTAMTRU      text,
-    NGAYBATDAUTAMVANG       date,
-    THOIGIANKETTHUCTAMVANG  date,
-    LYDO                    text,
-    NOIDEN                  text,
-
-    primary key (MANHANKHAUTAMVANG)
-);
-
-/*==============================================================*/
-/* Table: SO HO KHAU                                            */
-/*==============================================================*/
-create table SOHOKHAU
-(
-    SOSOHOKHAU              char(13),
-    MACHUHO                 char(9),
-    DIACHI                  text,
-    NGAYCAP                 date,
-    SODANGKY                text,
-
-    primary key (SOSOHOKHAU)
-);
-
-/*==============================================================*/
-/* Table: NHAN KHAU TAM TRU                                     */
-/*==============================================================*/
-create table NHANKHAUTAMTRU
-(
-    MANHANKHAUTAMTRU         char(9),
-    MADINHDANH              varchar(20),
-    DIACHITHUONGTRU         text,
-    SOSOTAMTRU              char(9),
-
-    primary key (MANHANKHAUTAMTRU)
-);
-
-/*==============================================================*/
-/* Table: SO TAM TRU                                            */
-/*==============================================================*/
-create table SOTAMTRU
-(
-    SOSOTAMTRU              char(9),
-    MACHUHOTAMTRU           char(9),
-    CHOOHIENNAY             text,
-    TUNGAY                  date,
-    DENNGAY                 date,
-    LYDO                    text,
-
-    primary key (SOSOTAMTRU)   
 );
 
 /*==============================================================*/
@@ -117,43 +52,71 @@ create table SOTAMTRU
 /*==============================================================*/
 create table NHANKHAUTHUONGTRU
 (
-    MANHANKHAUTHUONGTRU     char(9),
-    MADINHDANH              varchar(20),
-    SOSOHOKHAU              char(13),
-    NOITHUONGTRUTAMTRU      text CHARACTER SET utf8,
-    DIACHIHIENTAI           text CHARACTER SET utf8,
-    TRINHDOHOCVAN           text,
-    TRINHDOCHUYENMON        text,
-    BIETTIENGDANTOC         text,
-    TRINHDONGOAINGU         text,
-    NOILAMVIEC              text CHARACTER SET utf8,
-    QUANHEVOICHUHO          text,
+    MANHANKHAUTHUONGTRU     char(9)                     not null,
+    MADINHDANH              char(12)                    not null,
+    DIACHITHUONGTRU         text                        not null,
+    QUANHEVOICHUHO          text                                ,
+    SOSOHOKHAU              char(9)                     not null,
 
     primary key (MANHANKHAUTHUONGTRU)
 );
 
 /*==============================================================*/
-/* Table: CAN BO                                                */
+/* Table:   NHAN KHAU TAM VANG                                  */
 /*==============================================================*/
-create table CANBO
+create table NHANKHAUTAMVANG
 (
-    MACANBO                 char(9),
-    MANHANKHAUTHUONGTRU     char(9),
-    TENDANGNHAP             varchar(20),
-    MATKHAU                 varchar(40),
+    MANHANKHAUTAMVANG       char(9)                     not null,         
+    MADINHDANH              char(12)                     not null,
+    NGAYBATDAUTAMVANG       date                        not null,
+    NGAYKETTHUCTAMVANG      date                        not null,
+    LYDO                    text                        not null,
+    NOIDEN                  text                        not null,
 
-    primary key (MACANBO)
+    primary key (MANHANKHAUTAMVANG)
 );
 
 /*==============================================================*/
-/* Table: CAN BO HO TICH                                               */
+/* Table: NHAN KHAU TAM TRU                                     */
 /*==============================================================*/
-create table CANBOHOTICH
+create table NHANKHAUTAMTRU
 (
-    MACANBOHOTICH           char(9),
-    MACANBO                 char(9),
+    MANHAKHAUTAMTRU         char(9)                     not null,
+    MADINHDANH              char(12)                    not null,
+    NOITAMTRU               text                        not null,
+    TUNGAY                  date                        not null,
+    DENNGAY                 date                        not null,
+    LYDO                    text                        not null,
+    SOSOTAMTRU              char(9)                     not null,
 
-    primary key (MACANBOHOTICH)
+    primary key (MANHAKHAUTAMTRU)
+);
+
+/*==============================================================*/
+/* Table: SO HO KHAU                                            */
+/*==============================================================*/
+create table SOHOKHAU
+(
+    SOSOHOKHAU              char(9)                     not null,
+    CHUHO                   char(9)                     not null,
+    DIACHITHUONGTRU         text                        not null,
+    NGAYCAP                 date                        not null,
+
+    primary key (SOSOHOKHAU)
+);
+
+/*==============================================================*/
+/* Table: SO TAM TRU                                            */
+/*==============================================================*/
+create table SOTAMTRU
+(
+    SOSOTAMTRU              char(9)                     not null,
+    CHUHO                   char(9)                     not null,
+    NOITAMTRU               text                        not null,
+    NGAYCAP                 date                        not null,
+    DENNGAY                 date                        not null,
+
+    primary key (SOSOTAMTRU)   
 );
 
 /*==============================================================*/
@@ -161,13 +124,13 @@ create table CANBOHOTICH
 /*==============================================================*/
 create table TIEUSU
 (
-    MATIEUSU                char(9),
-    MADINHDANH              varchar(20),
-    THOIGIANBATDAU          date,
-    THOIGIANKETTHUC         date,
-    CHOO                    text,
-    MANGHENGHIEP            char(9),
-    NOILAMVIEC              text,
+    MATIEUSU                char(9)                     not null,
+    MADINHDANH              char(12)                    not null,
+    THOIGIANBATDAU          date                        not null,
+    THOIGIANKETTHUC         date                        not null,
+    CHOO                    text                        not null,
+    NGHENGHIEP              text                        not null,
+    NOILAMVIEC              text                        not null,
 
     primary key (MATIEUSU)
 );
@@ -177,26 +140,65 @@ create table TIEUSU
 /*==============================================================*/
 create table TIENANTIENSU
 (
-    MATIENANTIENSU          char(9),
-    MADINHDANH         		varchar(20),
-    BANAN                   text,
-    TOIDANH                 text,
-    HINHPHAT                text,
-    NGAYPHAT                date,
-    GHICHU                  text,
+    MATIENANTIENSU          char(9)                     not null,
+    MADINHDANH              char(12)                    not null,
+    TOIDANH                 text                        not null,
+    HINHPHAT                text                        not null,
+    BANAN                   text                        not null,  
+    NGAYPHAT                date                        not null,
 
     primary key (MATIENANTIENSU)
 );
 
 /*==============================================================*/
-/* Table: ADMIN                                                 */
+/* Table: CAN BO                                                */
 /*==============================================================*/
-create table ADMIN1
+create table CANBO
 (
-    MAADMIN                 char(9),
-    MACANBO                 char(9),
-    MABAOMAT                text,
+    MACANBO                 char(9)                     not null,
+    MANHANKHAUTHUONGTRU     char(9)                     not null,
+    TENTAIKHOAN             text                        not null,
+    MATKHAU                 text                        not null,
+    LOAICANBO               text                        not null,
 
-    primary key (MAADMIN)
+    primary key (MACANBO)
 );
 
+
+/*
+alter table HOCSINHSINHVIEN add constraint FK_HSSV_NN foreign key (MANGHENGHIEP)
+    references NGHENGHIEP (MANGHENGHIEP) on delete restrict on update restrict;
+
+alter table NHANKHAU add constraint FK_NK_NN foreign key (MANGHENGHIEP)
+    references NGHENGHIEP (MANGHENGHIEP) on delete restrict on update restrict;
+
+alter table NHANKHAU add constraint FK_NK_TG foreign key (MATONGIAO)
+    references TONGIAO (MATONGIAO) on delete restrict on update restrict;
+
+alter table NHANKHAU add constraint FK_NK_QT foreign key (MAQUOCTICH)
+    references QUOCTICH (MAQUOCTICH) on delete restrict on update restrict;
+
+alter table NHANKHAU add constraint FK_NK_DT foreign key (MADANTOC)
+    references DANTOC (MADANTOC) on delete restrict on update restrict;
+
+alter table NHANKHAUTHUONGTRU add constraint FK_NKTT0_SHK foreign key (SOSOHOKHAU)
+    references SOHOKHAU (SOSOHOKHAU) on delete restrict on update restrict;
+
+alter table NHANKHAUTHUONGTRU add constraint FK_NKTT0_QH foreign key (MAQUANHE)
+    references QUANHE (MAQUANHE) on delete restrict on update restrict;
+
+alter table NHANKHAUTAMTRU add constraint FK_NKTT1_STT foreign key (SOSOTAMTRU)
+    references SOTAMTRU (SOSOTAMTRU) on delete restrict on update restrict;
+
+alter table NHANKHAUTAMTRU add constraint FK_NKTT1_QH foreign key (MAQUANHE)
+    references QUANHE (MAQUANHE) on delete restrict on update restrict;
+
+alter table TIENANTIENSU add constraint FK_TATS_NK foreign key (MADINHDANH)
+    references NHANKHAU (MADINHDANH) on delete restrict on update restrict;
+
+alter table TIEUSU add constraint FK_TS_NK foreign key (MADINHDANH)
+    references NHANKHAU (MADINHDANH) on delete restrict on update restrict;
+
+alter table CANBO add constraint FK_CB_NKTT foreign key (MANHANKHAUTHUONGTRU)
+    references NHANKHAUTHUONGTRU (MANHANKHAUTHUONGTRU) on delete restrict on update restrict;
+*/
