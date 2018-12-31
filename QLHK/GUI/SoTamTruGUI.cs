@@ -338,38 +338,38 @@ namespace GUI
         //Xóa một sổ tạm trú
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //string sosotamtru = txt_SoSoTamTru.Text.ToString();
-            //if (sosotamtru == "")
-            //{
-            //    MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
-            //    return;
-            //}
+            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            if (sosotamtru == "")
+            {
+                MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
+                return;
+            }
 
-            //if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
-            //{
-            //    MessageBox.Show("Sổ tạm trú "+sosotamtru+" không tồn tại! Vui lòng kiểm tra lại");
-            //    return;
-            //}
+            if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
+            {
+                MessageBox.Show("Sổ tạm trú " + sosotamtru + " không tồn tại! Vui lòng kiểm tra lại");
+                return;
+            }
 
 
-            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú những nhân khẩu có sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.Yes)
-            //{
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú những nhân khẩu có sổ tạm trú " + sosotamtru + " không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
 
-            //    if (sotamtruBus.XoaSoTamTru(sosotamtru))
-            //    {
-            //        MessageBox.Show("Hủy tạm trú "+sosotamtru+" thành công");
-            //        LoadDataGridView();
-            //        ResetValueInput();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Hủy tạm trú "+sosotamtru+" thất bại");
-            //    }
-            //}
-            //else if (dialogResult == DialogResult.No)
-            //{
-            //}
+                if (sotamtruBus.XoaSoTamTru(sosotamtru))
+                {
+                    MessageBox.Show("Hủy tạm trú " + sosotamtru + " thành công");
+                    LoadDataGridView();
+                    ResetValueInput();
+                }
+                else
+                {
+                    MessageBox.Show("Hủy tạm trú " + sosotamtru + " thất bại");
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+            }
 
         }
 

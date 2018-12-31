@@ -49,7 +49,7 @@ namespace DAO
         }
         public override bool insert(SoHoKhauDTO sohk)
         {
-           /* try
+            try
             {
 
                 if (conn.State != ConnectionState.Open)
@@ -74,7 +74,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            } */
+            } 
             return true;
 
         }
@@ -120,7 +120,7 @@ namespace DAO
 
         public override bool update(SoHoKhauDTO sohk, int r)
         {
-          /*  if (conn.State != ConnectionState.Open)
+            if (conn.State != ConnectionState.Open)
             {
                 conn.Open();
             }
@@ -145,7 +145,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            } */
+            } 
             return true;
         }
         public DataSet TimKiem(string query)

@@ -698,16 +698,16 @@ namespace GUI
             TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh,toidanh,hinhphat, banan,ngayphat);
 
             TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
-            //if (tienanbus.Add(tienan))
-            //{
-            //    MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
-            //    ResetInputTienAn();
-            //    LoadDataGridViewTienAN();             
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
-            //}
+            if (tienanbus.Add(tienan))
+            {
+                MessageBox.Show("Thêm tiền án tiền sự " + matienan + " cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
+                ResetInputTienAn();
+                LoadDataGridViewTienAN();
+            }
+            else
+            {
+                MessageBox.Show("Thêm tiền án tiền sự " + matienan + " cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
+            }
 
         }
 
@@ -814,16 +814,16 @@ namespace GUI
                 TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, toidanh, hinhphat, banan, ngayphat);
 
                 TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
-                //if (tienanbus.Update(tienan, 0))
-                //{
-                //    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
-                //    ResetInputTienAn();
-                //    LoadDataGridViewTienAN();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
-                //}
+                if (tienanbus.Update(tienan, 0))
+                {
+                    MessageBox.Show("Sửa tiền án tiền sự " + matienan + " cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
+                    ResetInputTienAn();
+                    LoadDataGridViewTienAN();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa tiền án tiền sự " + matienan + " cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
+                }
             }
             else if (dialogResult == DialogResult.No)
             {
