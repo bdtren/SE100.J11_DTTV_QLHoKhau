@@ -38,5 +38,10 @@ namespace BUS
         {
             return tieusu.update(data, r);
         }
+
+        public DataSet TimKiem(string query)
+        {
+            return tieusu.TimKiem(query);
+        }
     }
 }

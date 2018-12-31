@@ -55,7 +55,7 @@ namespace BUS
 
         public static string getLastID_MaTienAnTienSu()
         {
-            string sql = "SELECT matienantiensu FROM tienantiensu ORDER BY matienantiensu DESC LIMIT 1;";
+            string sql = "SELECT matienantiensu FROM tienantiensu where matienantiensu LIKE 'TA%' ORDER BY matienantiensu DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
             return string.IsNullOrEmpty(lastVal) ? "TA0000000" : lastVal;
         }

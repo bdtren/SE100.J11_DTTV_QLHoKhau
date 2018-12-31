@@ -246,11 +246,17 @@ namespace GUI
                 //rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
                 rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["noithuongtrutamtru"].ToString()));
                 rg.Add(new ReplacementGroup("<diaChiTamTru>", ""));
+                int vtkhupho = data["noithuongtrutamtru"].ToString().IndexOf(",");
+                int thlen = data["noithuongtrutamtru"].ToString().Length;
+                rg.Add(new ReplacementGroup("<khupho>", data["noithuongtrutamtru"].ToString().Substring(vtkhupho    ,thlen-vtkhupho)));
+
 
                 rg.Add(new ReplacementGroup("<tuNgay>", data["thoigianbatdautamtruthuongtru"].ToString().Split(' ')[0]));
                 rg.Add(new ReplacementGroup("<denNgay>", data["thoigianketthuctamtruthuongtru"].ToString().Split(' ')[0]));
 
-                rg.Add(new ReplacementGroup("<viPham>", vipham==""?"Không vi phạm":vipham));
+                rg.Add(new ReplacementGroup("<viPham>", vipham));
+                rg.Add(new ReplacementGroup("<checkKhong>", vipham == "" ? "" : ""));
+                rg.Add(new ReplacementGroup("<checkCo>", vipham == "" ? "" : ""));
 
                 DateTime today = DateTime.Now;
                 rg.Add(new ReplacementGroup("<ngay>", today.Day.ToString()));
@@ -258,8 +264,8 @@ namespace GUI
                 rg.Add(new ReplacementGroup("<nam>", today.Year.ToString()));
 
 
-                string srcPath = System.Windows.Forms.Application.StartupPath + "\\Mau HSSV01.doc";
-                string dstPath = System.Windows.Forms.Application.StartupPath + "\\Mau HSSV01_" + textBox_mssv.Text + ".doc";
+                string srcPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\Mau HSSV01.doc";
+                string dstPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\KetQua\\Mau HSSV01_" + textBox_mssv.Text + ".doc";
                 CreateWordHelper.CreateWordDocument(srcPath,dstPath, rg);
 
                 MessageBox.Show(this, "Đã tạo thành công file thông tin với tên: " + dstPath, "Thành công",

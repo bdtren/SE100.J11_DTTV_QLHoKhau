@@ -17,9 +17,9 @@ namespace GUI
         NhanKhauBUS nk;
         NhanKhauThuongTruBUS nktt;
         TieuSuBUS tieuSu;
-        TieuSuDTO tieusudto;
+        public TieuSuDTO tieusudto;
         TienAnTienSuBUS tienAn;
-        TienAnTienSuDTO tienanDTO;
+        public TienAnTienSuDTO tienanDTO;
         public NhanKhauThuongTruDTO nkttDTO;
         SoHoKhauBUS shk;
         TinhThanhPhoBUS ttp;
@@ -83,6 +83,30 @@ namespace GUI
             tbSoSHK.Enabled = false;
             tbDCThuongTru.Text = diachithuongtru;
             tbDCThuongTru.Enabled = false;
+
+            tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
+            LoadtieuSu();
+            Loadtienantiensu();
+
+            cbbNoiCap.DisplayMember = "ten";
+            cbbNoiCap.ValueMember = "matp";
+            cbbNoiCap.DataSource = ttp.GetAll().Tables[0];
+            cbbNoiSinh.DisplayMember = "ten";
+            cbbNoiSinh.ValueMember = "matp";
+            cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
+        }
+
+        public NhanKhauThuongTruGUI(string madinhdanh, int i)
+        {
+            InitializeComponent();
+            nktt = new NhanKhauThuongTruBUS();
+            tieuSu = new TieuSuBUS();
+            tienAn = new TienAnTienSuBUS();
+            shk = new SoHoKhauBUS();
+            ttp = new TinhThanhPhoBUS();
+
+            tbmadinhdanh.Text = madinhdanh;
+            tbSoSHK.Enabled = false;
 
             tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
             LoadtieuSu();
@@ -218,7 +242,7 @@ namespace GUI
             {
                 dGVTieuSu.DataSource = null;
                 dGVTieuSu.Rows.Clear();
-                dGVTieuSu.DataSource = tieuSu.GetAll().Tables["tieusu"];
+                dGVTieuSu.DataSource = tieuSu.TimKiem("madinhdanh='"+tbmadinhdanh.Text+"'").Tables["tieusu"];
                 /*for (int i = 0; i < dGVTieuSu.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -236,7 +260,7 @@ namespace GUI
             {
                 dGVTienAnTienSu.DataSource = null;
                 dGVTienAnTienSu.Rows.Clear();
-                dGVTienAnTienSu.DataSource = tienAn.GetAll().Tables["tienantiensu"];
+                dGVTienAnTienSu.DataSource = tienAn.TimKiem("madinhdanh='" + tbmadinhdanh.Text + "'").Tables["tienantiensu"];
                 for (int i = 0; i < dGVTienAnTienSu.Rows.Count; i++)
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
@@ -406,20 +430,10 @@ namespace GUI
             }
         }
 
-        private void tbmadinhdanh_Enter(object sender, EventArgs e)
+        private void tbmadinhdanh_TextChanged(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
-            try
-            {
-                tbmadinhdanh.Text = TrinhTaoMa.TangMa12Kytu(gioiTinh, dtpNgaySinh.Value.Year.ToString());
-                tbmadinhdanh.SelectAll();
-                //tbmadinhdanh.SelectionStart = 0;
-                //tbmadinhdanh.SelectionLength = tbmadinhdanh.Text.Length;
-
-            } catch(Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadtieuSu();
+            Loadtienantiensu();
         }
     }
 }

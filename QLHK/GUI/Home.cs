@@ -16,7 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
-
+        public Home(string CanBoDTO)
+        {
+            InitializeComponent();
+        }
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
 

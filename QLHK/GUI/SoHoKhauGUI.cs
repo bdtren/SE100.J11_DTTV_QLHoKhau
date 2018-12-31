@@ -16,7 +16,7 @@ namespace GUI
     {
         SoHoKhauBUS shk;
         NhanKhauThuongTruBUS nktt;
-        SoHoKhauDTO shkDTO;
+        public SoHoKhauDTO shkDTO;
         public SoHoKhauGUI()
         {
             shk = new SoHoKhauBUS();
@@ -24,17 +24,44 @@ namespace GUI
             shkDTO = new SoHoKhauDTO();
             InitializeComponent();
 
-            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
-            var source = new BindingSource(bindingList, null);
-            dataGridView1.DataSource = source;
             tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoSoHoKhau());
 
+            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
+            var source = new BindingSource(bindingList, null);
             cbbChuHo.DisplayMember = "HoTen";
             cbbChuHo.ValueMember = "MaDinhDanh";
 
             dataGridView1.DataSource = source;
 
             cbbChuHo.DataSource = bindingList;
+        }
+
+        public SoHoKhauGUI(string sosohokhau)
+        {
+            shk = new SoHoKhauBUS();
+            nktt = new NhanKhauThuongTruBUS();
+            shkDTO = new SoHoKhauDTO();
+            InitializeComponent();
+
+            tbSoSoHoKhau.Text = sosohokhau;
+            DataSet ds = shk.TimKiem("sosohokhau='"+sosohokhau+"'");
+            DataRow dt = ds.Tables["sohokhau"].Rows[0];
+
+            shkDTO = new SoHoKhauDTO(dt["sosohokhau"].ToString(), dt["machuho"].ToString(), dt["diachi"].ToString()
+                ,(DateTime) dt["ngaycap"], dt["sodangky"].ToString());
+            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
+            var source = new BindingSource(bindingList, null);
+
+            cbbChuHo.DisplayMember = "HoTen";
+            cbbChuHo.ValueMember = "MaDinhDanh";
+            cbbChuHo.DataSource = bindingList;
+
+            dataGridView1.DataSource = source;
+
+            cbbChuHo.SelectedValue = shkDTO.MaChuHo;
+            dtpNgayCap.Value = shkDTO.NgayCap;
+            tbDiaChi.Text = shkDTO.DiaChi;
+            tbSoDangKy.Text = shkDTO.SoDangKy;
         }
 
         private void SoHoKhauGUI_Load(object sender, EventArgs e)
@@ -83,6 +110,8 @@ namespace GUI
             }
             shk.Add(new SoHoKhauDTO(tbSoSoHoKhau.Text, cbbChuHo.SelectedValue.ToString(), tbDiaChi.Text, dtpNgayCap.Value, tbSoDangKy.Text));
             nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
+            MessageBox.Show(this, "Tạo sổ hộ khẩu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void tbDiaChi_Enter(object sender, EventArgs e)
