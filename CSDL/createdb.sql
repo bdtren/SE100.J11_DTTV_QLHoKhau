@@ -24,7 +24,7 @@ create table HOCSINHSINHVIEN
 /*==============================================================*/
 create table NHANKHAU
 (
-    MADINHDANH          char(9)                         not null,
+    MADINHDANH          char(12)                        not null,
     HOTEN               text                            not null,
     TENKHAC             text                                    ,
     NGAYSINH            date                            not null,
@@ -101,6 +101,7 @@ create table SOHOKHAU
     CHUHO                   char(9)                     not null,
     DIACHITHUONGTRU         text                        not null,
     NGAYCAP                 date                        not null,
+    SODANGKY                char(7)                     not null,
 
     primary key (SOSOHOKHAU)
 );
