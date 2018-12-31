@@ -14,6 +14,7 @@ namespace GUI
 {
     public partial class DangNhapGUI : DevExpress.XtraEditors.XtraForm
     {
+        CanBoDTO cb = new CanBoDTO();
         public DangNhapGUI()
         {
             InitializeComponent();
@@ -21,9 +22,12 @@ namespace GUI
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if (DangNhapBUS.TimKiem(tbTaiKhoan.Text,tbMatKhau.Text))
+            DataRow dt = DangNhapBUS.TimKiem(tbTaiKhoan.Text, tbMatKhau.Text);
+            if (dt!=null)
             {
-                Home home = new Home("canBoDTO");
+                cb = new CanBoDTO(dt);
+                Home home = new Home(cb);
+
                 this.Hide();
                 home.Closed += (s, args) => this.Close();
                 home.Show();
@@ -31,7 +35,6 @@ namespace GUI
             else
             {
                 MessageBox.Show(this, "Tên đăng nhập hoặc mật khẩu không đúng!", "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
 
         }

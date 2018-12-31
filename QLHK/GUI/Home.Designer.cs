@@ -321,10 +321,11 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Location = new System.Drawing.Point(2, 144);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 143);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1200, 432);
+            this.tabControl1.Size = new System.Drawing.Size(1200, 445);
             this.tabControl1.TabIndex = 2;
             // 
             // Home

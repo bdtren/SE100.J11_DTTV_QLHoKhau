@@ -7,19 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BUS;
 
 namespace GUI
 {
     public partial class Home : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public CanBoDTO cb;
         public Home()
         {
             InitializeComponent();
         }
-        public Home(string CanBoDTO)
+        public Home(CanBoDTO cb)
         {
             InitializeComponent();
+            this.cb = cb;
         }
+
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
 

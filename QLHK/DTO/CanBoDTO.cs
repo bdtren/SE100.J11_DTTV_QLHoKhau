@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,20 @@ namespace DTO
             MatKhau = matKhau;
             LoaiCanBo = loaiCanBo;
             MaNhanKhauThuongTru = str_manhankhauthuongtru;
+        }
+
+        public CanBoDTO(DataRow dt)
+        {
+            if (dt.ItemArray.Length == 0)
+            {
+                return;
+            }
+
+            MaCanBo = dt["macanbo"].ToString();
+            TenTaiKhoan = dt["tentaikhoan"].ToString();
+            MatKhau = dt["matkhau"].ToString();
+            LoaiCanBo = dt["loaicanbo"].ToString();
+            MaNhanKhauThuongTru = dt["manhankhauthuongtru"].ToString();
         }
 
     }
