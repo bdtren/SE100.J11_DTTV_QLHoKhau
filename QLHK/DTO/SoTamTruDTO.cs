@@ -10,21 +10,20 @@ namespace DTO
     {
         public string SoSoTamTru { get; set; }
         public string MaChuHoTamTru { get; set; }
-        public string ChoOHienNay { get; set; }
-        public DateTime TuNgay { get; set; }
+        public string NoiTamTru { get; set; }
+        public DateTime NgayCap { get; set; }
         public DateTime DenNgay { get; set; }
-        public string LyDo { get; set; }
 
         public SoTamTruDTO() { }
 
-        public SoTamTruDTO(string SoSoTamTru, string MaChuHoTamTru, string ChoOHienNay, DateTime TuNgay, DateTime DenNgay, string LyDo)
+        public SoTamTruDTO(string soSoTamTru, string maChuHoTamTru, string noiTamTru, 
+            DateTime ngayCap, DateTime denNgay)
         {
-            this.SoSoTamTru = SoSoTamTru;
-            this.MaChuHoTamTru = MaChuHoTamTru;
-            this.ChoOHienNay = ChoOHienNay;
-            this.TuNgay = TuNgay;
-            this.DenNgay = DenNgay;
-            this.LyDo = LyDo;
+            SoSoTamTru = soSoTamTru;
+            MaChuHoTamTru = maChuHoTamTru;
+            NoiTamTru = noiTamTru;
+            NgayCap = ngayCap;
+            DenNgay = denNgay;
         }
     }
 }

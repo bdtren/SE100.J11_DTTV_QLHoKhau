@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace DAO
 {
-    public class CanBoDAO : DBConnection<CanBo>
+    public class CanBoDAO : DBConnection<CanBoDTO>
     {
         public CanBoDAO() : base() { }
         public override DataSet getAll()
@@ -42,7 +42,7 @@ namespace DAO
             return null;
         }
 
-        public override bool insert(CanBo data)
+        public override bool insert(CanBoDTO data)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace DAO
             return false;
 
         }
-        public override bool update(CanBo cb, int r)
+        public override bool update(CanBoDTO cb, int r)
         {
             if (conn.State != ConnectionState.Open)
             {
@@ -117,7 +117,7 @@ namespace DAO
             }
             return true;
         }
-        public override bool insert_table(CanBo data)
+        public override bool insert_table(CanBoDTO data)
         {
             try
             {

@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
-    <Compile Include="CanBo.cs" />
+    <Compile Include="CanBoDTO.cs" />
     <Compile Include="NhanKhauTamTruDTO.cs" />
     <Compile Include="HocSinhSinhVienDTO.cs" />
-    <Compile Include="NgheNghiepDTO.cs" />
+    <Compile Include="NhanKhauTamVangDTO.cs" />
     <Compile Include="QuanHuyenDTO.cs" />
     <Compile Include="ReplacementGroup.cs" />
     <Compile Include="SoHoKhauDTO.cs" />

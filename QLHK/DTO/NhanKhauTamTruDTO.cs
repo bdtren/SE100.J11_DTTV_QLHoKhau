@@ -9,44 +9,40 @@ namespace DTO
     public class NhanKhauTamTruDTO : NhanKhau
     {
         public string MaNhanKhauTamTru { get; set; }
-        public string MaDinhDanh { get; set; }
-        public string DiaChiThuongTru { get; set; }
+        public string NoiTamTru { get; set; }
+        public DateTime TuNgay { get; set; }
+        public DateTime DenNgay { get; set; }
+        public string LyDo { get; set; }
         public string SoSoTamTru { get; set; }
 
         public NhanKhauTamTruDTO() : base() { }
 
-        public NhanKhauTamTruDTO(string MaNhanKhauTamTru, string MaDinhDanh, string DiaChiThuongTru, string SoSoTamTru)
+        public NhanKhauTamTruDTO(string maNhanKhauTamTru, string noiTamTru, DateTime tuNgay, DateTime denNgay, string lyDo, string soSoTamTru, string str_MaDinhDanh)
         {
-            this.MaNhanKhauTamTru = MaNhanKhauTamTru;
-            this.MaDinhDanh = MaDinhDanh;
-            this.DiaChiThuongTru = DiaChiThuongTru;
-            this.SoSoTamTru = SoSoTamTru;
+            MaNhanKhauTamTru = maNhanKhauTamTru;
+            NoiTamTru = noiTamTru;
+            TuNgay = tuNgay;
+            DenNgay = denNgay;
+            LyDo = lyDo;
+            SoSoTamTru = soSoTamTru;
+            MaDinhDanh = str_MaDinhDanh;
         }
 
-        public NhanKhauTamTruDTO(string NgheNghiep, string HoTen, string GioiTinh, string DanToc, string HoChieu, 
-            DateTime NgayCap, DateTime NgaySinh, string NguyenQuan, string NoiCap, string NoiSinh, string QuocTich, 
-            string SDT, string TonGiao, string MaNhanKhauTamTru, string MaDinhDanh, string DiaChiThuongTru, 
-            string SoSoTamTru)
+        public NhanKhauTamTruDTO(string maNhanKhauTamTru, string noiTamTru, DateTime tuNgay, DateTime denNgay, string lyDo, string soSoTamTru, 
+            string maDinhDanh, string hoTen, string tenKhac, DateTime ngaySinh,
+            string gioiTinh, string noiSinh, string nguyenQuan, string danToc, string tonGiao,
+            string quocTich, string hoChieu, string noiThuongTru, string diaChiHienNay,
+            string sDT, string trinhDoHocVan, string trinhDoChuyenMon, string bietTiengDanToc,
+            string trinhDoNgoaiNgu, string ngheNghiep) : base(maDinhDanh,hoTen,tenKhac, ngaySinh,gioiTinh, 
+                noiSinh,nguyenQuan, danToc, tonGiao, quocTich, hoChieu, noiThuongTru, diaChiHienNay, sDT, trinhDoHocVan,
+                trinhDoChuyenMon, bietTiengDanToc, trinhDoNgoaiNgu, ngheNghiep)
         {
-            this.NgheNghiep = NgheNghiep;
-            this.HoTen = HoTen;
-            this.TonGiao = TonGiao;
-            this.DanToc = DanToc;
-            this.GioiTinh = GioiTinh;
-            this.HoChieu = HoChieu;
-            this.NgayCap = NgayCap;
-            this.NgaySinh = NgaySinh;
-            this.NguyenQuan = NguyenQuan;
-            this.NoiCap = NoiCap;
-            this.NoiSinh = NoiSinh;
-            this.NoiSinh = NoiSinh;
-            this.QuocTich = QuocTich;
-            this.SDT = SDT;
-            this.TonGiao = TonGiao;
-            this.MaNhanKhauTamTru = MaNhanKhauTamTru;
-            this.MaDinhDanh = MaDinhDanh;
-            this.DiaChiThuongTru = DiaChiThuongTru;
-            this.SoSoTamTru = SoSoTamTru;
+            MaNhanKhauTamTru = maNhanKhauTamTru;
+            NoiTamTru = noiTamTru;
+            TuNgay = tuNgay;
+            DenNgay = denNgay;
+            LyDo = lyDo;
+            SoSoTamTru = soSoTamTru;
         }
 
 

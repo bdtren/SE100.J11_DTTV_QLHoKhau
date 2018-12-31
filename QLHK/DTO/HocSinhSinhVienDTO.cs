@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class HocSinhSinhVienDTO : NgheNghiepDTO
+    public class HocSinhSinhVienDTO
     {
-        public string MSSV { get; set; }
+        public string MaHSSV { get; set; }
         public string MaDinhDanh { get; set; }
         public string Truong { get; set; }
         public string DiaChiThuongTru { get; set; }
@@ -18,17 +18,16 @@ namespace DTO
 
         public HocSinhSinhVienDTO() : base() { }
 
-        public HocSinhSinhVienDTO(string mSSV, string maDinhDanh, string truong, string diaChiThuongTru, DateTime tGBDTTTT, DateTime tGKTTTTT, string viPham)
+        public HocSinhSinhVienDTO(string maHSSV, string maDinhDanh, string truong, string diaChiThuongTru, 
+            DateTime tGBDTTTT, DateTime tGKTTTTT, string viPham)
         {
-            MSSV = mSSV;
+            MaHSSV = maHSSV;
             MaDinhDanh = maDinhDanh;
             Truong = truong;
             DiaChiThuongTru = diaChiThuongTru;
             TGBDTTTT = tGBDTTTT;
             TGKTTTTT = tGKTTTTT;
             ViPham = viPham;
-            MaNgheNghiep = "HSSV001";
-            TenNgheNghiep = "Hoc Sinh Sinh Vien";
         }
     }
 }
