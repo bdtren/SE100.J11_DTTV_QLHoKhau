@@ -7,6 +7,7 @@ using DTO;
 using DAO;
 using System.Data;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace BUS
 {
@@ -92,77 +93,25 @@ namespace BUS
             return result;
         }
 
-
-        //Hàm Phát sinh mã tự động
-        //Lấy số sổ tạm trú cuối cùng từ bảng sổ tạm trú
-        public string getLastID_SoSoTamTru()
+        public BindingSource ImportToComboboxMaChuHo(string sosotamtru)
         {
-            return SoTamTru.getLastID_SoSoTamTru();
+            List<string> list_tennhankhau = new List<string>();
+            list_tennhankhau = SoTamTru.ImportToComboboxMaChuHo(sosotamtru);
+
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = list_tennhankhau;
+            return bindingSource;
         }
 
-
-        //Lấy mã nhân khẩu tạm trú cuối cùng từ bảng nhân khẩu tạm trú
-        public string getLastID_MaNhanKhauTamTru()
+        public string convertTentoMaNhanKhauTamTru(string tennhankhau, string sosotamtru)
         {
-            return SoTamTru.getLastID_MaNhanKhauTamTru();
+            return SoTamTru.convertTentoMaNhanKhauTamTru(tennhankhau, sosotamtru);
         }
 
-
-        //Lấy mã tiểu sử cuối cùng từ bảng tiểu sử
-        public string getLastID_MaTieuSu()
+        public string FindTenChuHoTamTru(string sosotamtru)
         {
-            return SoTamTru.getLastID_MaTieuSu();
+            return SoTamTru.FindTenChuHoTamTru(sosotamtru);
         }
-
-
-        //Lấy mã tiền án tiền sự cuối cùng từ bảng tiền án tiền sự
-        public string getLastID_MaTienAnTienSu()
-        {
-            return SoTamTru.getLastID_MaTienAnTienSu();
-        }
-
-
-        //Lấy mã định danh cuối cùng từ bảng nhân khẩu
-        public string getLastID_MaDinhDanh()
-        {
-            return SoTamTru.getLastID_MaDinhDanh();
-        }
-
-
-        //Phát sinh mã tự động
-        public string Generate7Character(string mabandau)
-        {
-            return TangMa7KyTu(mabandau);
-        }
-
-        public string GenerateMaDinhDanh(string gioitinh, string namsinh)
-        {
-            return SoTamTru.TangMa12Kytu(gioitinh, namsinh);
-        }
-
-
-
-        /// <summary>
-        /// Hàm tạo mã tự động 7 kí tự
-        /// </summary>
-        /// <param name="mabandau"></param>
-        /// <returns></returns>
-        public string TangMa7KyTu(string mabandau)
-        {
-            string str1 = mabandau.Substring(0, 2);
-            string str2 = mabandau.Substring(2);
-            int i_str2 = Int32.Parse(str2) + 1;
-            string str3 = i_str2.ToString();
-            string str4 = null;
-            for (int i = 0; i < (7 - str3.Length); i++)
-            {
-                str4 = str4 + "0";
-            }
-            string chuoikq = str1 + str4 + str3;
-            return chuoikq;
-        }
-
-
 
 
         //XÁC ĐỊNH SỰ TỒN TẠI CỦA CÁC MÃ SỐ
@@ -208,6 +157,66 @@ namespace BUS
             if (num > 0) return true;
             else return false;
         }
+
+
+
+        //Tính toán số ngày giửa hai thời điểm
+        public double TimeBetweenTwoDays(DateTime start, DateTime End)
+        {
+           return (End - start).TotalDays;
+        }
+
+        //Đăng ký tạm trú có thời hạn tối đa không quá 2 năm 
+        public bool CheckThoiGianDangKyTamTru(DateTime tungay, DateTime denngay)
+        {
+            double songay = TimeBetweenTwoDays(tungay, denngay);
+            if (songay > 729) { return false; }
+            return true;
+        }
+
+        public bool InsertGiaHan(string sosotamtru, DateTime thoigian)
+        {
+            return SoTamTru.InsertGiaHan(sosotamtru, thoigian);
+        }
+
+
+        public DateTime TimNgayDangKyTamTru(string sosotamtru)
+        {
+            return SoTamTru.NgayDangKyTamTru(sosotamtru);
+        }
+
+        public DateTime ThoiHanSoTamTru(string sosotamtru)
+        {
+            return SoTamTru.ThoiHanSoTamTru(sosotamtru);
+        }
+
+        //Kiểm tra hợp lệ để gia hạn cho sổ tạm trú
+        public double CheckGiaHan(DateTime thoihangiahan, string sosotamtru)
+        {
+            //Kiểm tra thời gian tối đa có thể gia hạn
+            DateTime today = DateTime.Today;
+            DateTime thoigianbatdau = TimNgayDangKyTamTru(sosotamtru);
+
+            //Tính số ngày đã tạm trú
+            double thoigiandatamtru = (today - thoigianbatdau).TotalDays;
+
+            double thoigiantong = 730;
+
+            //Tính số ngày còn lại có thể gia hạn 
+            double songaycothegiahan = thoigiantong - thoigiandatamtru;
+
+            //Thời gian gia hạn thêm
+            double thoigianthem = TimeBetweenTwoDays(today, thoihangiahan);
+
+            //Kiểm tra
+            if (thoigianthem > songaycothegiahan)
+            {
+                return songaycothegiahan;
+            }
+
+            return 0;
+        }
+
 
     }
 }

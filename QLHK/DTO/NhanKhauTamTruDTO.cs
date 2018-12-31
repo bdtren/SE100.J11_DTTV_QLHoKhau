@@ -23,12 +23,12 @@ namespace DTO
             this.SoSoTamTru = SoSoTamTru;
         }
 
-        public NhanKhauTamTruDTO(string MaNgheNghiep, string HoTen, string GioiTinh, string DanToc, string HoChieu, 
+        public NhanKhauTamTruDTO(string NgheNghiep, string HoTen, string GioiTinh, string DanToc, string HoChieu, 
             DateTime NgayCap, DateTime NgaySinh, string NguyenQuan, string NoiCap, string NoiSinh, string QuocTich, 
             string SDT, string TonGiao, string MaNhanKhauTamTru, string MaDinhDanh, string DiaChiThuongTru, 
             string SoSoTamTru)
         {
-            this.MaNgheNghiep = MaNgheNghiep;
+            this.NgheNghiep = NgheNghiep;
             this.HoTen = HoTen;
             this.TonGiao = TonGiao;
             this.DanToc = DanToc;
