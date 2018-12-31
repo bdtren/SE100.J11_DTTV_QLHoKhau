@@ -77,7 +77,7 @@ namespace DAO
 
         public override bool insert(SoTamTruDTO sotamtru)
         {
-            /*try
+            try
             {
                 if (conn.State != ConnectionState.Open)
                 {
@@ -100,7 +100,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }*/
+            }
             return true;
         }
 

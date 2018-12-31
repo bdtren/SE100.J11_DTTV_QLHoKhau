@@ -456,7 +456,7 @@ namespace GUI
             else if (dialogResult == DialogResult.No)
             {
                 
-            //} 
+            } 
            
         }
 
@@ -666,28 +666,28 @@ namespace GUI
 
         private void btnThemTienAn_Click(object sender, EventArgs e)
         {
-            //string matienan = txt_MaTienAn.Text.ToString();
-            //string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string matienan = txt_MaTienAn.Text.ToString();
+            string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            //if (matienan == "" || madinhdanh == "")
-            //{
-            //    MessageBox.Show("Cần có mã tiền án tiền sự, mã định danh để thực hiện chức năng này");
-            //    return;
-            //}
+            if (matienan == "" || madinhdanh == "")
+            {
+                MessageBox.Show("Cần có mã tiền án tiền sự, mã định danh để thực hiện chức năng này");
+                return;
+            }
 
-            //SoTamTruBUS sttBus = new SoTamTruBUS();
-            //if (!sttBus.Existed_NhanKhau(madinhdanh))
-            //{
-            //    MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiền án tiền sự");
-            //    return;
-            //}
+            SoTamTruBUS sttBus = new SoTamTruBUS();
+            if (!sttBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiền án tiền sự");
+                return;
+            }
 
-            ////Nhập không đầy đủ
-            //if (!isInputTrueTienAn())
-            //{
-            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
-            //    return;
-            //}
+            //Nhập không đầy đủ
+            if (!isInputTrueTienAn())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
 
 
             string banan = txt_BanAn.Text.ToString();
@@ -924,7 +924,7 @@ namespace GUI
             string noilamviec = dtGV_TieuSu.Rows[e.RowIndex].Cells[6].Value.ToString();
 
 
-            //TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, nghenghiep, noilamviec);
+            TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, nghenghiep, noilamviec);
 
             txt_MaTieuSu.Text = tieusu.MaTieuSu;
             dtThoiGianBatDau.Value = tieusu.ThoiGianBatDau;

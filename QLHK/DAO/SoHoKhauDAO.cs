@@ -75,32 +75,32 @@ namespace DAO
         }
         public override bool insert(SoHoKhauDTO sohk)
         {
-            //try
-            //{
+            try
+            {
 
-            //    if (conn.State != ConnectionState.Open)
-            //    {
-            //        conn.Open();
-            //    }
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
 
-            //    string sql = "insert into sohokhau values(@sosohokhau, @machuho,  @diachi, @ngaycap, @sodangky)";
-            //    MySqlCommand cmd = new MySqlCommand(sql, conn);
-            //    cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
-            //    cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHo);
-            //    cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
-            //    cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
-            //    cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
-            //    cmd.ExecuteNonQuery();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return false;
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
+                string sql = "insert into sohokhau values(@sosohokhau, @machuho,  @diachi, @ngaycap, @sodangky)";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
+                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHoThuongTru);
+                cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
+                cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
+                cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
             return true;
 
         }

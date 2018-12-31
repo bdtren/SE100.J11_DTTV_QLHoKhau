@@ -196,7 +196,7 @@ namespace GUI
                 DataRow data = source.Rows[0];
                 if (data.ItemArray.Length > 0)
                 {
-                    textBox_mssv.Text = data["mssv"].ToString();
+                    textBox_mssv.Text = data["mahssv"].ToString();
                     textBox_truong.Text = data["truong"].ToString();
                     textBox_diachithuongtru.Text = data["diachithuongtru"].ToString();
                     date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
@@ -239,16 +239,16 @@ namespace GUI
             {
                 rg.Add(new ReplacementGroup("<ten>", data["hoten"].ToString()));
                 rg.Add(new ReplacementGroup("<ngaySinh>", data["ngaysinh"].ToString().Split(' ')[0]));
-                rg.Add(new ReplacementGroup("<mssv>", data["mssv"].ToString()));
+                rg.Add(new ReplacementGroup("<mssv>", data["mahssv"].ToString()));
                 rg.Add(new ReplacementGroup("<truong>", data["truong"].ToString()));
                 rg.Add(new ReplacementGroup("<maDinhDanh>", data["madinhdanh"].ToString()));
-                rg.Add(new ReplacementGroup("<ngayCap>", data["ngaycap"].ToString().Split(' ')[0]));
+                //rg.Add(new ReplacementGroup("<ngayCap>", data["ngaycap"].ToString().Split(' ')[0]));
                 //rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
-                rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["noithuongtrutamtru"].ToString()));
+                rg.Add(new ReplacementGroup("<diaChiThuongTru>", data["diachithuongtru"].ToString()));
                 rg.Add(new ReplacementGroup("<diaChiTamTru>", ""));
-                int vtkhupho = data["noithuongtrutamtru"].ToString().IndexOf(",");
-                int thlen = data["noithuongtrutamtru"].ToString().Length;
-                rg.Add(new ReplacementGroup("<khupho>", data["noithuongtrutamtru"].ToString().Substring(vtkhupho    ,thlen-vtkhupho)));
+                int vtkhupho = data["noithuongtru"].ToString().IndexOf(",");
+                int thlen = data["noithuongtru"].ToString().Length;
+                rg.Add(new ReplacementGroup("<khupho>", data["noithuongtru"].ToString().Substring(vtkhupho    ,thlen-vtkhupho)));
 
 
                 rg.Add(new ReplacementGroup("<tuNgay>", data["thoigianbatdautamtruthuongtru"].ToString().Split(' ')[0]));

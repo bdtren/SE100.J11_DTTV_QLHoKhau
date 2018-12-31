@@ -84,7 +84,7 @@ namespace DAO
                 dr["manhankhauthuongtru"] = data.MaNhanKhauThuongTru;
                 dr["madinhdanh"] = data.MaDinhDanh;
                 dr["diachithuongtru"] = data.DiaChiThuongTru;
-                dr["quanhevoichuho"] = data.QuanHeChuHo;
+                dr["quanhevoichuho"] = data.QuanHeVoiChuHo;
                 dr["sosohokhau"] = data.SoSoHoKhau;
 
                 dataset.Tables["nhankhauthuongtru"].Rows.Add(dr);

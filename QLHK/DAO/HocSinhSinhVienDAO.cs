@@ -109,9 +109,9 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "delete from hocsinhsinhvien where mssv=@mssv";
+                string sql = "delete from hocsinhsinhvien where mahssv=@mahssv";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", mssv);
+                cmd.Parameters.AddWithValue("@mahssv", mssv);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -150,8 +150,8 @@ namespace DAO
             try
             {
 
-                string sql = "update hocsinhsinhvien set truong=@truong, madinhdanh=@madinhdanh, diachithuongtru=@diachithuongtru, " +
-                    "thoigianbatdautamtruthuongtru=@thoigianbatdautamtruthuongtru, thoigianketthuctamtruthuongtru=@thoigianketthuctamtruthuongtru " +
+                string sql = "update hocsinhsinhvien set madinhdanh=@madinhdanh, truong=@truong, diachithuongtru=@diachithuongtru, " +
+                    "thoigianbatdautamtruthuongtru=@thoigianbatdautamtruthuongtru, thoigianketthuctamtruthuongtru=@thoigianketthuctamtruthuongtru, " +
                     "vipham=@vipham where mahssv=@mahssv";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
