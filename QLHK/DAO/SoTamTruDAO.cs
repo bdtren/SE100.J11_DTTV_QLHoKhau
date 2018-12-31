@@ -268,7 +268,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru WHERE sosotamtru="+sosotamtru+"", conn);
+                sqlda = new MySqlDataAdapter("SELECT * FROM sotamtru WHERE sosotamtru='"+sosotamtru+"'", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -387,28 +387,74 @@ namespace DAO
             return xaphuong_list;
         }
 
-
-
         /// <summary>
-        /// Các Hàm tăng mã tự động
+        /// Lấy danh sách tên nhân khẩu trong sổ tạm trú
         /// </summary>
-        /// <param name="sql"></param>
-        /// <returns> "" nếu bảng trống và chuỗi string nếu bảng có giá trị</returns>
-        public string GetLastValueTable(string sql)
+        /// <param name="sosotamtru"></param>
+        /// <returns></returns>
+        public List<string> ImportToComboboxMaChuHo(string sosotamtru)
+        {
+            DataTable dt = new DataTable();
+            List<string> list_tennhankhau = new List<string>();
+
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            string sql = "SELECT hoten FROM nhankhau inner join nhankhautamtru where nhankhau.madinhdanh=nhankhautamtru.madinhdanh and sosotamtru='" + sosotamtru + "' ";
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            list_tennhankhau = dt.AsEnumerable()
+                      .Select(r => r.Field<string>("HoTen"))
+                      .ToList();
+            return list_tennhankhau;
+        }
+
+
+        public string convertTentoMaNhanKhauTamTru(string tennhankhau, string sosotamtru)
         {
             try
             {
                 DataTable dt = new DataTable();
+                string ID;
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+                string sqltemp = "SELECT manhankhautamtru FROM nhankhau inner join nhankhautamtru where nhankhau.madinhdanh=nhankhautamtru.madinhdanh and HOTEN='"+tennhankhau+"' and sosotamtru='"+sosotamtru+"'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(dt);
-                string value = "";
-                value = dt.Rows[0][0].ToString();
-                return value;
+
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
+        public string FindMaChuHo(string sosotamtru)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string ID;
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT machuhotamtru FROM sotamtru where sosotamtru='"+sosotamtru+"'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+
+                ID = dt.Rows[0][0].ToString();
+                return ID;
             }
             catch (Exception ex)
             {
@@ -418,156 +464,29 @@ namespace DAO
         }
 
 
-        public string getLastID_SoSoTamTru()
+        public string FindTenChuHoTamTru(string sosotamtru)
         {
-            string sql = "SELECT sosotamtru FROM sotamtru ORDER BY sosotamtru DESC LIMIT 1;";
-            return GetLastValueTable(sql);
-        }
-
-        public string getLastID_MaNhanKhauTamTru()
-        {
-            string sql = "SELECT manhankhautamtru FROM nhankhautamtru ORDER BY manhankhautamtru DESC LIMIT 1;";
-            return GetLastValueTable(sql);
-        }
-
-        public string getLastID_MaTieuSu()
-        {
-            string sql = "SELECT matieusu FROM tieusu ORDER BY matieusu DESC LIMIT 1;";
-            return GetLastValueTable(sql);
-        }
-
-        public string getLastID_MaTienAnTienSu()
-        {
-            string sql = "SELECT matienantiensu FROM tienantiensu ORDER BY matienantiensu DESC LIMIT 1;";
-            return GetLastValueTable(sql);
-        }
-
-        public string getLastID_MaDinhDanh()
-        {
-            string sql = "SELECT madinhdanh FROM nhankhau ORDER BY madinhdanh DESC LIMIT 1;";
-            return GetLastValueTable(sql);
-        }
-
-
-        /// <summary>
-        /// Tự động tạo mã 12 ký tự cho mã định danh
-        /// </summary>
-        /// <param name="gioitinh"></param>
-        /// <param name="namsinh"></param>
-        /// <returns></returns>
-        public string TangMa12Kytu(string gioitinh, string namsinh)
-        {
-            string str_matinh = "074";
-            string str_magioitinh = null;
-            string str_manamsinh = null;
-            string sausocuoi = null;
-            string kq = null;
-
-            MySqlDataAdapter sqlda;
-            DataSet dataset = null;
-            MySqlCommandBuilder cmdbuilder;
             try
             {
+                DataTable dt = new DataTable();
+                string machuho=FindMaChuHo(sosotamtru);
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("select madinhdanh from nhankhau where gioitinh='" + gioitinh + "' and year(ngaysinh)='" + namsinh + "'ORDER BY madinhdanh desc", conn);
-                cmdbuilder = new MySqlCommandBuilder(sqlda);
-                sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
-                sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
-                sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
-                dataset = new DataSet();
-                sqlda.Fill(dataset, "bangmadinhdanh");
+                string sqltemp = "SELECT hoten FROM nhankhau INNER JOIN nhankhautamtru ON nhankhau.madinhdanh=nhankhautamtru.madinhdanh where manhankhautamtru='" + machuho + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+                string ten = "";
+                ten = dt.Rows[0][0].ToString();
+                return ten;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
-            int i_namsinh = Int16.Parse(namsinh);
-            if (i_namsinh > 1900 & i_namsinh <= 1999)
-            {
-                if (String.Compare(gioitinh, "nam", true) == 0)
-                {
-                    str_magioitinh = "0";
-                }
-                if (String.Compare(gioitinh, "nu", true) == 0)
-                {
-                    str_magioitinh = "1";
-                }
-            }
-            if (i_namsinh >= 2000 & i_namsinh <= 2099)
-            {
-                if (String.Compare(gioitinh, "nam", true) == 0)
-                {
-                    str_magioitinh = "2";
-                }
-                if (String.Compare(gioitinh, "nu", true) == 0)
-                {
-                    str_magioitinh = "3";
-                }
-            }
-            if (i_namsinh >= 2100 & i_namsinh <= 2199)
-            {
-                if (String.Compare(gioitinh, "nam", true) == 0)
-                {
-                    str_magioitinh = "4";
-                }
-                if (String.Compare(gioitinh, "nu", true) == 0)
-                {
-                    str_magioitinh = "5";
-                }
-            }
-            if (i_namsinh >= 2200 & i_namsinh <= 2299)
-            {
-                if (String.Compare(gioitinh, "nam", true) == 0)
-                {
-                    str_magioitinh = "6";
-                }
-                if (String.Compare(gioitinh, "nu", true) == 0)
-                {
-                    str_magioitinh = "7";
-                }
-            }
-            if (i_namsinh >= 2300 & i_namsinh <= 2399)
-            {
-                if (String.Compare(gioitinh, "nam", true) == 0)
-                {
-                    str_magioitinh = "8";
-                }
-                if (String.Compare(gioitinh, "nu", true) == 0)
-                {
-                    str_magioitinh = "9";
-                }
-            }
-
-            str_manamsinh = namsinh.Substring(2);
-
-            string str_madinhdanh;
-            try
-            {
-                str_madinhdanh = dataset.Tables["bangmadinhdanh"].Rows[0][0].ToString();
-            }
-            catch (Exception e)
-            {
-                sausocuoi = "000001";
-                kq = str_matinh + str_magioitinh + str_manamsinh + sausocuoi;
-                return kq;
-            }
-            sausocuoi = str_madinhdanh.Substring(6);
-            int x = Int32.Parse(sausocuoi) + 1;
-            sausocuoi = x.ToString();
-            string str = null;
-            for (int i = 0; i < 6 - sausocuoi.Length; i++)
-            {
-                str = str + "0";
-            }
-            kq = str_matinh + str_magioitinh + str_manamsinh + str + sausocuoi;
-            return kq;
+            return "";
         }
 
 
@@ -635,6 +554,74 @@ namespace DAO
             string sql = "SELECT COUNT(*) FROM tienantiensu WHERE matienantiensu='" + matienan + "'";
             int num = ExistedValue(sql);
             return num;
+        }
+
+        //GIA HẠN
+
+            //Lấy thời gian tạm trú
+        public DateTime GetDayFromSoTamTru(string sql)
+        {
+            DateTime date = new DateTime(12/12/1800);
+            try
+            {
+                DataTable dt = new DataTable();
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+
+                date = Convert.ToDateTime(dt.Rows[0][0]);
+                return date;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return date;
+        }
+
+
+        public DateTime ThoiHanSoTamTru(string sosotamtru)
+        {
+            string sql = "SELECT denngay FROM sotamtru where sosotamtru='" + sosotamtru + "'";
+            return GetDayFromSoTamTru(sql);
+        }
+
+
+        public DateTime NgayDangKyTamTru(string sosotamtru)
+        {
+            string sql = "SELECT tungay FROM sotamtru where sosotamtru='" + sosotamtru + "'";
+            return GetDayFromSoTamTru(sql);
+        }
+
+
+        public bool InsertGiaHan(string sosotamtru, DateTime thoigian)
+        {
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "update sotamtru set denngay=@denngay where sosotamtru=@sosotamtru";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@denngay", thoigian);
+                cmd.Parameters.AddWithValue("@sosotamtru", sosotamtru);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
 
     }

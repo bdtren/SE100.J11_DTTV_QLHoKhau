@@ -42,6 +42,7 @@
             this.cbb_ChoO_QuanHuyen = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbb_MaChuHo = new System.Windows.Forms.ComboBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.cbb_ChoO_TinhThanh = new System.Windows.Forms.ComboBox();
             this.dt_DenNgay = new System.Windows.Forms.DateTimePicker();
@@ -53,9 +54,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_SoSoTamTru = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_MaChuHoTamTru = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnGiaHan = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGiaHan);
             this.groupBox2.Controls.Add(this.btnThemNhanKhau);
             this.groupBox2.Controls.Add(this.btnTim);
             this.groupBox2.Controls.Add(this.btnXoa);
@@ -90,7 +92,7 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(68, 240);
+            this.btnTim.Location = new System.Drawing.Point(68, 253);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(141, 38);
             this.btnTim.TabIndex = 16;
@@ -100,7 +102,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(68, 190);
+            this.btnXoa.Location = new System.Drawing.Point(68, 207);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(141, 38);
             this.btnXoa.TabIndex = 15;
@@ -110,7 +112,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(68, 138);
+            this.btnSua.Location = new System.Drawing.Point(68, 163);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(141, 38);
             this.btnSua.TabIndex = 14;
@@ -123,7 +125,7 @@
             this.btnThem.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThem.Location = new System.Drawing.Point(68, 84);
+            this.btnThem.Location = new System.Drawing.Point(68, 75);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(141, 36);
             this.btnThem.TabIndex = 13;
@@ -193,6 +195,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbb_MaChuHo);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.txt_SoNha);
             this.groupBox1.Controls.Add(this.label10);
@@ -211,7 +214,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_SoSoTamTru);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txt_MaChuHoTamTru);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1, 7);
             this.groupBox1.Name = "groupBox1";
@@ -219,6 +221,14 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sổ tạm trú";
+            // 
+            // cbb_MaChuHo
+            // 
+            this.cbb_MaChuHo.FormattingEnabled = true;
+            this.cbb_MaChuHo.Location = new System.Drawing.Point(127, 28);
+            this.cbb_MaChuHo.Name = "cbb_MaChuHo";
+            this.cbb_MaChuHo.Size = new System.Drawing.Size(262, 21);
+            this.cbb_MaChuHo.TabIndex = 22;
             // 
             // btnReset
             // 
@@ -313,22 +323,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Số sổ tạm trú";
             // 
-            // txt_MaChuHoTamTru
-            // 
-            this.txt_MaChuHoTamTru.Location = new System.Drawing.Point(127, 32);
-            this.txt_MaChuHoTamTru.Name = "txt_MaChuHoTamTru";
-            this.txt_MaChuHoTamTru.Size = new System.Drawing.Size(262, 20);
-            this.txt_MaChuHoTamTru.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(16, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Mã chủ hộ tạm trú";
+            this.label1.Text = "Tên chủ hộ tạm trú";
             // 
             // dataGridView1
             // 
@@ -339,6 +342,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(724, 184);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // btnGiaHan
+            // 
+            this.btnGiaHan.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiaHan.ForeColor = System.Drawing.Color.White;
+            this.btnGiaHan.Location = new System.Drawing.Point(68, 117);
+            this.btnGiaHan.Name = "btnGiaHan";
+            this.btnGiaHan.Size = new System.Drawing.Size(141, 39);
+            this.btnGiaHan.TabIndex = 18;
+            this.btnGiaHan.Text = "Gia hạn tạm trú";
+            this.btnGiaHan.UseVisualStyleBackColor = false;
+            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
             // SoTamTruGUI
             // 
@@ -386,9 +402,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_SoSoTamTru;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_MaChuHoTamTru;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ComboBox cbb_MaChuHo;
+        private System.Windows.Forms.Button btnGiaHan;
     }
 }

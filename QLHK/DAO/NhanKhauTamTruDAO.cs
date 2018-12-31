@@ -23,7 +23,7 @@ namespace DAO
                     conn.Open();
                 }
                 dataset = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and sosotamtru='"+sosotamtru+"'";
+                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, NgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and sosotamtru='"+sosotamtru+"'";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql,conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(dataset,"nhankhautamtrujoin");
@@ -77,13 +77,13 @@ namespace DAO
                     conn.Open();
                 }
                 string sql = "insert into nhankhautamtru values(@manhankhautamtru, @madinhdanh, @diachithuongtru, @sosotamtru);"
-                             + "insert into nhankhau values(@madinhdanh, @manghenghiep, @hoten, @gioitinh, @dantoc, @hochieu, @ngaycap, @ngaysinh, @nguyenquan, @noicap, @noisinh,@quoctich, @sdt, @tongiao)";
+                             + "insert into nhankhau values(@madinhdanh, @nghenghiep, @hoten, @gioitinh, @dantoc, @hochieu, @ngaycap, @ngaysinh, @nguyenquan, @noicap, @noisinh,@quoctich, @sdt, @tongiao)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru);
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
                 cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@manghenghiep", nktt.MaNgheNghiep);
+                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
                 cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
                 cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
                 cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
@@ -164,14 +164,14 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; update nhankhau set manghenghiep=@manghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh;";
+                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; update nhankhau set nghenghiep=@nghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
 
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
 
-                cmd.Parameters.AddWithValue("@manghenghiep", nktt.MaNgheNghiep);
+                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
                 cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
                 cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
                 cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
@@ -239,7 +239,7 @@ namespace DAO
                     conn.Open();
                 }
                 DataSet ds = new DataSet();
-                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, MaNgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'";
+                string sql = "SELECT  nhankhau.MaDinhDanh, MaNhanKhauTamTru, HoTen, GioiTinh,NgaySinh,NoiSinh,DiaChiThuongTru,DanToc, QuocTich,NguyenQuan, TonGiao, NgheNghiep,SDT, HoChieu,NgayCap,NoiCap,SoSoTamTru FROM nhankhautamtru inner join nhankhau WHERE nhankhautamtru.madinhdanh=nhankhau.madinhdanh and nhankhau.madinhdanh='" + madinhdanh + "'";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.Fill(ds);
@@ -353,56 +353,6 @@ namespace DAO
                       .Select(r => r.Field<string>("ten"))
                       .ToList();
             return xaphuong_list;
-        }
-
-        //Tìm mã nghề nghiêp
-        public string FindMaNgheNghiep(string tennghenghiep)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                string ID;
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                string sqltemp = "SELECT manghenghiep FROM nghenghiep WHERE tennghenghiep='" + tennghenghiep + "'";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
-                adapter.SelectCommand.CommandType = CommandType.Text;
-                adapter.Fill(dt);
-                ID = dt.Rows[0][0].ToString();
-                return ID;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return "";
-        }
-
-        //Find tên nghề nghiệp
-        public string FindTenNgheNghiep(string manghenghiep)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                string ID;
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                string sqltemp = "SELECT tennghenghiep FROM nghenghiep WHERE manghenghiep='" + manghenghiep + "'";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
-                adapter.SelectCommand.CommandType = CommandType.Text;
-                adapter.Fill(dt);
-                ID = dt.Rows[0][0].ToString();
-                return ID;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return "";
         }
 
 

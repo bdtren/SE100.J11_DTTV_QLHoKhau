@@ -93,34 +93,7 @@ namespace BUS
         }
 
 
-        //Get Nghề nghiệp
-        public BindingSource GetListNgheNghiep()
-        {
-            NgheNghiepBUS busNN = new NgheNghiepBUS();
-            DataSet dtNgheNghiep = busNN.GetAll();
-            List<string> listNghenghiep = new List<string>();
 
-            //Lấy danh sách nghề nghiệp dưới dạng list string từ dataset
-            listNghenghiep = dtNgheNghiep.Tables[0].AsEnumerable()
-                      .Select(r => r.Field<string>("tennghenghiep"))
-                      .ToList();
-
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = listNghenghiep;
-            return bindingSource;
-        }
-
-        //Lấy mã nghề nghiệp từ tên nghề nghiệp
-        public string GetMaNgheNghiep(string tennghenghiep)
-        {
-            return objnktt.FindMaNgheNghiep(tennghenghiep);
-        }
-
-        //Lấy tên nghề từ mã nghề
-        public string GetTenNgheNghiep(string manghenghiep)
-        {
-            return objnktt.FindTenNgheNghiep(manghenghiep);
-        }
 
         //
         //XỬ LÍ VỚI TIỀN ÁN TIỀN SỰ
