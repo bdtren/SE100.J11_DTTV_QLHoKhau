@@ -45,26 +45,22 @@ namespace DAO
 
         public override bool insert_table(SoHoKhauDTO data)
         {
-            throw new NotImplementedException();
-        }
-        public override bool insert(SoHoKhauDTO sohk)
-        {
             try
             {
-
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
+                DataRow dr = dataset.Tables["sohokhau"].NewRow();
+                dr["sosohokhau"] = data.SoSoHoKhau;
+                dr["chuho"] = data.MaChuHoThuongTru;
+                dr["diachithuongtru"] = data.DiaChi;
+                dr["ngaycap"] = data.NgayCap;
+                dr["sodangky"] = data.SoDangKy;
 
-                string sql = "insert into sohokhau values(@sosohokhau, @machuho,  @diachi, @ngaycap, @sodangky)";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHoThuongTru);
-                cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
-                cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
-                cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
-                cmd.ExecuteNonQuery();
+                dataset.Tables["sohokhau"].Rows.Add(dr);
+                dataset.Tables["sohokhau"].Rows.RemoveAt(dataset.Tables["sohokhau"].Rows.Count - 1);
+                sqlda.Update(dataset, "sohokhau");
             }
             catch (Exception e)
             {
@@ -75,6 +71,36 @@ namespace DAO
             {
                 conn.Close();
             } 
+            return true;
+        }
+        public override bool insert(SoHoKhauDTO sohk)
+        {
+            //try
+            //{
+
+            //    if (conn.State != ConnectionState.Open)
+            //    {
+            //        conn.Open();
+            //    }
+
+            //    string sql = "insert into sohokhau values(@sosohokhau, @machuho,  @diachi, @ngaycap, @sodangky)";
+            //    MySqlCommand cmd = new MySqlCommand(sql, conn);
+            //    cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
+            //    cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHo);
+            //    cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
+            //    cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
+            //    cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
+            //    cmd.ExecuteNonQuery();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    return false;
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
             return true;
 
         }
@@ -127,12 +153,12 @@ namespace DAO
             try
             {
 
-                string sql = "update sohokhau set machuho=@machuho, diachi=@diachi, ngaycap=@ngaycap, sodangky=@sodangky" +
+                string sql = "update sohokhau set chuho=@chuho, diachithuongtru=@diachithuongtru, ngaycap=@ngaycap, sodangky=@sodangky" +
                     " where sosohokhau=@sosohokhau";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHoThuongTru);
-                cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
+                cmd.Parameters.AddWithValue("@chuho", sohk.MaChuHoThuongTru);
+                cmd.Parameters.AddWithValue("@diachithuongtru", sohk.DiaChi);
                 cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
                 cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
                 cmd.ExecuteNonQuery();

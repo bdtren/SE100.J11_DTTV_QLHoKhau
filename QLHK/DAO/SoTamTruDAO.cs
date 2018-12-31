@@ -21,7 +21,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT , 'Delete' as 'Change'* FROM sotamtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT* , 'Delete' as 'Change' FROM sotamtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -77,7 +77,7 @@ namespace DAO
 
         public override bool insert(SoTamTruDTO sotamtru)
         {
-            try
+            /*try
             {
                 if (conn.State != ConnectionState.Open)
                 {
@@ -100,7 +100,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }
+            }*/
             return true;
         }
 

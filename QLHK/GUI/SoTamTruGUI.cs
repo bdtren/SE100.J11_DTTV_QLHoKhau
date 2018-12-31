@@ -258,8 +258,8 @@ namespace GUI
         {
             if (!isInputTrueSoTamTru())
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
+               MessageBox.Show("Vui lòng nhập đủ thông tin!");
+               return;
             }
 
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
@@ -269,21 +269,21 @@ namespace GUI
             //Kiểm tra sự tồn tại của mã số sổ tạm trú
             if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
             {
-                MessageBox.Show("Sổ tạm trú " + sosotamtru + " chưa tồn tại ! vui lòng kiểm tra lại!");
-                return ;
+               MessageBox.Show("Sổ tạm trú " + sosotamtru + " chưa tồn tại ! vui lòng kiểm tra lại!");
+               return ;
             }
 
             //Kiểm tra sự tồn tại của mã nhân khẩu tạm trú để làm chủ hộ
             if (!sotamtruBus.Existed_NhanKhauTamTru(machuhotamtru))
             {
-                MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
-                return ;
+               MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
+               return ;
             }
             //Kiểm tra chủ hộ này có nằm trong một sổ tạm trú khác hay không?
             if (sotamtruBus.Duplicated_NhanKhauTamTru(machuhotamtru, sosotamtru))
             {
-                MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
-                return ;
+               MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
+               return ;
             }
 
             //Không cho sửa ngày đăng ký và ngày kết thúc sổ tạm trú
@@ -295,8 +295,8 @@ namespace GUI
       
             if(TuNgay!=dt_TuNgay.Value.Date || DenNgay != dt_DenNgay.Value.Date)
             {
-                MessageBox.Show("Không được phép sửa ngày đăng ký và ngày hết hạn sổ tạm trú");
-                return;
+               MessageBox.Show("Không được phép sửa ngày đăng ký và ngày hết hạn sổ tạm trú");
+               return;
             }
 
 
@@ -305,7 +305,7 @@ namespace GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                int r = dataGridView1.CurrentCell.RowIndex;
+               int r = dataGridView1.CurrentCell.RowIndex;
 
                 string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
                 DateTime tungay = TuNgay;
@@ -329,9 +329,7 @@ namespace GUI
             else if (dialogResult == DialogResult.No)
             {
             }
-            //else if (dialogResult == DialogResult.No)
-            //{
-            //}
+            
         }
 
 

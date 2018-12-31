@@ -70,6 +70,7 @@ namespace DAO
 
         public override bool insert(NhanKhauTamTruDTO nktt)
         {
+            
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -289,7 +290,36 @@ namespace DAO
         }
         public override bool insert_table(NhanKhauTamTruDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["nhankhautamtru"].NewRow();
+                dr["manhankhautamtru"] = data.MaNhanKhauTamTru;
+                dr["madinhdanh"] = data.MaDinhDanh;
+                dr["noitamtru"] = data.NoiTamTru;
+                dr["tungay"] = data.TuNgay;
+                dr["denngay"] = data.DenNgay;
+                dr["lydo"] = data.LyDo;
+                dr["sosotamtru"] = data.SoSoTamTru;
+
+
+                dataset.Tables["nhankhautamtru"].Rows.Add(dr);
+                dataset.Tables["nhankhautamtru"].Rows.RemoveAt(dataset.Tables["nhankhautamtru"].Rows.Count - 1);
+                sqlda.Update(dataset, "nhankhautamtru");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
 
 

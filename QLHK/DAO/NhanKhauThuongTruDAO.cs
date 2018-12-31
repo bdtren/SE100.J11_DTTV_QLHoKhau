@@ -74,7 +74,33 @@ namespace DAO
         }
         public override bool insert_table(NhanKhauThuongTruDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["nhankhauthuongtru"].NewRow();
+                dr["manhankhauthuongtru"] = data.MaNhanKhauThuongTru;
+                dr["madinhdanh"] = data.MaDinhDanh;
+                dr["diachithuongtru"] = data.DiaChiThuongTru;
+                dr["quanhevoichuho"] = data.QuanHeChuHo;
+                dr["sosohokhau"] = data.SoSoHoKhau;
+
+                dataset.Tables["nhankhauthuongtru"].Rows.Add(dr);
+                dataset.Tables["nhankhauthuongtru"].Rows.RemoveAt(dataset.Tables["nhankhauthuongtru"].Rows.Count - 1);
+                sqlda.Update(dataset, "nhankhauthuongtru");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
         public override bool insert(NhanKhauThuongTruDTO nktt)
         {
@@ -125,6 +151,7 @@ namespace DAO
                 string sql = "delete from nhankhauthuongtru where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", maNhanKhauthuongtru);
+
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

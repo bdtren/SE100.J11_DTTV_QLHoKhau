@@ -39,7 +39,7 @@ namespace BUS
         }
         public override bool Add_Table(NhanKhau data)
         {
-            throw new NotImplementedException();
+            return objnhankhau.insert_table(data);
         }
         public DataSet TimKiem(string query)
         {
