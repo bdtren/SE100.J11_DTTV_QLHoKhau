@@ -150,29 +150,29 @@ namespace GUI
         //Click trên các dòng trong datagridview , lấy dữ liệu dòng đó gán vào các trường input
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string machuhotamtru = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string choohiennay = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            DateTime tungay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
-            DateTime denngay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-            string lydo = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //string machuhotamtru = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            //string choohiennay = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //DateTime tungay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+            //DateTime denngay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+            //string lydo = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            //sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
-            string[] ChoOHienNay = sotamtruBus.SplitDiaChi(choohiennay);
+            //string[] ChoOHienNay = sotamtruBus.SplitDiaChi(choohiennay);
 
-            txt_LyDo.Text = sotamtruDto.LyDo;
-            ImportToComboboxMaChuHo();
+            //txt_LyDo.Text = sotamtruDto.LyDo;
+            //ImportToComboboxMaChuHo();
 
-            txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
-            dt_TuNgay.Value = sotamtruDto.TuNgay;
-            dt_DenNgay.Value = sotamtruDto.DenNgay;
+            //txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
+            //dt_TuNgay.Value = sotamtruDto.TuNgay;
+            //dt_DenNgay.Value = sotamtruDto.DenNgay;
 
-            txt_SoNha.Text = ChoOHienNay[0];
-            cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
-            cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(ChoOHienNay[2]);
-            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]);
-            ImportToComboboxMaChuHo();
+            //txt_SoNha.Text = ChoOHienNay[0];
+            //cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
+            //cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(ChoOHienNay[2]);
+            //cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]);
+            //ImportToComboboxMaChuHo();
         }
 
         //Kiểm tra mã chủ hộ và số sổ hộ khẩu có bị xóa hay không?
@@ -241,7 +241,7 @@ namespace GUI
 
 
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            //otamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
             if (sotamtruBus.Add(sotamtruDto))
             {
@@ -259,80 +259,80 @@ namespace GUI
         //Sửa một sổ tạm trú
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (!isInputTrueSoTamTru())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
+            //if (!isInputTrueSoTamTru())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
 
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            //string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
-            string machuhotamtru = sotamtruBus.convertTentoMaNhanKhauTamTru(cbb_MaChuHo.Text.ToString(), sosotamtru);
+            //string machuhotamtru = sotamtruBus.convertTentoMaNhanKhauTamTru(cbb_MaChuHo.Text.ToString(), sosotamtru);
 
-            //Kiểm tra sự tồn tại của mã số sổ tạm trú
-            if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
-            {
-                MessageBox.Show("Sổ tạm trú " + sosotamtru + " chưa tồn tại ! vui lòng kiểm tra lại!");
-                return ;
-            }
+            ////Kiểm tra sự tồn tại của mã số sổ tạm trú
+            //if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
+            //{
+            //    MessageBox.Show("Sổ tạm trú " + sosotamtru + " chưa tồn tại ! vui lòng kiểm tra lại!");
+            //    return ;
+            //}
 
-            //Kiểm tra sự tồn tại của mã nhân khẩu tạm trú để làm chủ hộ
-            if (!sotamtruBus.Existed_NhanKhauTamTru(machuhotamtru))
-            {
-                MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
-                return ;
-            }
-            //Kiểm tra chủ hộ này có nằm trong một sổ tạm trú khác hay không?
-            if (sotamtruBus.Duplicated_NhanKhauTamTru(machuhotamtru, sosotamtru))
-            {
-                MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
-                return ;
-            }
+            ////Kiểm tra sự tồn tại của mã nhân khẩu tạm trú để làm chủ hộ
+            //if (!sotamtruBus.Existed_NhanKhauTamTru(machuhotamtru))
+            //{
+            //    MessageBox.Show("Chưa đăng ký tạm trú cho nhân khẩu có mã " + machuhotamtru + " !");
+            //    return ;
+            //}
+            ////Kiểm tra chủ hộ này có nằm trong một sổ tạm trú khác hay không?
+            //if (sotamtruBus.Duplicated_NhanKhauTamTru(machuhotamtru, sosotamtru))
+            //{
+            //    MessageBox.Show("Nhân khẩu tạm trú " + machuhotamtru + " đang ở trong sổ tạm trú khác!");
+            //    return ;
+            //}
 
-            //Không cho sửa ngày đăng ký và ngày kết thúc sổ tạm trú
+            ////Không cho sửa ngày đăng ký và ngày kết thúc sổ tạm trú
 
-            SoTamTruBUS Sotamtru = new SoTamTruBUS();
+            //SoTamTruBUS Sotamtru = new SoTamTruBUS();
 
-            DateTime TuNgay = sotamtruBus.TimNgayDangKyTamTru(sosotamtru);
-            DateTime DenNgay = sotamtruBus.ThoiHanSoTamTru(sosotamtru);
+            //DateTime TuNgay = sotamtruBus.TimNgayDangKyTamTru(sosotamtru);
+            //DateTime DenNgay = sotamtruBus.ThoiHanSoTamTru(sosotamtru);
       
-            if(TuNgay!=dt_TuNgay.Value.Date || DenNgay != dt_DenNgay.Value.Date)
-            {
-                MessageBox.Show("Không được phép sửa ngày đăng ký và ngày hết hạn sổ tạm trú");
-                return;
-            }
+            //if(TuNgay!=dt_TuNgay.Value.Date || DenNgay != dt_DenNgay.Value.Date)
+            //{
+            //    MessageBox.Show("Không được phép sửa ngày đăng ký và ngày hết hạn sổ tạm trú");
+            //    return;
+            //}
 
 
-            machuhotamtru = Sotamtru.convertTentoMaNhanKhauTamTru(cbb_MaChuHo.Text.ToString(), sosotamtru);
+            //machuhotamtru = Sotamtru.convertTentoMaNhanKhauTamTru(cbb_MaChuHo.Text.ToString(), sosotamtru);
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                int r = dataGridView1.CurrentCell.RowIndex;
+            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    int r = dataGridView1.CurrentCell.RowIndex;
 
-                string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
-                DateTime tungay = TuNgay;
-                DateTime denngay = DenNgay;
-                string lydo = txt_LyDo.Text.ToString();
+            //    string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
+            //    DateTime tungay = TuNgay;
+            //    DateTime denngay = DenNgay;
+            //    string lydo = txt_LyDo.Text.ToString();
                 
 
-                SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            //    SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
-                if (sotamtruBus.Update(sotamtru, r))
-                {
-                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thành công!");
-                    LoadDataGridView();
-                    ResetValueInput();
-                    dataGridView1.DataSource = sotamtruBus.TimKiem(sotamtru.SoSoTamTru).Tables[0];
-                }
-                else
-                {
-                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thất bại!");
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
+            //    if (sotamtruBus.Update(sotamtru, r))
+            //    {
+            //        MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thành công!");
+            //        LoadDataGridView();
+            //        ResetValueInput();
+            //        dataGridView1.DataSource = sotamtruBus.TimKiem(sotamtru.SoSoTamTru).Tables[0];
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thất bại!");
+            //    }
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //}
         }
 
 

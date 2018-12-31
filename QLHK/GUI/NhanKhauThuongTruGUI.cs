@@ -139,42 +139,42 @@ namespace GUI
 
         private void button_them_Click(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
-                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, null,
-                tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
-                tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
+            //string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            //nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
+            //    tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
+            //    cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
+            //    tbBietTiengDanToc.Text, tbDCHienTai.Text, null,
+            //    tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
+            //    tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
             
-            if (nktt.Add(nkttDTO))
-            {
-                MessageBox.Show(this, "Thành công!");
+            //if (nktt.Add(nkttDTO))
+            //{
+            //    MessageBox.Show(this, "Thành công!");
 
-            }
-            else
-            {
-                MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         private void button_sua_Click(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
-                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, nkttDTO.maChuHo,
-                tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
-                tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
+            //string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            //nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
+            //    tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
+            //    cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
+            //    tbBietTiengDanToc.Text, tbDCHienTai.Text, nkttDTO.maChuHo,
+            //    tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
+            //    tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
 
-            if (nktt.Update(nkttDTO, -1))
-            {
-                MessageBox.Show(this, "Thành công!");
-            }
-            else
-            {
-                MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (nktt.Update(nkttDTO, -1))
+            //{
+            //    MessageBox.Show(this, "Thành công!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void button_xoa_Click(object sender, EventArgs e)
@@ -391,36 +391,36 @@ namespace GUI
                     }
                     else if (Task == "Insert")
                     {
-                        int row = dGVTienAnTienSu.Rows.Count - 2;
-                        string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
-                        string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
-                        string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
-                        string toidanh = dGVTienAnTienSu.Rows[row].Cells["toidanh"].Value.ToString();
-                        string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
-                        string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
-                        DateTime date_ngayphat = DateTime.Parse(ngayphat);
-                        string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
-                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
-                        tienAn.Add_Table(tienanDTO);
-                        dGVTienAnTienSu.Rows.RemoveAt(dGVTienAnTienSu.Rows.Count - 2);
-                        dGVTienAnTienSu.Rows[e.RowIndex].Cells[dGVTienAnTienSu.ColumnCount - 1].Value = "Delete";
+                        //int row = dGVTienAnTienSu.Rows.Count - 2;
+                        //string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
+                        //string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
+                        //string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
+                        //string toidanh = dGVTienAnTienSu.Rows[row].Cells["toidanh"].Value.ToString();
+                        //string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
+                        //string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
+                        //DateTime date_ngayphat = DateTime.Parse(ngayphat);
+                        //string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
+                        //tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                        //tienAn.Add_Table(tienanDTO);
+                        //dGVTienAnTienSu.Rows.RemoveAt(dGVTienAnTienSu.Rows.Count - 2);
+                        //dGVTienAnTienSu.Rows[e.RowIndex].Cells[dGVTienAnTienSu.ColumnCount - 1].Value = "Delete";
 
 
                     }
                     else if (Task == "Update")
                     {
-                        int row = e.RowIndex;
-                        string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
-                        string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
-                        string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
-                        string toidanh = dGVTienAnTienSu.Rows[row].Cells["toidanh"].Value.ToString();
-                        string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
-                        string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
-                        DateTime date_ngayphat = DateTime.Parse(ngayphat);
-                        string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
-                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
-                        tienAn.Update(tienanDTO, row);
-                        Loadtienantiensu();
+                        //int row = e.RowIndex;
+                        //string matienantiensu = dGVTienAnTienSu.Rows[row].Cells["matienantiensu"].Value.ToString();
+                        //string madinhdanh = dGVTienAnTienSu.Rows[row].Cells["madinhdanh"].Value.ToString();
+                        //string banan = dGVTienAnTienSu.Rows[row].Cells["banan"].Value.ToString();
+                        //string toidanh = dGVTienAnTienSu.Rows[row].Cells["toidanh"].Value.ToString();
+                        //string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
+                        //string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
+                        //DateTime date_ngayphat = DateTime.Parse(ngayphat);
+                        //string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
+                        //tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                        //tienAn.Update(tienanDTO, row);
+                        //Loadtienantiensu();
                     }
                 }
             }

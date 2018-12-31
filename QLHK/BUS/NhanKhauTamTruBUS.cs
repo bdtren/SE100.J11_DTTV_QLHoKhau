@@ -46,7 +46,7 @@ namespace BUS
         }
         public override bool Add_Table(NhanKhauTamTruDTO data)
         {
-            throw new NotImplementedException();
+            return objnktt.insert_table(data);
         }
 
 

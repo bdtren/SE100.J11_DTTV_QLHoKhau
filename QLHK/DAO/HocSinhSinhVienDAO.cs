@@ -78,11 +78,10 @@ namespace DAO
                     conn.Open();
                 }
                 DataRow dr = dataset.Tables["hocsinhsinhvien"].NewRow();
-                dr["mssv"] = hssv.MSSV;
+                dr["mahssv"] = hssv.MaHSSV;
                 dr["madinhdanh"] = hssv.MaDinhDanh;
-                dr["manghenghiep"] = hssv.MaNgheNghiep;
-                dr["diachithuongtru"] = hssv.DiaChiThuongTru;
                 dr["truong"] = hssv.Truong;
+                dr["diachithuongtru"] = hssv.DiaChiThuongTru;
                 dr["thoigianbatdautamtruthuongtru"] = hssv.TGBDTTTT;
                 dr["thoigianketthuctamtruthuongtru"] = hssv.TGKTTTTT;
                 dr["vipham"] = hssv.ViPham;
@@ -151,10 +150,12 @@ namespace DAO
             try
             {
 
-                string sql = "update hocsinhsinhvien set truong=@truong, madinhdanh=@madinhdanh, diachithuongtru=@diachithuongtru, thoigianbatdautamtruthuongtru=@thoigianbatdautamtruthuongtru, thoigianketthuctamtruthuongtru=@thoigianketthuctamtruthuongtru where mssv=@mssv";
+                string sql = "update hocsinhsinhvien set truong=@truong, madinhdanh=@madinhdanh, diachithuongtru=@diachithuongtru, " +
+                    "thoigianbatdautamtruthuongtru=@thoigianbatdautamtruthuongtru, thoigianketthuctamtruthuongtru=@thoigianketthuctamtruthuongtru " +
+                    "vipham=@vipham where mahssv=@mahssv";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", hssv.MSSV.ToString());
+                cmd.Parameters.AddWithValue("@mahssv", hssv.MaHSSV.ToString());
                 cmd.Parameters.AddWithValue("@madinhdanh", hssv.MaDinhDanh.ToString());
                 cmd.Parameters.AddWithValue("@truong", hssv.Truong.ToString());
                 cmd.Parameters.AddWithValue("@diachithuongtru", hssv.DiaChiThuongTru.ToString());
@@ -262,11 +263,10 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into hocsinhsinhvien values(@mssv, @madinhdanh, @manghenghiep, @truong, @diachithuongtru, @tgbdtttt, @tgkttttt, @vipham)";
+                string sql = "insert into hocsinhsinhvien values(@mahssv, @madinhdanh, @truong, @diachithuongtru, @tgbdtttt, @tgkttttt, @vipham)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@mssv", hssv.MSSV);
+                cmd.Parameters.AddWithValue("@mahssv", hssv.MaHSSV);
                 cmd.Parameters.AddWithValue("@madinhdanh", hssv.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@manghenghiep", hssv.MaNgheNghiep);
                 cmd.Parameters.AddWithValue("@truong", hssv.Truong);
                 cmd.Parameters.AddWithValue("@diachithuongtru", hssv.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@tgbdtttt", hssv.TGBDTTTT.ToString("yyyy/MM/dd"));

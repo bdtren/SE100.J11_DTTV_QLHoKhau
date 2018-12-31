@@ -193,70 +193,70 @@ namespace GUI
         //Thêm một nhân khẩu tạm trú
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            //string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
+            //string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            if(manhankhautamtru=="" || madinhdanh=="")
-            {
-                MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
-                return;
-            }
+            //if(manhankhautamtru=="" || madinhdanh=="")
+            //{
+            //    MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
+            //    return;
+            //}
 
-            //Nhập không đầy đủ
-            if (!isInputTrueThongTinTamTru())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
-            string hoten = txt_HoTen.Text.ToString();
+            ////Nhập không đầy đủ
+            //if (!isInputTrueThongTinTamTru())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
+            //string hoten = txt_HoTen.Text.ToString();
 
-            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
-            if (sotamtruBus.Existed_NhanKhau(madinhdanh))
-            {
-                MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
-                return;
-            }
+            //SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            //if (sotamtruBus.Existed_NhanKhau(madinhdanh))
+            //{
+            //    MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
+            //    return;
+            //}
 
-            string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            //string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
+            //string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
-            string nghenghiep = txt_NgheNghiep.Text.ToString();
+            //string nghenghiep = txt_NgheNghiep.Text.ToString();
 
 
-            string gioitinh = "";
-            if (rdNam.Checked) gioitinh = "nam";
-            else gioitinh = "nu";
+            //string gioitinh = "";
+            //if (rdNam.Checked) gioitinh = "nam";
+            //else gioitinh = "nu";
 
-            DateTime ngaycap = new DateTime(12 / 12 / 2018);
-            string noicap = "";
+            //DateTime ngaycap = new DateTime(12 / 12 / 2018);
+            //string noicap = "";
 
-            string dantoc = txt_DanToc.Text.ToString();
-            string hochieu = txt_HoChieu.Text.ToString();
-            DateTime ngaysinh = dt_NgaySinh.Value.Date;
-            string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
-            string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
-            string quoctich = txt_QuocTich.Text.ToString();
-            string sdt = txt_SoDienThoai.Text.ToString();
-            string tongiao = txt_TonGiao.Text.ToString();
-            nhankhautamtru_list.Add(txt_HoTen.Text.ToString());
+            //string dantoc = txt_DanToc.Text.ToString();
+            //string hochieu = txt_HoChieu.Text.ToString();
+            //DateTime ngaysinh = dt_NgaySinh.Value.Date;
+            //string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
+            //string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
+            //string quoctich = txt_QuocTich.Text.ToString();
+            //string sdt = txt_SoDienThoai.Text.ToString();
+            //string tongiao = txt_TonGiao.Text.ToString();
+            //nhankhautamtru_list.Add(txt_HoTen.Text.ToString());
 
-            nkttDto = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
-            if (nkttBus.Add(nkttDto))
-            {
-                MessageBox.Show("Thêm nhân khẩu tạm trú "+hoten+" thành công");
-                ResetValueInput();
-                LoadDataGridView();
+            //nkttDto = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+            //if (nkttBus.Add(nkttDto))
+            //{
+            //    MessageBox.Show("Thêm nhân khẩu tạm trú "+hoten+" thành công");
+            //    ResetValueInput();
+            //    LoadDataGridView();
 
-                //Tạo mã tự động
-                GenerateAllID();
+            //    //Tạo mã tự động
+            //    GenerateAllID();
 
 
                 
-            }
-            else
-            {
-                MessageBox.Show("Thêm nhân khẩu tạm trú " + hoten + "thất bại");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm nhân khẩu tạm trú " + hoten + "thất bại");
+            //}
         }
 
 
@@ -264,75 +264,75 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            string manhankhautamtru = txt_MaNKTamTru.Text.ToString(); //Lấy mã nhân khẩu tạm trú
-            string madinhdanh = txt_MaDinhDanh.Text.ToString(); //Lấy mã định danh
-            string hoten = txt_HoTen.Text.ToString();
+            //string manhankhautamtru = txt_MaNKTamTru.Text.ToString(); //Lấy mã nhân khẩu tạm trú
+            //string madinhdanh = txt_MaDinhDanh.Text.ToString(); //Lấy mã định danh
+            //string hoten = txt_HoTen.Text.ToString();
 
-            if (manhankhautamtru == "" || madinhdanh == "" || hoten=="")
-            {
-                MessageBox.Show("Cần có mã định danh và họ tên để thực hiện chức năng này");
-                return;
-            }
+            //if (manhankhautamtru == "" || madinhdanh == "" || hoten=="")
+            //{
+            //    MessageBox.Show("Cần có mã định danh và họ tên để thực hiện chức năng này");
+            //    return;
+            //}
 
-            madinhdanh = madinhdanhForInsert;
+            //madinhdanh = madinhdanhForInsert;
 
-            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
-            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
-            {
-                MessageBox.Show("Nhân khẩu tạm trú " + hoten + " không tồn tại !");
-                return;
-            }
+            //SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            //if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
+            //{
+            //    MessageBox.Show("Nhân khẩu tạm trú " + hoten + " không tồn tại !");
+            //    return;
+            //}
 
 
 
-            //Nhập không đầy đủ
-            if (!isInputTrueThongTinTamTru())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
+            ////Nhập không đầy đủ
+            //if (!isInputTrueThongTinTamTru())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin nhân khẩu: "+hoten+" không?", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
-                string sosotamtru = txt_SoSoTamTru.Text.ToString();
-                string nghenghiep = txt_NgheNghiep.Text.ToString();
+            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin nhân khẩu: "+hoten+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    string diachithuongtru = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
+            //    string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            //    string nghenghiep = txt_NgheNghiep.Text.ToString();
 
-                string gioitinh = "";
-                if (rdNam.Checked) gioitinh = "nam";
-                else gioitinh = "nu";
+            //    string gioitinh = "";
+            //    if (rdNam.Checked) gioitinh = "nam";
+            //    else gioitinh = "nu";
 
-                DateTime ngaycap = new DateTime(12/12/2018);
-                string noicap="";
+            //    DateTime ngaycap = new DateTime(12/12/2018);
+            //    string noicap="";
 
-                string dantoc = txt_DanToc.Text.ToString();
-                string hochieu = txt_HoChieu.Text.ToString();
-                DateTime ngaysinh = dt_NgaySinh.Value.Date;
-                string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
-                string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
-                string quoctich = txt_QuocTich.Text.ToString();
-                string sdt = txt_SoDienThoai.Text.ToString();
-                string tongiao = txt_TonGiao.Text.ToString();
+            //    string dantoc = txt_DanToc.Text.ToString();
+            //    string hochieu = txt_HoChieu.Text.ToString();
+            //    DateTime ngaysinh = dt_NgaySinh.Value.Date;
+            //    string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
+            //    string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
+            //    string quoctich = txt_QuocTich.Text.ToString();
+            //    string sdt = txt_SoDienThoai.Text.ToString();
+            //    string tongiao = txt_TonGiao.Text.ToString();
 
-                nkttDto = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
-                if (nkttBus.Update(nkttDto, 0))
-                {
-                    MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thành công");
-                    LoadDataGridView();
-                    ResetValueInput();
-                    GenerateAllID();
-                    dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thất bại");
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
+            //    nkttDto = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+            //    if (nkttBus.Update(nkttDto, 0))
+            //    {
+            //        MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thành công");
+            //        LoadDataGridView();
+            //        ResetValueInput();
+            //        GenerateAllID();
+            //        dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Cập nhật thông tin nhân khẩu "+hoten+" thất bại");
+            //    }
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
                 
-            } 
+            //} 
            
         }
 
@@ -382,72 +382,72 @@ namespace GUI
         //Lấy thông tin từ datagridview vào input
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string madinhdanh = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string manhankhautamtru = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string hoten = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string gioitinh = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            DateTime ngaysinh = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-            string noisinh = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            string diachithuongtru = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            string dantoc = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-            string quoctich = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
-            string nguyenquan = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
-            string tongiao = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
-            string nghenghiep = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
-            string sdt = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
-            string hochieu = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
-            DateTime ngaycap = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[14].Value);
-            string noicap = dataGridView1.Rows[e.RowIndex].Cells[15].Value.ToString();
-            string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[16].Value.ToString();
+            //string madinhdanh = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //string manhankhautamtru = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            //string hoten = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //string gioitinh = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            //DateTime ngaysinh = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+            //string noisinh = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //string diachithuongtru = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+            //string dantoc = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+            //string quoctich = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+            //string nguyenquan = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
+            //string tongiao = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
+            //string nghenghiep = dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString();
+            //string sdt = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
+            //string hochieu = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
+            //DateTime ngaycap = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[14].Value);
+            //string noicap = dataGridView1.Rows[e.RowIndex].Cells[15].Value.ToString();
+            //string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[16].Value.ToString();
 
-            madinhdanhForInsert = madinhdanh;
+            //madinhdanhForInsert = madinhdanh;
 
-            NhanKhauTamTruDTO nhankhautamtru = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+            //NhanKhauTamTruDTO nhankhautamtru = new NhanKhauTamTruDTO(nghenghiep, hoten, gioitinh, dantoc, hochieu, ngaycap, ngaysinh, nguyenquan, noicap, noisinh, quoctich, sdt, tongiao, manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
 
-            txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
-            txt_MaNKTamTru.Text = nhankhautamtru.MaNhanKhauTamTru;
-            txt_HoTen.Text = nhankhautamtru.HoTen;
+            //txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
+            //txt_MaNKTamTru.Text = nhankhautamtru.MaNhanKhauTamTru;
+            //txt_HoTen.Text = nhankhautamtru.HoTen;
 
-            string gt = nhankhautamtru.GioiTinh;
-            if ( gt == "nam")
-                this.rdNam.Checked = true;
-            else
-                this.rdNu.Checked = true;
+            //string gt = nhankhautamtru.GioiTinh;
+            //if ( gt == "nam")
+            //    this.rdNam.Checked = true;
+            //else
+            //    this.rdNu.Checked = true;
 
 
-            txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
-            dt_NgaySinh.Value = nhankhautamtru.NgaySinh;
-            txt_DanToc.Text = nhankhautamtru.DanToc;
-            txt_QuocTich.Text = nhankhautamtru.QuocTich;
-            txt_TonGiao.Text = nhankhautamtru.TonGiao;
-            txt_NgheNghiep.Text = nhankhautamtru.NgheNghiep;
-            txt_SoDienThoai.Text = nhankhautamtru.SDT;
-            txt_HoChieu.Text = nhankhautamtru.HoChieu;
-            txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
-            txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
+            //txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
+            //dt_NgaySinh.Value = nhankhautamtru.NgaySinh;
+            //txt_DanToc.Text = nhankhautamtru.DanToc;
+            //txt_QuocTich.Text = nhankhautamtru.QuocTich;
+            //txt_TonGiao.Text = nhankhautamtru.TonGiao;
+            //txt_NgheNghiep.Text = nhankhautamtru.NgheNghiep;
+            //txt_SoDienThoai.Text = nhankhautamtru.SDT;
+            //txt_HoChieu.Text = nhankhautamtru.HoChieu;
+            //txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
+            //txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
 
-            string[] nguyenquanArray = nkttBus.SplitDiaChi(nguyenquan);
-            cbb_NQ_TinhThanhPho.SelectedIndex = cbb_NQ_TinhThanhPho.Items.IndexOf(nguyenquanArray[2]);
-            cbb_NQ_QuanHuyen.SelectedIndex = cbb_NQ_QuanHuyen.Items.IndexOf(nguyenquanArray[1]);
-            cbb_NQ_XaPhuong.SelectedIndex = cbb_NQ_XaPhuong.Items.IndexOf(nguyenquanArray[0]);
+            //string[] nguyenquanArray = nkttBus.SplitDiaChi(nguyenquan);
+            //cbb_NQ_TinhThanhPho.SelectedIndex = cbb_NQ_TinhThanhPho.Items.IndexOf(nguyenquanArray[2]);
+            //cbb_NQ_QuanHuyen.SelectedIndex = cbb_NQ_QuanHuyen.Items.IndexOf(nguyenquanArray[1]);
+            //cbb_NQ_XaPhuong.SelectedIndex = cbb_NQ_XaPhuong.Items.IndexOf(nguyenquanArray[0]);
 
-            string[] noisinhArray = nkttBus.SplitDiaChi(noisinh);
-            cbb_NS_XaPhuong.SelectedIndex = cbb_NS_XaPhuong.Items.IndexOf(noisinhArray[0]);
-            cbb_NS_QuanHuyen.SelectedIndex = cbb_NS_QuanHuyen.Items.IndexOf(noisinhArray[1]);
-            cbb_NS_TinhThanh.SelectedIndex = cbb_NS_TinhThanh.Items.IndexOf(noisinhArray[2]);
+            //string[] noisinhArray = nkttBus.SplitDiaChi(noisinh);
+            //cbb_NS_XaPhuong.SelectedIndex = cbb_NS_XaPhuong.Items.IndexOf(noisinhArray[0]);
+            //cbb_NS_QuanHuyen.SelectedIndex = cbb_NS_QuanHuyen.Items.IndexOf(noisinhArray[1]);
+            //cbb_NS_TinhThanh.SelectedIndex = cbb_NS_TinhThanh.Items.IndexOf(noisinhArray[2]);
 
-            string[] diachiArray = nkttBus.SplitDiaChi(diachithuongtru);
-            cbb_DC_XaPhuong.SelectedIndex = cbb_DC_XaPhuong.Items.IndexOf(diachiArray[0]);
-            cbb_DC_QuanHuyen.SelectedIndex = cbb_DC_QuanHuyen.Items.IndexOf(diachiArray[1]);
-            cbb_DC_TinhThanh.SelectedIndex = cbb_DC_TinhThanh.Items.IndexOf(diachiArray[2]);
+            //string[] diachiArray = nkttBus.SplitDiaChi(diachithuongtru);
+            //cbb_DC_XaPhuong.SelectedIndex = cbb_DC_XaPhuong.Items.IndexOf(diachiArray[0]);
+            //cbb_DC_QuanHuyen.SelectedIndex = cbb_DC_QuanHuyen.Items.IndexOf(diachiArray[1]);
+            //cbb_DC_TinhThanh.SelectedIndex = cbb_DC_TinhThanh.Items.IndexOf(diachiArray[2]);
 
-            //Hiễn thị tiền án tiền sự
-            LoadDataGridViewTienAN();
-            LoadDataGridViewTieuSu();
-            ResetInputTienAn();
-            ResetInputTieuSu();
-            txt_MaTienAn.Text = GenerateMaTienAnTienSu();
-            txt_MaTieuSu.Text = GenerateMaTieuSu();
+            ////Hiễn thị tiền án tiền sự
+            //LoadDataGridViewTienAN();
+            //LoadDataGridViewTieuSu();
+            //ResetInputTienAn();
+            //ResetInputTieuSu();
+            //txt_MaTienAn.Text = GenerateMaTienAnTienSu();
+            //txt_MaTieuSu.Text = GenerateMaTieuSu();
         }
 
         private void btnXong_Click(object sender, EventArgs e)
@@ -506,71 +506,71 @@ namespace GUI
 
         private void btnThemTienAn_Click(object sender, EventArgs e)
         {
-            string matienan = txt_MaTienAn.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            //string matienan = txt_MaTienAn.Text.ToString();
+            //string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            if (matienan == "" || madinhdanh == "")
-            {
-                MessageBox.Show("Cần có mã tiền án tiền sự, mã định danh để thực hiện chức năng này");
-                return;
-            }
+            //if (matienan == "" || madinhdanh == "")
+            //{
+            //    MessageBox.Show("Cần có mã tiền án tiền sự, mã định danh để thực hiện chức năng này");
+            //    return;
+            //}
 
-            SoTamTruBUS sttBus = new SoTamTruBUS();
-            if (!sttBus.Existed_NhanKhau(madinhdanh))
-            {
-                MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiền án tiền sự");
-                return;
-            }
+            //SoTamTruBUS sttBus = new SoTamTruBUS();
+            //if (!sttBus.Existed_NhanKhau(madinhdanh))
+            //{
+            //    MessageBox.Show("Cần tạo thông tin tạm trú cho nhân khẩu có mã định danh:" + madinhdanh + " trước khi thêm tiền án tiền sự");
+            //    return;
+            //}
 
-            //Nhập không đầy đủ
-            if (!isInputTrueTienAn())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
+            ////Nhập không đầy đủ
+            //if (!isInputTrueTienAn())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
 
 
-            string banan = txt_BanAn.Text.ToString();
-            string toidanh = txtToiDanh.Text.ToString();
-            string hinhphat = txt_HinhPhat.Text.ToString();
-            DateTime ngayphat = dtNgayPhat.Value.Date;
-            string ghichu = txtGhiChu.Text.ToString();
+            //string banan = txt_BanAn.Text.ToString();
+            //string toidanh = txtToiDanh.Text.ToString();
+            //string hinhphat = txt_HinhPhat.Text.ToString();
+            //DateTime ngayphat = dtNgayPhat.Value.Date;
+            //string ghichu = txtGhiChu.Text.ToString();
 
-            TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh,banan,toidanh,hinhphat,ngayphat,ghichu);
+            //TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh,banan,toidanh,hinhphat,ngayphat,ghichu);
 
-            TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
-            if (tienanbus.Add(tienan))
-            {
-                MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
-                ResetInputTienAn();
-                LoadDataGridViewTienAN();             
-            }
-            else
-            {
-                MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
-            }
+            //TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
+            //if (tienanbus.Add(tienan))
+            //{
+            //    MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
+            //    ResetInputTienAn();
+            //    LoadDataGridViewTienAN();             
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
+            //}
 
         }
 
         //Click cell datagridview Tiền án
         private void dtGV_TienAnTienSu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string matienan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
-            string banan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string toidanh = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string hinhphat = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[3].Value.ToString();
-            DateTime ngayphat = Convert.ToDateTime(dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[4].Value.ToString());
-            string ghichu = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //string matienan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            //string banan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[1].Value.ToString();
+            //string toidanh = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //string hinhphat = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[3].Value.ToString();
+            //DateTime ngayphat = Convert.ToDateTime(dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[4].Value.ToString());
+            //string ghichu = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
+            //TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
 
-            txt_MaTienAn.Text = tienan.MaTienAnTienSu;
-            txt_BanAn.Text = tienan.BanAn;
-            txtToiDanh.Text = tienan.ToiDanh;
-            txt_HinhPhat.Text = tienan.HinhPhat;
-            dtNgayPhat.Value = tienan.NgayPhat;
-            txtGhiChu.Text = tienan.GhiChu;
+            //txt_MaTienAn.Text = tienan.MaTienAnTienSu;
+            //txt_BanAn.Text = tienan.BanAn;
+            //txtToiDanh.Text = tienan.ToiDanh;
+            //txt_HinhPhat.Text = tienan.HinhPhat;
+            //dtNgayPhat.Value = tienan.NgayPhat;
+            //txtGhiChu.Text = tienan.GhiChu;
 
         }
 
@@ -618,55 +618,55 @@ namespace GUI
   
         private void btnSuaTienAn_Click(object sender, EventArgs e)
         {
-            string matienan = txt_MaTienAn.Text.ToString();
+            //string matienan = txt_MaTienAn.Text.ToString();
 
-            if (matienan == "")
-            {
-                MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
-                return;
-            }
+            //if (matienan == "")
+            //{
+            //    MessageBox.Show("Cần có mã tiền án tiền sự để thực hiện chức năng này");
+            //    return;
+            //}
 
-            SoTamTruBUS sttBus = new SoTamTruBUS();
-            if (!sttBus.Existed_TienAn(matienan))
-            {
-                MessageBox.Show("Mã tiền án " + matienan + "không tồn tại trong hệ thống!");
-                return;
-            }
+            //SoTamTruBUS sttBus = new SoTamTruBUS();
+            //if (!sttBus.Existed_TienAn(matienan))
+            //{
+            //    MessageBox.Show("Mã tiền án " + matienan + "không tồn tại trong hệ thống!");
+            //    return;
+            //}
 
-            //Nhập không đầy đủ
-            if (!isInputTrueTienAn())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
+            ////Nhập không đầy đủ
+            //if (!isInputTrueTienAn())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                string madinhdanh = txt_MaDinhDanh.Text.ToString();
-                string banan = txt_BanAn.Text.ToString();
-                string toidanh = txtToiDanh.Text.ToString();
-                string hinhphat = txt_HinhPhat.Text.ToString();
-                DateTime ngayphat = dtNgayPhat.Value.Date;
-                string ghichu = txtGhiChu.Text.ToString();
+            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            //    string banan = txt_BanAn.Text.ToString();
+            //    string toidanh = txtToiDanh.Text.ToString();
+            //    string hinhphat = txt_HinhPhat.Text.ToString();
+            //    DateTime ngayphat = dtNgayPhat.Value.Date;
+            //    string ghichu = txtGhiChu.Text.ToString();
 
-                TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
+            //    TienAnTienSuDTO tienan = new TienAnTienSuDTO(matienan, madinhdanh, banan, toidanh, hinhphat, ngayphat, ghichu);
 
-                TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
-                if (tienanbus.Update(tienan, 0))
-                {
-                    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
-                    ResetInputTienAn();
-                    LoadDataGridViewTienAN();
-                }
-                else
-                {
-                    MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
+            //    TienAnTienSuBUS tienanbus = new TienAnTienSuBUS();
+            //    if (tienanbus.Update(tienan, 0))
+            //    {
+            //        MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thành công!");
+            //        ResetInputTienAn();
+            //        LoadDataGridViewTienAN();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Sửa tiền án tiền sự "+matienan+" cho nhân khẩu " + txt_HoTen.Text.ToString() + " thất bại!");
+            //    }
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //}
         }
 
 
@@ -754,30 +754,30 @@ namespace GUI
 
         private void dtGV_TieuSu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string matieusu = dtGV_TieuSu.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string madinhdanh = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            DateTime thoigianbatdau = Convert.ToDateTime(dtGV_TieuSu.Rows[e.RowIndex].Cells[1].Value.ToString());
-            DateTime thoigianketthuc = Convert.ToDateTime(dtGV_TieuSu.Rows[e.RowIndex].Cells[2].Value.ToString());
-            string choo = dtGV_TieuSu.Rows[e.RowIndex].Cells[3].Value.ToString();
-            string nghenghiep = dtGV_TieuSu.Rows[e.RowIndex].Cells[4].Value.ToString();
-            string noilamviec = dtGV_TieuSu.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //string matieusu = dtGV_TieuSu.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //string madinhdanh = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            //DateTime thoigianbatdau = Convert.ToDateTime(dtGV_TieuSu.Rows[e.RowIndex].Cells[1].Value.ToString());
+            //DateTime thoigianketthuc = Convert.ToDateTime(dtGV_TieuSu.Rows[e.RowIndex].Cells[2].Value.ToString());
+            //string choo = dtGV_TieuSu.Rows[e.RowIndex].Cells[3].Value.ToString();
+            //string nghenghiep = dtGV_TieuSu.Rows[e.RowIndex].Cells[4].Value.ToString();
+            //string noilamviec = dtGV_TieuSu.Rows[e.RowIndex].Cells[5].Value.ToString();
 
 
-            TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, nghenghiep, noilamviec);
+            //TieuSuDTO tieusu = new TieuSuDTO(matieusu, madinhdanh, thoigianbatdau, thoigianketthuc, choo, nghenghiep, noilamviec);
 
         
-            txt_TieuSu_NgheNghiep.Text = tieusu.MaNgheNghiep;
+            //txt_TieuSu_NgheNghiep.Text = tieusu.MaNgheNghiep;
 
-            txt_MaTieuSu.Text = tieusu.MaTieuSu;
-            dtThoiGianBatDau.Value = tieusu.ThoiGianBatDau;
-            dtThoiGianKetThuc.Value = tieusu.ThoiGianKetThuc;
-            txt_NoiLamViec.Text = tieusu.NoiLamViec;
+            //txt_MaTieuSu.Text = tieusu.MaTieuSu;
+            //dtThoiGianBatDau.Value = tieusu.ThoiGianBatDau;
+            //dtThoiGianKetThuc.Value = tieusu.ThoiGianKetThuc;
+            //txt_NoiLamViec.Text = tieusu.NoiLamViec;
 
-            string[] chooArray = nkttBus.SplitDiaChi(tieusu.ChoO);
-            cbb_TieuSu_TinhThanh.SelectedIndex = cbb_TieuSu_TinhThanh.Items.IndexOf(chooArray[3]);
-            cbb_TieuSu_QuanHuyen.SelectedIndex = cbb_TieuSu_QuanHuyen.Items.IndexOf(chooArray[2]);
-            cbb_TieuSu_XaPhuong.SelectedIndex = cbb_TieuSu_XaPhuong.Items.IndexOf(chooArray[1]);
-            txt_TieuSu_SoNha.Text = chooArray[0];
+            //string[] chooArray = nkttBus.SplitDiaChi(tieusu.ChoO);
+            //cbb_TieuSu_TinhThanh.SelectedIndex = cbb_TieuSu_TinhThanh.Items.IndexOf(chooArray[3]);
+            //cbb_TieuSu_QuanHuyen.SelectedIndex = cbb_TieuSu_QuanHuyen.Items.IndexOf(chooArray[2]);
+            //cbb_TieuSu_XaPhuong.SelectedIndex = cbb_TieuSu_XaPhuong.Items.IndexOf(chooArray[1]);
+            //txt_TieuSu_SoNha.Text = chooArray[0];
         }
 
 

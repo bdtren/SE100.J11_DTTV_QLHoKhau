@@ -70,6 +70,7 @@ namespace DAO
 
         public override bool insert(NhanKhauTamTruDTO nktt)
         {
+            /*
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -107,7 +108,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }
+            }*/
             return true;
 
         }
@@ -157,45 +158,45 @@ namespace DAO
 
         public bool updateNhanKhauTamTru(NhanKhauTamTruDTO nktt, int r)
         {
-            if (conn.State != ConnectionState.Open)
-            {
-                conn.Open();
-            }
-            try
-            {
+            //if (conn.State != ConnectionState.Open)
+            //{
+            //    conn.Open();
+            //}
+            //try
+            //{
 
-                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; update nhankhau set nghenghiep=@nghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
+            //    string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh; update nhankhau set nghenghiep=@nghenghiep,hoten=@hoten,gioitinh=@gioitinh,dantoc=@dantoc,hochieu=@hochieu,ngaycap=@ngaycap,ngaysinh=@ngaysinh,nguyenquan=@nguyenquan,noicap=@noicap,noisinh=@noisinh,quoctich=@quoctich,sdt=@sdt,tongiao=@tongiao where madinhdanh=@madinhdanh;";
+            //    MySqlCommand cmd = new MySqlCommand(sql, conn);
+            //    cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
+            //    cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
 
-                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+            //    cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
 
-                cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
-                cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
-                cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
-                cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
-                cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu);
-                cmd.Parameters.AddWithValue("@ngaycap", nktt.NgayCap);
-                cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh);
-                cmd.Parameters.AddWithValue("@nguyenquan", nktt.NguyenQuan);
-                cmd.Parameters.AddWithValue("@noicap", nktt.NoiCap);
-                cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh);
-                cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich);
-                cmd.Parameters.AddWithValue("@sdt", nktt.SDT);
-                cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao);
-                cmd.ExecuteNonQuery();
+            //    cmd.Parameters.AddWithValue("@nghenghiep", nktt.NgheNghiep);
+            //    cmd.Parameters.AddWithValue("@hoten", nktt.HoTen);
+            //    cmd.Parameters.AddWithValue("@gioitinh", nktt.GioiTinh);
+            //    cmd.Parameters.AddWithValue("@dantoc", nktt.DanToc);
+            //    cmd.Parameters.AddWithValue("@hochieu", nktt.HoChieu);
+            //    cmd.Parameters.AddWithValue("@ngaycap", nktt.NgayCap);
+            //    cmd.Parameters.AddWithValue("@ngaysinh", nktt.NgaySinh);
+            //    cmd.Parameters.AddWithValue("@nguyenquan", nktt.NguyenQuan);
+            //    cmd.Parameters.AddWithValue("@noicap", nktt.NoiCap);
+            //    cmd.Parameters.AddWithValue("@noisinh", nktt.NoiSinh);
+            //    cmd.Parameters.AddWithValue("@quoctich", nktt.QuocTich);
+            //    cmd.Parameters.AddWithValue("@sdt", nktt.SDT);
+            //    cmd.Parameters.AddWithValue("@tongiao", nktt.TonGiao);
+            //    cmd.ExecuteNonQuery();
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    return false;
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
             return true;
         }
 
@@ -209,11 +210,17 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhautamtru set diachithuongtru=@diachithuongtru, sosotamtru=@sosotamtru where madinhdanh=@madinhdanh";
+                string sql = "update nhankhautamtru set madinhdanh=@madinhdanh, noitamtru=@noitamtru, tungay=@tungay, denngay=@denngay, " +
+                    "lydo=@lydo, sotamtru=@sotamtru where manhankhautamtru=@manhankhautamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
-                cmd.Parameters.AddWithValue("@sosotamtru", nktt.SoSoTamTru);
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.Parameters.AddWithValue("@noitamtru", nktt.NoiTamTru);
+                cmd.Parameters.AddWithValue("@tungay", nktt.TuNgay);
+                cmd.Parameters.AddWithValue("@denngay", nktt.DenNgay);
+                cmd.Parameters.AddWithValue("@lydo", nktt.LyDo);
+                cmd.Parameters.AddWithValue("@sotamtru", nktt.SoSoTamTru);
+                cmd.Parameters.AddWithValue("@manhankhautamtru", nktt.MaNhanKhauTamTru);
+
                 cmd.ExecuteNonQuery();
 
             }
@@ -257,7 +264,36 @@ namespace DAO
         }
         public override bool insert_table(NhanKhauTamTruDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["nhankhautamtru"].NewRow();
+                dr["manhankhautamtru"] = data.MaNhanKhauTamTru;
+                dr["madinhdanh"] = data.MaDinhDanh;
+                dr["noitamtru"] = data.NoiTamTru;
+                dr["tungay"] = data.TuNgay;
+                dr["denngay"] = data.DenNgay;
+                dr["lydo"] = data.LyDo;
+                dr["sosotamtru"] = data.SoSoTamTru;
+
+
+                dataset.Tables["nhankhautamtru"].Rows.Add(dr);
+                dataset.Tables["nhankhautamtru"].Rows.RemoveAt(dataset.Tables["nhankhautamtru"].Rows.Count - 1);
+                sqlda.Update(dataset, "nhankhautamtru");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
 
 

@@ -23,7 +23,7 @@ namespace BUS
         }
         public override bool Add_Table(SoHoKhauDTO data)
         {
-            throw new NotImplementedException();
+            return obj.insert_table(data);
         }
         public bool XoaSoHK(string soSoHoKhau)
         {

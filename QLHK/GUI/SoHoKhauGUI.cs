@@ -38,30 +38,30 @@ namespace GUI
 
         public SoHoKhauGUI(string sosohokhau)
         {
-            shk = new SoHoKhauBUS();
-            nktt = new NhanKhauThuongTruBUS();
-            shkDTO = new SoHoKhauDTO();
-            InitializeComponent();
+            //shk = new SoHoKhauBUS();
+            //nktt = new NhanKhauThuongTruBUS();
+            //shkDTO = new SoHoKhauDTO();
+            //InitializeComponent();
 
-            tbSoSoHoKhau.Text = sosohokhau;
-            DataSet ds = shk.TimKiem("sosohokhau='"+sosohokhau+"'");
-            DataRow dt = ds.Tables["sohokhau"].Rows[0];
+            //tbSoSoHoKhau.Text = sosohokhau;
+            //DataSet ds = shk.TimKiem("sosohokhau='"+sosohokhau+"'");
+            //DataRow dt = ds.Tables["sohokhau"].Rows[0];
 
-            shkDTO = new SoHoKhauDTO(dt["sosohokhau"].ToString(), dt["machuho"].ToString(), dt["diachi"].ToString()
-                ,(DateTime) dt["ngaycap"], dt["sodangky"].ToString());
-            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
-            var source = new BindingSource(bindingList, null);
+            //shkDTO = new SoHoKhauDTO(dt["sosohokhau"].ToString(), dt["machuho"].ToString(), dt["diachi"].ToString()
+            //    ,(DateTime) dt["ngaycap"], dt["sodangky"].ToString());
+            //var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
+            //var source = new BindingSource(bindingList, null);
 
-            cbbChuHo.DisplayMember = "HoTen";
-            cbbChuHo.ValueMember = "MaDinhDanh";
-            cbbChuHo.DataSource = bindingList;
+            //cbbChuHo.DisplayMember = "HoTen";
+            //cbbChuHo.ValueMember = "MaDinhDanh";
+            //cbbChuHo.DataSource = bindingList;
 
-            dataGridView1.DataSource = source;
+            //dataGridView1.DataSource = source;
 
-            cbbChuHo.SelectedValue = shkDTO.MaChuHo;
-            dtpNgayCap.Value = shkDTO.NgayCap;
-            tbDiaChi.Text = shkDTO.DiaChi;
-            tbSoDangKy.Text = shkDTO.SoDangKy;
+            //cbbChuHo.SelectedValue = shkDTO.MaChuHo;
+            //dtpNgayCap.Value = shkDTO.NgayCap;
+            //tbDiaChi.Text = shkDTO.DiaChi;
+            //tbSoDangKy.Text = shkDTO.SoDangKy;
         }
 
         private void SoHoKhauGUI_Load(object sender, EventArgs e)

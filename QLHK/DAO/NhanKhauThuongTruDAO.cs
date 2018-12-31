@@ -74,7 +74,33 @@ namespace DAO
         }
         public override bool insert_table(NhanKhauThuongTruDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                DataRow dr = dataset.Tables["nhankhauthuongtru"].NewRow();
+                dr["manhankhauthuongtru"] = data.MaNhanKhauThuongTru;
+                dr["madinhdanh"] = data.MaDinhDanh;
+                dr["diachithuongtru"] = data.DiaChiThuongTru;
+                dr["quanhevoichuho"] = data.QuanHeChuHo;
+                dr["sosohokhau"] = data.SoSoHoKhau;
+
+                dataset.Tables["nhankhauthuongtru"].Rows.Add(dr);
+                dataset.Tables["nhankhauthuongtru"].Rows.RemoveAt(dataset.Tables["nhankhauthuongtru"].Rows.Count - 1);
+                sqlda.Update(dataset, "nhankhauthuongtru");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
         public override bool insert(NhanKhauThuongTruDTO nktt)
         {
@@ -86,20 +112,13 @@ namespace DAO
                     conn.Open();
                 }
 
-                string sql = "insert into nhankhauthuongtru values(@manhankhauthuongtru,@madinhdanh,  @sosohokhau, @noithuongtrutamtru, @diachihientai," +
-                    " @trinhdohocvan, @trinhdochuyenmon, @biettiengdantoc, @trinhdongoaingu, @noilamviec, @quanhevoichuho)";
+                string sql = "insert into nhankhauthuongtru values(@manhankhauthuongtru,@madinhdanh, @diachithuongtru, @quanhevoichuho, @sosohokhau)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", nktt.MaNhanKhauThuongTru);
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
+                cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeChuHo);
                 cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@noithuongtrutamtru", nktt.NoiThuongTru);
-                cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
-                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
-                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
-                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
-                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
-                cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
-                cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeVoiChuHo);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -125,6 +144,7 @@ namespace DAO
                 string sql = "delete from nhankhauthuongtru where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", maNhanKhauthuongtru);
+
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -162,22 +182,14 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhauthuongtru set sosohokhau=@sosohokhau, noithuongtrutamtru=@noithuongtrutamtru, " +
-                    "diachihientai=@diachihientai, trinhdohocvan=@trinhdohocvan, machuho=@machuho, trinhdochuyenmon=@trinhdochuyenmon, " +
-                    "biettiengdantoc=@biettiengdantoc, trinhdongoaingu=@trinhdongoaingu, noilamviec=@noilamviec, " +
-                    "quanhevoichuho=@quanhevoichuho where manhankhauthuongtru=@manhankhauthuongtru";
+                string sql = "update nhankhauthuongtru set madinhdanh=@madinhdanh, diachithuongtru=@diachithuongtru, " +
+                    "quanhevoichuho=@quanhevoichuho, sosohokhau=@sosohokhau where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", nktt.MaNhanKhauThuongTru);
+                cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
+                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
+                cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeChuHo);
                 cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@noithuongtrutamtru", nktt.NoiThuongTru);
-                cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
-                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
-                cmd.Parameters.AddWithValue("@machuho", nktt.maChuHo);
-                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
-                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
-                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
-                cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
-                cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeVoiChuHo);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -210,14 +222,14 @@ namespace DAO
 
             foreach(NhanKhauThuongTruDTO item in danhSach)
             {
-                item.maChuHo = maDinhDanhChuHo;
+                //item.maChuHo = maDinhDanhChuHo;
 
-                try
-                {
-                    update(item,-1);
-                } catch (Exception ex){
-                    return false;
-                }
+                //try
+                //{
+                //    update(item,-1);
+                //} catch (Exception ex){
+                //    return false;
+                //}
 
             }
 

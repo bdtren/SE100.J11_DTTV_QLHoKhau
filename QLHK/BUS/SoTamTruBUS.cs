@@ -16,7 +16,7 @@ namespace BUS
         SoTamTruDAO SoTamTru = new SoTamTruDAO();
         public override DataSet GetAll()
         {
-            return SoTamTru.getAllSoTamTru();
+            return SoTamTru.getAll();
         }
         public override bool Add(SoTamTruDTO sotamtru)
         {

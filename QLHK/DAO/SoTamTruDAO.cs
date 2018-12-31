@@ -21,7 +21,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                sqlda = new MySqlDataAdapter("SELECT , 'Delete' as 'Change'* FROM sotamtru", conn);
+                sqlda = new MySqlDataAdapter("SELECT* , 'Delete' as 'Change' FROM sotamtru", conn);
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
@@ -77,7 +77,7 @@ namespace DAO
 
         public override bool insert(SoTamTruDTO sotamtru)
         {
-            try
+            /*try
             {
                 if (conn.State != ConnectionState.Open)
                 {
@@ -101,7 +101,7 @@ namespace DAO
             finally
             {
                 conn.Close();
-            }
+            }*/
             return true;
         }
 
@@ -239,14 +239,13 @@ namespace DAO
             }
             try
             {
-                string sql = "update sotamtru set machuhotamtru=@machuhotamtru, choohiennay=@choohiennay, tungay=@tungay, denngay=@denngay, lydo=@lydo where sosotamtru=@sosotamtru";
+                string sql = "update sotamtru set chuho=@chuho, noitamtru=@noitamtru, ngaycap=@ngaycap, denngay=@denngay where sosotamtru=@sosotamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
-                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
-                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
-                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
+                cmd.Parameters.AddWithValue("@chuho", sotamtru.MaChuHoTamTru);
+                cmd.Parameters.AddWithValue("@noitamtru", sotamtru.NoiTamTru);
+                cmd.Parameters.AddWithValue("@ngaycap", sotamtru.NgayCap.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
