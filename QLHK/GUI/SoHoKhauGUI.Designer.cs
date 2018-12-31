@@ -38,12 +38,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbSoDangKy = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbChuHo = new System.Windows.Forms.ComboBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cbbChuHo = new System.Windows.Forms.ComboBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,6 +65,7 @@
             this.tbSoSoHoKhau.Name = "tbSoSoHoKhau";
             this.tbSoSoHoKhau.Size = new System.Drawing.Size(151, 20);
             this.tbSoSoHoKhau.TabIndex = 1;
+            this.tbSoSoHoKhau.TextChanged += new System.EventHandler(this.tbSoSoHoKhau_TextChanged);
             // 
             // label2
             // 
@@ -125,6 +127,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTimKiem);
             this.groupBox1.Controls.Add(this.cbbChuHo);
             this.groupBox1.Controls.Add(this.btnHuy);
             this.groupBox1.Controls.Add(this.btnOK);
@@ -143,6 +146,14 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phần thông tin sổ hộ khẩu";
+            // 
+            // cbbChuHo
+            // 
+            this.cbbChuHo.FormattingEnabled = true;
+            this.cbbChuHo.Location = new System.Drawing.Point(88, 60);
+            this.cbbChuHo.Name = "cbbChuHo";
+            this.cbbChuHo.Size = new System.Drawing.Size(236, 21);
+            this.cbbChuHo.TabIndex = 2;
             // 
             // btnHuy
             // 
@@ -193,13 +204,15 @@
             this.dataGridView1.Size = new System.Drawing.Size(604, 236);
             this.dataGridView1.TabIndex = 0;
             // 
-            // cbbChuHo
+            // btnTimKiem
             // 
-            this.cbbChuHo.FormattingEnabled = true;
-            this.cbbChuHo.Location = new System.Drawing.Point(88, 60);
-            this.cbbChuHo.Name = "cbbChuHo";
-            this.cbbChuHo.Size = new System.Drawing.Size(236, 21);
-            this.cbbChuHo.TabIndex = 2;
+            this.btnTimKiem.Location = new System.Drawing.Point(249, 21);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 8;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // SoHoKhauGUI
             // 
@@ -237,5 +250,6 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ComboBox cbbChuHo;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }

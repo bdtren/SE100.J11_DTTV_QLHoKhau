@@ -27,8 +27,6 @@ namespace GUI
         TienAnTienSuBUS tienantiensubus;
         TieuSuDTO tieusu;
         TieuSuBUS tieusubus;
-        NgheNghiepDTO nghenghiep;
-        NgheNghiepBUS nghenghiepbus;
         QuanHuyenDTO quanhuyen;
         QuanHuyenBUS quanhuyenbus;
         TinhThanhPhoDTO tinhthanhpho;
@@ -53,7 +51,6 @@ namespace GUI
             nhankhaubus = new NhanKhauBUS();
             tienantiensubus = new TienAnTienSuBUS();
             tieusubus = new TieuSuBUS();
-            nghenghiepbus = new NgheNghiepBUS();
             quanhuyenbus = new QuanHuyenBUS();
             tinhthanhphobus = new TinhThanhPhoBUS();
             xaphuongthitranbus = new XaPhuongThiTranBUS();
@@ -326,48 +323,6 @@ namespace GUI
                         }
                     }
                     break;
-                case "nghenghiep":
-                    try
-                    {
-                        if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
-                        {
-                            string Task = dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value.ToString();
-                            if (Task == "Delete")
-                            {
-                                if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    int rowIndex = e.RowIndex;
-                                    nghenghiepbus.Delete(rowIndex);
-                                }
-                            }
-                            else if (Task == "Insert")
-                            {
-                                int row = dataGridView1.Rows.Count - 2;
-                                string str_manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
-                                string str_tennghenghiep = dataGridView1.Rows[row].Cells["tennghenghiep"].Value.ToString();
-                                nghenghiep = new NgheNghiepDTO(str_manghenghiep, str_tennghenghiep);
-                                nghenghiepbus.Add_Table(nghenghiep);
-                                dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
-                                dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
-
-
-                            }
-                            else if (Task == "Update")
-                            {
-                                int row = e.RowIndex;
-                                string str_manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
-                                string str_tennghenghiep = dataGridView1.Rows[row].Cells["tennghenghiep"].Value.ToString();
-                                nghenghiep = new NgheNghiepDTO(str_manghenghiep, str_tennghenghiep);
-                                nghenghiepbus.Update(nghenghiep, row);
-                                LoadData();
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
                 case "nhankhau":
                     try
                     {
@@ -402,8 +357,8 @@ namespace GUI
                                 string str_quoctich = dataGridView1.Rows[row].Cells["quoctich"].Value.ToString();
                                 string str_sdt = dataGridView1.Rows[row].Cells["sdt"].Value.ToString();
                                 string str_tongiao = dataGridView1.Rows[row].Cells["tongiao"].Value.ToString();
-                                nhankhau = new NhanKhau(str_madinhdanh, str_manghenghiep, str_hoten, str_gioitinh, str_dantoc, str_hochieu, date_ngaycap, date_ngaysinh, str_nguyenquan, str_noicap, str_noisinh, str_quoctich, str_sdt, str_tongiao);
-                                nhankhaubus.Add_Table(nhankhau);
+                                //nhankhau = new NhanKhau(str_madinhdanh, str_manghenghiep, str_hoten, str_gioitinh, str_dantoc, str_hochieu, date_ngaycap, date_ngaysinh, str_nguyenquan, str_noicap, str_noisinh, str_quoctich, str_sdt, str_tongiao);
+                                //nhankhaubus.Add_Table(nhankhau);
                                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                 dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
 
@@ -429,7 +384,7 @@ namespace GUI
                                 string str_quoctich = dataGridView1.Rows[row].Cells["quoctich"].Value.ToString();
                                 string str_sdt = dataGridView1.Rows[row].Cells["sdt"].Value.ToString();
                                 string str_tongiao = dataGridView1.Rows[row].Cells["tongiao"].Value.ToString();
-                                nhankhau = new NhanKhau(str_madinhdanh, str_manghenghiep, str_hoten, str_gioitinh, str_dantoc, str_hochieu, date_ngaycap, date_ngaysinh, str_nguyenquan, str_noicap, str_noisinh, str_quoctich, str_sdt, str_tongiao);
+                                //nhankhau = new NhanKhau(str_madinhdanh, str_manghenghiep, str_hoten, str_gioitinh, str_dantoc, str_hochieu, date_ngaycap, date_ngaysinh, str_nguyenquan, str_noicap, str_noisinh, str_quoctich, str_sdt, str_tongiao);
 
                                 nhankhaubus.Update(nhankhau, row);
                                 LoadData();
@@ -462,7 +417,7 @@ namespace GUI
                                 string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
                                 string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
                                 string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
-                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                //nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
                                 nhankhaubus.Add_Table(nktamtru);
                                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                 dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
@@ -476,7 +431,7 @@ namespace GUI
                                 string madinhdanh = dataGridView1.Rows[row].Cells["madinhdanh"].Value.ToString();
                                 string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
                                 string sosotamtru = dataGridView1.Rows[row].Cells["sosotamtru"].Value.ToString();
-                                nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
+                                //nktamtru = new NhanKhauTamTruDTO(manhankhautamtru, madinhdanh, diachithuongtru, sosotamtru);
                                 nhankhaubus.Add_Table(nktamtru);
                                 nhankhaubus.Update(nktamtru, row);
                                 LoadData();
@@ -526,8 +481,6 @@ namespace GUI
                                 int row = e.RowIndex;
                                 string str_manghenghiep = dataGridView1.Rows[row].Cells["manghenghiep"].Value.ToString();
                                 string str_tennghenghiep = dataGridView1.Rows[row].Cells["tennghenghiep"].Value.ToString();
-                                nghenghiep = new NgheNghiepDTO(str_manghenghiep, str_tennghenghiep);
-                                nghenghiepbus.Update(nghenghiep, row);
                                 LoadData();
                             }
                         }
@@ -566,7 +519,7 @@ namespace GUI
                                 string ngayphat = dataGridView1.Rows[row].Cells["ngayphat"].Value.ToString();
                                 DateTime date_ngayphat = DateTime.Parse(ngayphat);
                                 string ghichu = dataGridView1.Rows[row].Cells["ghichu"].Value.ToString();
-                                tienantiensu = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                                //tienantiensu = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
                                 tienantiensubus.Add_Table(tienantiensu);
                                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
                                 dataGridView1.Rows[e.RowIndex].Cells[dataGridView1.ColumnCount - 1].Value = "Delete";
@@ -584,7 +537,7 @@ namespace GUI
                                 string ngayphat = dataGridView1.Rows[row].Cells["ngayphat"].Value.ToString();
                                 DateTime date_ngayphat = DateTime.Parse(ngayphat);
                                 string ghichu = dataGridView1.Rows[row].Cells["ghichu"].Value.ToString();
-                                tienantiensu = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                                //tienantiensu = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
                                 tienantiensubus.Update(tienantiensu, row);
                                 LoadData();
                             }

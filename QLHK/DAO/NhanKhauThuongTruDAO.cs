@@ -86,20 +86,20 @@ namespace DAO
                     conn.Open();
                 }
 
-                string sql = "insert into nhankhauthuongtru values(@manhankhauthuongtru,@madinhdanh,  @sosohokhau, @noithuongtrutamtru, @diachihientai," +
-                    " @trinhdohocvan, @trinhdochuyenmon, @biettiengdantoc, @trinhdongoaingu, @noilamviec, @quanhevoichuho)";
+                string sql = "insert into nhankhauthuongtru values(@manhankhauthuongtru,@madinhdanh, @noithuongtrutamtru, @quanhevoichuho, @sosohokhau)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", nktt.MaNhanKhauThuongTru);
                 cmd.Parameters.AddWithValue("@madinhdanh", nktt.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
                 cmd.Parameters.AddWithValue("@noithuongtrutamtru", nktt.NoiThuongTru);
-                cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
-                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
-                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
-                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
-                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
-                cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
                 cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeVoiChuHo);
+                cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
+
+                //cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
+                //cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
+                //cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
+                //cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
+                //cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
+                //cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -162,22 +162,22 @@ namespace DAO
             try
             {
 
-                string sql = "update nhankhauthuongtru set sosohokhau=@sosohokhau, noithuongtrutamtru=@noithuongtrutamtru, " +
-                    "diachihientai=@diachihientai, trinhdohocvan=@trinhdohocvan, machuho=@machuho, trinhdochuyenmon=@trinhdochuyenmon, " +
-                    "biettiengdantoc=@biettiengdantoc, trinhdongoaingu=@trinhdongoaingu, noilamviec=@noilamviec, " +
-                    "quanhevoichuho=@quanhevoichuho where manhankhauthuongtru=@manhankhauthuongtru";
+                string sql = "update nhankhauthuongtru set diachithuongtru=@diachithuongtru, quanhevoichuho=@quanhevoichuho, sosohokhau=@sosohokhau " +
+                    "where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", nktt.MaNhanKhauThuongTru);
-                cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@noithuongtrutamtru", nktt.NoiThuongTru);
-                cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
-                cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
-                cmd.Parameters.AddWithValue("@machuho", nktt.maChuHo);
-                cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
-                cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
-                cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
-                cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
+                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.NoiThuongTru);
                 cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeVoiChuHo);
+                cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
+
+
+                //cmd.Parameters.AddWithValue("@diachihientai", nktt.DiaChiHienTai);
+                //cmd.Parameters.AddWithValue("@trinhdohocvan", nktt.TrinhDoHocVan);
+                //cmd.Parameters.AddWithValue("@machuho", nktt.maChuHo);
+                //cmd.Parameters.AddWithValue("@trinhdochuyenmon", nktt.TrinhDoChuyenMon);
+                //cmd.Parameters.AddWithValue("@biettiengdantoc", nktt.BietTiengDanToc);
+                //cmd.Parameters.AddWithValue("@trinhdongoaingu", nktt.TrinhDoNgoaiNgu);
+                //cmd.Parameters.AddWithValue("@noilamviec", nktt.NoiLamViec);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -191,39 +191,39 @@ namespace DAO
             }
             return true;
         }
-        public bool doiChuHo(List<NhanKhauThuongTruDTO> danhSach, string maDinhDanhChuHo)
-        {
-            bool contain = false;
-            foreach(NhanKhauThuongTruDTO item in danhSach)
-            {
-                if (item.MaDinhDanh == maDinhDanhChuHo)
-                {
-                    contain = true;
-                    break;
-                }
-                //else
-                //{
-                //    item.LaChuHo = false;
-                //}
-            }
-            if (!contain) return false;
+        //public bool doiChuHo(List<NhanKhauThuongTruDTO> danhSach, string maDinhDanhChuHo)
+        //{
+        //    bool contain = false;
+        //    foreach(NhanKhauThuongTruDTO item in danhSach)
+        //    {
+        //        if (item.MaDinhDanh == maDinhDanhChuHo)
+        //        {
+        //            contain = true;
+        //            break;
+        //        }
+        //        //else
+        //        //{
+        //        //    item.LaChuHo = false;
+        //        //}
+        //    }
+        //    if (!contain) return false;
 
-            foreach(NhanKhauThuongTruDTO item in danhSach)
-            {
-                item.maChuHo = maDinhDanhChuHo;
+        //    foreach(NhanKhauThuongTruDTO item in danhSach)
+        //    {
+        //        item.maChuHo = maDinhDanhChuHo;
 
-                try
-                {
-                    update(item,-1);
-                } catch (Exception ex){
-                    return false;
-                }
+        //        try
+        //        {
+        //            update(item,-1);
+        //        } catch (Exception ex){
+        //            return false;
+        //        }
 
-            }
+        //    }
 
-            return true;
+        //    return true;
 
-        }
+        //}
         public DataSet TimKiem(string query)
         {
             try
@@ -232,12 +232,39 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                if (!String.IsNullOrEmpty(query)) query = "where " + query;
-                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru " + query, conn); /*where manhankhauthuongtru IS NOT NULL*/
+                if (!String.IsNullOrEmpty(query)) query = " where " + query;
+                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru" + query, conn); /*where manhankhauthuongtru IS NOT NULL*/
                 cmdbuilder = new MySqlCommandBuilder(sqlda);
                 sqlda.InsertCommand = cmdbuilder.GetInsertCommand();
                 sqlda.UpdateCommand = cmdbuilder.GetUpdateCommand();
                 sqlda.DeleteCommand = cmdbuilder.GetDeleteCommand();
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "nhankhauthuongtru");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+        public DataSet TimKiemJoinNhanKhau(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!String.IsNullOrEmpty(query)) query = " and " + query;
+                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru, nhankhau where nhankhau.madinhdanh=nhankhauthuongtru.madinhdanh" 
+                    + query, conn); /*where manhankhauthuongtru IS NOT NULL*/
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
                 dataset = new DataSet();
                 sqlda.Fill(dataset, "nhankhauthuongtru");
                 return dataset;

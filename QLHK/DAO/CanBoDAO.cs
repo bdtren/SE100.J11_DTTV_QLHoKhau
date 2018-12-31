@@ -143,5 +143,32 @@ namespace DAO
             }
             return true;
         }
+        public DataSet TimKiem(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+                if (!String.IsNullOrEmpty(query)) query = " WHERE " + query;
+                sqlda = new MySqlDataAdapter("SELECT * FROM canbo" + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+
+                dataset = new DataSet();
+                sqlda.Fill(dataset, "canbo");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
     }
 }

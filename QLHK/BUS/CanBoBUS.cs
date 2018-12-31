@@ -32,5 +32,9 @@ namespace BUS
         {
             return objcb.insert_table(data);
         }
+        public DataSet TimKiem(string query)
+        {
+            return objcb.TimKiem(query);
+        }
     }
 }

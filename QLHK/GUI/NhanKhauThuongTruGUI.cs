@@ -47,7 +47,90 @@ namespace GUI
             cbbNoiSinh.DisplayMember = "ten";
             cbbNoiSinh.ValueMember = "matp";
             cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
+            cbbNoiCap.SelectedValue = cbbNoiSinh.SelectedValue = "74";
         }
+
+        #region Các hàm phụ hỗ trợ
+        private void themMaDinhDanhBang()
+        {
+            for (int i = 0; i < dGVTieuSu.RowCount; i++)
+                dGVTieuSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+            for (int i = 0; i < dGVTienAnTienSu.RowCount; i++)
+            {
+                dGVTienAnTienSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
+
+            }
+        }
+        private void LoadtieuSu()
+        {
+            try
+            {
+                dGVTieuSu.DataSource = null;
+                dGVTieuSu.Rows.Clear();
+                dGVTieuSu.DataSource = tieuSu.TimKiem("madinhdanh='" + tbmadinhdanh.Text + "'").Tables["tieusu"];
+                /*for (int i = 0; i < dGVTieuSu.Rows.Count; i++)
+                {
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                    dGVTieuSu[dGVTieuSu.ColumnCount - 1, i] = linkCell;
+                }*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void Loadtienantiensu()
+        {
+            try
+            {
+                dGVTienAnTienSu.DataSource = null;
+                dGVTienAnTienSu.Rows.Clear();
+                dGVTienAnTienSu.DataSource = tienAn.TimKiem("madinhdanh='" + tbmadinhdanh.Text + "'").Tables["tienantiensu"];
+                for (int i = 0; i < dGVTienAnTienSu.Rows.Count; i++)
+                {
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                    dGVTienAnTienSu[dGVTienAnTienSu.ColumnCount - 1, i] = linkCell;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void fillData()
+        {
+            tbhoten.Text = nkttDTO.HoTen;
+            tbTenKhac.Text = nkttDTO.TenKhac;
+            rdNam.Checked = (nkttDTO.GioiTinh == "nam"); rdNu.Checked = (nkttDTO.GioiTinh == "nu");
+            dtpNgaySinh.Value = nkttDTO.NgaySinh;
+            tbdantoc.Text = nkttDTO.DanToc;
+            tbNgheNghiep.Text = nkttDTO.NgheNghiep;
+            tbmadinhdanh.Text = nkttDTO.MaDinhDanh;
+            tbhochieu.Text = nkttDTO.HoChieu;
+            dtpNgayCap.Value = DateTime.Now;
+            cbbNoiCap.SelectedValue = "74";
+            tbnguyenquan.Text = nkttDTO.NguyenQuan;
+            cbbNoiSinh.Text = nkttDTO.NoiSinh;
+            tbquoctich.Text = nkttDTO.QuocTich;
+            tbtongiao.Text = nkttDTO.TonGiao;
+            tbsodienthoai.Text = nkttDTO.SDT;
+
+            tbMaNKTT.Text = nkttDTO.MaNhanKhauThuongTru;
+            tbSoSHK.Text = nkttDTO.SoSoHoKhau;
+            tbDCThuongTru.Text = nkttDTO.DiaChiThuongTru;
+            tbDCHienTai.Text = nkttDTO.DiaChiHienNay;
+            tbTrinhDoHocVan.Text = nkttDTO.TrinhDoHocVan;
+            tbTrinhDoCM.Text = nkttDTO.TrinhDoChuyenMon;
+            tbBietTiengDanToc.Text = nkttDTO.BietTiengDanToc;
+            tbTrinhDoNN.Text = nkttDTO.TrinhDoNgoaiNgu;
+            tbNoiLamViec.Text = "Tỉnh Bình Dương";
+            tbQHVoiCH.Text = nkttDTO.QuanHeVoiChuHo;
+            LoadtieuSu();
+            Loadtienantiensu();
+        }
+
+        #endregion
+
         public NhanKhauThuongTruGUI(string sosohokhau)
         {
             InitializeComponent();
@@ -126,27 +209,15 @@ namespace GUI
 
         }
 
-        private void themMaDinhDanhBang()
-        {
-            for (int i = 0; i < dGVTieuSu.RowCount; i++)
-                dGVTieuSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
-            for (int i = 0; i < dGVTienAnTienSu.RowCount; i++)
-            {
-                dGVTienAnTienSu.Rows[i].Cells[1].Value = tbmadinhdanh.Text;
-
-            }
-        }
-
         private void button_them_Click(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
-                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, null,
-                tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
-                tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
-            
+            //string gioiTinh = rdNam.Checked ? "nam" : "nu";
+
+
+            nkttDTO = new NhanKhauThuongTruDTO(tbMaNKTT.Text,tbDCThuongTru.Text, tbQHVoiCH.Text, tbSoSHK.Text, tbmadinhdanh.Text, tbhoten.Text, tbTenKhac.Text, dtpNgaySinh.Value,
+                rdNam.Checked?"nam":"nu",cbbNoiSinh.Text, tbnguyenquan.Text, tbdantoc.Text, tbtongiao.Text, tbquoctich.Text, tbhochieu.Text, tbDCThuongTru.Text,
+                tbDCHienTai.Text, tbsodienthoai.Text,tbTrinhDoHocVan.Text,tbTrinhDoCM.Text,tbBietTiengDanToc.Text, tbTrinhDoNN.Text,tbNgheNghiep.Text);
+
             if (nktt.Add(nkttDTO))
             {
                 MessageBox.Show(this, "Thành công!");
@@ -159,13 +230,9 @@ namespace GUI
         }
         private void button_sua_Click(object sender, EventArgs e)
         {
-            string gioiTinh = rdNam.Checked ? "nam" : "nu";
-            nkttDTO = new NhanKhauThuongTruDTO(tbmadinhdanh.Text, tbNgheNghiep.Text, tbhoten.Text, gioiTinh,
-                tbdantoc.Text, tbhochieu.Text, dtpNgayCap.Value, dtpNgaySinh.Value, tbnguyenquan.Text, cbbNoiCap.Text,
-                cbbNoiSinh.Text, tbquoctich.Text, tbsodienthoai.Text, tbtongiao.Text, tbMaNKTT.Text,
-                tbBietTiengDanToc.Text, tbDCHienTai.Text, nkttDTO.maChuHo,
-                tbNoiLamViec.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbTrinhDoCM.Text,
-                tbTrinhDoNN.Text, tbTrinhDoHocVan.Text, tbSoSHK.Text);
+            nkttDTO = new NhanKhauThuongTruDTO(tbMaNKTT.Text, tbDCThuongTru.Text, tbQHVoiCH.Text, tbSoSHK.Text, tbmadinhdanh.Text, tbhoten.Text, tbTenKhac.Text, dtpNgaySinh.Value,
+                rdNam.Checked ? "nam" : "nu", cbbNoiSinh.Text, tbnguyenquan.Text, tbdantoc.Text, tbtongiao.Text, tbquoctich.Text, tbhochieu.Text, tbDCThuongTru.Text,
+                tbDCHienTai.Text, tbsodienthoai.Text, tbTrinhDoHocVan.Text, tbTrinhDoCM.Text, tbBietTiengDanToc.Text, tbTrinhDoNN.Text, tbNgheNghiep.Text);
 
             if (nktt.Update(nkttDTO, -1))
             {
@@ -236,42 +303,7 @@ namespace GUI
             nkttDTO = null;
             this.Close();
         }
-        private void LoadtieuSu()
-        {
-            try
-            {
-                dGVTieuSu.DataSource = null;
-                dGVTieuSu.Rows.Clear();
-                dGVTieuSu.DataSource = tieuSu.TimKiem("madinhdanh='"+tbmadinhdanh.Text+"'").Tables["tieusu"];
-                /*for (int i = 0; i < dGVTieuSu.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    dGVTieuSu[dGVTieuSu.ColumnCount - 1, i] = linkCell;
-                }*/
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void Loadtienantiensu()
-        {
-            try
-            {
-                dGVTienAnTienSu.DataSource = null;
-                dGVTienAnTienSu.Rows.Clear();
-                dGVTienAnTienSu.DataSource = tienAn.TimKiem("madinhdanh='" + tbmadinhdanh.Text + "'").Tables["tienantiensu"];
-                for (int i = 0; i < dGVTienAnTienSu.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                    dGVTienAnTienSu[dGVTienAnTienSu.ColumnCount - 1, i] = linkCell;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+       
         private void useradd(DataGridView data)
         {
             try
@@ -341,7 +373,7 @@ namespace GUI
                         string thoigianketthuc = dGVTieuSu.Rows[row].Cells["thoigianketthuc"].Value.ToString();
                         DateTime date_tgkt = DateTime.Parse(thoigianketthuc);
                         string choo = dGVTieuSu.Rows[row].Cells["choo"].Value.ToString();
-                        string manghenghiep = dGVTieuSu.Rows[row].Cells["manghenghiep"].Value.ToString();
+                        string manghenghiep = dGVTieuSu.Rows[row].Cells["nghenghiep"].Value.ToString();
                         string noilamviec = dGVTieuSu.Rows[row].Cells["noilamviec"].Value.ToString();
                         tieusudto = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, manghenghiep, noilamviec);
                         tieuSu.Add_Table(tieusudto);
@@ -360,7 +392,7 @@ namespace GUI
                         string thoigianketthuc = dGVTieuSu.Rows[row].Cells["thoigianketthuc"].Value.ToString();
                         DateTime date_tgkt = DateTime.Parse(thoigianketthuc);
                         string choo = dGVTieuSu.Rows[row].Cells["choo"].Value.ToString();
-                        string manghenghiep = dGVTieuSu.Rows[row].Cells["manghenghiep"].Value.ToString();
+                        string manghenghiep = dGVTieuSu.Rows[row].Cells["nghenghiep"].Value.ToString();
                         string noilamviec = dGVTieuSu.Rows[row].Cells["noilamviec"].Value.ToString();
                         tieusudto = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, manghenghiep, noilamviec);
                         tieuSu.Update(tieusudto, row);
@@ -399,8 +431,8 @@ namespace GUI
                         string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
                         string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
                         DateTime date_ngayphat = DateTime.Parse(ngayphat);
-                        string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
-                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                        //string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
+                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat);
                         tienAn.Add_Table(tienanDTO);
                         dGVTienAnTienSu.Rows.RemoveAt(dGVTienAnTienSu.Rows.Count - 2);
                         dGVTienAnTienSu.Rows[e.RowIndex].Cells[dGVTienAnTienSu.ColumnCount - 1].Value = "Delete";
@@ -417,8 +449,8 @@ namespace GUI
                         string hinhphat = dGVTienAnTienSu.Rows[row].Cells["hinhphat"].Value.ToString();
                         string ngayphat = dGVTienAnTienSu.Rows[row].Cells["ngayphat"].Value.ToString();
                         DateTime date_ngayphat = DateTime.Parse(ngayphat);
-                        string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
-                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat, ghichu);
+                        //string ghichu = dGVTienAnTienSu.Rows[row].Cells["ghichu"].Value.ToString();
+                        tienanDTO = new TienAnTienSuDTO(matienantiensu, madinhdanh, banan, toidanh, hinhphat, date_ngayphat);
                         tienAn.Update(tienanDTO, row);
                         Loadtienantiensu();
                     }
@@ -430,10 +462,59 @@ namespace GUI
             }
         }
 
+        private void tbmadinhdanh_Enter(object sender, EventArgs e)
+        {
+            string gioiTinh = rdNam.Checked ? "nam" : "nu";
+            try
+            {
+                tbmadinhdanh.Text = string.IsNullOrEmpty(tbmadinhdanh.Text) ?TrinhTaoMa.TangMa12Kytu(gioiTinh, dtpNgaySinh.Value.Year.ToString()): tbmadinhdanh.Text;
+                tbmadinhdanh.SelectAll();
+                //tbmadinhdanh.SelectionStart = 0;
+                //tbmadinhdanh.SelectionLength = tbmadinhdanh.Text.Length;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void tbmadinhdanh_TextChanged(object sender, EventArgs e)
         {
             LoadtieuSu();
             Loadtienantiensu();
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            DataTable kq = nktt.TimKiemJoinNhanKhau("nhankhau.madinhdanh='" + tbmadinhdanh.Text + "'").Tables[0];
+            if (kq.Rows.Count > 0)
+            {
+                DataRow dt = kq.Rows[0];
+                nkttDTO = new NhanKhauThuongTruDTO(dt);
+
+                fillData();
+            }
+            else
+            {
+                MessageBox.Show(this, "Nhân khẩu này không tồn tại!", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        
+        private void btnTimKiemTT_Click(object sender, EventArgs e)
+        {
+            DataTable kq = nktt.TimKiemJoinNhanKhau("manhankhauthuongtru='" + tbMaNKTT.Text + "'").Tables[0];
+            if (kq.Rows.Count > 0)
+            {
+                DataRow dt = kq.Rows[0];
+                nkttDTO = new NhanKhauThuongTruDTO(dt);
+
+                fillData();
+            }
+            else
+            {
+                MessageBox.Show(this, "Nhân khẩu này không tồn tại!", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

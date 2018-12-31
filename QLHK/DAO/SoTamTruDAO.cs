@@ -87,10 +87,10 @@ namespace DAO
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
                 cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
-                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
-                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
-                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
-                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
+                //cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
+                //cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
+                //cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
+                //cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -241,12 +241,12 @@ namespace DAO
             {
                 string sql = "update sotamtru set machuhotamtru=@machuhotamtru, choohiennay=@choohiennay, tungay=@tungay, denngay=@denngay, lydo=@lydo where sosotamtru=@sosotamtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
-                cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
-                cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
-                cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
-                cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
-                cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
+                //cmd.Parameters.AddWithValue("@choohiennay", sotamtru.ChoOHienNay);
+                //cmd.Parameters.AddWithValue("@tungay", sotamtru.TuNgay);
+                //cmd.Parameters.AddWithValue("@denngay", sotamtru.DenNgay);
+                //cmd.Parameters.AddWithValue("@lydo", sotamtru.LyDo);
+                //cmd.Parameters.AddWithValue("@sosotamtru", sotamtru.SoSoTamTru);
+                //cmd.Parameters.AddWithValue("@machuhotamtru", sotamtru.MaChuHoTamTru);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)

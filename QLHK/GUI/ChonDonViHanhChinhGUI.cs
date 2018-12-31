@@ -33,6 +33,8 @@ namespace GUI
             cbbTinhThanh.DisplayMember = "ten";
             cbbTinhThanh.ValueMember = "matp";
             cbbTinhThanh.DataSource = ttp.GetAll().Tables[0];
+            cbbTinhThanh.SelectedValue = "74";
+            cbbQuanHuyen.SelectedValue = "724";
 
 
         }

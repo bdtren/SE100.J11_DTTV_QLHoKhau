@@ -25,16 +25,33 @@ namespace GUI
             InitializeComponent();
 
             tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoSoHoKhau());
-
+            tbSoDangKy.Text = TrinhTaoMa.random7();
+            taoDanhSachNhanKhau();
+        }
+        #region Các hàm hỗ trợ
+        private void taoDanhSachNhanKhau()
+        {
             var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
             var source = new BindingSource(bindingList, null);
             cbbChuHo.DisplayMember = "HoTen";
-            cbbChuHo.ValueMember = "MaDinhDanh";
+            cbbChuHo.ValueMember = "MaNhanKhauThuongTru";
 
             dataGridView1.DataSource = source;
 
             cbbChuHo.DataSource = bindingList;
         }
+
+        private void fillData()
+        {
+            tbSoSoHoKhau.Text = shkDTO.SoSoHoKhau;
+            cbbChuHo.SelectedValue = shkDTO.MaChuHoThuongTru;
+            dtpNgayCap.Value = shkDTO.NgayCap;
+            tbDiaChi.Text = shkDTO.DiaChi;
+            tbSoDangKy.Text = shkDTO.SoDangKy;
+            taoDanhSachNhanKhau();
+
+        }
+        #endregion
 
         public SoHoKhauGUI(string sosohokhau)
         {
@@ -49,16 +66,10 @@ namespace GUI
 
             shkDTO = new SoHoKhauDTO(dt["sosohokhau"].ToString(), dt["machuho"].ToString(), dt["diachi"].ToString()
                 ,(DateTime) dt["ngaycap"], dt["sodangky"].ToString());
-            var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
-            var source = new BindingSource(bindingList, null);
+            taoDanhSachNhanKhau();
 
-            cbbChuHo.DisplayMember = "HoTen";
-            cbbChuHo.ValueMember = "MaDinhDanh";
-            cbbChuHo.DataSource = bindingList;
 
-            dataGridView1.DataSource = source;
-
-            cbbChuHo.SelectedValue = shkDTO.MaChuHo;
+            cbbChuHo.SelectedValue = shkDTO.MaChuHoThuongTru;
             dtpNgayCap.Value = shkDTO.NgayCap;
             tbDiaChi.Text = shkDTO.DiaChi;
             tbSoDangKy.Text = shkDTO.SoDangKy;
@@ -87,13 +98,8 @@ namespace GUI
                     cbbChuHo.DataSource = null;
                     cbbChuHo.Items.Clear();
 
-                    var bindingList = new BindingList<NhanKhauThuongTruDTO>(shkDTO.NhanKhau);
-                    var source = new BindingSource(bindingList, null);
-                    dataGridView1.DataSource = source;
+                    taoDanhSachNhanKhau();
 
-                    cbbChuHo.DisplayMember = "HoTen";
-                    cbbChuHo.ValueMember = "MaDinhDanh";
-                    cbbChuHo.DataSource = bindingList;
                 }
 
 
@@ -109,7 +115,7 @@ namespace GUI
                 return;
             }
             shk.Add(new SoHoKhauDTO(tbSoSoHoKhau.Text, cbbChuHo.SelectedValue.ToString(), tbDiaChi.Text, dtpNgayCap.Value, tbSoDangKy.Text));
-            nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
+            //nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
             MessageBox.Show(this, "Tạo sổ hộ khẩu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
@@ -128,5 +134,33 @@ namespace GUI
         {
 
         }
+
+        private void tbSoSoHoKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            DataTable kq = shk.TimKiem("sosohokhau='" + tbSoSoHoKhau.Text + "'").Tables[0];
+            if (kq.Rows.Count > 0)
+            {
+                DataRow dt = kq.Rows[0];
+                shkDTO = new SoHoKhauDTO(dt["sosohokhau"].ToString(), dt["machuho"].ToString(), dt["diachi"].ToString(), DateTime.Parse(dt["ngaycap"].ToString()), dt["sodangky"].ToString());
+                DataTable nk = nktt.TimKiemJoinNhanKhau("sosohokhau='" + tbSoSoHoKhau.Text + "'").Tables[0];
+                foreach(DataRow item in nk.Rows)
+                {
+                    shkDTO.NhanKhau.Add(new NhanKhauThuongTruDTO(item));
+
+                }
+                fillData();
+            }
+            else
+            {
+                MessageBox.Show(this, "Hộ khẩu này không tồn tại!", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        
     }
 }

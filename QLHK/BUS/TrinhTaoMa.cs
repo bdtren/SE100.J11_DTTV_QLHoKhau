@@ -29,7 +29,7 @@ namespace BUS
         }
         public static string getLastID_MaNhanKhauThuongTru()
         {
-            string sql = "SELECT manhankhauthuongtru FROM nhankhauthuongtru where manhankhauhthuongtru LIKE 'TH%' ORDER BY manhankhauthuongtru DESC LIMIT 1;";
+            string sql = "SELECT manhankhauthuongtru FROM nhankhauthuongtru where manhankhauthuongtru LIKE 'TH%' ORDER BY manhankhauthuongtru DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
             return string.IsNullOrEmpty(lastVal) ? "TH0000000" : lastVal;
         }
@@ -225,6 +225,21 @@ namespace BUS
             }
             kq = str_matinh + str_magioitinh + str_manamsinh + str + sausocuoi;
             return kq;
+        }
+        #endregion
+
+        #region Các hàm phụ
+        public static string random7()
+        {
+            Random rand = new Random();
+            string num =  rand.Next(9999999).ToString();
+            int len = num.Length;
+
+            for (int i = 0; i < 7-len; i++)
+            {
+                num = "0" + num;
+            }
+            return num;
         }
         #endregion
     }

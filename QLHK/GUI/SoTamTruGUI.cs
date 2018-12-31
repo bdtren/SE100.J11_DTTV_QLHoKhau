@@ -157,16 +157,16 @@ namespace GUI
             DateTime denngay = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
             string lydo = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            //sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
             string[] ChoOHienNay = sotamtruBus.SplitDiaChi(choohiennay);
 
-            txt_LyDo.Text = sotamtruDto.LyDo;
-            ImportToComboboxMaChuHo();
+            //txt_LyDo.Text = sotamtruDto.LyDo;
+            //ImportToComboboxMaChuHo();
 
-            txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
-            dt_TuNgay.Value = sotamtruDto.TuNgay;
-            dt_DenNgay.Value = sotamtruDto.DenNgay;
+            //txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
+            //dt_TuNgay.Value = sotamtruDto.TuNgay;
+            //dt_DenNgay.Value = sotamtruDto.DenNgay;
 
             txt_SoNha.Text = ChoOHienNay[0];
             cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
@@ -241,7 +241,7 @@ namespace GUI
 
 
 
-            sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+            //sotamtruDto = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
             if (sotamtruBus.Add(sotamtruDto))
             {
@@ -316,61 +316,61 @@ namespace GUI
                 string lydo = txt_LyDo.Text.ToString();
                 
 
-                SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
+                //SoTamTruDTO sotamtru = new SoTamTruDTO(sosotamtru, machuhotamtru, choohiennay, tungay, denngay, lydo);
 
-                if (sotamtruBus.Update(sotamtru, r))
-                {
-                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thành công!");
-                    LoadDataGridView();
-                    ResetValueInput();
-                    dataGridView1.DataSource = sotamtruBus.TimKiem(sotamtru.SoSoTamTru).Tables[0];
-                }
-                else
-                {
-                    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thất bại!");
-                }
+                //if (sotamtruBus.Update(sotamtru, r))
+                //{
+                //    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thành công!");
+                //    LoadDataGridView();
+                //    ResetValueInput();
+                //    dataGridView1.DataSource = sotamtruBus.TimKiem(sotamtru.SoSoTamTru).Tables[0];
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Sửa thông tin sổ tạm trú "+sosotamtru+" thất bại!");
+                //}
             }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //}
         }
 
 
         //Xóa một sổ tạm trú
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
-            if (sosotamtru == "")
-            {
-                MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
-                return;
-            }
+            //string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            //if (sosotamtru == "")
+            //{
+            //    MessageBox.Show("Cần có số sổ tạm trú để thực hiện chức năng này!");
+            //    return;
+            //}
 
-            if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
-            {
-                MessageBox.Show("Sổ tạm trú "+sosotamtru+" không tồn tại! Vui lòng kiểm tra lại");
-                return;
-            }
+            //if (!sotamtruBus.ExistedSoTamTru(sosotamtru))
+            //{
+            //    MessageBox.Show("Sổ tạm trú "+sosotamtru+" không tồn tại! Vui lòng kiểm tra lại");
+            //    return;
+            //}
 
 
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú những nhân khẩu có sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
+            //DialogResult dialogResult = MessageBox.Show("Bạn có muốn hủy tạm trú những nhân khẩu có sổ tạm trú "+sosotamtru+" không?", "Thông báo", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
 
-                if (sotamtruBus.XoaSoTamTru(sosotamtru))
-                {
-                    MessageBox.Show("Hủy tạm trú "+sosotamtru+" thành công");
-                    LoadDataGridView();
-                    ResetValueInput();
-                }
-                else
-                {
-                    MessageBox.Show("Hủy tạm trú "+sosotamtru+" thất bại");
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-            }
+            //    if (sotamtruBus.XoaSoTamTru(sosotamtru))
+            //    {
+            //        MessageBox.Show("Hủy tạm trú "+sosotamtru+" thành công");
+            //        LoadDataGridView();
+            //        ResetValueInput();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Hủy tạm trú "+sosotamtru+" thất bại");
+            //    }
+            //}
+            //else if (dialogResult == DialogResult.No)
+            //{
+            //}
 
         }
 

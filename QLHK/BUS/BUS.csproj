@@ -47,6 +47,7 @@
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
     <Compile Include="CreateWordHelper.cs" />
+    <Compile Include="DangNhapBUS.cs" />
     <Compile Include="SoHoKhauBUS.cs" />
     <Compile Include="NhanKhauThuongTruBUS.cs" />
     <Compile Include="SoTamTruBUS.cs" />

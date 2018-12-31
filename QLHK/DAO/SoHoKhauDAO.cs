@@ -60,7 +60,7 @@ namespace DAO
                 string sql = "insert into sohokhau values(@sosohokhau, @machuho,  @diachi, @ngaycap, @sodangky)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHo);
+                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHoThuongTru);
                 cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
                 cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
                 cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
@@ -131,7 +131,7 @@ namespace DAO
                     " where sosohokhau=@sosohokhau";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
-                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHo);
+                cmd.Parameters.AddWithValue("@machuho", sohk.MaChuHoThuongTru);
                 cmd.Parameters.AddWithValue("@diachi", sohk.DiaChi);
                 cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
                 cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
