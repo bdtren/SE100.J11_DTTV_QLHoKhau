@@ -63,7 +63,7 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into tienantiensu values(@matienantiensu, @madinhdanh, @banan, @toidanh, @hinhphat, @ngayphat, @ghichu)";
+                string sql = "insert into tienantiensu values(@matienantiensu, @madinhdanh, @toidanh,@hinhphat, @banan, @ngayphat)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matienantiensu", data.MaTienAnTienSu);
                 cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
@@ -71,7 +71,6 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@toidanh", data.ToiDanh);
                 cmd.Parameters.AddWithValue("@hinhphat", data.HinhPhat);
                 cmd.Parameters.AddWithValue("@ngayphat", data.NgayPhat.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@ghichu", data.GhiChu);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -97,11 +96,10 @@ namespace DAO
                 DataRow dr = dataset.Tables["tienantiensu"].NewRow();
                 dr["matienantiensu"] = data.MaTienAnTienSu;
                 dr["madinhdanh"] = data.MaDinhDanh;
-                dr["banan"] = data.BanAn;
                 dr["toidanh"] = data.ToiDanh;
                 dr["hinhphat"] = data.HinhPhat;
+                dr["banan"] = data.BanAn;
                 dr["ngayphat"] = data.NgayPhat;
-                dr["ghichu"] = data.GhiChu;
                 dataset.Tables["tienantiensu"].Rows.Add(dr);
                 dataset.Tables["tienantiensu"].Rows.RemoveAt(dataset.Tables["tienantiensu"].Rows.Count - 1);
                 sqlda.Update(dataset, "tienantiensu");
@@ -126,7 +124,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update tienantiensu set madinhdanh=@madinhdanh, banan=@banan, toidanh=@toidanh, hinhphat=@hinhphat, ngayphat=@ngayphat, ghichu=@ghichu where matienantiensu=@matienantiensu";
+                string sql = "update tienantiensu set madinhdanh=@madinhdanh, banan=@banan, toidanh=@toidanh, hinhphat=@hinhphat, ngayphat=@ngayphat where matienantiensu=@matienantiensu";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matienantiensu", data.MaTienAnTienSu);
@@ -135,7 +133,6 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@toidanh", data.ToiDanh);
                 cmd.Parameters.AddWithValue("@hinhphat", data.HinhPhat);
                 cmd.Parameters.AddWithValue("@ngayphat", data.NgayPhat.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@ghichu", data.GhiChu);
 
                 cmd.ExecuteNonQuery();
             }

@@ -10,15 +10,13 @@ namespace DTO
     {
         public string MaTienAnTienSu { get; set; }
         public string MaDinhDanh { get; set; }
-        public string BanAn { get; set; }
         public string ToiDanh { get; set; }
         public string HinhPhat { get; set; }
+        public string BanAn { get; set; }
         public DateTime NgayPhat { get; set; }
-        public string GhiChu { get; set; }
-
         public TienAnTienSuDTO() { }
 
-        public TienAnTienSuDTO(string maTienAnTienSu, string maDinhDanh, string banAn, string toiDanh, string hinhPhat, DateTime ngayPhat, string ghiChu)
+        public TienAnTienSuDTO(string maTienAnTienSu, string maDinhDanh, string banAn, string toiDanh, string hinhPhat, DateTime ngayPhat)
         {
             MaTienAnTienSu = maTienAnTienSu;
             MaDinhDanh = maDinhDanh;
@@ -26,7 +24,6 @@ namespace DTO
             ToiDanh = toiDanh;
             HinhPhat = hinhPhat;
             NgayPhat = ngayPhat;
-            GhiChu = ghiChu;
         }
     }
 }
