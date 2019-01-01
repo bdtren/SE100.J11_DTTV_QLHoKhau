@@ -264,39 +264,39 @@ namespace GUI
             string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            if(manhankhautamtru=="" || madinhdanh=="")
-            {
-                MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
-                return;
-            }
+            //if(manhankhautamtru=="" || madinhdanh=="")
+            //{
+            //    MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
+            //    return;
+            //}
 
             //Nhập không đầy đủ
-            if (!isInputTrueThongTinTamTru())
-            {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
-                return;
-            }
+            //if (!isInputTrueThongTinTamTru())
+            //{
+            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
+            //    return;
+            //}
             string hoten = txt_HoTen.Text.ToString();
    
 
-            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
-            if (sotamtruBus.Existed_NhanKhau(madinhdanh))
-            {
-                MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
-                return;
-            }
+            //SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            //if (sotamtruBus.Existed_NhanKhau(madinhdanh))
+            //{
+            //    MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
+            //    return;
+            //}
 
             //Kiểm tra tổng ngày tạm trú không quá 2 năm
             DateTime ngaycap = dt_TuNgay.Value.Date;
             DateTime denngay = dt_DenNgay.Value.Date;
 
-            double ngay = (denngay - ngaycap).TotalDays;
-            double sum = 730;
-            if (ngay > 730)
-            {
-                MessageBox.Show("Thời gian tạm trú tối đa không quá 2 năm");
-                return;
-            }
+            //double ngay = (denngay - ngaycap).TotalDays;
+            //double sum = 730;
+            //if (ngay > 730)
+            //{
+            //    MessageBox.Show("Thời gian tạm trú tối đa không quá 2 năm");
+            //    return;
+            //}
 
 
             string diachihiennay = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
@@ -333,6 +333,7 @@ namespace GUI
 
             string lydo = txt_LyDo.Text.ToString();
             //THêm
+            
 
             nhankhautamtru_list.Add(txt_HoTen.Text.ToString());
 
@@ -340,6 +341,12 @@ namespace GUI
                 sosotamtru, madinhdanh, hoten, tenkhac, ngaysinh, gioitinh, noisinh, nguyenquan, 
                 dantoc, tongiao, quoctich, hochieu, noithuongtru, diachihiennay, sdt, trinhdohocvan, 
                 trinhdochuyenmon, biettiengdantoc, trinhdongoaingu, nghenghiep);
+
+            //if (!nkttBus.AddNKTT(nkttDto))
+            //{
+            //    MessageBox.Show("CÓ lỗi");
+            //    return;
+            //}
 
             if (nkttBus.Add(nkttDto))
             {

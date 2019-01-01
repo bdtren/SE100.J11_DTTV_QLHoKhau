@@ -23,8 +23,31 @@ namespace BUS
         }
         public override bool Add(NhanKhauTamTruDTO nhankhautamtru)
         {
-
             return objnktt.insert(nhankhautamtru);
+        }
+
+        public bool AddNKTT(NhanKhauTamTruDTO nhankhautamtru)
+        {
+            if(nhankhautamtru.MaNhanKhauTamTru=="" || nhankhautamtru.MaDinhDanh=="" || nhankhautamtru.HoTen =="" || nhankhautamtru.DanToc =="" 
+                || nhankhautamtru.NgheNghiep == "" || nhankhautamtru.QuocTich == "")
+            {
+                return false;
+            }
+            SoTamTruBUS stt = new SoTamTruBUS();
+
+            if (stt.Existed_NhanKhau(nhankhautamtru.MaDinhDanh))
+            {
+                return false;
+            }
+
+            double ngay = (nhankhautamtru.DenNgay - nhankhautamtru.TuNgay).TotalDays;
+            double sum = 730;
+            if (ngay > sum)
+            {
+                return false;
+            }
+
+            return Add(nhankhautamtru);
         }
 
         public bool XoaNKTT(string madinhdanh)
