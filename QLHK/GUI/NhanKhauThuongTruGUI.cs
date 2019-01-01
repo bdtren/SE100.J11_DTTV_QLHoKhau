@@ -324,6 +324,7 @@ namespace GUI
                 DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                 data[data.ColumnCount - 1, lastRow] = linkCell;
                 nRow.Cells["Change"].Value = "Insert";
+                
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -342,6 +343,9 @@ namespace GUI
         private void dGVTieuSu_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             useradd(dGVTieuSu);
+            int lastRow = dGVTieuSu.Rows.Count - 2;
+            dGVTieuSu[0, lastRow].Value = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaTieuSu());
+            dGVTieuSu[1, lastRow].Value = tbmadinhdanh.Text.ToString();
         }
 
         private void dGVTieuSu_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -352,6 +356,9 @@ namespace GUI
         private void dGVTienAnTienSu_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             useradd(dGVTienAnTienSu);
+            int lastRow = dGVTienAnTienSu.Rows.Count - 2;
+            dGVTienAnTienSu[0, lastRow].Value = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaTienAnTienSu());
+            dGVTienAnTienSu[1, lastRow].Value = tbmadinhdanh.Text.ToString();
         }
 
         private void dGVTienAnTienSu_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
