@@ -23,6 +23,7 @@ namespace GUI
         public Home(CanBoDTO cb)
         {
             InitializeComponent();
+            this.ForeColor = Color.Black;
             this.cb = cb;
             if (cb.LoaiCanBo == "1") ribbonPageGroup10.Visible = false;
         }
