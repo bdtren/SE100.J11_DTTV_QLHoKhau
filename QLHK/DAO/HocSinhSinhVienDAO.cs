@@ -263,7 +263,8 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                string sql = "insert into hocsinhsinhvien values(@mahssv, @madinhdanh, @truong, @diachithuongtru, @tgbdtttt, @tgkttttt, @vipham)";
+                string sql = "insert into hocsinhsinhvien values(@mahssv, @madinhdanh, @truong, @diachithuongtru, " +
+                    "@tgbdtttt, @tgkttttt, @vipham)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@mahssv", hssv.MaHSSV);
                 cmd.Parameters.AddWithValue("@madinhdanh", hssv.MaDinhDanh);
@@ -273,6 +274,8 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@tgkttttt", hssv.TGKTTTTT.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@vipham", hssv.ViPham);
                 cmd.ExecuteNonQuery();
+                return true;
+
             }
             catch (Exception e)
             {
@@ -283,7 +286,6 @@ namespace DAO
             {
                 conn.Close();
             }
-            return true;
 
         }
     }
