@@ -63,6 +63,7 @@ namespace GUI
         }
         private void LoadtieuSu()
         {
+            if (string.IsNullOrEmpty(tbmadinhdanh.Text)) return;
             try
             {
                 dGVTieuSu.DataSource = null;
@@ -81,6 +82,8 @@ namespace GUI
         }
         private void Loadtienantiensu()
         {
+            if (string.IsNullOrEmpty(tbmadinhdanh.Text)) return;
+
             try
             {
                 dGVTienAnTienSu.DataSource = null;

@@ -23,9 +23,9 @@ namespace BUS
         }
         public static string getLastID_SoSoHoKhau()
         {
-            string sql = "SELECT sosohokhau FROM sohokhau where sosohokhau LIKE 'SH%' ORDER BY sosohokhau DESC LIMIT 1;";
+            string sql = "SELECT sosohokhau FROM sohokhau where sosohokhau LIKE '08%' ORDER BY sosohokhau DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
-            return string.IsNullOrEmpty(lastVal) ? "SH0000000" : lastVal;
+            return string.IsNullOrEmpty(lastVal) ? "080000000" : lastVal;
         }
         public static string getLastID_MaNhanKhauThuongTru()
         {
@@ -35,9 +35,9 @@ namespace BUS
         }
         public static string getLastID_SoSoTamTru()
         {
-            string sql = "SELECT sosotamtru FROM sotamtru where sosotamtru LIKE 'ST%' ORDER BY sosotamtru DESC LIMIT 1;";
+            string sql = "SELECT sosotamtru FROM sotamtru where sosotamtru LIKE '08%' ORDER BY sosotamtru DESC LIMIT 1;";
             string lastVal = GetLastValueTable(sql);
-            return string.IsNullOrEmpty(lastVal) ? "ST0000000" : lastVal;
+            return string.IsNullOrEmpty(lastVal) ? "080000000" : lastVal;
         }
         public static string getLastID_MaNhanKhauTamTru()
         {

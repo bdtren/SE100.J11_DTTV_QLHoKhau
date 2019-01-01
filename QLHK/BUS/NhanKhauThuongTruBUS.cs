@@ -20,10 +20,23 @@ namespace BUS
         {
             return obj.getAllJoinNhanKhau();
         }
+        public bool isValidNhanKhauTT(NhanKhauThuongTruDTO nktt)
+        {
+            if (!string.IsNullOrEmpty(nktt.HoTen) &&! string.IsNullOrEmpty(nktt.GioiTinh) &&! string.IsNullOrEmpty(nktt.NgaySinh.ToString())
+                &&! string.IsNullOrEmpty(nktt.DanToc) &&! string.IsNullOrEmpty(nktt.NgheNghiep) &&! string.IsNullOrEmpty(nktt.MaDinhDanh) 
+                &&! string.IsNullOrEmpty(nktt.HoChieu) &&! string.IsNullOrEmpty(nktt.NguyenQuan) &&! string.IsNullOrEmpty(nktt.NoiSinh) 
+                &&! string.IsNullOrEmpty(nktt.QuocTich) &&! string.IsNullOrEmpty(nktt.TonGiao) &&! string.IsNullOrEmpty(nktt.SDT) 
+                && nktt.MaNhanKhauThuongTru.IndexOf("TH")>-1 &&! string.IsNullOrEmpty(nktt.SoSoHoKhau) &&! string.IsNullOrEmpty(nktt.NoiThuongTru)
+                &&! string.IsNullOrEmpty(nktt.DiaChiHienNay) &&! string.IsNullOrEmpty(nktt.TrinhDoHocVan) &&! string.IsNullOrEmpty(nktt.TrinhDoChuyenMon) 
+                &&! string.IsNullOrEmpty(nktt.QuanHeVoiChuHo))
+                return true;
+            return false;
+        }
         public override bool Add(NhanKhauThuongTruDTO nktt)
         {
+            if (!isValidNhanKhauTT(nktt)) return false;
+
             NhanKhauDAO nk = new NhanKhauDAO();
-            
             return nk.insert(nktt)&&obj.insert(nktt);
         }
         public override bool Add_Table(NhanKhauThuongTruDTO data)
