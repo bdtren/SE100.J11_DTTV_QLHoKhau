@@ -23,6 +23,8 @@ namespace BUS
         }
         public override bool Add(HocSinhSinhVienDTO hssv)
         {
+            if (isValidHSSV(hssv) == false)
+                return false;
             return objhssv.insert(hssv);
         }
         public bool XoaHSSV(string mssv)
@@ -60,6 +62,14 @@ namespace BUS
         public override bool Add_Table(HocSinhSinhVienDTO hssv)
         {
             return objhssv.insert_table(hssv);
+        }
+        public bool isValidHSSV(HocSinhSinhVienDTO hssv)
+        {
+            if (!string.IsNullOrEmpty(hssv.MaHSSV) && !string.IsNullOrEmpty(hssv.MaDinhDanh) && !string.IsNullOrEmpty(hssv.Truong)
+                && !string.IsNullOrEmpty(hssv.DiaChiThuongTru) && !string.IsNullOrEmpty(hssv.TGBDTTTT.ToString()) 
+                && !string.IsNullOrEmpty(hssv.TGKTTTTT.ToString()))
+                return true;
+            return false;
         }
     }
 }

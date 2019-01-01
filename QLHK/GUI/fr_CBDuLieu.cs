@@ -62,9 +62,16 @@ namespace GUI
 
 
             DataSet tables = DBConnection<int>.getData("show tables from qlhk");
-            foreach (DataRow item in tables.Tables[0].Rows)
+            try
             {
-                comboBox1.Items.Add(item[0].ToString());
+                foreach (DataRow item in tables.Tables[0].Rows)
+                {
+                    comboBox1.Items.Add(item[0].ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
