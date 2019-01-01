@@ -835,6 +835,7 @@ namespace GUI
                 DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                 dataGridView1[dataGridView1.ColumnCount - 1, lastRow] = linkCell;
                 nRow.Cells["Change"].Value = "Insert";
+                dataGridView1[0,lastRow].Value= TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaTieuSu());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

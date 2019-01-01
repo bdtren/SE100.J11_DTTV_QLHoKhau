@@ -95,28 +95,28 @@ namespace DAO
                 {
                     conn.Open();
                 }
-                //DataRow dr = dataset.Tables["tieusu"].NewRow();
-                //dr["matieusu"] = data.MaTieuSu;
-                //dr["madinhdanh"] = data.MaDinhDanh;
-                //dr["thoigianbatdau"] = data.ThoiGianBatDau;
-                //dr["thoigianketthuc"] = data.ThoiGianKetThuc;
-                //dr["choo"] = data.ChoO;
-                //dr["nghenghiep"] = data.NgheNghiep;
-                //dr["noilamviec"] = data.NoiLamViec;
-                //dataset.Tables["tieusu"].Rows.Add(dr);
-                //dataset.Tables["tieusu"].Rows.RemoveAt(dataset.Tables["tieusu"].Rows.Count - 1);
-                //sqlda.Update(dataset, "tieusu");
+                DataRow dr = dataset.Tables["tieusu"].NewRow();
+                dr["matieusu"] = data.MaTieuSu;
+                dr["madinhdanh"] = data.MaDinhDanh;
+                dr["thoigianbatdau"] = data.ThoiGianBatDau;
+                dr["thoigianketthuc"] = data.ThoiGianKetThuc;
+                dr["choo"] = data.ChoO;
+                dr["nghenghiep"] = data.NgheNghiep;
+                dr["noilamviec"] = data.NoiLamViec;
+                dataset.Tables["tieusu"].Rows.Add(dr);
+                dataset.Tables["tieusu"].Rows.RemoveAt(dataset.Tables["tieusu"].Rows.Count - 1);
+                sqlda.Update(dataset, "tieusu");
 
-                string sql = "insert into tieusu values(@matieusu, @madinhdanh, @thoigianbatdau, @thoigianketthuc, @choo, @nghenghiep, @noilamviec)";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@matieusu", data.MaTieuSu);
-                cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@thoigianbatdau", data.ThoiGianBatDau.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@thoigianketthuc", data.ThoiGianKetThuc.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@choo", data.ChoO);
-                cmd.Parameters.AddWithValue("@nghenghiep", data.NgheNghiep);
-                cmd.Parameters.AddWithValue("@noilamviec", data.NoiLamViec);
-                cmd.ExecuteNonQuery();
+                // string sql = "insert into tieusu values(@matieusu, @madinhdanh, @thoigianbatdau, @thoigianketthuc, @choo, @nghenghiep, @noilamviec)";
+                // MySqlCommand cmd = new MySqlCommand(sql, conn);
+                // cmd.Parameters.AddWithValue("@matieusu", data.MaTieuSu);
+                // cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
+                // cmd.Parameters.AddWithValue("@thoigianbatdau", data.ThoiGianBatDau.ToString("yyyy/MM/dd"));
+                // cmd.Parameters.AddWithValue("@thoigianketthuc", data.ThoiGianKetThuc.ToString("yyyy/MM/dd"));
+                // cmd.Parameters.AddWithValue("@choo", data.ChoO);
+                // cmd.Parameters.AddWithValue("@nghenghiep", data.NgheNghiep);
+                // cmd.Parameters.AddWithValue("@noilamviec", data.NoiLamViec);
+                // cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
