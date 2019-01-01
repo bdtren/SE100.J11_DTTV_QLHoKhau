@@ -7,14 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
+using DTO;
 
 namespace GUI
 {
     public partial class ThongTinCaNhanGUI : Form
     {
+        CanBoDTO canbo;
         public ThongTinCaNhanGUI()
         {
             InitializeComponent();
+        }
+        #region Các hàm phụ hỗ trợ
+        private void fillData()
+        {
+            
+        }
+        #endregion
+        public ThongTinCaNhanGUI(CanBoDTO cb)
+        {
+            InitializeComponent();
+            canbo = cb;
         }
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
