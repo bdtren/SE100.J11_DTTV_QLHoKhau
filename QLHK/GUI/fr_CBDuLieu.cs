@@ -675,9 +675,9 @@ namespace GUI
                                 string thoigianketthuc = dataGridView1.Rows[row].Cells["thoigianketthuc"].Value.ToString();
                                 DateTime date_tgkt = DateTime.Parse(thoigianketthuc);
                                 string choo = dataGridView1.Rows[row].Cells["choo"].Value.ToString();
-                                string manghenghiep = dataGridView1.Rows[row].Cells["nghenghiep"].Value.ToString();
+                                string nghenghiep = dataGridView1.Rows[row].Cells["nghenghiep"].Value.ToString();
                                 string noilamviec = dataGridView1.Rows[row].Cells["noilamviec"].Value.ToString();
-                                tieusu = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, manghenghiep, noilamviec);
+                                tieusu = new TieuSuDTO(matieusu, madinhdanh, date_tgbd, date_tgkt, choo, nghenghiep, noilamviec);
                                 tieusubus.Update(tieusu, row);
                                 LoadData();
                             }

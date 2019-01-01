@@ -17,6 +17,8 @@ namespace GUI
         SoHoKhauBUS shk;
         NhanKhauThuongTruBUS nktt;
         public SoHoKhauDTO shkDTO;
+        public NhanKhauThuongTruDTO nkDuocChon;
+
         public SoHoKhauGUI()
         {
             shk = new SoHoKhauBUS();
@@ -93,6 +95,8 @@ namespace GUI
                 a.ShowDialog(this);
                 if (a.nkttDTO != null && !String.IsNullOrEmpty(a.nkttDTO.MaNhanKhauThuongTru))
                 {
+                    if (shkDTO.NhanKhau.Any(i => i.MaNhanKhauThuongTru == a.nkttDTO.MaNhanKhauThuongTru))
+                        return;
                     shkDTO.NhanKhau.Add(a.nkttDTO);
 
                     cbbChuHo.DataSource = null;
@@ -161,6 +165,65 @@ namespace GUI
             }
         }
 
-        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dataGridView1.SelectedCells[0].RowIndex;
+
+            //DataTable table = (DataTable)dataGridView1.DataSource;
+            //DataRow data = table.NewRow();
+            //DataRow data = ((DataRowView)dataGridView1.Rows[index].DataBoundItem).Row;
+            //DataRow data = table.Rows[index];
+            nkDuocChon = shkDTO.NhanKhau[index];
+
+            btnSuaNhanKhau.Visible = btnXoaNhanKhau.Visible = true;
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnSuaNhanKhau_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(tbSoSoHoKhau.Text) || string.IsNullOrEmpty(tbDiaChi.Text))
+            {
+                MessageBox.Show(this, "Vui lòng tạo mã hộ khẩu, và thông tin thường trú!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI(nkDuocChon.MaDinhDanh, -1))
+            {
+                a.ShowDialog(this);
+                if (a.nkttDTO != null && !String.IsNullOrEmpty(a.nkttDTO.MaNhanKhauThuongTru))
+                {
+                    if (shkDTO.NhanKhau.Any(i => i.MaNhanKhauThuongTru == a.nkttDTO.MaNhanKhauThuongTru))
+                        return;
+                    shkDTO.NhanKhau.Add(a.nkttDTO);
+
+                    cbbChuHo.DataSource = null;
+                    cbbChuHo.Items.Clear();
+
+                    taoDanhSachNhanKhau();
+                }
+            }
+        }
+
+        private void btnXoaNhanKhau_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(tbSoSoHoKhau.Text) || string.IsNullOrEmpty(tbDiaChi.Text))
+            {
+                MessageBox.Show(this, "Vui lòng tạo mã hộ khẩu, và thông tin thường trú!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            nkDuocChon.SoSoHoKhau = null;
+            nktt.Update(nkDuocChon, 0);
+
+            //nktt.XoaNKTT(nkDuocChon.MaNhanKhauThuongTru);
+            MessageBox.Show(this, "Đã xóa nhân khẩu thành công!", "Xóa Nhân khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
     }
 }

@@ -116,7 +116,7 @@ namespace GUI
             tbsodienthoai.Text = nkttDTO.SDT;
 
             tbMaNKTT.Text = nkttDTO.MaNhanKhauThuongTru;
-            tbSoSHK.Text = nkttDTO.SoSoHoKhau;
+            tbSoSHK.Text = string.IsNullOrEmpty(nkttDTO.SoSoHoKhau)?tbSoSHK.Text:nkttDTO.SoSoHoKhau;
             tbDCThuongTru.Text = nkttDTO.DiaChiThuongTru;
             tbDCHienTai.Text = nkttDTO.DiaChiHienNay;
             tbTrinhDoHocVan.Text = nkttDTO.TrinhDoHocVan;
@@ -125,6 +125,7 @@ namespace GUI
             tbTrinhDoNN.Text = nkttDTO.TrinhDoNgoaiNgu;
             tbNoiLamViec.Text = "Tỉnh Bình Dương";
             tbQHVoiCH.Text = nkttDTO.QuanHeVoiChuHo;
+
             LoadtieuSu();
             Loadtienantiensu();
         }
@@ -190,10 +191,7 @@ namespace GUI
 
             tbmadinhdanh.Text = madinhdanh;
             tbSoSHK.Enabled = false;
-
-            tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
-            LoadtieuSu();
-            Loadtienantiensu();
+            button_them.Enabled = false;
 
             cbbNoiCap.DisplayMember = "ten";
             cbbNoiCap.ValueMember = "matp";
@@ -201,6 +199,19 @@ namespace GUI
             cbbNoiSinh.DisplayMember = "ten";
             cbbNoiSinh.ValueMember = "matp";
             cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
+
+            DataTable kq = nktt.TimKiemJoinNhanKhau("nhankhau.madinhdanh='" + tbmadinhdanh.Text + "'").Tables[0];
+            if (kq.Rows.Count > 0)
+            {
+                DataRow dt = kq.Rows[0];
+                nkttDTO = new NhanKhauThuongTruDTO(dt);
+
+                fillData();
+            }
+
+            //tbMaNKTT.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_MaNhanKhauThuongTru());
+            //LoadtieuSu();
+            //Loadtienantiensu();
         }
 
         private void NhanKhauThuongTruGUI_Load(object sender, EventArgs e)
@@ -380,7 +391,7 @@ namespace GUI
                         dGVTieuSu.Rows.RemoveAt(dGVTieuSu.Rows.Count - 2);
                         dGVTieuSu.Rows[e.RowIndex].Cells[dGVTieuSu.ColumnCount - 1].Value = "Delete";
 
-
+                        LoadtieuSu();
                     }
                     else if (Task == "Update")
                     {
@@ -436,8 +447,8 @@ namespace GUI
                         tienAn.Add_Table(tienanDTO);
                         dGVTienAnTienSu.Rows.RemoveAt(dGVTienAnTienSu.Rows.Count - 2);
                         dGVTienAnTienSu.Rows[e.RowIndex].Cells[dGVTienAnTienSu.ColumnCount - 1].Value = "Delete";
-                        
 
+                        Loadtienantiensu();
                     }
                     else if (Task == "Update")
                     {

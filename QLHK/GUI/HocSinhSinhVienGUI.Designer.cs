@@ -49,6 +49,7 @@
             this.button_timkiem = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
             this.btnXuatFile = new System.Windows.Forms.Button();
+            this.btnTimKiem2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 252);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(801, 140);
             this.dataGridView1.TabIndex = 0;
@@ -66,8 +67,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTimKiem2);
             this.groupBox1.Controls.Add(this.date_ketthuc);
             this.groupBox1.Controls.Add(this.date_batdau);
+            this.groupBox1.Controls.Add(this.button_timkiem);
             this.groupBox1.Controls.Add(this.textBox_vipham);
             this.groupBox1.Controls.Add(this.textBox_diachithuongtru);
             this.groupBox1.Controls.Add(this.textBox_truong);
@@ -82,35 +85,35 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(474, 243);
+            this.groupBox1.Size = new System.Drawing.Size(776, 174);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
             // date_ketthuc
             // 
-            this.date_ketthuc.Location = new System.Drawing.Point(162, 172);
+            this.date_ketthuc.Location = new System.Drawing.Point(520, 104);
             this.date_ketthuc.Name = "date_ketthuc";
             this.date_ketthuc.Size = new System.Drawing.Size(200, 20);
             this.date_ketthuc.TabIndex = 15;
             // 
             // date_batdau
             // 
-            this.date_batdau.Location = new System.Drawing.Point(162, 146);
+            this.date_batdau.Location = new System.Drawing.Point(162, 107);
             this.date_batdau.Name = "date_batdau";
             this.date_batdau.Size = new System.Drawing.Size(200, 20);
             this.date_batdau.TabIndex = 14;
             // 
             // textBox_vipham
             // 
-            this.textBox_vipham.Location = new System.Drawing.Point(118, 197);
+            this.textBox_vipham.Location = new System.Drawing.Point(118, 136);
             this.textBox_vipham.Name = "textBox_vipham";
             this.textBox_vipham.Size = new System.Drawing.Size(244, 20);
             this.textBox_vipham.TabIndex = 13;
             // 
             // textBox_diachithuongtru
             // 
-            this.textBox_diachithuongtru.Location = new System.Drawing.Point(118, 108);
+            this.textBox_diachithuongtru.Location = new System.Drawing.Point(476, 69);
             this.textBox_diachithuongtru.Name = "textBox_diachithuongtru";
             this.textBox_diachithuongtru.Size = new System.Drawing.Size(244, 20);
             this.textBox_diachithuongtru.TabIndex = 10;
@@ -141,7 +144,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 204);
+            this.label7.Location = new System.Drawing.Point(15, 143);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 6;
@@ -150,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 175);
+            this.label6.Location = new System.Drawing.Point(373, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(136, 13);
             this.label6.TabIndex = 5;
@@ -159,7 +162,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 146);
+            this.label5.Location = new System.Drawing.Point(15, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 13);
             this.label5.TabIndex = 4;
@@ -168,7 +171,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 115);
+            this.label4.Location = new System.Drawing.Point(373, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 3;
@@ -203,9 +206,9 @@
             // 
             // button_Them
             // 
-            this.button_Them.Location = new System.Drawing.Point(492, 16);
+            this.button_Them.Location = new System.Drawing.Point(386, 202);
             this.button_Them.Name = "button_Them";
-            this.button_Them.Size = new System.Drawing.Size(140, 59);
+            this.button_Them.Size = new System.Drawing.Size(96, 32);
             this.button_Them.TabIndex = 2;
             this.button_Them.Text = "Thêm";
             this.button_Them.UseVisualStyleBackColor = true;
@@ -213,9 +216,9 @@
             // 
             // button_xoa
             // 
-            this.button_xoa.Location = new System.Drawing.Point(648, 16);
+            this.button_xoa.Location = new System.Drawing.Point(692, 202);
             this.button_xoa.Name = "button_xoa";
-            this.button_xoa.Size = new System.Drawing.Size(140, 59);
+            this.button_xoa.Size = new System.Drawing.Size(96, 32);
             this.button_xoa.TabIndex = 3;
             this.button_xoa.Text = "Xóa";
             this.button_xoa.UseVisualStyleBackColor = true;
@@ -223,9 +226,9 @@
             // 
             // button_timkiem
             // 
-            this.button_timkiem.Location = new System.Drawing.Point(492, 100);
+            this.button_timkiem.Location = new System.Drawing.Point(368, 12);
             this.button_timkiem.Name = "button_timkiem";
-            this.button_timkiem.Size = new System.Drawing.Size(140, 59);
+            this.button_timkiem.Size = new System.Drawing.Size(78, 22);
             this.button_timkiem.TabIndex = 4;
             this.button_timkiem.Text = "Tìm kiếm";
             this.button_timkiem.UseVisualStyleBackColor = true;
@@ -233,9 +236,9 @@
             // 
             // button_sua
             // 
-            this.button_sua.Location = new System.Drawing.Point(648, 100);
+            this.button_sua.Location = new System.Drawing.Point(488, 202);
             this.button_sua.Name = "button_sua";
-            this.button_sua.Size = new System.Drawing.Size(140, 59);
+            this.button_sua.Size = new System.Drawing.Size(96, 32);
             this.button_sua.TabIndex = 5;
             this.button_sua.Text = "Sửa";
             this.button_sua.UseVisualStyleBackColor = true;
@@ -243,22 +246,31 @@
             // 
             // btnXuatFile
             // 
-            this.btnXuatFile.Location = new System.Drawing.Point(492, 232);
+            this.btnXuatFile.Location = new System.Drawing.Point(590, 202);
             this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(75, 23);
+            this.btnXuatFile.Size = new System.Drawing.Size(96, 32);
             this.btnXuatFile.TabIndex = 0;
             this.btnXuatFile.Text = "Xuất file";
             this.btnXuatFile.UseVisualStyleBackColor = true;
             this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
+            // btnTimKiem2
+            // 
+            this.btnTimKiem2.Location = new System.Drawing.Point(368, 40);
+            this.btnTimKiem2.Name = "btnTimKiem2";
+            this.btnTimKiem2.Size = new System.Drawing.Size(78, 22);
+            this.btnTimKiem2.TabIndex = 16;
+            this.btnTimKiem2.Text = "Tìm kiếm";
+            this.btnTimKiem2.UseVisualStyleBackColor = true;
+            this.btnTimKiem2.Click += new System.EventHandler(this.btnTimKiem2_Click);
+            // 
             // HocSinhSinhVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 418);
+            this.ClientSize = new System.Drawing.Size(800, 392);
             this.Controls.Add(this.btnXuatFile);
             this.Controls.Add(this.button_sua);
-            this.Controls.Add(this.button_timkiem);
             this.Controls.Add(this.button_xoa);
             this.Controls.Add(this.button_Them);
             this.Controls.Add(this.groupBox1);
@@ -295,5 +307,6 @@
         private System.Windows.Forms.DateTimePicker date_batdau;
         private System.Windows.Forms.DateTimePicker date_ketthuc;
         private System.Windows.Forms.Button btnXuatFile;
+        private System.Windows.Forms.Button btnTimKiem2;
     }
 }

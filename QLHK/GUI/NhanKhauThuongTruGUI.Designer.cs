@@ -33,6 +33,7 @@
             this.button_xoa = new System.Windows.Forms.Button();
             this.button_them = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTimKiemTT = new System.Windows.Forms.Button();
             this.tbQHVoiCH = new System.Windows.Forms.TextBox();
             this.tbBietTiengDanToc = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dGVTienAnTienSu = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.cbbNoiSinh = new System.Windows.Forms.ComboBox();
             this.cbbNoiCap = new System.Windows.Forms.ComboBox();
             this.rdNu = new System.Windows.Forms.RadioButton();
@@ -91,8 +93,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnTimKiemTT = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTieuSu)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.xtraScrollableControl1.SuspendLayout();
@@ -122,7 +122,7 @@
             this.button_sua.TabIndex = 26;
             this.button_sua.Text = "SỬA";
             this.button_sua.UseVisualStyleBackColor = true;
-           // this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
+            this.button_sua.Click += new System.EventHandler(this.button_sua_Click);
             // 
             // button_xoa
             // 
@@ -132,7 +132,7 @@
             this.button_xoa.TabIndex = 27;
             this.button_xoa.Text = "XÓA";
             this.button_xoa.UseVisualStyleBackColor = true;
-            //this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
+            this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
             // 
             // button_them
             // 
@@ -174,6 +174,16 @@
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phần thông tin thường trú";
+            // 
+            // btnTimKiemTT
+            // 
+            this.btnTimKiemTT.Location = new System.Drawing.Point(338, 23);
+            this.btnTimKiemTT.Name = "btnTimKiemTT";
+            this.btnTimKiemTT.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiemTT.TabIndex = 15;
+            this.btnTimKiemTT.Text = "Tìm kiếm";
+            this.btnTimKiemTT.UseVisualStyleBackColor = true;
+            this.btnTimKiemTT.Click += new System.EventHandler(this.btnTimKiemTT_Click);
             // 
             // tbQHVoiCH
             // 
@@ -436,6 +446,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phần thông tin nhân khẩu";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(276, 151);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.btnTimKiem.TabIndex = 15;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // cbbNoiSinh
             // 
@@ -712,26 +732,6 @@
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tiểu sử";
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(276, 151);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 23);
-            this.btnTimKiem.TabIndex = 15;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // btnTimKiemTT
-            // 
-            this.btnTimKiemTT.Location = new System.Drawing.Point(338, 23);
-            this.btnTimKiemTT.Name = "btnTimKiemTT";
-            this.btnTimKiemTT.Size = new System.Drawing.Size(75, 23);
-            this.btnTimKiemTT.TabIndex = 15;
-            this.btnTimKiemTT.Text = "Tìm kiếm";
-            this.btnTimKiemTT.UseVisualStyleBackColor = true;
-            this.btnTimKiemTT.Click += new System.EventHandler(this.btnTimKiemTT_Click);
             // 
             // NhanKhauThuongTruGUI
             // 

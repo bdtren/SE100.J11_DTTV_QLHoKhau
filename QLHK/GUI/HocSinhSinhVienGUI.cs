@@ -42,38 +42,57 @@ namespace GUI
         
         private void button_timkiem_Click(object sender, EventArgs e)
         {
-            string query = null;
-            string mssv = textBox_mssv.Text.ToString();
-            string madinhdanh = textBox_madinhdanh.Text.ToString();
-            string truong = textBox_truong.Text.ToString();
-            string diachi = textBox_diachithuongtru.Text.ToString();
-            string vipham = textBox_vipham.Text.ToString();
-            if (mssv != "") query = query + " mssv='"+mssv+"'";
-            if (madinhdanh != "")
+            //string query = null;
+            //string mssv = textBox_mssv.Text.ToString();
+            //string madinhdanh = textBox_madinhdanh.Text.ToString();
+            //string truong = textBox_truong.Text.ToString();
+            //string diachi = textBox_diachithuongtru.Text.ToString();
+            //string vipham = textBox_vipham.Text.ToString();
+            //if (mssv != "") query = query + " mssv='"+mssv+"'";
+            //if (madinhdanh != "")
+            //{
+            //    if (query != null) query = query + " and madinhdanh='" + madinhdanh + "'";
+            //    else query =" madinhdanh='" + madinhdanh + "'";
+            //}
+
+            //if ( truong!= "")
+            //{
+            //    if(query!=null) query = query + " and truong='" + truong + "'";
+            //    else query =" truong='" + truong + "'";
+            //}
+            //if ( diachi!= "")
+            //{
+            //    if (query != null) query = query + " and diachi='" + diachi + "'";
+            //    else query =" diachi='" + diachi + "'";
+            //}
+            //if (query != null) query = " where" + query;
+            //dataGridView1.DataSource = null;
+            //dataGridView1.Rows.Clear();
+            //dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='"+ madinhdanh + "'").Tables["tienantiensu"];
+            //textBox_mssv.Clear();
+            //textBox_madinhdanh.Clear();
+            //textBox_truong.Clear();
+            //textBox_diachithuongtru.Clear();
+            //textBox_vipham.Clear();
+
+            //DataTable source = hssvbus.TimKiemJoinNhanKhau(" AND nhankhau.madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables[0];
+            DataTable source = hssvbus.TimKiemJoinNhanKhau(" AND mahssv='" + textBox_mssv.Text + "'").Tables[0];
+            if (source.Rows.Count > 0)
             {
-                if (query != null) query = query + " and madinhdanh='" + madinhdanh + "'";
-                else query =" madinhdanh='" + madinhdanh + "'";
+                DataRow data = source.Rows[0];
+                if (data.ItemArray.Length > 0)
+                {
+                    textBox_madinhdanh.Text = data["madinhdanh"].ToString();
+                    textBox_truong.Text = data["truong"].ToString();
+                    textBox_diachithuongtru.Text = data["diachithuongtru"].ToString();
+                    date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
+                    date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
+                }
             }
-            
-            if ( truong!= "")
-            {
-                if(query!=null) query = query + " and truong='" + truong + "'";
-                else query =" truong='" + truong + "'";
-            }
-            if ( diachi!= "")
-            {
-                if (query != null) query = query + " and diachi='" + diachi + "'";
-                else query =" diachi='" + diachi + "'";
-            }
-            if (query != null) query = " where" + query;
+
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='"+ madinhdanh + "'").Tables["tienantiensu"];
-            textBox_mssv.Clear();
-            textBox_madinhdanh.Clear();
-            textBox_truong.Clear();
-            textBox_diachithuongtru.Clear();
-            textBox_vipham.Clear();
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
         }
 
         private void button_Them_Click(object sender, EventArgs e)
@@ -190,23 +209,7 @@ namespace GUI
 
         private void textBox_madinhdanh_TextChanged(object sender, EventArgs e)
         {
-            DataTable source = hssvbus.TimKiemJoinNhanKhau(" AND nhankhau.madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables[0];
-            if (source.Rows.Count > 0)
-            {
-                DataRow data = source.Rows[0];
-                if (data.ItemArray.Length > 0)
-                {
-                    textBox_mssv.Text = data["mahssv"].ToString();
-                    textBox_truong.Text = data["truong"].ToString();
-                    textBox_diachithuongtru.Text = data["diachithuongtru"].ToString();
-                    date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
-                    date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
-                }
-            }
-
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
+            
         }
         private void textBox_diachithuongtru_Enter(object sender, EventArgs e)
         {
@@ -278,6 +281,25 @@ namespace GUI
            
         }
 
-        
+        private void btnTimKiem2_Click(object sender, EventArgs e)
+        {
+            DataTable source = hssvbus.TimKiemJoinNhanKhau(" AND nhankhau.madinhdanh ='" + textBox_madinhdanh.Text + "'").Tables[0];
+            if (source.Rows.Count > 0)
+            {
+                DataRow data = source.Rows[0];
+                if (data.ItemArray.Length > 0)
+                {
+                    textBox_mssv.Text = data["mahssv"].ToString();
+                    textBox_truong.Text = data["truong"].ToString();
+                    textBox_diachithuongtru.Text = data["diachithuongtru"].ToString();
+                    date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
+                    date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
+                }
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE '%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
+        }
     }
 }
