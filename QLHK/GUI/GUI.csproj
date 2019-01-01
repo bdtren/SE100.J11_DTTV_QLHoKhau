@@ -294,6 +294,27 @@
   <ItemGroup>
     <None Include="Resources\csdl.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Professor-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Family-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Things-Ewok-Residence-Home-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\name-card-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Start-Menu-Search-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-info-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

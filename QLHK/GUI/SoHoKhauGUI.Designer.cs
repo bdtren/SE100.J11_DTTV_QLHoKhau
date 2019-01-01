@@ -250,6 +250,7 @@
             this.ClientSize = new System.Drawing.Size(800, 477);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SoHoKhauGUI";
             this.Text = "Sổ hộ khẩu";
             this.Load += new System.EventHandler(this.SoHoKhauGUI_Load);

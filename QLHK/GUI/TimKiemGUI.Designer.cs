@@ -82,6 +82,7 @@
             this.Controls.Add(this.tbTimKiem);
             this.Controls.Add(this.rdHoKhau);
             this.Controls.Add(this.rdNhanKhau);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TimKiemGUI";
             this.Text = "Tìm kiếm";
             this.ResumeLayout(false);

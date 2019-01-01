@@ -18,11 +18,13 @@ namespace GUI
         public Home()
         {
             InitializeComponent();
+            this.ForeColor = Color.Black;
         }
         public Home(CanBoDTO cb)
         {
             InitializeComponent();
             this.cb = cb;
+            if (cb.LoaiCanBo == "1") ribbonPageGroup10.Visible = false;
         }
 
         private void ribbonControl1_Click(object sender, EventArgs e)
@@ -37,33 +39,44 @@ namespace GUI
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-        }
-
-        private void Canbodulieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-        public void ThemForm()
-        {
-           /* fr_CBDuLieu cbdulieu_gui = new fr_CBDuLieu();
-            int index = hamkiemtrtontai(tabControl1, hssv_gui);
+            NhanKhauThuongTruGUI nkthuongtru = new NhanKhauThuongTruGUI();
+            int index = hamkiemtrtontai(tabControl1, nkthuongtru);
             if (index >= 0)
             {
                 tabControl1.TabIndex = index;
             }
             else
             {
-                TabPage mytabpage = new TabPage(Text = hssv_gui.Text);
+                TabPage mytabpage = new TabPage(Text = nkthuongtru.Text);
                 mytabpage.BorderStyle = BorderStyle.Fixed3D;
                 tabControl1.TabPages.Add(mytabpage);
-                hssv_gui.TopLevel = false;
-                hssv_gui.Parent = mytabpage;
-                hssv_gui.Show();
-                hssv_gui.Dock = DockStyle.Fill;
-            }*/
-
+                nkthuongtru.TopLevel = false;
+                nkthuongtru.Parent = mytabpage;
+                nkthuongtru.Show();
+                nkthuongtru.Dock = DockStyle.Fill;
+            }
         }
+
+        private void Canbodulieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            fr_CBDuLieu cbdulieu_gui = new fr_CBDuLieu();
+            int index = hamkiemtrtontai(tabControl1, cbdulieu_gui);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = cbdulieu_gui.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                cbdulieu_gui.TopLevel = false;
+                cbdulieu_gui.Parent = mytabpage;
+                cbdulieu_gui.Show();
+                cbdulieu_gui.Dock = DockStyle.Fill;
+            }
+        }
+
         int hamkiemtrtontai(TabControl tbc, Form frm)
         {
             for (int i = 0; i < tbc.TabCount; i++)
@@ -72,6 +85,146 @@ namespace GUI
                     return i;
             }
             return -1;
+        }
+
+        private void barButton_hssv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HocSinhSinhVienGUI hssv = new HocSinhSinhVienGUI();
+            int index = hamkiemtrtontai(tabControl1, hssv);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = hssv.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                hssv.TopLevel = false;
+                hssv.Parent = mytabpage;
+                hssv.Show();
+                hssv.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButton_hokhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SoHoKhauGUI hokhau = new SoHoKhauGUI();
+            int index = hamkiemtrtontai(tabControl1, hokhau);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = hokhau.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                hokhau.TopLevel = false;
+                hokhau.Parent = mytabpage;
+                hokhau.Show();
+                hokhau.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButtonItem_tamtru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SoTamTruGUI tamtru = new SoTamTruGUI();
+            int index = hamkiemtrtontai(tabControl1, tamtru);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = tamtru.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                tamtru.TopLevel = false;
+                tamtru.Parent = mytabpage;
+                tamtru.Show();
+                tamtru.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            NhanKhauTamVangGUI tamvang = new NhanKhauTamVangGUI();
+            int index = hamkiemtrtontai(tabControl1, tamvang);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = tamvang.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                tamvang.TopLevel = false;
+                tamvang.Parent = mytabpage;
+                tamvang.Show();
+                tamvang.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ThongKeGUI thongke = new ThongKeGUI();
+            int index = hamkiemtrtontai(tabControl1, thongke);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = thongke.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                thongke.TopLevel = false;
+                thongke.Parent = mytabpage;
+                thongke.Show();
+                thongke.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            TimKiemGUI timkiem = new TimKiemGUI();
+            int index = hamkiemtrtontai(tabControl1, timkiem);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = timkiem.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                timkiem.TopLevel = false;
+                timkiem.Parent = mytabpage;
+                timkiem.Show();
+                timkiem.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ThongTinCaNhanGUI thongtin = new ThongTinCaNhanGUI();
+            int index = hamkiemtrtontai(tabControl1, thongtin);
+            if (index >= 0)
+            {
+                tabControl1.TabIndex = index;
+            }
+            else
+            {
+                TabPage mytabpage = new TabPage(Text = thongtin.Text);
+                mytabpage.BorderStyle = BorderStyle.Fixed3D;
+                tabControl1.TabPages.Add(mytabpage);
+                thongtin.TopLevel = false;
+                thongtin.Parent = mytabpage;
+                thongtin.Show();
+                thongtin.Dock = DockStyle.Fill;
+            }
         }
     }
 }

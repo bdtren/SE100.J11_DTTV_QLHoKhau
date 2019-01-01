@@ -80,14 +80,14 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblMatKhau = new System.Windows.Forms.Label();
-            this.lblMatKhau2 = new System.Windows.Forms.Label();
-            this.btnDoiMatKhau = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.tbMatKhau = new System.Windows.Forms.TextBox();
             this.lblTaiKhoan = new System.Windows.Forms.Label();
             this.tbMatKhau2 = new System.Windows.Forms.TextBox();
+            this.tbMatKhau = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnDoiMatKhau = new System.Windows.Forms.Button();
+            this.lblMatKhau2 = new System.Windows.Forms.Label();
+            this.lblMatKhau = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -580,65 +580,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tài khoản";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 13);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Tài khoản: ";
-            // 
-            // lblMatKhau
-            // 
-            this.lblMatKhau.AutoSize = true;
-            this.lblMatKhau.Location = new System.Drawing.Point(318, 14);
-            this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(56, 13);
-            this.lblMatKhau.TabIndex = 2;
-            this.lblMatKhau.Text = "Mật Khẩu:";
-            this.lblMatKhau.Visible = false;
-            // 
-            // lblMatKhau2
-            // 
-            this.lblMatKhau2.AutoSize = true;
-            this.lblMatKhau2.Location = new System.Drawing.Point(318, 41);
-            this.lblMatKhau2.Name = "lblMatKhau2";
-            this.lblMatKhau2.Size = new System.Drawing.Size(103, 13);
-            this.lblMatKhau2.TabIndex = 3;
-            this.lblMatKhau2.Text = "Xác nhận mật khẩu:";
-            this.lblMatKhau2.Visible = false;
-            // 
-            // btnDoiMatKhau
-            // 
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(208, 11);
-            this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(104, 23);
-            this.btnDoiMatKhau.TabIndex = 4;
-            this.btnDoiMatKhau.Text = "Đổi mật khẩu";
-            this.btnDoiMatKhau.UseVisualStyleBackColor = true;
-            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(579, 19);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 5;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Visible = false;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // tbMatKhau
-            // 
-            this.tbMatKhau.Location = new System.Drawing.Point(427, 10);
-            this.tbMatKhau.Name = "tbMatKhau";
-            this.tbMatKhau.PasswordChar = '*';
-            this.tbMatKhau.Size = new System.Drawing.Size(146, 20);
-            this.tbMatKhau.TabIndex = 6;
-            this.tbMatKhau.Visible = false;
-            // 
             // lblTaiKhoan
             // 
             this.lblTaiKhoan.AutoSize = true;
@@ -657,6 +598,65 @@
             this.tbMatKhau2.TabIndex = 6;
             this.tbMatKhau2.Visible = false;
             // 
+            // tbMatKhau
+            // 
+            this.tbMatKhau.Location = new System.Drawing.Point(427, 10);
+            this.tbMatKhau.Name = "tbMatKhau";
+            this.tbMatKhau.PasswordChar = '*';
+            this.tbMatKhau.Size = new System.Drawing.Size(146, 20);
+            this.tbMatKhau.TabIndex = 6;
+            this.tbMatKhau.Visible = false;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(579, 19);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 5;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Visible = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnDoiMatKhau
+            // 
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(208, 11);
+            this.btnDoiMatKhau.Name = "btnDoiMatKhau";
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(104, 23);
+            this.btnDoiMatKhau.TabIndex = 4;
+            this.btnDoiMatKhau.Text = "Đổi mật khẩu";
+            this.btnDoiMatKhau.UseVisualStyleBackColor = true;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
+            // 
+            // lblMatKhau2
+            // 
+            this.lblMatKhau2.AutoSize = true;
+            this.lblMatKhau2.Location = new System.Drawing.Point(318, 41);
+            this.lblMatKhau2.Name = "lblMatKhau2";
+            this.lblMatKhau2.Size = new System.Drawing.Size(103, 13);
+            this.lblMatKhau2.TabIndex = 3;
+            this.lblMatKhau2.Text = "Xác nhận mật khẩu:";
+            this.lblMatKhau2.Visible = false;
+            // 
+            // lblMatKhau
+            // 
+            this.lblMatKhau.AutoSize = true;
+            this.lblMatKhau.Location = new System.Drawing.Point(318, 14);
+            this.lblMatKhau.Name = "lblMatKhau";
+            this.lblMatKhau.Size = new System.Drawing.Size(56, 13);
+            this.lblMatKhau.TabIndex = 2;
+            this.lblMatKhau.Text = "Mật Khẩu:";
+            this.lblMatKhau.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Tài khoản: ";
+            // 
             // ThongTinCaNhanGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,6 +665,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ThongTinCaNhanGUI";
             this.Text = "ThongTinCaNhanGUI";
             this.groupBox1.ResumeLayout(false);

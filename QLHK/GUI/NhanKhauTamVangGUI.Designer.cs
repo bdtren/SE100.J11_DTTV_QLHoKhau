@@ -53,6 +53,7 @@
             this.tbquoctich = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.tbNgayCap = new System.Windows.Forms.TextBox();
+            this.tbNgaySinh = new System.Windows.Forms.TextBox();
             this.tbdantoc = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@
             this.btnThemTV = new System.Windows.Forms.Button();
             this.btnXoaTV = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.tbNgaySinh = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -318,6 +318,13 @@
             this.tbNgayCap.Size = new System.Drawing.Size(96, 20);
             this.tbNgayCap.TabIndex = 14;
             // 
+            // tbNgaySinh
+            // 
+            this.tbNgaySinh.Location = new System.Drawing.Point(235, 49);
+            this.tbNgaySinh.Name = "tbNgaySinh";
+            this.tbNgaySinh.Size = new System.Drawing.Size(118, 20);
+            this.tbNgaySinh.TabIndex = 5;
+            // 
             // tbdantoc
             // 
             this.tbdantoc.Location = new System.Drawing.Point(85, 83);
@@ -524,13 +531,6 @@
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             // 
-            // tbNgaySinh
-            // 
-            this.tbNgaySinh.Location = new System.Drawing.Point(235, 49);
-            this.tbNgaySinh.Name = "tbNgaySinh";
-            this.tbNgaySinh.Size = new System.Drawing.Size(118, 20);
-            this.tbNgaySinh.TabIndex = 5;
-            // 
             // NhanKhauTamVangGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,6 +544,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhanKhauTamVangGUI";
             this.Text = "Tạm Vắng";
             this.groupBox1.ResumeLayout(false);

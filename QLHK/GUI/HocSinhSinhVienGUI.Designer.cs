@@ -30,8 +30,10 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTimKiem2 = new System.Windows.Forms.Button();
             this.date_ketthuc = new System.Windows.Forms.DateTimePicker();
             this.date_batdau = new System.Windows.Forms.DateTimePicker();
+            this.button_timkiem = new System.Windows.Forms.Button();
             this.textBox_vipham = new System.Windows.Forms.TextBox();
             this.textBox_diachithuongtru = new System.Windows.Forms.TextBox();
             this.textBox_truong = new System.Windows.Forms.TextBox();
@@ -46,10 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_Them = new System.Windows.Forms.Button();
             this.button_xoa = new System.Windows.Forms.Button();
-            this.button_timkiem = new System.Windows.Forms.Button();
             this.button_sua = new System.Windows.Forms.Button();
             this.btnXuatFile = new System.Windows.Forms.Button();
-            this.btnTimKiem2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
+            // btnTimKiem2
+            // 
+            this.btnTimKiem2.Location = new System.Drawing.Point(368, 40);
+            this.btnTimKiem2.Name = "btnTimKiem2";
+            this.btnTimKiem2.Size = new System.Drawing.Size(78, 22);
+            this.btnTimKiem2.TabIndex = 16;
+            this.btnTimKiem2.Text = "Tìm kiếm";
+            this.btnTimKiem2.UseVisualStyleBackColor = true;
+            this.btnTimKiem2.Click += new System.EventHandler(this.btnTimKiem2_Click);
+            // 
             // date_ketthuc
             // 
             this.date_ketthuc.Location = new System.Drawing.Point(520, 104);
@@ -103,6 +113,16 @@
             this.date_batdau.Name = "date_batdau";
             this.date_batdau.Size = new System.Drawing.Size(200, 20);
             this.date_batdau.TabIndex = 14;
+            // 
+            // button_timkiem
+            // 
+            this.button_timkiem.Location = new System.Drawing.Point(368, 12);
+            this.button_timkiem.Name = "button_timkiem";
+            this.button_timkiem.Size = new System.Drawing.Size(78, 22);
+            this.button_timkiem.TabIndex = 4;
+            this.button_timkiem.Text = "Tìm kiếm";
+            this.button_timkiem.UseVisualStyleBackColor = true;
+            this.button_timkiem.Click += new System.EventHandler(this.button_timkiem_Click);
             // 
             // textBox_vipham
             // 
@@ -224,16 +244,6 @@
             this.button_xoa.UseVisualStyleBackColor = true;
             this.button_xoa.Click += new System.EventHandler(this.button_xoa_Click);
             // 
-            // button_timkiem
-            // 
-            this.button_timkiem.Location = new System.Drawing.Point(368, 12);
-            this.button_timkiem.Name = "button_timkiem";
-            this.button_timkiem.Size = new System.Drawing.Size(78, 22);
-            this.button_timkiem.TabIndex = 4;
-            this.button_timkiem.Text = "Tìm kiếm";
-            this.button_timkiem.UseVisualStyleBackColor = true;
-            this.button_timkiem.Click += new System.EventHandler(this.button_timkiem_Click);
-            // 
             // button_sua
             // 
             this.button_sua.Location = new System.Drawing.Point(488, 202);
@@ -254,16 +264,6 @@
             this.btnXuatFile.UseVisualStyleBackColor = true;
             this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
-            // btnTimKiem2
-            // 
-            this.btnTimKiem2.Location = new System.Drawing.Point(368, 40);
-            this.btnTimKiem2.Name = "btnTimKiem2";
-            this.btnTimKiem2.Size = new System.Drawing.Size(78, 22);
-            this.btnTimKiem2.TabIndex = 16;
-            this.btnTimKiem2.Text = "Tìm kiếm";
-            this.btnTimKiem2.UseVisualStyleBackColor = true;
-            this.btnTimKiem2.Click += new System.EventHandler(this.btnTimKiem2_Click);
-            // 
             // HocSinhSinhVienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +275,7 @@
             this.Controls.Add(this.button_Them);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HocSinhSinhVienGUI";
             this.Text = "HocSinhSinhVienGUI";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
