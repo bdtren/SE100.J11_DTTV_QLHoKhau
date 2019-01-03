@@ -136,7 +136,7 @@ namespace GUI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            //this.Close();
         }
 
         private void tbSoSoHoKhau_TextChanged(object sender, EventArgs e)

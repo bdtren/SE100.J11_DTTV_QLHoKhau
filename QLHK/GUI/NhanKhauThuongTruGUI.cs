@@ -313,7 +313,7 @@ namespace GUI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            nktt.XoaNKTT(nkttDTO.MaNhanKhauThuongTru);
+            if(nkttDTO != null) nktt.XoaNKTT(nkttDTO.MaNhanKhauThuongTru);
             nkttDTO = null;
             this.Close();
         }

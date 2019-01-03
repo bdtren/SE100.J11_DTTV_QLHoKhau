@@ -751,7 +751,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 512);
             this.Controls.Add(this.xtraScrollableControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhanKhauThuongTruGUI";
             this.Text = "Nhân khẩu thường trú";
             this.Load += new System.EventHandler(this.NhanKhauThuongTruGUI_Load);
