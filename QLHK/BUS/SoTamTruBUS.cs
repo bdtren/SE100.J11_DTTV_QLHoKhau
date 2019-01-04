@@ -24,7 +24,7 @@ namespace BUS
         }
         public override bool Add_Table(SoTamTruDTO data)
         {
-            throw new NotImplementedException();
+            return SoTamTru.insert_table(data);
         }
         public bool XoaSoTamTru(string manhankhautamtru)
         {

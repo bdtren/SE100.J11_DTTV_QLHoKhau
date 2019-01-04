@@ -159,9 +159,10 @@ namespace DAO
                 cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);
                 cmd.Parameters.AddWithValue("@chuho", sohk.MaChuHoThuongTru);
                 cmd.Parameters.AddWithValue("@diachithuongtru", sohk.DiaChi);
-                cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap);
+                cmd.Parameters.AddWithValue("@ngaycap", sohk.NgayCap.ToString("yyyy/MM/dd"));
                 cmd.Parameters.AddWithValue("@sodangky", sohk.SoDangKy);
                 cmd.ExecuteNonQuery();
+                return true;
             }
             catch (Exception e)
             {
@@ -172,7 +173,7 @@ namespace DAO
             {
                 conn.Close();
             } 
-            return true;
+            
         }
         public DataSet TimKiem(string query)
         {

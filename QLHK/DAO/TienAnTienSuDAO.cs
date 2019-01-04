@@ -124,7 +124,7 @@ namespace DAO
             }
             try
             {
-                string sql = "update tienantiensu set madinhdanh=@madinhdanh, banan=@banan, toidanh=@toidanh, hinhphat=@hinhphat, ngayphat=@ngayphat where matienantiensu=@matienantiensu";
+                string sql = "update tienantiensu set banan=@banan, toidanh=@toidanh, hinhphat=@hinhphat, ngayphat=@ngayphat where matienantiensu=@matienantiensu";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@matienantiensu", data.MaTienAnTienSu);

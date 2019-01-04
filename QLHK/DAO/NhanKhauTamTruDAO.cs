@@ -296,7 +296,9 @@ namespace DAO
                 {
                     conn.Open();
                 }
+
                 DataRow dr = dataset.Tables["nhankhautamtru"].NewRow();
+
                 dr["manhankhautamtru"] = data.MaNhanKhauTamTru;
                 dr["madinhdanh"] = data.MaDinhDanh;
                 dr["noitamtru"] = data.NoiTamTru;
