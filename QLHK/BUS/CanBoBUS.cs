@@ -36,5 +36,21 @@ namespace BUS
         {
             return objcb.TimKiem(query);
         }
+
+        public string GetMaNhanKhauThuongTruFromCanBo(string tendangnhap)
+        {
+            return objcb.GetMaNhanKhauThuongTruFromCanBo(tendangnhap);
+        }
+
+        public List<NhanKhauThuongTruDTO> getTTNhanKhauThuongTru(string manhankhauthuongtru)
+        {
+            return objcb.getThongTinNhanKhau(manhankhauthuongtru);
+        }
+
+        public bool CapNhatMatKhau(string tentaikhoan, string matkhau)
+        {
+            return objcb.CapNhatMatKhau(tentaikhoan, matkhau);
+        }
+
     }
 }
