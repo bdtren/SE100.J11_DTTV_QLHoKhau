@@ -26,7 +26,7 @@ namespace BUS
                 &&! string.IsNullOrEmpty(nktt.DanToc) &&! string.IsNullOrEmpty(nktt.NgheNghiep) &&! string.IsNullOrEmpty(nktt.MaDinhDanh) 
                 &&! string.IsNullOrEmpty(nktt.HoChieu) &&! string.IsNullOrEmpty(nktt.NguyenQuan) &&! string.IsNullOrEmpty(nktt.NoiSinh) 
                 &&! string.IsNullOrEmpty(nktt.QuocTich) &&! string.IsNullOrEmpty(nktt.TonGiao) &&! string.IsNullOrEmpty(nktt.SDT) 
-                && nktt.MaNhanKhauThuongTru.IndexOf("TH")>-1 &&! string.IsNullOrEmpty(nktt.SoSoHoKhau) &&! string.IsNullOrEmpty(nktt.NoiThuongTru)
+                && nktt.MaNhanKhauThuongTru.IndexOf("TH")==0 &&! string.IsNullOrEmpty(nktt.SoSoHoKhau) &&! string.IsNullOrEmpty(nktt.NoiThuongTru)
                 &&! string.IsNullOrEmpty(nktt.DiaChiHienNay) &&! string.IsNullOrEmpty(nktt.TrinhDoHocVan) &&! string.IsNullOrEmpty(nktt.TrinhDoChuyenMon) 
                 &&! string.IsNullOrEmpty(nktt.QuanHeVoiChuHo))
                 return true;

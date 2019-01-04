@@ -52,6 +52,7 @@
     <Compile Include="SoTamTruDAO.cs" />
     <Compile Include="NhanKhauTamTruDAO.cs" />
     <Compile Include="QuanHuyenDAO.cs" />
+    <Compile Include="ThongKeDAO.cs" />
     <Compile Include="TienAnTienSuDAO.cs" />
     <Compile Include="TieuSuDAO.cs" />
     <Compile Include="TinhThanhPhoDAO.cs" />

@@ -63,10 +63,10 @@
             this.tbNKThanhThiTT = new System.Windows.Forms.TextBox();
             this.tbNhanKhauTT = new System.Windows.Forms.TextBox();
             this.tbHoTT = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnXuat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cbbThoiGian = new System.Windows.Forms.ComboBox();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -368,14 +368,15 @@
             this.tbHoTT.Size = new System.Drawing.Size(40, 20);
             this.tbHoTT.TabIndex = 0;
             // 
-            // button1
+            // btnXuat
             // 
-            this.button1.Location = new System.Drawing.Point(542, 320);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Xuất thống kê";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnXuat.Location = new System.Drawing.Point(542, 320);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Size = new System.Drawing.Size(106, 23);
+            this.btnXuat.TabIndex = 3;
+            this.btnXuat.Text = "Xuất thống kê";
+            this.btnXuat.UseVisualStyleBackColor = true;
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
             // 
             // label1
             // 
@@ -386,36 +387,34 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Thống kê theo:";
             // 
-            // comboBox1
+            // cbbThoiGian
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Tháng",
-            "6 tháng",
-            "Năm"});
-            this.comboBox1.Location = new System.Drawing.Point(103, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cbbThoiGian.FormattingEnabled = true;
+            this.cbbThoiGian.Location = new System.Drawing.Point(103, 4);
+            this.cbbThoiGian.Name = "cbbThoiGian";
+            this.cbbThoiGian.Size = new System.Drawing.Size(121, 21);
+            this.cbbThoiGian.TabIndex = 0;
+            this.cbbThoiGian.SelectedIndexChanged += new System.EventHandler(this.cbbThoiGian_SelectedIndexChanged);
             // 
-            // button2
+            // btnHuy
             // 
-            this.button2.Location = new System.Drawing.Point(682, 320);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Hủy";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHuy.Location = new System.Drawing.Point(682, 320);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(69, 23);
+            this.btnHuy.TabIndex = 4;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // ThongKeGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 363);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbbThoiGian);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnHuy);
+            this.Controls.Add(this.btnXuat);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
@@ -481,9 +480,9 @@
         private System.Windows.Forms.TextBox tbNKThanhThiTT;
         private System.Windows.Forms.TextBox tbNhanKhauTT;
         private System.Windows.Forms.TextBox tbHoTT;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXuat;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbbThoiGian;
+        private System.Windows.Forms.Button btnHuy;
     }
 }
