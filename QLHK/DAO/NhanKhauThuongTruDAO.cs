@@ -193,7 +193,7 @@ namespace DAO
                     "where manhankhauthuongtru=@manhankhauthuongtru";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhauthuongtru", nktt.MaNhanKhauThuongTru);
-                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.NoiThuongTru);
+                cmd.Parameters.AddWithValue("@diachithuongtru", nktt.DiaChiThuongTru);
                 cmd.Parameters.AddWithValue("@quanhevoichuho", nktt.QuanHeVoiChuHo);
                 cmd.Parameters.AddWithValue("@sosohokhau", nktt.SoSoHoKhau);
 

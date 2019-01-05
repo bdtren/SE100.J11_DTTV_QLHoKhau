@@ -53,6 +53,7 @@ namespace DAO
                 dr["tenkhac"] = data.TenKhac;
                 dr["ngaysinh"] = data.NgaySinh;
                 dr["gioitinh"] = data.GioiTinh;
+                dr["noisinh"] = data.NoiSinh;
                 dr["nguyenquan"] = data.NguyenQuan;
                 dr["dantoc"] = data.DanToc;
                 dr["tongiao"] = data.TonGiao;
@@ -65,10 +66,11 @@ namespace DAO
                 dr["trinhdochuyenmon"] = data.TrinhDoChuyenMon;
                 dr["biettiengdantoc"] = data.BietTiengDanToc;
                 dr["trinhdongoaingu"] = data.TrinhDoNgoaiNgu;
-                dr["ngheghiep"] = data.NgheNghiep;
-                dataset.Tables["hocsinhsinhvien"].Rows.Add(dr);
-                dataset.Tables["hocsinhsinhvien"].Rows.RemoveAt(dataset.Tables["hocsinhsinhvien"].Rows.Count - 1);
-                sqlda.Update(dataset, "hocsinhsinhvien");
+                dr["nghenghiep"] = data.NgheNghiep;
+
+                dataset.Tables["nhankhau"].Rows.Add(dr);
+                dataset.Tables["nhankhau"].Rows.RemoveAt(dataset.Tables["nhankhau"].Rows.Count - 1);
+                sqlda.Update(dataset, "nhankhau");
             }
             catch (Exception e)
             {

@@ -287,7 +287,29 @@ namespace DAO
         }
         public override bool insert_table(SoTamTruDTO data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataRow dr = dataset.Tables["sotamtru"].NewRow();
+                dr["sosotamtru"] = data.SoSoTamTru;
+                dr["chuho"] = data.MaChuHoTamTru;
+                dr["noitamtru"] = data.NoiTamTru;
+                dr["ngaycap"] = data.NgayCap;
+                dr["denngay"] = data.DenNgay;
+
+                dataset.Tables["sotamtru"].Rows.Add(dr);
+                dataset.Tables["sotamtru"].Rows.RemoveAt(dataset.Tables["sotamtru"].Rows.Count - 1);
+                sqlda.Update(dataset, "sotamtru");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
         }
 
 

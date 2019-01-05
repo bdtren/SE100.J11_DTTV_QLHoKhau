@@ -60,7 +60,10 @@ namespace BUS
             
             return nk.update(nktt, r)&& obj.update(nktt, r);
         }
-
+        public bool Update(NhanKhauThuongTruDTO nktt)
+        {
+            return obj.update(nktt, 0);
+        }
         public DataSet TimKiem(string query)
         {
             return obj.TimKiem(query);

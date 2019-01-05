@@ -72,7 +72,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fr_CBDuLieu";
             this.Text = "Cán Bộ dữ liệu";
             this.Load += new System.EventHandler(this.fr_CBDuLieu_Load);
