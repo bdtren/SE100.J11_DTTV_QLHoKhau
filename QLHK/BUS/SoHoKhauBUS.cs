@@ -34,7 +34,7 @@ namespace BUS
         {
             return obj.delete(r);
         }
-        public override bool Update(SoHoKhauDTO sohk, int r)
+        public override bool Update(SoHoKhauDTO sohk, int r = 0)
         {   
             return  obj.update(sohk, r);
         }

@@ -265,5 +265,18 @@ namespace GUI
                 thongtin.Dock = DockStyle.Fill;
             }
         }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DangNhapGUI loginForm = new DangNhapGUI();
+            this.Hide();
+            loginForm.Closed += (s, args) => this.Close();
+            loginForm.Show(); ;
+        }
+
+        private void Home_MouseHover(object sender, EventArgs e)
+        {
+            imageSlider.Visible = !ribbonControl1.Minimized;
+        }
     }
 }

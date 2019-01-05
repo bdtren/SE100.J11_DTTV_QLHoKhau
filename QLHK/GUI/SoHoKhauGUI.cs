@@ -121,9 +121,33 @@ namespace GUI
                 MessageBox.Show(this, "Vui lòng điền đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            shk.Add(new SoHoKhauDTO(tbSoSoHoKhau.Text, cbbChuHo.SelectedValue.ToString(), tbDiaChi.Text, dtpNgayCap.Value, tbSoDangKy.Text));
-            //nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
-            MessageBox.Show(this, "Tạo sổ hộ khẩu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (string.IsNullOrEmpty(shkDTO.SoSoHoKhau))
+            {
+                shkDTO = new SoHoKhauDTO(tbSoSoHoKhau.Text, cbbChuHo.SelectedValue.ToString(), tbDiaChi.Text, dtpNgayCap.Value, tbSoDangKy.Text, shkDTO.NhanKhau);
+                shk.Add(shkDTO);
+                foreach(NhanKhauThuongTruDTO item in shkDTO.NhanKhau)
+                {
+                    item.SoSoHoKhau = shkDTO.SoSoHoKhau;
+                    nktt.Update(item);
+                }
+                //nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
+                MessageBox.Show(this, "Tạo sổ hộ khẩu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                shkDTO = new SoHoKhauDTO(tbSoSoHoKhau.Text, cbbChuHo.SelectedValue.ToString(), tbDiaChi.Text, dtpNgayCap.Value, tbSoDangKy.Text, shkDTO.NhanKhau);
+
+                shk.Update(shkDTO);
+                foreach (NhanKhauThuongTruDTO item in shkDTO.NhanKhau)
+                {
+                    item.SoSoHoKhau = shkDTO.SoSoHoKhau;
+                    nktt.Update(item);
+                }
+                //nktt.DoiChuHo(shkDTO.NhanKhau, cbbChuHo.SelectedValue.ToString());
+                MessageBox.Show(this, "Cập nhật sổ hộ khẩu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            btnXoa.Enabled = true;
 
         }
 
@@ -139,7 +163,7 @@ namespace GUI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
 
         private void tbSoSoHoKhau_TextChanged(object sender, EventArgs e)
@@ -161,6 +185,8 @@ namespace GUI
 
                 }
                 fillData();
+                btnXoa.Enabled = true;
+
             }
             else
             {
@@ -227,6 +253,27 @@ namespace GUI
             //nktt.XoaNKTT(nkDuocChon.MaNhanKhauThuongTru);
             MessageBox.Show(this, "Đã xóa nhân khẩu thành công!", "Xóa Nhân khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(shkDTO.SoSoHoKhau))
+            {
+                MessageBox.Show(this, "Không có sổ hộ khẩu nào được chọn!", "Xóa sổ hộ khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(MessageBox.Show(this, "Bạn có chắc chắn muốn xóa sổ này?", "Xóa sổ hộ khẩu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                shk.XoaSoHK(shkDTO.SoSoHoKhau);
+                foreach (NhanKhauThuongTruDTO item in shkDTO.NhanKhau)
+                {
+                    item.SoSoHoKhau = null;
+                    nktt.Update(item);
+                }
+                shkDTO = new SoHoKhauDTO();
+                MessageBox.Show(this, "Xóa sổ hộ khẩu thành công!", "Xóa sổ hộ khẩu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
     }
 }

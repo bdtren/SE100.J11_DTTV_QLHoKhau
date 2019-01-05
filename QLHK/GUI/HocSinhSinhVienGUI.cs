@@ -98,11 +98,16 @@ namespace GUI
                     date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
                     date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
                 }
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
+            }
+            else
+            {
+                MessageBox.Show(this, "Không tìm thấy học sinh sinh viên", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
 
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
         }
 
         private void button_Them_Click(object sender, EventArgs e)
@@ -117,12 +122,12 @@ namespace GUI
             hssvdto = new HocSinhSinhVienDTO(mssv, madinhdanh, truong, diachi, tgbd, tgkt, vipham);
             if (hssvbus.Add(hssvdto))
             {
-                MessageBox.Show("Them thanh cong");
+                MessageBox.Show("Thêm thành công");
                 
             }
             else
             {
-                MessageBox.Show("Them khong thanh cong");
+                MessageBox.Show("Thêm không thành công");
             }
             //clearData();
             
@@ -133,12 +138,12 @@ namespace GUI
             string mssv = textBox_mssv.Text.ToString();
             if (hssvbus.XoaHSSV(mssv))
             {
-                MessageBox.Show("Xoa Thanh Cong");
+                MessageBox.Show("Xóa thành công");
 
             }
             else
             {
-                MessageBox.Show("Xoa khong thanh cong");
+                MessageBox.Show("Xóa không thành công");
             }
             //clearData();
 
@@ -187,12 +192,12 @@ namespace GUI
             hssvdto = new HocSinhSinhVienDTO(mssv, madinhdanh, truong, diachi, tgbd, tgkt, vipham);
             if (hssvbus.Update(hssvdto,-1))
             {
-                MessageBox.Show("Sua thanh cong");
+                MessageBox.Show("Sửa thành công");
                 
             }
             else
             {
-                MessageBox.Show("Sua khong thanh cong");
+                MessageBox.Show("Sửa không thành công");
             }
             //clearData();
         }
@@ -286,11 +291,16 @@ namespace GUI
                     date_batdau.Text = data["thoigianbatdautamtruthuongtru"].ToString();
                     date_ketthuc.Text = data["thoigianketthuctamtruthuongtru"].ToString();
                 }
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.DataSource = tienAn.TimKiem("madinhdanh = '" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
             }
+            else
+            {
+                MessageBox.Show(this, "Không tìm thấy học sinh sinh viên", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh = '" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
+            }
+           
         }
     }
 }
