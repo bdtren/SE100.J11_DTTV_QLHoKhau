@@ -38,5 +38,17 @@ namespace BUS
         {
             return obj.update(data, r);
         }
+        public DataSet TimKiem(string query)
+        {
+            return obj.TimKiemJoinNhanKhau(query);
+        }
+        public DataSet TimKiemnhankhau(string query)
+        {
+            return obj.TimKiemNhanKhau(query);
+        }
+        public int TimKiemThuongtru(string query)
+        {
+            return obj.TimKiemThuongtru(query);
+        }
     }
 }
