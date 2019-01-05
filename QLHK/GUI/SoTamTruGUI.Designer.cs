@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoTamTruGUI));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGiaHan = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnThemNhanKhau = new System.Windows.Forms.Button();
-            this.btnTim = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.btnTim = new System.Windows.Forms.Button();
             this.txt_NoiTamTru = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbb_MaChuHo = new System.Windows.Forms.ComboBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.dt_DenNgay = new System.Windows.Forms.DateTimePicker();
             this.dt_TuNgay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,7 +72,7 @@
             // btnGiaHan
             // 
             this.btnGiaHan.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiaHan.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnGiaHan.ForeColor = System.Drawing.Color.White;
             this.btnGiaHan.Location = new System.Drawing.Point(68, 117);
             this.btnGiaHan.Name = "btnGiaHan";
@@ -81,10 +82,20 @@
             this.btnGiaHan.UseVisualStyleBackColor = false;
             this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(68, 251);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(141, 43);
+            this.btnReset.TabIndex = 21;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // btnThemNhanKhau
             // 
             this.btnThemNhanKhau.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnThemNhanKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemNhanKhau.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnThemNhanKhau.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThemNhanKhau.Location = new System.Drawing.Point(68, 29);
             this.btnThemNhanKhau.Name = "btnThemNhanKhau";
@@ -93,16 +104,6 @@
             this.btnThemNhanKhau.Text = "Thêm nhân khẩu tạm trú";
             this.btnThemNhanKhau.UseVisualStyleBackColor = false;
             this.btnThemNhanKhau.Click += new System.EventHandler(this.btnThemNhanKhau_Click);
-            // 
-            // btnTim
-            // 
-            this.btnTim.Location = new System.Drawing.Point(306, 74);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(83, 20);
-            this.btnTim.TabIndex = 16;
-            this.btnTim.Text = "Tìm kiếm";
-            this.btnTim.UseVisualStyleBackColor = true;
-            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // btnXoa
             // 
@@ -127,7 +128,7 @@
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThem.Location = new System.Drawing.Point(68, 75);
             this.btnThem.Name = "btnThem";
@@ -137,10 +138,21 @@
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // btnTim
+            // 
+            this.btnTim.Location = new System.Drawing.Point(306, 74);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(83, 20);
+            this.btnTim.TabIndex = 16;
+            this.btnTim.Text = "Tìm kiếm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
             // txt_NoiTamTru
             // 
             this.txt_NoiTamTru.Location = new System.Drawing.Point(127, 116);
             this.txt_NoiTamTru.Name = "txt_NoiTamTru";
+            this.txt_NoiTamTru.ReadOnly = true;
             this.txt_NoiTamTru.Size = new System.Drawing.Size(262, 20);
             this.txt_NoiTamTru.TabIndex = 20;
             // 
@@ -172,16 +184,6 @@
             this.cbb_MaChuHo.Size = new System.Drawing.Size(262, 21);
             this.cbb_MaChuHo.TabIndex = 22;
             this.cbb_MaChuHo.SelectionChangeCommitted += new System.EventHandler(this.cbb_MaChuHo_SelectionChangeCommitted);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(68, 251);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(141, 43);
-            this.btnReset.TabIndex = 21;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // dt_DenNgay
             // 
@@ -218,7 +220,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 112);
+            this.label3.Location = new System.Drawing.Point(16, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 5;
@@ -234,7 +236,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(16, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
@@ -244,7 +246,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(16, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
@@ -270,9 +272,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SoTamTruGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SoTamTruGUI";
+            this.Text = "Sổ tạm trú";
             this.Load += new System.EventHandler(this.SoTamTruGUI_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

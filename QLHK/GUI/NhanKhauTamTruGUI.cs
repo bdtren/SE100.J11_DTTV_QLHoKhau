@@ -117,7 +117,11 @@ namespace GUI
         ///Kiểm tra null input
         public bool isInputTrueThongTinTamTru()
         {
-            if (txt_HoTen.Text.ToString() == "" || txt_DanToc.Text.ToString()=="" || txt_NgheNghiep.Text.ToString()=="" || txt_QuocTich.Text.ToString() == "")
+            if (txt_HoTen.Text.ToString() == "" || txt_DanToc.Text.ToString()=="" 
+                || txt_NgheNghiep.Text.ToString()=="" || txt_QuocTich.Text.ToString() == "" 
+                || txt_NguyenQuan.Text.ToString()=="" || txtNoiSinh.Text.ToString() == "" 
+                ||txtDiaChiHienNay.Text.ToString()=="" ||txtNoiThuongTru.Text.ToString()=="" 
+                ||txtNoiTamTru.Text.ToString()=="")
             {
                 return false;
             }
@@ -162,6 +166,11 @@ namespace GUI
             txt_TrinhDoNgoaiNgu.Clear();
             txt_LyDo.Clear();
             txt_TenKhac.Clear();
+            txt_NguyenQuan.Clear();
+            txtNoiSinh.Clear();
+            txtDiaChiHienNay.Clear();
+            txtNoiThuongTru.Clear();
+            txtNoiTamTru.Clear();
             dt_DenNgay.ResetText();
             dt_TuNgay.ResetText();
             dt_NgaySinh.ResetText();
@@ -229,42 +238,40 @@ namespace GUI
             string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
 
-            //if(manhankhautamtru=="" || madinhdanh=="")
-            //{
-            //    MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
-            //    return;
-            //}
+            if (manhankhautamtru == "" || madinhdanh == "")
+            {
+                MessageBox.Show("Cần có mã nhân khẩu tạm trú và mã định danh để thực hiện chức năng này");
+                return;
+            }
 
             //Nhập không đầy đủ
-            //if (!isInputTrueThongTinTamTru())
-            //{
-            //    MessageBox.Show("Vui lòng nhập đủ thông tin!");
-            //    return;
-            //}
+            if (!isInputTrueThongTinTamTru())
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                return;
+            }
             string hoten = txt_HoTen.Text.ToString();
-   
 
-            //SoTamTruBUS sotamtruBus = new SoTamTruBUS();
-            //if (sotamtruBus.Existed_NhanKhau(madinhdanh))
-            //{
-            //    MessageBox.Show("Nhân khẩu tạm trú "+hoten+" đã có trong hệ thống !");
-            //    return;
-            //}
+            if (sotamtru.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("nhân khẩu tạm trú " + hoten + " đã có trong hệ thống !");
+                return;
+            }
 
             //Kiểm tra tổng ngày tạm trú không quá 2 năm
             DateTime ngaycap = dt_TuNgay.Value.Date;
             DateTime denngay = dt_DenNgay.Value.Date;
 
-            //double ngay = (denngay - ngaycap).TotalDays;
-            //double sum = 730;
-            //if (ngay > 730)
-            //{
-            //    MessageBox.Show("Thời gian tạm trú tối đa không quá 2 năm");
-            //    return;
-            //}
+            double ngay = (denngay - ngaycap).TotalDays;
+            double sum = 730;
+            if (ngay > 730)
+            {
+                MessageBox.Show("Thời gian tạm trú tối đa không quá 2 năm");
+                return;
+            }
 
 
-            string diachihiennay ="";
+            string diachihiennay =txtDiaChiHienNay.Text.ToString();
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
             string nghenghiep = txt_NgheNghiep.Text.ToString();
@@ -278,8 +285,8 @@ namespace GUI
             string dantoc = txt_DanToc.Text.ToString();
             string hochieu = txt_HoChieu.Text.ToString();
             DateTime ngaysinh = dt_NgaySinh.Value.Date;
-            string nguyenquan = "";
-            string noisinh = "";
+            string nguyenquan = txt_NguyenQuan.Text.ToString();
+            string noisinh = txtNoiSinh.Text.ToString();
             string quoctich = txt_QuocTich.Text.ToString();
             string sdt = txt_SoDienThoai.Text.ToString();
             string tongiao = txt_TonGiao.Text.ToString();
@@ -293,8 +300,8 @@ namespace GUI
 
 
 
-            string noithuongtru = "";
-            string noitamtru ="";
+            string noithuongtru = txtNoiThuongTru.Text.ToString();
+            string noitamtru =txtNoiTamTru.Text.ToString();
 
             string lydo = txt_LyDo.Text.ToString();
             //THêm
@@ -305,12 +312,6 @@ namespace GUI
                 sosotamtru, madinhdanh, hoten, tenkhac, ngaysinh, gioitinh, noisinh, nguyenquan, 
                 dantoc, tongiao, quoctich, hochieu, noithuongtru, diachihiennay, sdt, trinhdohocvan, 
                 trinhdochuyenmon, biettiengdantoc, trinhdongoaingu, nghenghiep);
-
-            //if (!nkttBus.AddNKTT(nkttDto))
-            //{
-            //    MessageBox.Show("CÓ lỗi");
-            //    return;
-            //}
 
             if (nkttBus.Add(nkttDto))
             {
@@ -371,7 +372,7 @@ namespace GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin nhân khẩu: "+hoten+" không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string diachihiennay = "";
+                string diachihiennay = txtDiaChiHienNay.Text.ToString();
                 string sosotamtru = txt_SoSoTamTru.Text.ToString();
                 string nghenghiep = txt_NgheNghiep.Text.ToString();
 
@@ -382,8 +383,8 @@ namespace GUI
                 string dantoc = txt_DanToc.Text.ToString();
                 string hochieu = txt_HoChieu.Text.ToString();
                 DateTime ngaysinh = dt_NgaySinh.Value.Date;
-                string nguyenquan = "";
-                string noisinh = "";
+                string nguyenquan = txt_NguyenQuan.Text.ToString();
+                string noisinh = txtNoiSinh.Text.ToString();
                 string quoctich = txt_QuocTich.Text.ToString();
                 string sdt = txt_SoDienThoai.Text.ToString();
                 string tongiao = txt_TonGiao.Text.ToString();
@@ -401,8 +402,8 @@ namespace GUI
 
                 DateTime denngay = dt_DenNgay.Value.Date;
 
-                string noithuongtru = "";
-                string noitamtru = "";
+                string noithuongtru = txtNoiThuongTru.Text.ToString();
+                string noitamtru = txtNoiTamTru.Text.ToString();
 
                 string lydo = txt_LyDo.Text.ToString();
                 //THêm
@@ -543,6 +544,12 @@ namespace GUI
 
             dt_TuNgay.Value = nhankhautamtru.TuNgay;
             dt_DenNgay.Value = nhankhautamtru.DenNgay;
+
+            txt_NguyenQuan.Text = nhankhautamtru.NguyenQuan;
+            txtNoiSinh.Text = nhankhautamtru.NoiSinh;
+            txtDiaChiHienNay.Text = nhankhautamtru.DiaChiHienNay;
+            txtNoiThuongTru.Text = nhankhautamtru.NoiThuongTru;
+            txtNoiTamTru.Text = nhankhautamtru.NoiTamTru;
 
 
             //Hiễn thị tiền án tiền sự
@@ -794,6 +801,7 @@ namespace GUI
             txt_NoiLamViec.Clear();
             txt_MaTieuSu.Text = GenerateMaTieuSu();
             txt_TieuSu_NgheNghiep.Clear();
+            txtChoO.Clear();
         }
 
 
@@ -804,7 +812,7 @@ namespace GUI
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
             DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
             DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
-            string choo = "";
+            string choo = txtChoO.Text.ToString();
             string nghenghiep = txt_TieuSu_NgheNghiep.Text.ToString();
             string noilamviec = txt_NoiLamViec.Text.ToString();
 
@@ -864,9 +872,7 @@ namespace GUI
             dtThoiGianKetThuc.Value = tieusu.ThoiGianKetThuc;
             txt_NoiLamViec.Text = tieusu.NoiLamViec;
             txt_TieuSu_NgheNghiep.Text = tieusu.NgheNghiep;
-
-
-            string[] chooArray = nkttBus.SplitDiaChi(tieusu.ChoO);
+            txtChoO.Text = choo;
         }
 
 
@@ -934,7 +940,7 @@ namespace GUI
                 string madinhdanh = txt_MaDinhDanh.Text.ToString();
                 DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
                 DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
-                string choo = "";
+                string choo = txtChoO.Text.ToString();
                 string nghenghiep = txt_TieuSu_NgheNghiep.Text.ToString();
                 string noilamviec = txt_NoiLamViec.Text.ToString();
                 
@@ -1027,9 +1033,54 @@ namespace GUI
             }
         }
 
-        private void xtraScrollableControl1_Click(object sender, EventArgs e)
+        private void txtNoiSinh_Enter(object sender, EventArgs e)
         {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txtNoiSinh.Text = a.diaChi;
+            }
+        }
 
+        private void txtDiaChiHienNay_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txtDiaChiHienNay.Text = a.diaChi;
+            }
+        }
+
+        private void txtNoiThuongTru_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txtNoiThuongTru.Text = a.diaChi;
+            }
+        }
+
+        private void txtNoiTamTru_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txtNoiTamTru.Text = a.diaChi;
+            }
+        }
+
+        private void txtChoO_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txtChoO.Text = a.diaChi;
+            }
         }
     }
 }
