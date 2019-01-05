@@ -102,8 +102,13 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.LookAndFeel.SkinName = "VS2010";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DangNhapGUI";
-            this.Text = "DangNhapGUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "QUẢN LÝ HỘ KHẨU";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -65,6 +65,7 @@ namespace GUI
 
         private void Canbodulieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
             foreach (TabPage page in tabControl1.TabPages)
             {
                 tabControl1.TabPages.Remove(page);
@@ -99,6 +100,10 @@ namespace GUI
 
         private void barButton_hssv_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             HocSinhSinhVienGUI hssv = new HocSinhSinhVienGUI();
             int index = hamkiemtrtontai(tabControl1, hssv);
             if (index >= 0)
@@ -119,6 +124,10 @@ namespace GUI
 
         private void barButton_hokhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //foreach (TabPage page in tabControl1.TabPages)
+            //{
+            //    tabControl1.TabPages.Remove(page);
+            //}
             SoHoKhauGUI hokhau = new SoHoKhauGUI();
             int index = hamkiemtrtontai(tabControl1, hokhau);
             if (index >= 0)
@@ -139,6 +148,10 @@ namespace GUI
 
         private void barButtonItem_tamtru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //foreach (TabPage page in tabControl1.TabPages)
+            //{
+            //    tabControl1.TabPages.Remove(page);
+            //}
             SoTamTruGUI tamtru = new SoTamTruGUI();
             int index = hamkiemtrtontai(tabControl1, tamtru);
             if (index >= 0)
@@ -159,6 +172,10 @@ namespace GUI
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             NhanKhauTamVangGUI tamvang = new NhanKhauTamVangGUI();
             int index = hamkiemtrtontai(tabControl1, tamvang);
             if (index >= 0)
@@ -179,6 +196,10 @@ namespace GUI
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             ThongKeGUI thongke = new ThongKeGUI();
             int index = hamkiemtrtontai(tabControl1, thongke);
             if (index >= 0)
@@ -199,6 +220,10 @@ namespace GUI
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             TimKiemGUI timkiem = new TimKiemGUI();
             int index = hamkiemtrtontai(tabControl1, timkiem);
             if (index >= 0)
@@ -219,6 +244,10 @@ namespace GUI
 
         private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             ThongTinCaNhanGUI thongtin = new ThongTinCaNhanGUI(cb.TenTaiKhoan);
             int index = hamkiemtrtontai(tabControl1, thongtin);
             if (index >= 0)

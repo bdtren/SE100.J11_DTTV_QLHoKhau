@@ -108,7 +108,7 @@ namespace GUI
             {
 
                 LoadDataGridView();
-                cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho(); //Lấy danh sách tỉnh thành vào combobox
+                //Lấy danh sách tỉnh thành vào combobox
                                                                                 //Khởi tạo mã số sổ tạm trú
                 txt_SoSoTamTru.Text = GenerateSoSoTamTru();
                 ImportToComboboxMaChuHo();
@@ -116,7 +116,6 @@ namespace GUI
             //Tìm kiếm
             if (sosotamtru != "")
             {
-                cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho();
                 txt_SoSoTamTru.Text = sosotamtru;
                 btnTim_Click(sender, e);
                 DataGridViewCellEventArgs ee = new DataGridViewCellEventArgs(0,0);
@@ -124,23 +123,6 @@ namespace GUI
             }
 
 
-        }
-
-
-
-
-        //Lấy danh sách mã xã phường 
-        private void cbb_ChoO_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            cbb_ChoO_XaPhuong.DataSource = sotamtruBus.GetListXaPhuong(cbb_ChoO_QuanHuyen.Text);
-        }
-
-
-        //Lấy danh sách quận huyện
-        private void cbb_ChoO_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_ChoO_QuanHuyen.DataSource = sotamtruBus.GetListQuanHuyen(cbb_ChoO_TinhThanh.Text);
         }
 
 
@@ -191,10 +173,7 @@ namespace GUI
             dt_TuNgay.Value = sotamtruDto.NgayCap;
             dt_DenNgay.Value = sotamtruDto.DenNgay;
 
-            txt_SoNha.Text = ChoOHienNay[0];
-            cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(ChoOHienNay[1]);
-            cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(ChoOHienNay[2]);
-            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(ChoOHienNay[3]); 
+            txt_NoiTamTru.Text = ChoOHienNay[0];
             ImportToComboboxMaChuHo(); 
         }
 
@@ -259,7 +238,7 @@ namespace GUI
                 return;
             }
 
-            string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
+            string choohiennay = "";
 
 
 
@@ -332,7 +311,7 @@ namespace GUI
             {
                int r = dataGridView1.CurrentCell.RowIndex;
 
-                string choohiennay = txt_SoNha.Text + "," + cbb_ChoO_XaPhuong.Text + "," + cbb_ChoO_QuanHuyen.Text + "," + cbb_ChoO_TinhThanh.Text;
+                string choohiennay = "";
                 DateTime tungay = TuNgay;
                 DateTime denngay = DenNgay;
                 
@@ -500,9 +479,6 @@ namespace GUI
             DateTime denngay = Convert.ToDateTime(sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "denngay"));
             //Set To Input
             string[] Noitamtru_list = sotamtruBus.SplitDiaChi(noitamtru);
-            cbb_ChoO_TinhThanh.SelectedIndex = cbb_ChoO_TinhThanh.Items.IndexOf(Noitamtru_list[2]);
-            cbb_ChoO_QuanHuyen.SelectedIndex = cbb_ChoO_QuanHuyen.Items.IndexOf(Noitamtru_list[1]);
-            cbb_ChoO_XaPhuong.SelectedIndex = cbb_ChoO_XaPhuong.Items.IndexOf(Noitamtru_list[0]);
 
             dt_TuNgay.Value = ngaycap;
             dt_DenNgay.Value = denngay;

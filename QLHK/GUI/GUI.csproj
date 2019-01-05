@@ -211,6 +211,7 @@
     <EmbeddedResource Include="TimKiemGUI.resx">
       <DependentUpon>TimKiemGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

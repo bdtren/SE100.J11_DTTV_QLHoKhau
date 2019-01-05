@@ -208,13 +208,6 @@ namespace GUI
         {
             nkttBus = new NhanKhauTamTruBUS();
 
-            cbb_NQ_TinhThanhPho.DataSource = nkttBus.Get_TinhThanhPho();
-            cbb_NS_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-            cbb_DC_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-            cbb_NoiTamTru_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-            cbb_NoiThuongTru_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-            cbb_TieuSu_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-
             if (madinhdanhForSearch != "")
             {
                 txt_MaDinhDanh.Text = madinhdanhForSearch;
@@ -229,60 +222,6 @@ namespace GUI
                 GenerateAllID();
             }
         }
-
-        
-        //
-        //SỰ KIỆN LIÊN QUAN ĐẾN THAY ĐỔI TRONG COMBOBOX
-        //
-        private void cbb_NQ_TinhThanhPho_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NQ_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_NQ_TinhThanhPho.Text);
-        }
-
-        private void cbb_NQ_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NQ_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_NQ_QuanHuyen.Text);
-        }
-
-        private void cbb_NS_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NS_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_NS_TinhThanh.Text);
-        }
-
-        private void cbb_NS_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NS_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_NS_QuanHuyen.Text);
-        }
-
-        private void cbb_DC_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_DC_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_DC_TinhThanh.Text);
-        }
-
-        private void cbb_DC_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_DC_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_DC_QuanHuyen.Text);
-        }
-
-        private void cbb_NoiThuongTru_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NoiThuongTru_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_NoiThuongTru_TinhThanh.Text);
-        }
-
-        private void cbb_NoiThuongTru_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NoiThuongTru_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_NoiThuongTru_QuanHuyen.Text);
-        }
-
-        private void cbb_NoiTamTru_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NoiTamTru_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_NoiTamTru_TinhThanh.Text);
-        }
-        private void cbb_NoiTamTru_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_NoiTamTru_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_NoiTamTru_QuanHuyen.Text);
-        }
-
 
         //Thêm một nhân khẩu tạm trú
         private void btnThem_Click(object sender, EventArgs e)
@@ -325,7 +264,7 @@ namespace GUI
             //}
 
 
-            string diachihiennay = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
+            string diachihiennay ="";
             string sosotamtru = txt_SoSoTamTru.Text.ToString();
 
             string nghenghiep = txt_NgheNghiep.Text.ToString();
@@ -339,8 +278,8 @@ namespace GUI
             string dantoc = txt_DanToc.Text.ToString();
             string hochieu = txt_HoChieu.Text.ToString();
             DateTime ngaysinh = dt_NgaySinh.Value.Date;
-            string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
-            string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
+            string nguyenquan = "";
+            string noisinh = "";
             string quoctich = txt_QuocTich.Text.ToString();
             string sdt = txt_SoDienThoai.Text.ToString();
             string tongiao = txt_TonGiao.Text.ToString();
@@ -354,8 +293,8 @@ namespace GUI
 
 
 
-            string noithuongtru = cbb_NoiThuongTru_XaPhuong.Text.ToString() + "," + cbb_NoiThuongTru_QuanHuyen.Text.ToString() + "," + cbb_NoiThuongTru_TinhThanh.Text.ToString();
-            string noitamtru = cbb_NoiTamTru_XaPhuong.Text.ToString() + "," + cbb_NoiTamTru_QuanHuyen.Text.ToString() + "," + cbb_NoiTamTru_TinhThanh.Text.ToString();
+            string noithuongtru = "";
+            string noitamtru ="";
 
             string lydo = txt_LyDo.Text.ToString();
             //THêm
@@ -432,7 +371,7 @@ namespace GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin nhân khẩu: "+hoten+" không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string diachihiennay = cbb_DC_XaPhuong.Text + "," + cbb_DC_QuanHuyen.Text + "," + cbb_DC_TinhThanh.Text;
+                string diachihiennay = "";
                 string sosotamtru = txt_SoSoTamTru.Text.ToString();
                 string nghenghiep = txt_NgheNghiep.Text.ToString();
 
@@ -443,8 +382,8 @@ namespace GUI
                 string dantoc = txt_DanToc.Text.ToString();
                 string hochieu = txt_HoChieu.Text.ToString();
                 DateTime ngaysinh = dt_NgaySinh.Value.Date;
-                string nguyenquan = cbb_NQ_XaPhuong.Text + "," + cbb_NQ_QuanHuyen.Text + "," + cbb_NQ_TinhThanhPho.Text;
-                string noisinh = cbb_NS_XaPhuong.Text + "," + cbb_NS_QuanHuyen.Text + "," + cbb_NS_TinhThanh.Text;
+                string nguyenquan = "";
+                string noisinh = "";
                 string quoctich = txt_QuocTich.Text.ToString();
                 string sdt = txt_SoDienThoai.Text.ToString();
                 string tongiao = txt_TonGiao.Text.ToString();
@@ -462,8 +401,8 @@ namespace GUI
 
                 DateTime denngay = dt_DenNgay.Value.Date;
 
-                string noithuongtru = cbb_NoiThuongTru_XaPhuong.Text.ToString() + "," + cbb_NoiThuongTru_QuanHuyen.Text.ToString() + "," + cbb_NoiThuongTru_TinhThanh.Text.ToString();
-                string noitamtru = cbb_NoiTamTru_XaPhuong.Text.ToString() + "," + cbb_NoiTamTru_QuanHuyen.Text.ToString() + "," + cbb_NoiTamTru_TinhThanh.Text.ToString();
+                string noithuongtru = "";
+                string noitamtru = "";
 
                 string lydo = txt_LyDo.Text.ToString();
                 //THêm
@@ -594,35 +533,6 @@ namespace GUI
             txt_HoChieu.Text = nhankhautamtru.HoChieu;
             txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
             txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
-
-            string[] nguyenquanArray = nkttBus.SplitDiaChi(nhankhautamtru.NguyenQuan);
-            cbb_NQ_TinhThanhPho.SelectedIndex = cbb_NQ_TinhThanhPho.Items.IndexOf(nguyenquanArray[2]);
-            cbb_NQ_QuanHuyen.SelectedIndex = cbb_NQ_QuanHuyen.Items.IndexOf(nguyenquanArray[1]);
-            cbb_NQ_XaPhuong.SelectedIndex = cbb_NQ_XaPhuong.Items.IndexOf(nguyenquanArray[0]);
-
-            string[] noisinhArray = nkttBus.SplitDiaChi(nhankhautamtru.NoiSinh);
-            cbb_NS_TinhThanh.SelectedIndex = cbb_NS_TinhThanh.Items.IndexOf(noisinhArray[2]);
-            cbb_NS_QuanHuyen.SelectedIndex = cbb_NS_QuanHuyen.Items.IndexOf(noisinhArray[1]);
-            cbb_NS_XaPhuong.SelectedIndex = cbb_NS_XaPhuong.Items.IndexOf(noisinhArray[0]);
-
-
-
-            string[] diachiArray = nkttBus.SplitDiaChi(nhankhautamtru.DiaChiHienNay);
-            cbb_DC_TinhThanh.SelectedIndex = cbb_DC_TinhThanh.Items.IndexOf(diachiArray[2]);
-            cbb_DC_QuanHuyen.SelectedIndex = cbb_DC_QuanHuyen.Items.IndexOf(diachiArray[1]);
-            cbb_DC_XaPhuong.SelectedIndex = cbb_DC_XaPhuong.Items.IndexOf(diachiArray[0]);
-
-            string[] noithuongtruArray = nkttBus.SplitDiaChi(nhankhautamtru.NoiThuongTru);
-            cbb_NoiThuongTru_TinhThanh.SelectedIndex = cbb_NoiThuongTru_TinhThanh.Items.IndexOf(noithuongtruArray[2]);
-            cbb_NoiThuongTru_QuanHuyen.SelectedIndex = cbb_NoiThuongTru_QuanHuyen.Items.IndexOf(noithuongtruArray[1]);
-            cbb_NoiThuongTru_XaPhuong.SelectedIndex = cbb_NoiThuongTru_XaPhuong.Items.IndexOf(noithuongtruArray[0]);
-
-
-
-            string[] noitamtruArray = nkttBus.SplitDiaChi(nhankhautamtru.NoiTamTru);
-            cbb_NoiTamTru_TinhThanh.SelectedIndex = cbb_NoiTamTru_TinhThanh.Items.IndexOf(noitamtruArray[2]);
-            cbb_NoiTamTru_QuanHuyen.SelectedIndex = cbb_NoiTamTru_QuanHuyen.Items.IndexOf(noitamtruArray[1]);
-            cbb_NoiTamTru_XaPhuong.SelectedIndex = cbb_NoiTamTru_XaPhuong.Items.IndexOf(noitamtruArray[0]);
 
             txt_TenKhac.Text = nhankhautamtru.TenKhac;
             txt_TrinhDoHocVan.Text = nhankhautamtru.TrinhDoHocVan;
@@ -887,16 +797,6 @@ namespace GUI
         }
 
 
-        //Combox tỉnh thành event
-        private void cbb_TieuSu_TinhThanh_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_TieuSu_QuanHuyen.DataSource = nkttBus.GetListQuanHuyen(cbb_TieuSu_TinhThanh.Text);
-        }
-
-        private void cbb_TieuSu_QuanHuyen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbb_TieuSu_XaPhuong.DataSource = nkttBus.GetListXaPhuong(cbb_TieuSu_QuanHuyen.Text);
-        }
 
         private void btnThemTieuSu_Click(object sender, EventArgs e)
         {
@@ -904,7 +804,7 @@ namespace GUI
             string madinhdanh = txt_MaDinhDanh.Text.ToString();
             DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
             DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
-            string choo = txt_TieuSu_SoNha.Text.ToString() + "," + cbb_TieuSu_XaPhuong.Text.ToString() + "," + cbb_TieuSu_QuanHuyen.Text.ToString() + "," + cbb_TieuSu_TinhThanh.Text.ToString();
+            string choo = "";
             string nghenghiep = txt_TieuSu_NgheNghiep.Text.ToString();
             string noilamviec = txt_NoiLamViec.Text.ToString();
 
@@ -967,10 +867,6 @@ namespace GUI
 
 
             string[] chooArray = nkttBus.SplitDiaChi(tieusu.ChoO);
-            cbb_TieuSu_TinhThanh.SelectedIndex = cbb_TieuSu_TinhThanh.Items.IndexOf(chooArray[3]);
-            cbb_TieuSu_QuanHuyen.SelectedIndex = cbb_TieuSu_QuanHuyen.Items.IndexOf(chooArray[2]);
-            cbb_TieuSu_XaPhuong.SelectedIndex = cbb_TieuSu_XaPhuong.Items.IndexOf(chooArray[1]);
-            txt_TieuSu_SoNha.Text = chooArray[0]; 
         }
 
 
@@ -1038,7 +934,7 @@ namespace GUI
                 string madinhdanh = txt_MaDinhDanh.Text.ToString();
                 DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
                 DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
-                string choo = txt_TieuSu_SoNha.Text.ToString() + "," + cbb_TieuSu_XaPhuong.Text.ToString() + "," + cbb_TieuSu_QuanHuyen.Text.ToString() + "," + cbb_TieuSu_TinhThanh.Text.ToString();
+                string choo = "";
                 string nghenghiep = txt_TieuSu_NgheNghiep.Text.ToString();
                 string noilamviec = txt_NoiLamViec.Text.ToString();
                 
@@ -1119,6 +1015,21 @@ namespace GUI
             else if (dialogResult == DialogResult.No)
             {
             }
+        }
+
+        private void txt_NguyenQuan_Enter(object sender, EventArgs e)
+        {
+            using (ChonDonViHanhChinhGUI a = new ChonDonViHanhChinhGUI())
+            {
+                a.ShowDialog(this);
+                if (a.diaChi != "")
+                    txt_NguyenQuan.Text = a.diaChi;
+            }
+        }
+
+        private void xtraScrollableControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
