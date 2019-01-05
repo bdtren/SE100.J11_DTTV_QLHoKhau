@@ -54,6 +54,7 @@ namespace GUI
             //Khởi tạo mã số sổ tạm trú
             txt_SoSoTamTru.Text = GenerateSoSoTamTru();
             cbb_MaChuHo.ResetText();
+            txt_NoiTamTru.Clear();
             
         }
 
@@ -69,7 +70,7 @@ namespace GUI
         //Kiểm tra nhập đủ thông tin
         public bool isInputTrueSoTamTru()
         {
-            if (txt_SoSoTamTru.Text.ToString() == "" || cbb_MaChuHo.Text.ToString()=="")
+            if (txt_SoSoTamTru.Text.ToString() == "" || cbb_MaChuHo.Text.ToString()=="" || txt_NoiTamTru.Text.ToString()=="")
             {
                 return false;
             }
@@ -108,8 +109,7 @@ namespace GUI
             {
 
                 LoadDataGridView();
-                //Lấy danh sách tỉnh thành vào combobox
-                                                                                //Khởi tạo mã số sổ tạm trú
+                //Khởi tạo mã số sổ tạm trú
                 txt_SoSoTamTru.Text = GenerateSoSoTamTru();
                 ImportToComboboxMaChuHo();
             }
@@ -165,15 +165,13 @@ namespace GUI
 
             sotamtruDto = new SoTamTruDTO(sosotamtru, chuho, noitamtru, ngaycap, denngay);
 
-            string[] ChoOHienNay = sotamtruBus.SplitDiaChi(noitamtru);
-
             ImportToComboboxMaChuHo();
 
             txt_SoSoTamTru.Text = sotamtruDto.SoSoTamTru;
             dt_TuNgay.Value = sotamtruDto.NgayCap;
             dt_DenNgay.Value = sotamtruDto.DenNgay;
 
-            txt_NoiTamTru.Text = ChoOHienNay[0];
+            txt_NoiTamTru.Text = noitamtru;
             ImportToComboboxMaChuHo(); 
         }
 
@@ -238,7 +236,7 @@ namespace GUI
                 return;
             }
 
-            string choohiennay = "";
+            string choohiennay =txt_NoiTamTru.Text.ToString();
 
 
 
@@ -311,7 +309,7 @@ namespace GUI
             {
                int r = dataGridView1.CurrentCell.RowIndex;
 
-                string choohiennay = "";
+                string choohiennay = txt_NoiTamTru.Text.ToString();
                 DateTime tungay = TuNgay;
                 DateTime denngay = DenNgay;
                 
@@ -478,7 +476,7 @@ namespace GUI
             DateTime ngaycap = Convert.ToDateTime(sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "tungay"));
             DateTime denngay = Convert.ToDateTime(sotamtruBus.GetValue_Sub("nhankhautamtru", manhankhautamtru, "manhankhautamtru", "denngay"));
             //Set To Input
-            string[] Noitamtru_list = sotamtruBus.SplitDiaChi(noitamtru);
+            txt_NoiTamTru.Text = noitamtru;
 
             dt_TuNgay.Value = ngaycap;
             dt_DenNgay.Value = denngay;
