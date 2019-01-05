@@ -128,7 +128,7 @@ namespace GUI
                 dt = nkthuongtru.TimKiem("madinhdanh='"+value+"'");
                 if (dt.Tables[0].Rows.Count > 0)
                 {
-                    NhanKhauThuongTruGUI fr_NhanKhauThuongTru= new NhanKhauThuongTruGUI(value);
+                    NhanKhauThuongTruGUI fr_NhanKhauThuongTru= new NhanKhauThuongTruGUI(value, 0);
                     fr_NhanKhauThuongTru.ShowDialog();
                     return;
                 }
