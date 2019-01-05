@@ -23,6 +23,13 @@ namespace GUI
             InitializeComponent();
         }
 
+        public ThongTinCaNhanGUI(string TenTaiKhoan)
+        {
+            InitializeComponent();
+            this.tentaikhoan = TenTaiKhoan;
+            lblTaiKhoan.Text = TenTaiKhoan;
+        }
+
         private void ThongTinCaNhanGUI_Load(object sender, EventArgs e)
         {
             //Lấy mã nhân khẩu thường trú của cán bộ từ tên đăng nhập
