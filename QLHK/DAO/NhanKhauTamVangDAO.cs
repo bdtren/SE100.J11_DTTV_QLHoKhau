@@ -72,7 +72,7 @@ namespace DAO
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhautamvang", data.MaNhanKhauTamVang);
                 cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@ngaybatdautamvang", data.NgayBatDauTamVang.ToString("yyyy/MM/đ"));
+                cmd.Parameters.AddWithValue("@ngaybatdautamvang", data.NgayBatDauTamVang);
                 cmd.Parameters.AddWithValue("@ngayketthuctamvang", data.NgayKetThucTamVang);
                 cmd.Parameters.AddWithValue("@lydo", data.LyDo);
                 cmd.Parameters.AddWithValue("@noiden", data.NoiDen);
@@ -136,9 +136,8 @@ namespace DAO
                     "lydo=@lydo, noiden=@noiden where manhankhautamvang=@manhankhautamvang";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@manhankhautamvang", data.MaNhanKhauTamVang);
-                cmd.Parameters.AddWithValue("@madinhdanh", data.MaDinhDanh);
-                cmd.Parameters.AddWithValue("@ngaybatdautamvang", data.NgayBatDauTamVang.ToString("yyyy/MM/dd"));
-                cmd.Parameters.AddWithValue("@ngayketthuctamvang", data.NgayKetThucTamVang.ToString("yyyy/MM/dd"));
+                cmd.Parameters.AddWithValue("@ngaybatdautamvang", data.NgayBatDauTamVang);
+                cmd.Parameters.AddWithValue("@ngayketthuctamvang", data.NgayKetThucTamVang);
                 cmd.Parameters.AddWithValue("@lydo", data.LyDo);
                 cmd.Parameters.AddWithValue("@noiden", data.NoiDen);
                 cmd.ExecuteNonQuery();
@@ -154,5 +153,83 @@ namespace DAO
             }
             return true;
         }
+        public DataSet TimKiemJoinNhanKhau(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhau left join nhankhautamvang " +
+                    "on nhankhau.madinhdanh=nhankhautamvang.madinhdanh" + query+ " ORDER BY ngayketthuctamvang DESC", conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset,"timkiem");
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+        public DataSet TimKiemNhanKhau(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhau " + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset);
+                return dataset;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+        public int TimKiemThuongtru(string query)
+        {
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                sqlda = new MySqlDataAdapter("SELECT * FROM nhankhauthuongtru " + query, conn);
+                cmdbuilder = new MySqlCommandBuilder(sqlda);
+                dataset = new DataSet();
+                sqlda.Fill(dataset,"kq");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (dataset.Tables["kq"].Rows.Count > 0)
+                return 0;
+            if (dataset.Tables["kq"].Rows.Count == 0)
+                return 1;
+            return -1;
+        }
+
     }
 }
