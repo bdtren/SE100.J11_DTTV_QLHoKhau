@@ -537,5 +537,10 @@ namespace GUI
                 MessageBox.Show(this, "Nhân khẩu này không tồn tại!", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void NhanKhauThuongTruGUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+          
+        }
     }
 }

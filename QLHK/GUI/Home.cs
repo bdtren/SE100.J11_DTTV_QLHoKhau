@@ -40,6 +40,10 @@ namespace GUI
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             NhanKhauThuongTruGUI nkthuongtru = new NhanKhauThuongTruGUI();
             int index = hamkiemtrtontai(tabControl1, nkthuongtru);
             if (index >= 0)
@@ -48,6 +52,7 @@ namespace GUI
             }
             else
             {
+                
                 TabPage mytabpage = new TabPage(Text = nkthuongtru.Text);
                 mytabpage.BorderStyle = BorderStyle.Fixed3D;
                 tabControl1.TabPages.Add(mytabpage);
@@ -60,6 +65,10 @@ namespace GUI
 
         private void Canbodulieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             fr_CBDuLieu cbdulieu_gui = new fr_CBDuLieu();
             int index = hamkiemtrtontai(tabControl1, cbdulieu_gui);
             if (index >= 0)
