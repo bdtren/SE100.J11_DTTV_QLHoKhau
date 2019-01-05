@@ -62,6 +62,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label_matamvang = new System.Windows.Forms.Label();
             this.dtpNgayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayBatDau = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
@@ -74,8 +76,6 @@
             this.btnThemTV = new System.Windows.Forms.Button();
             this.btnSuaTV = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.label_matamvang = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox_nhankhau.SuspendLayout();
             this.groupBox_gt.SuspendLayout();
@@ -413,6 +413,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin tạm vắng";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(9, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Mã tạm vắng:";
+            // 
+            // label_matamvang
+            // 
+            this.label_matamvang.AutoSize = true;
+            this.label_matamvang.BackColor = System.Drawing.Color.Silver;
+            this.label_matamvang.Location = new System.Drawing.Point(84, 25);
+            this.label_matamvang.Name = "label_matamvang";
+            this.label_matamvang.Size = new System.Drawing.Size(75, 13);
+            this.label_matamvang.TabIndex = 23;
+            this.label_matamvang.Text = "Mã tạm vắng: ";
+            this.label_matamvang.Click += new System.EventHandler(this.label_matamvang_Click);
+            // 
             // dtpNgayKetThuc
             // 
             this.dtpNgayKetThuc.Location = new System.Drawing.Point(466, 85);
@@ -517,27 +538,6 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // label_matamvang
-            // 
-            this.label_matamvang.AutoSize = true;
-            this.label_matamvang.BackColor = System.Drawing.Color.Silver;
-            this.label_matamvang.Location = new System.Drawing.Point(84, 25);
-            this.label_matamvang.Name = "label_matamvang";
-            this.label_matamvang.Size = new System.Drawing.Size(75, 13);
-            this.label_matamvang.TabIndex = 23;
-            this.label_matamvang.Text = "Mã tạm vắng: ";
-            this.label_matamvang.Click += new System.EventHandler(this.label_matamvang_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(9, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Mã tạm vắng:";
-            // 
             // NhanKhauTamVangGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,6 +551,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox_madinhdanh);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhanKhauTamVangGUI";
             this.Text = "Tạm Vắng";
             this.groupBox1.ResumeLayout(false);

@@ -124,10 +124,10 @@ namespace GUI
 
         private void barButton_hokhau_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //foreach (TabPage page in tabControl1.TabPages)
-            //{
-            //    tabControl1.TabPages.Remove(page);
-            //}
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             SoHoKhauGUI hokhau = new SoHoKhauGUI();
             int index = hamkiemtrtontai(tabControl1, hokhau);
             if (index >= 0)
@@ -148,10 +148,10 @@ namespace GUI
 
         private void barButtonItem_tamtru_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //foreach (TabPage page in tabControl1.TabPages)
-            //{
-            //    tabControl1.TabPages.Remove(page);
-            //}
+            foreach (TabPage page in tabControl1.TabPages)
+            {
+                tabControl1.TabPages.Remove(page);
+            }
             SoTamTruGUI tamtru = new SoTamTruGUI();
             int index = hamkiemtrtontai(tabControl1, tamtru);
             if (index >= 0)
