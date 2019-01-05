@@ -87,6 +87,8 @@ namespace GUI
         {
             InitializeComponent();
             this.sosotamtru = sosotamtru;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
         }
 
 

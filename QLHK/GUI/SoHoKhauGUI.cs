@@ -57,10 +57,13 @@ namespace GUI
 
         public SoHoKhauGUI(string sosohokhau)
         {
+
             shk = new SoHoKhauBUS();
             nktt = new NhanKhauThuongTruBUS();
             shkDTO = new SoHoKhauDTO();
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
 
             tbSoSoHoKhau.Text = sosohokhau;
             DataSet ds = shk.TimKiem("sosohokhau='"+sosohokhau+"'");

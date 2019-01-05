@@ -53,6 +53,7 @@
             this.tbMatKhau.PasswordChar = '*';
             this.tbMatKhau.Size = new System.Drawing.Size(199, 21);
             this.tbMatKhau.TabIndex = 16;
+            this.tbMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbMatKhau_KeyDown);
             // 
             // tbTaiKhoan
             // 
@@ -60,6 +61,7 @@
             this.tbTaiKhoan.Name = "tbTaiKhoan";
             this.tbTaiKhoan.Size = new System.Drawing.Size(199, 21);
             this.tbTaiKhoan.TabIndex = 15;
+            this.tbTaiKhoan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbTaiKhoan_KeyDown);
             // 
             // lblPassword
             // 

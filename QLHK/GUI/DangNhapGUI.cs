@@ -20,10 +20,10 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        private void DangNhap()
         {
             DataRow dt = DangNhapBUS.TimKiem(tbTaiKhoan.Text, tbMatKhau.Text);
-            if (dt!=null)
+            if (dt != null)
             {
                 cb = new CanBoDTO(dt);
                 Home home = new Home(cb);
@@ -36,7 +36,28 @@ namespace GUI
             {
                 MessageBox.Show(this, "Tên đăng nhập hoặc mật khẩu không đúng!", "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            DangNhap();
+
+        }
+
+        private void tbTaiKhoan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DangNhap();
+            }
+        }
+
+        private void tbMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DangNhap();
+            }
         }
     }
 }
