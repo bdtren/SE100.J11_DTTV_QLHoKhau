@@ -111,7 +111,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(141, 38);
             this.btnXoa.TabIndex = 15;
-            this.btnXoa.Text = "Hủy đăng ký tạm trú";
+            this.btnXoa.Text = "Hủy tạm trú";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 

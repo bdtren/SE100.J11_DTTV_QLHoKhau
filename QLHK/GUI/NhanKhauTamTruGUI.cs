@@ -219,7 +219,7 @@ namespace GUI
             if (madinhdanhForSearch != "")
             {
                 txtMaDinhDanh1.Text = madinhdanhForSearch;
-                btnTim_Click(sender, e);
+                btnTim1_Click(sender, e);
                 DataGridViewCellEventArgs arg = new DataGridViewCellEventArgs(0, 0);
                 dataGridView1_CellClick(sender, arg);
             }
@@ -561,28 +561,6 @@ namespace GUI
             txt_MaTieuSu.Text = GenerateMaTieuSu(); 
         }
 
-
-        //Tìm nhân khẩu tạm trú qua mã định danh
-        private void btnTim_Click(object sender, EventArgs e)
-        {
-            string madinhdanh = txtMaDinhDanh1.Text.ToString();
-            if (madinhdanh == "")
-            {
-                MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
-                return;
-            }
-
-            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
-            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
-            {
-                MessageBox.Show("Nhân khẩu tạm trú có mã định danh: "+madinhdanh+" không tồn tại!");
-                return;
-            }
-
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
-        }
 
 
 
@@ -1087,6 +1065,27 @@ namespace GUI
         private void btnXong1_Click(object sender, EventArgs e)
         {
             Nhankhautamtru_list = nhankhautamtru_list;
+        }
+
+        private void btnTim1_Click(object sender, EventArgs e)
+        {
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
+            if (madinhdanh == "")
+            {
+                MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
+                return;
+            }
+
+            SoTamTruBUS sotamtruBus = new SoTamTruBUS();
+            if (!sotamtruBus.Existed_NhanKhau(madinhdanh))
+            {
+                MessageBox.Show("Nhân khẩu tạm trú có mã định danh: " + madinhdanh + " không tồn tại!");
+                return;
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.DataSource = nkttBus.TimKiem(madinhdanh).Tables[0];
         }
     }
 }

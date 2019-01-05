@@ -122,14 +122,15 @@
             this.txt_MaTieuSu = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.btnXong1 = new System.Windows.Forms.Button();
-            this.btnReset1 = new System.Windows.Forms.Button();
-            this.txtSoSoTamTru1 = new System.Windows.Forms.TextBox();
-            this.txtMaDinhDanh1 = new System.Windows.Forms.TextBox();
-            this.txtMaNhanKhauTamTru1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtMaNhanKhauTamTru1 = new System.Windows.Forms.TextBox();
+            this.txtMaDinhDanh1 = new System.Windows.Forms.TextBox();
+            this.txtSoSoTamTru1 = new System.Windows.Forms.TextBox();
+            this.btnReset1 = new System.Windows.Forms.Button();
+            this.btnXong1 = new System.Windows.Forms.Button();
+            this.btnTim1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -635,7 +636,6 @@
             this.btnTim.TabIndex = 20;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
-            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // btnReset
             // 
@@ -1019,6 +1019,7 @@
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Controls.Add(this.btnTim1);
             this.xtraScrollableControl1.Controls.Add(this.label18);
             this.xtraScrollableControl1.Controls.Add(this.label13);
             this.xtraScrollableControl1.Controls.Add(this.label10);
@@ -1048,16 +1049,53 @@
             this.xtraScrollableControl1.Size = new System.Drawing.Size(1277, 429);
             this.xtraScrollableControl1.TabIndex = 51;
             // 
-            // btnXong1
+            // label18
             // 
-            this.btnXong1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnXong1.Location = new System.Drawing.Point(1137, 21);
-            this.btnXong1.Name = "btnXong1";
-            this.btnXong1.Size = new System.Drawing.Size(94, 41);
-            this.btnXong1.TabIndex = 51;
-            this.btnXong1.Text = "Xong";
-            this.btnXong1.UseVisualStyleBackColor = true;
-            this.btnXong1.Click += new System.EventHandler(this.btnXong1_Click);
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(651, 89);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 13);
+            this.label18.TabIndex = 58;
+            this.label18.Text = "Mã nhân khẩu tạm trú";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(651, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "Mã định danh";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(651, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Số sổ tạm trú";
+            // 
+            // txtMaNhanKhauTamTru1
+            // 
+            this.txtMaNhanKhauTamTru1.Location = new System.Drawing.Point(767, 82);
+            this.txtMaNhanKhauTamTru1.Name = "txtMaNhanKhauTamTru1";
+            this.txtMaNhanKhauTamTru1.Size = new System.Drawing.Size(199, 20);
+            this.txtMaNhanKhauTamTru1.TabIndex = 55;
+            // 
+            // txtMaDinhDanh1
+            // 
+            this.txtMaDinhDanh1.Location = new System.Drawing.Point(767, 52);
+            this.txtMaDinhDanh1.Name = "txtMaDinhDanh1";
+            this.txtMaDinhDanh1.Size = new System.Drawing.Size(113, 20);
+            this.txtMaDinhDanh1.TabIndex = 54;
+            // 
+            // txtSoSoTamTru1
+            // 
+            this.txtSoSoTamTru1.Location = new System.Drawing.Point(767, 23);
+            this.txtSoSoTamTru1.Name = "txtSoSoTamTru1";
+            this.txtSoSoTamTru1.Size = new System.Drawing.Size(199, 20);
+            this.txtSoSoTamTru1.TabIndex = 53;
             // 
             // btnReset1
             // 
@@ -1069,53 +1107,26 @@
             this.btnReset1.UseVisualStyleBackColor = true;
             this.btnReset1.Click += new System.EventHandler(this.btnReset1_Click);
             // 
-            // txtSoSoTamTru1
+            // btnXong1
             // 
-            this.txtSoSoTamTru1.Location = new System.Drawing.Point(767, 23);
-            this.txtSoSoTamTru1.Name = "txtSoSoTamTru1";
-            this.txtSoSoTamTru1.Size = new System.Drawing.Size(199, 20);
-            this.txtSoSoTamTru1.TabIndex = 53;
+            this.btnXong1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnXong1.Location = new System.Drawing.Point(1137, 21);
+            this.btnXong1.Name = "btnXong1";
+            this.btnXong1.Size = new System.Drawing.Size(94, 41);
+            this.btnXong1.TabIndex = 51;
+            this.btnXong1.Text = "Xong";
+            this.btnXong1.UseVisualStyleBackColor = true;
+            this.btnXong1.Click += new System.EventHandler(this.btnXong1_Click);
             // 
-            // txtMaDinhDanh1
+            // btnTim1
             // 
-            this.txtMaDinhDanh1.Location = new System.Drawing.Point(767, 52);
-            this.txtMaDinhDanh1.Name = "txtMaDinhDanh1";
-            this.txtMaDinhDanh1.Size = new System.Drawing.Size(199, 20);
-            this.txtMaDinhDanh1.TabIndex = 54;
-            // 
-            // txtMaNhanKhauTamTru1
-            // 
-            this.txtMaNhanKhauTamTru1.Location = new System.Drawing.Point(767, 82);
-            this.txtMaNhanKhauTamTru1.Name = "txtMaNhanKhauTamTru1";
-            this.txtMaNhanKhauTamTru1.Size = new System.Drawing.Size(199, 20);
-            this.txtMaNhanKhauTamTru1.TabIndex = 55;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(651, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 13);
-            this.label10.TabIndex = 56;
-            this.label10.Text = "Số sổ tạm trú";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(651, 56);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 13);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "Mã định danh";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(651, 89);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(111, 13);
-            this.label18.TabIndex = 58;
-            this.label18.Text = "Mã nhân khẩu tạm trú";
+            this.btnTim1.Location = new System.Drawing.Point(891, 50);
+            this.btnTim1.Name = "btnTim1";
+            this.btnTim1.Size = new System.Drawing.Size(75, 23);
+            this.btnTim1.TabIndex = 59;
+            this.btnTim1.Text = "Tìm kiếm";
+            this.btnTim1.UseVisualStyleBackColor = true;
+            this.btnTim1.Click += new System.EventHandler(this.btnTim1_Click);
             // 
             // NhanKhauTamTruGUI
             // 
@@ -1246,5 +1257,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnTim1;
     }
 }
