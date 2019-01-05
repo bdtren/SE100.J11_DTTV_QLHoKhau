@@ -45,8 +45,8 @@ namespace GUI
             tbNKNuTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "gioitinh='nu'");
             tbNK14TH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "YEAR(CURDATE())-YEAR(ngaysinh)>=14");
 
-            tbHoKoTH.Text = ThongKeBUS.DemSoHoKhau("sohokhau.sosohokhau", cbbThoiGian.SelectedValue.ToString(),false);
-            tbNhanKhauKoTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(),"", false);
+            tbHoKoTH.Text = ThongKeBUS.DemSoHoKhau("sohokhau.sosohokhau", cbbThoiGian.SelectedValue.ToString(), false);
+            tbNhanKhauKoTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "", false);
             tbNKThanhThiKoTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "noithuongtru not like '%xã%'", false);
             tbNKNuKoTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "gioitinh='nu'", false);
             tbNK14KoTH.Text = ThongKeBUS.DemNhanKhauThuongTru("nhankhauthuongtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "YEAR(CURDATE())-YEAR(ngaysinh)>=14", false);
@@ -58,7 +58,7 @@ namespace GUI
             tbNK14TT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "YEAR(CURDATE())-YEAR(ngaysinh)>=14");
 
             tbHoKoTT.Text = ThongKeBUS.DemSoTamTru("sotamtru.sosotamtru", cbbThoiGian.SelectedValue.ToString(), false);
-            tbNhanKhauKoTT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(),"", false);
+            tbNhanKhauKoTT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "", false);
             tbNKThanhThiKoTT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "noithuongtru not like '%xã%'", false);
             tbNKNuKoTT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "gioitinh='nu'", false);
             tbNK14KoTT.Text = ThongKeBUS.DemNhanKhauTamTru("nhankhautamtru.madinhdanh", cbbThoiGian.SelectedValue.ToString(), "YEAR(CURDATE())-YEAR(ngaysinh)>=14", false);
@@ -79,7 +79,7 @@ namespace GUI
             rg.Add(new ReplacementGroup("<tuNgay>", tuNgay.ToShortDateString()));
             rg.Add(new ReplacementGroup("<denNgay>", today.ToShortDateString()));
 
-            rg.Add(new ReplacementGroup("<tongSoHo>", (int.Parse(tbHoTH.Text)+ int.Parse(tbHoTH.Text)).ToString()));
+            rg.Add(new ReplacementGroup("<tongSoHo>", (int.Parse(tbHoTH.Text) + int.Parse(tbHoTH.Text)).ToString()));
             rg.Add(new ReplacementGroup("<tongSo>", (int.Parse(tbNhanKhauTH.Text) + int.Parse(tbNhanKhauTT.Text)).ToString()));
             rg.Add(new ReplacementGroup("<nkThanhThi>", (int.Parse(tbNKThanhThiTH.Text) + int.Parse(tbNKThanhThiTT.Text)).ToString()));
             rg.Add(new ReplacementGroup("<nkNu>", (int.Parse(tbNKNuTH.Text) + int.Parse(tbNKNuTT.Text)).ToString()));
@@ -109,20 +109,30 @@ namespace GUI
             rg.Add(new ReplacementGroup("<NKNuKoTT>", tbNKNuKoTT.Text));
             rg.Add(new ReplacementGroup("<NK14KoTT>", tbNK14KoTT.Text));
 
-            
+
             rg.Add(new ReplacementGroup("<ngay>", today.Day.ToString()));
             rg.Add(new ReplacementGroup("<thang>", today.Month.ToString()));
             rg.Add(new ReplacementGroup("<nam>", today.Year.ToString()));
 
 
-
-
             string srcPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\Mau HK15.doc";
-            string dstPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\KetQua\\Mau HK15_" + DateTime.Now.ToString("dd-MM-yyyy") + "_"+ cbbThoiGian.SelectedValue.ToString() + ".doc";
+            string dstPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\KetQua\\Mau HK15_" + DateTime.Now.ToString("dd-MM-yyyy") + "_" + cbbThoiGian.SelectedValue.ToString() + ".doc";
             CreateWordHelper.CreateWordDocument(srcPath, dstPath, rg);
 
             MessageBox.Show(this, "Đã tạo thành công file thông tin với tên: " + dstPath, "Thành công",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnNhapThuCong_Click(object sender, EventArgs e)
+        {
+            tbHoTH.Enabled = tbNhanKhauTH.Enabled = tbNKThanhThiTH.Enabled = tbNKNuTH.Enabled = tbNK14TH.Enabled =
+
+            tbHoKoTH.Enabled = tbNhanKhauKoTH.Enabled = tbNKThanhThiKoTH.Enabled = tbNKNuKoTH.Enabled = tbNK14KoTH.Enabled =
+
+            tbHoTT.Enabled = tbNhanKhauTT.Enabled = tbNKThanhThiTT.Enabled = tbNKNuTT.Enabled = tbNK14TT.Enabled =
+
+            tbHoKoTT.Enabled = tbNhanKhauKoTT.Enabled = tbNKThanhThiKoTT.Enabled = tbNKNuKoTT.Enabled = tbNK14KoTT.Enabled = !tbHoTH.Enabled;
+            btnNhapThuCong.Text = tbHoTH.Enabled ? "Khóa lại" : "Nhập thủ công";
         }
     }
 }

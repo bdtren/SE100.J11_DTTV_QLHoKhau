@@ -67,6 +67,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbbThoiGian = new System.Windows.Forms.ComboBox();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.btnNhapThuCong = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -211,6 +212,7 @@
             // 
             // tbNK14KoTH
             // 
+            this.tbNK14KoTH.Enabled = false;
             this.tbNK14KoTH.Location = new System.Drawing.Point(666, 19);
             this.tbNK14KoTH.Name = "tbNK14KoTH";
             this.tbNK14KoTH.Size = new System.Drawing.Size(40, 20);
@@ -218,6 +220,7 @@
             // 
             // tbNKNuKoTH
             // 
+            this.tbNKNuKoTH.Enabled = false;
             this.tbNKNuKoTH.Location = new System.Drawing.Point(592, 19);
             this.tbNKNuKoTH.Name = "tbNKNuKoTH";
             this.tbNKNuKoTH.Size = new System.Drawing.Size(40, 20);
@@ -225,6 +228,7 @@
             // 
             // tbNKThanhThiKoTH
             // 
+            this.tbNKThanhThiKoTH.Enabled = false;
             this.tbNKThanhThiKoTH.Location = new System.Drawing.Point(527, 19);
             this.tbNKThanhThiKoTH.Name = "tbNKThanhThiKoTH";
             this.tbNKThanhThiKoTH.Size = new System.Drawing.Size(40, 20);
@@ -232,6 +236,7 @@
             // 
             // tbNhanKhauKoTH
             // 
+            this.tbNhanKhauKoTH.Enabled = false;
             this.tbNhanKhauKoTH.Location = new System.Drawing.Point(438, 19);
             this.tbNhanKhauKoTH.Name = "tbNhanKhauKoTH";
             this.tbNhanKhauKoTH.Size = new System.Drawing.Size(40, 20);
@@ -239,6 +244,7 @@
             // 
             // tbHoKoTH
             // 
+            this.tbHoKoTH.Enabled = false;
             this.tbHoKoTH.Location = new System.Drawing.Point(380, 19);
             this.tbHoKoTH.Name = "tbHoKoTH";
             this.tbHoKoTH.Size = new System.Drawing.Size(40, 20);
@@ -246,6 +252,7 @@
             // 
             // tbNK14TH
             // 
+            this.tbNK14TH.Enabled = false;
             this.tbNK14TH.Location = new System.Drawing.Point(288, 19);
             this.tbNK14TH.Name = "tbNK14TH";
             this.tbNK14TH.Size = new System.Drawing.Size(40, 20);
@@ -253,6 +260,7 @@
             // 
             // tbNKNuTH
             // 
+            this.tbNKNuTH.Enabled = false;
             this.tbNKNuTH.Location = new System.Drawing.Point(217, 19);
             this.tbNKNuTH.Name = "tbNKNuTH";
             this.tbNKNuTH.Size = new System.Drawing.Size(40, 20);
@@ -260,6 +268,7 @@
             // 
             // tbNKThanhThiTH
             // 
+            this.tbNKThanhThiTH.Enabled = false;
             this.tbNKThanhThiTH.Location = new System.Drawing.Point(137, 19);
             this.tbNKThanhThiTH.Name = "tbNKThanhThiTH";
             this.tbNKThanhThiTH.Size = new System.Drawing.Size(40, 20);
@@ -267,6 +276,7 @@
             // 
             // tbNhanKhauTH
             // 
+            this.tbNhanKhauTH.Enabled = false;
             this.tbNhanKhauTH.Location = new System.Drawing.Point(69, 19);
             this.tbNhanKhauTH.Name = "tbNhanKhauTH";
             this.tbNhanKhauTH.Size = new System.Drawing.Size(40, 20);
@@ -274,6 +284,7 @@
             // 
             // tbHoTH
             // 
+            this.tbHoTH.Enabled = false;
             this.tbHoTH.Location = new System.Drawing.Point(7, 19);
             this.tbHoTH.Name = "tbHoTH";
             this.tbHoTH.Size = new System.Drawing.Size(40, 20);
@@ -300,6 +311,7 @@
             // 
             // tbNK14KoTT
             // 
+            this.tbNK14KoTT.Enabled = false;
             this.tbNK14KoTT.Location = new System.Drawing.Point(666, 19);
             this.tbNK14KoTT.Name = "tbNK14KoTT";
             this.tbNK14KoTT.Size = new System.Drawing.Size(40, 20);
@@ -307,6 +319,7 @@
             // 
             // tbNKNuKoTT
             // 
+            this.tbNKNuKoTT.Enabled = false;
             this.tbNKNuKoTT.Location = new System.Drawing.Point(592, 19);
             this.tbNKNuKoTT.Name = "tbNKNuKoTT";
             this.tbNKNuKoTT.Size = new System.Drawing.Size(40, 20);
@@ -314,6 +327,7 @@
             // 
             // tbNKThanhThiKoTT
             // 
+            this.tbNKThanhThiKoTT.Enabled = false;
             this.tbNKThanhThiKoTT.Location = new System.Drawing.Point(527, 19);
             this.tbNKThanhThiKoTT.Name = "tbNKThanhThiKoTT";
             this.tbNKThanhThiKoTT.Size = new System.Drawing.Size(40, 20);
@@ -321,6 +335,7 @@
             // 
             // tbNhanKhauKoTT
             // 
+            this.tbNhanKhauKoTT.Enabled = false;
             this.tbNhanKhauKoTT.Location = new System.Drawing.Point(438, 19);
             this.tbNhanKhauKoTT.Name = "tbNhanKhauKoTT";
             this.tbNhanKhauKoTT.Size = new System.Drawing.Size(40, 20);
@@ -328,6 +343,7 @@
             // 
             // tbHoKoTT
             // 
+            this.tbHoKoTT.Enabled = false;
             this.tbHoKoTT.Location = new System.Drawing.Point(380, 19);
             this.tbHoKoTT.Name = "tbHoKoTT";
             this.tbHoKoTT.Size = new System.Drawing.Size(40, 20);
@@ -335,6 +351,7 @@
             // 
             // tbNK14TT
             // 
+            this.tbNK14TT.Enabled = false;
             this.tbNK14TT.Location = new System.Drawing.Point(288, 19);
             this.tbNK14TT.Name = "tbNK14TT";
             this.tbNK14TT.Size = new System.Drawing.Size(40, 20);
@@ -342,6 +359,7 @@
             // 
             // tbNKNuTT
             // 
+            this.tbNKNuTT.Enabled = false;
             this.tbNKNuTT.Location = new System.Drawing.Point(217, 19);
             this.tbNKNuTT.Name = "tbNKNuTT";
             this.tbNKNuTT.Size = new System.Drawing.Size(40, 20);
@@ -349,6 +367,7 @@
             // 
             // tbNKThanhThiTT
             // 
+            this.tbNKThanhThiTT.Enabled = false;
             this.tbNKThanhThiTT.Location = new System.Drawing.Point(137, 19);
             this.tbNKThanhThiTT.Name = "tbNKThanhThiTT";
             this.tbNKThanhThiTT.Size = new System.Drawing.Size(40, 20);
@@ -356,6 +375,7 @@
             // 
             // tbNhanKhauTT
             // 
+            this.tbNhanKhauTT.Enabled = false;
             this.tbNhanKhauTT.Location = new System.Drawing.Point(69, 19);
             this.tbNhanKhauTT.Name = "tbNhanKhauTT";
             this.tbNhanKhauTT.Size = new System.Drawing.Size(40, 20);
@@ -363,6 +383,7 @@
             // 
             // tbHoTT
             // 
+            this.tbHoTT.Enabled = false;
             this.tbHoTT.Location = new System.Drawing.Point(6, 19);
             this.tbHoTT.Name = "tbHoTT";
             this.tbHoTT.Size = new System.Drawing.Size(40, 20);
@@ -406,11 +427,22 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // btnNhapThuCong
+            // 
+            this.btnNhapThuCong.Location = new System.Drawing.Point(21, 320);
+            this.btnNhapThuCong.Name = "btnNhapThuCong";
+            this.btnNhapThuCong.Size = new System.Drawing.Size(113, 23);
+            this.btnNhapThuCong.TabIndex = 5;
+            this.btnNhapThuCong.Text = "Nhập Thủ công";
+            this.btnNhapThuCong.UseVisualStyleBackColor = true;
+            this.btnNhapThuCong.Click += new System.EventHandler(this.btnNhapThuCong_Click);
+            // 
             // ThongKeGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 363);
+            this.Controls.Add(this.btnNhapThuCong);
             this.Controls.Add(this.cbbThoiGian);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHuy);
@@ -484,5 +516,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbbThoiGian;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnNhapThuCong;
     }
 }
