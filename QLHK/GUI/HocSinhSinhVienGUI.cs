@@ -33,6 +33,16 @@ namespace GUI
             dataGridView1.DataSource = tienAn.TimKiem("madinhdanh=''").Tables["tienantiensu"];
 
         }
+        private void clearData()
+        {
+            textBox_mssv.Clear();
+            textBox_madinhdanh.Clear();
+            textBox_truong.Clear();
+            textBox_diachithuongtru.Clear();
+            textBox_vipham.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+        }
 
         private void HocSinhSinhVienGUI_Load(object sender, EventArgs e)
         {
@@ -114,14 +124,8 @@ namespace GUI
             {
                 MessageBox.Show("Them khong thanh cong");
             }
-            textBox_mssv.Clear();
-            textBox_madinhdanh.Clear();
-            textBox_truong.Clear();
-            textBox_diachithuongtru.Clear();
-            textBox_vipham.Clear();
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + madinhdanh + "'").Tables["tienantiensu"];
+            //clearData();
+            
         }
 
         private void button_xoa_Click(object sender, EventArgs e)
@@ -136,14 +140,7 @@ namespace GUI
             {
                 MessageBox.Show("Xoa khong thanh cong");
             }
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + textBox_madinhdanh.Text + "'").Tables["tienantiensu"];
-            textBox_mssv.Clear();
-            textBox_madinhdanh.Clear();
-            textBox_truong.Clear();
-            textBox_diachithuongtru.Clear();
-            textBox_vipham.Clear();
+            //clearData();
 
         }
 
@@ -197,19 +194,13 @@ namespace GUI
             {
                 MessageBox.Show("Sua khong thanh cong");
             }
-            textBox_mssv.Clear();
-            textBox_madinhdanh.Clear();
-            textBox_truong.Clear();
-            textBox_diachithuongtru.Clear();
-            textBox_vipham.Clear();
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh='" + madinhdanh + "'").Tables["tienantiensu"];
+            //clearData();
         }
 
         private void textBox_madinhdanh_TextChanged(object sender, EventArgs e)
         {
-            
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = tienAn.TimKiem("madinhdanh LIKE'%" + textBox_madinhdanh.Text + "%'").Tables["tienantiensu"];
         }
         private void textBox_diachithuongtru_Enter(object sender, EventArgs e)
         {

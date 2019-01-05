@@ -98,8 +98,8 @@ create table NHANKHAUTAMTRU
 create table SOHOKHAU
 (
     SOSOHOKHAU              char(9)                     not null,
-    CHUHO                   char(9)                     not null,
-    DIACHITHUONGTRU         text                        not null,
+    MACHUHO                   char(9)                     not null,
+    DIACHI                     text                        not null,
     NGAYCAP                 date                        not null,
     SODANGKY                char(7)                     not null,
 
