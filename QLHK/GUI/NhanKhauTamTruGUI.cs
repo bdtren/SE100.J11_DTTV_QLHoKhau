@@ -73,7 +73,7 @@ namespace GUI
         {
             string gt = GioiTinh();
             string year = dt_NgaySinh.Value.Year.ToString();
-            txt_MaDinhDanh.Text = TrinhTaoMa.TangMa12Kytu(gt, year);
+            txtMaDinhDanh1.Text = TrinhTaoMa.TangMa12Kytu(gt, year);
         }
 
         private void rdNam_CheckedChanged(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace GUI
             ResetValueInput();
             txt_MaTienAn.Text = GenerateMaTienAnTienSu();
             txt_MaTieuSu.Text = GenerateMaTieuSu();
-            txt_MaNKTamTru.Text = GenerateMaNhanKhauTamTru();
+            txtMaNhanKhauTamTru1.Text = GenerateMaNhanKhauTamTru();
             TaoMaDinhDanh();
             LoadDataGridView();
         }
@@ -150,12 +150,11 @@ namespace GUI
         //Xóa các trường Input
         public void ResetValueInput()
         {
-            txt_MaDinhDanh.Clear();
-            txt_MaNKTamTru.Clear();
+            txtMaDinhDanh1.Clear();
+            txtMaNhanKhauTamTru1.Clear();
             txt_DanToc.Clear();
             txt_HoChieu.Clear();
             txt_HoTen.Clear();
-            txt_MaNKTamTru.Clear();
             txt_QuocTich.Clear();
             txt_SoDienThoai.Clear();
             txt_NgheNghiep.Clear();
@@ -185,7 +184,7 @@ namespace GUI
         {
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = nkttBus.GetAllNhanKhauTamTru(txt_SoSoTamTru.Text.ToString()).Tables[0];
+            dataGridView1.DataSource = nkttBus.GetAllNhanKhauTamTru(txtSoSoTamTru1.Text.ToString()).Tables[0];
 
             LoadDataGridViewTienAN();
             LoadDataGridViewTieuSu();
@@ -219,14 +218,15 @@ namespace GUI
 
             if (madinhdanhForSearch != "")
             {
-                txt_MaDinhDanh.Text = madinhdanhForSearch;
+                txtMaDinhDanh1.Text = madinhdanhForSearch;
                 btnTim_Click(sender, e);
                 DataGridViewCellEventArgs arg = new DataGridViewCellEventArgs(0, 0);
                 dataGridView1_CellClick(sender, arg);
             }
             else
             {            
-                txt_SoSoTamTru.Text = sosotamtru;
+                txtSoSoTamTru1.Text = sosotamtru;
+
                 LoadDataGridView();
                 GenerateAllID();
             }
@@ -235,8 +235,8 @@ namespace GUI
         //Thêm một nhân khẩu tạm trú
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string manhankhautamtru = txt_MaNKTamTru.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string manhankhautamtru = txtMaNhanKhauTamTru1.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
 
             if (manhankhautamtru == "" || madinhdanh == "")
             {
@@ -272,7 +272,8 @@ namespace GUI
 
 
             string diachihiennay =txtDiaChiHienNay.Text.ToString();
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
+            string sosotamtru = txtSoSoTamTru1.Text.ToString();
+            
 
             string nghenghiep = txt_NgheNghiep.Text.ToString();
 
@@ -334,8 +335,8 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            string manhankhautamtru = txt_MaNKTamTru.Text.ToString(); //Lấy mã nhân khẩu tạm trú
-            string madinhdanh = txt_MaDinhDanh.Text.ToString(); //Lấy mã định danh
+            string manhankhautamtru = txtMaNhanKhauTamTru1.Text.ToString(); //Lấy mã nhân khẩu tạm trú
+            string madinhdanh = txtMaDinhDanh1.Text.ToString(); //Lấy mã định danh
             string hoten = txt_HoTen.Text.ToString();
 
             if (manhankhautamtru == "" || madinhdanh == "" || hoten=="")
@@ -373,7 +374,7 @@ namespace GUI
             if (dialogResult == DialogResult.Yes)
             {
                 string diachihiennay = txtDiaChiHienNay.Text.ToString();
-                string sosotamtru = txt_SoSoTamTru.Text.ToString();
+                string sosotamtru = txtSoSoTamTru1.Text.ToString();
                 string nghenghiep = txt_NgheNghiep.Text.ToString();
 
                 string gioitinh = "";
@@ -437,7 +438,7 @@ namespace GUI
         //Xóa một nhân khẩu tạm trú
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
             string hoten = txt_HoTen.Text.ToString();
 
             if (madinhdanh == "")
@@ -513,8 +514,8 @@ namespace GUI
                 quoctich, hochieu, noithuongtru, diachihiennay, sdt,trinhdohocvan, trinhdochuyenmon, 
                 biettiengdantoc,trinhdongoaingu, nghenghiep);
 
-            txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
-            txt_MaNKTamTru.Text = nhankhautamtru.MaNhanKhauTamTru;
+            txtMaDinhDanh1.Text = nhankhautamtru.MaDinhDanh;
+            txtMaNhanKhauTamTru1.Text = nhankhautamtru.MaNhanKhauTamTru;
             txt_HoTen.Text = nhankhautamtru.HoTen;
 
             string gt = nhankhautamtru.GioiTinh;
@@ -524,7 +525,7 @@ namespace GUI
                 this.rdNu.Checked = true;
 
 
-            txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
+            txtSoSoTamTru1.Text = nhankhautamtru.SoSoTamTru;
             dt_NgaySinh.Value = nhankhautamtru.NgaySinh;
             txt_DanToc.Text = nhankhautamtru.DanToc;
             txt_QuocTich.Text = nhankhautamtru.QuocTich;
@@ -532,8 +533,7 @@ namespace GUI
             txt_NgheNghiep.Text = nhankhautamtru.NgheNghiep;
             txt_SoDienThoai.Text = nhankhautamtru.SDT;
             txt_HoChieu.Text = nhankhautamtru.HoChieu;
-            txt_SoSoTamTru.Text = nhankhautamtru.SoSoTamTru;
-            txt_MaDinhDanh.Text = nhankhautamtru.MaDinhDanh;
+            txtMaDinhDanh1.Text = nhankhautamtru.MaDinhDanh;
 
             txt_TenKhac.Text = nhankhautamtru.TenKhac;
             txt_TrinhDoHocVan.Text = nhankhautamtru.TrinhDoHocVan;
@@ -561,16 +561,11 @@ namespace GUI
             txt_MaTieuSu.Text = GenerateMaTieuSu(); 
         }
 
-        private void btnXong_Click(object sender, EventArgs e)
-        {
-            Nhankhautamtru_list = nhankhautamtru_list;
-        }
-
 
         //Tìm nhân khẩu tạm trú qua mã định danh
         private void btnTim_Click(object sender, EventArgs e)
         {
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
             if (madinhdanh == "")
             {
                 MessageBox.Show("Cần mã định danh để thực hiện chức năng này");
@@ -600,7 +595,7 @@ namespace GUI
         {
             dtGV_TienAnTienSu.DataSource = null;
             dtGV_TienAnTienSu.Rows.Clear();
-            dtGV_TienAnTienSu.DataSource = nkttBus.GetTienAnTienSu(txt_MaDinhDanh.Text.ToString()).Tables[0];
+            dtGV_TienAnTienSu.DataSource = nkttBus.GetTienAnTienSu(txtMaDinhDanh1.Text.ToString()).Tables[0];
         }
 
         private void ResetInputTienAn()
@@ -617,7 +612,7 @@ namespace GUI
         private void btnThemTienAn_Click(object sender, EventArgs e)
         {
             string matienan = txt_MaTienAn.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
 
             if (matienan == "" || madinhdanh == "")
             {
@@ -665,7 +660,7 @@ namespace GUI
         private void dtGV_TienAnTienSu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string matienan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
             string toidanh = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[2].Value.ToString();
             string hinhphat = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[3].Value.ToString();
             string banan = dtGV_TienAnTienSu.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -754,7 +749,7 @@ namespace GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiền án tiền sự "+matienan+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string madinhdanh = txt_MaDinhDanh.Text.ToString();
+                string madinhdanh = txtMaDinhDanh1.Text.ToString();
                 string banan = txt_BanAn.Text.ToString();
                 string toidanh = txtToiDanh.Text.ToString();
                 string hinhphat = txt_HinhPhat.Text.ToString();
@@ -790,7 +785,7 @@ namespace GUI
         {
             dtGV_TieuSu.DataSource = null;
             dtGV_TieuSu.Rows.Clear();
-            dtGV_TieuSu.DataSource = nkttBus.GetTieuSu(txt_MaDinhDanh.Text.ToString()).Tables[0];
+            dtGV_TieuSu.DataSource = nkttBus.GetTieuSu(txtMaDinhDanh1.Text.ToString()).Tables[0];
         }
 
         public void ResetInputTieuSu()
@@ -809,7 +804,7 @@ namespace GUI
         private void btnThemTieuSu_Click(object sender, EventArgs e)
         {
             string matieusu = txt_MaTieuSu.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
             DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
             DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
             string choo = txtChoO.Text.ToString();
@@ -937,7 +932,7 @@ namespace GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa tiểu sử "+matieusu+" của nhân khẩu " + txt_HoTen.Text.ToString() + " không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                string madinhdanh = txt_MaDinhDanh.Text.ToString();
+                string madinhdanh = txtMaDinhDanh1.Text.ToString();
                 DateTime thoigianbatdau = dtThoiGianBatDau.Value.Date;
                 DateTime thoigianketthuc = dtThoiGianKetThuc.Value.Date;
                 string choo = txtChoO.Text.ToString();
@@ -970,8 +965,8 @@ namespace GUI
         private void btnGiaHan_Click(object sender, EventArgs e)
         {
 
-            string sosotamtru = txt_SoSoTamTru.Text.ToString();
-            string madinhdanh = txt_MaDinhDanh.Text.ToString();
+            string sosotamtru = txtSoSoTamTru1.Text.ToString();
+            string madinhdanh = txtMaDinhDanh1.Text.ToString();
 
 
             //Kiểm tra sự tồn tại của mã định danh
@@ -1081,6 +1076,17 @@ namespace GUI
                 if (a.diaChi != "")
                     txtChoO.Text = a.diaChi;
             }
+        }
+
+        private void btnReset1_Click(object sender, EventArgs e)
+        {
+            GenerateAllID();
+
+        }
+
+        private void btnXong1_Click(object sender, EventArgs e)
+        {
+            Nhankhautamtru_list = nhankhautamtru_list;
         }
     }
 }

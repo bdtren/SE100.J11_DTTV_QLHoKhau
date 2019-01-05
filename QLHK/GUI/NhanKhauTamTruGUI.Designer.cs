@@ -122,6 +122,14 @@
             this.txt_MaTieuSu = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btnXong1 = new System.Windows.Forms.Button();
+            this.btnReset1 = new System.Windows.Forms.Button();
+            this.txtSoSoTamTru1 = new System.Windows.Forms.TextBox();
+            this.txtMaDinhDanh1 = new System.Windows.Forms.TextBox();
+            this.txtMaNhanKhauTamTru1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -143,7 +151,6 @@
             this.btnXong.TabIndex = 22;
             this.btnXong.Text = "XONG";
             this.btnXong.UseVisualStyleBackColor = false;
-            this.btnXong.Click += new System.EventHandler(this.btnXong_Click);
             // 
             // groupBox2
             // 
@@ -196,9 +203,9 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txt_HoTen);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(0, -424);
+            this.groupBox2.Location = new System.Drawing.Point(14, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(614, 378);
+            this.groupBox2.Size = new System.Drawing.Size(614, 398);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhân khẩu tạm trú";
@@ -696,10 +703,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(632, -323);
+            this.dataGridView1.Location = new System.Drawing.Point(641, 136);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(590, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(590, 272);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -718,7 +725,7 @@
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.txt_MaTienAn);
             this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Location = new System.Drawing.Point(1, 205);
+            this.groupBox1.Location = new System.Drawing.Point(10, 649);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(613, 220);
             this.groupBox1.TabIndex = 23;
@@ -840,7 +847,7 @@
             // dtGV_TienAnTienSu
             // 
             this.dtGV_TienAnTienSu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGV_TienAnTienSu.Location = new System.Drawing.Point(632, 213);
+            this.dtGV_TienAnTienSu.Location = new System.Drawing.Point(641, 657);
             this.dtGV_TienAnTienSu.Name = "dtGV_TienAnTienSu";
             this.dtGV_TienAnTienSu.ReadOnly = true;
             this.dtGV_TienAnTienSu.Size = new System.Drawing.Size(590, 212);
@@ -850,7 +857,7 @@
             // dtGV_TieuSu
             // 
             this.dtGV_TieuSu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGV_TieuSu.Location = new System.Drawing.Point(632, -31);
+            this.dtGV_TieuSu.Location = new System.Drawing.Point(641, 414);
             this.dtGV_TieuSu.Name = "dtGV_TieuSu";
             this.dtGV_TieuSu.ReadOnly = true;
             this.dtGV_TieuSu.Size = new System.Drawing.Size(590, 229);
@@ -874,7 +881,7 @@
             this.groupBox3.Controls.Add(this.label35);
             this.groupBox3.Controls.Add(this.txt_MaTieuSu);
             this.groupBox3.Controls.Add(this.label38);
-            this.groupBox3.Location = new System.Drawing.Point(3, -37);
+            this.groupBox3.Location = new System.Drawing.Point(13, 408);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(611, 235);
             this.groupBox3.TabIndex = 25;
@@ -1012,6 +1019,14 @@
             // 
             // xtraScrollableControl1
             // 
+            this.xtraScrollableControl1.Controls.Add(this.label18);
+            this.xtraScrollableControl1.Controls.Add(this.label13);
+            this.xtraScrollableControl1.Controls.Add(this.label10);
+            this.xtraScrollableControl1.Controls.Add(this.txtMaNhanKhauTamTru1);
+            this.xtraScrollableControl1.Controls.Add(this.txtMaDinhDanh1);
+            this.xtraScrollableControl1.Controls.Add(this.txtSoSoTamTru1);
+            this.xtraScrollableControl1.Controls.Add(this.btnReset1);
+            this.xtraScrollableControl1.Controls.Add(this.btnXong1);
             this.xtraScrollableControl1.Controls.Add(this.groupBox2);
             this.xtraScrollableControl1.Controls.Add(this.btnXong);
             this.xtraScrollableControl1.Controls.Add(this.dtGV_TienAnTienSu);
@@ -1027,17 +1042,86 @@
             this.xtraScrollableControl1.Controls.Add(this.btnTim);
             this.xtraScrollableControl1.Controls.Add(this.label2);
             this.xtraScrollableControl1.Controls.Add(this.label4);
-            this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(1260, 425);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(1277, 429);
             this.xtraScrollableControl1.TabIndex = 51;
+            // 
+            // btnXong1
+            // 
+            this.btnXong1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnXong1.Location = new System.Drawing.Point(1137, 21);
+            this.btnXong1.Name = "btnXong1";
+            this.btnXong1.Size = new System.Drawing.Size(94, 41);
+            this.btnXong1.TabIndex = 51;
+            this.btnXong1.Text = "Xong";
+            this.btnXong1.UseVisualStyleBackColor = true;
+            this.btnXong1.Click += new System.EventHandler(this.btnXong1_Click);
+            // 
+            // btnReset1
+            // 
+            this.btnReset1.Location = new System.Drawing.Point(1022, 21);
+            this.btnReset1.Name = "btnReset1";
+            this.btnReset1.Size = new System.Drawing.Size(97, 41);
+            this.btnReset1.TabIndex = 52;
+            this.btnReset1.Text = "Reset";
+            this.btnReset1.UseVisualStyleBackColor = true;
+            this.btnReset1.Click += new System.EventHandler(this.btnReset1_Click);
+            // 
+            // txtSoSoTamTru1
+            // 
+            this.txtSoSoTamTru1.Location = new System.Drawing.Point(767, 23);
+            this.txtSoSoTamTru1.Name = "txtSoSoTamTru1";
+            this.txtSoSoTamTru1.Size = new System.Drawing.Size(199, 20);
+            this.txtSoSoTamTru1.TabIndex = 53;
+            // 
+            // txtMaDinhDanh1
+            // 
+            this.txtMaDinhDanh1.Location = new System.Drawing.Point(767, 52);
+            this.txtMaDinhDanh1.Name = "txtMaDinhDanh1";
+            this.txtMaDinhDanh1.Size = new System.Drawing.Size(199, 20);
+            this.txtMaDinhDanh1.TabIndex = 54;
+            // 
+            // txtMaNhanKhauTamTru1
+            // 
+            this.txtMaNhanKhauTamTru1.Location = new System.Drawing.Point(767, 82);
+            this.txtMaNhanKhauTamTru1.Name = "txtMaNhanKhauTamTru1";
+            this.txtMaNhanKhauTamTru1.Size = new System.Drawing.Size(199, 20);
+            this.txtMaNhanKhauTamTru1.TabIndex = 55;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(651, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Số sổ tạm trú";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(651, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(73, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "Mã định danh";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(651, 89);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 13);
+            this.label18.TabIndex = 58;
+            this.label18.Text = "Mã nhân khẩu tạm trú";
             // 
             // NhanKhauTamTruGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 425);
+            this.ClientSize = new System.Drawing.Size(1277, 429);
             this.Controls.Add(this.xtraScrollableControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NhanKhauTamTruGUI";
@@ -1154,5 +1238,13 @@
         private System.Windows.Forms.TextBox txtNoiSinh;
         private System.Windows.Forms.TextBox txtChoO;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
+        private System.Windows.Forms.TextBox txtMaNhanKhauTamTru1;
+        private System.Windows.Forms.TextBox txtMaDinhDanh1;
+        private System.Windows.Forms.TextBox txtSoSoTamTru1;
+        private System.Windows.Forms.Button btnReset1;
+        private System.Windows.Forms.Button btnXong1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label10;
     }
 }
