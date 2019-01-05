@@ -19,8 +19,11 @@ namespace GUI
         NhanKhauTamTruDTO nkttDto;
 
         string madinhdanhForInsert = "";
+        string madinhdanhForSearch = "";
 
-        private List<string> nhankhautamtru_list = new List<string>();
+        private List<string> nhankhautamtru_list = new List<string>(); //Gửi list tên nhân khẩu về màn hình sổ tạm trú để chọn chủ hộ
+
+
         private string sosotamtru = "";
         public List<string> Nhankhautamtru_list
         {
@@ -179,12 +182,27 @@ namespace GUI
             LoadDataGridViewTieuSu();
         }
 
-
+        //constructor for create a citizen
         public NhanKhauTamTruGUI(string Sosotamtru)
         {
             InitializeComponent();
             this.sosotamtru = Sosotamtru;
         }
+
+        //constructor for search a ciziten
+        public NhanKhauTamTruGUI(string madinhdanh, string type)
+        {
+            InitializeComponent();
+            madinhdanhForSearch = madinhdanh;
+        }
+
+        //constructor for search
+        public NhanKhauTamTruGUI()
+        {
+            InitializeComponent();
+
+        }
+
 
         private void NhanKhauTamTruGUI_Load(object sender, EventArgs e)
         {
@@ -195,13 +213,21 @@ namespace GUI
             cbb_DC_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
             cbb_NoiTamTru_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
             cbb_NoiThuongTru_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
-
-            txt_SoSoTamTru.Text = sosotamtru;
             cbb_TieuSu_TinhThanh.DataSource = nkttBus.Get_TinhThanhPho();
 
-            LoadDataGridView();
-
-            GenerateAllID();
+            if (madinhdanhForSearch != "")
+            {
+                txt_MaDinhDanh.Text = madinhdanhForSearch;
+                btnTim_Click(sender, e);
+                DataGridViewCellEventArgs arg = new DataGridViewCellEventArgs(0, 0);
+                dataGridView1_CellClick(sender, arg);
+            }
+            else
+            {            
+                txt_SoSoTamTru.Text = sosotamtru;
+                LoadDataGridView();
+                GenerateAllID();
+            }
         }
 
         
@@ -335,7 +361,6 @@ namespace GUI
             //THêm
             
 
-            nhankhautamtru_list.Add(txt_HoTen.Text.ToString());
 
             nkttDto = new NhanKhauTamTruDTO(manhankhautamtru, noitamtru, ngaycap, denngay, lydo, 
                 sosotamtru, madinhdanh, hoten, tenkhac, ngaysinh, gioitinh, noisinh, nguyenquan, 
@@ -351,6 +376,7 @@ namespace GUI
             if (nkttBus.Add(nkttDto))
             {
                 MessageBox.Show("Thêm nhân khẩu tạm trú "+hoten+" thành công");
+                nhankhautamtru_list.Add(txt_HoTen.Text.ToString());
                 ResetValueInput();
                 LoadDataGridView();
 

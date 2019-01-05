@@ -63,7 +63,7 @@ namespace GUI
         {
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
-            dataGridView1.DataSource = sotamtruBus.GetAll().Tables["sotamtru"];
+            dataGridView1.DataSource = sotamtruBus.GetAllSoTamTru().Tables["sotamtru"];
         }
 
         //Kiểm tra nhập đủ thông tin
@@ -83,6 +83,13 @@ namespace GUI
             InitializeComponent();
         }
 
+        public SoTamTruGUI(string sosotamtru)
+        {
+            InitializeComponent();
+            this.sosotamtru = sosotamtru;
+        }
+
+
         private void SoTamTruGUI_Load(object sender, EventArgs e)
         {
             sotamtruBus = new SoTamTruBUS();
@@ -93,11 +100,27 @@ namespace GUI
                 MessageBox.Show("Lỗi không hủy được sổ tạm trú quá hạn");
             }
 
-            LoadDataGridView();
-            cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho(); //Lấy danh sách tỉnh thành vào combobox
-            //Khởi tạo mã số sổ tạm trú
-            txt_SoSoTamTru.Text = GenerateSoSoTamTru();
-            ImportToComboboxMaChuHo();
+
+            //Bình thường
+            if (sosotamtru == "")
+            {
+
+                LoadDataGridView();
+                cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho(); //Lấy danh sách tỉnh thành vào combobox
+                                                                                //Khởi tạo mã số sổ tạm trú
+                txt_SoSoTamTru.Text = GenerateSoSoTamTru();
+                ImportToComboboxMaChuHo();
+            }
+            //Tìm kiếm
+            if (sosotamtru != "")
+            {
+                cbb_ChoO_TinhThanh.DataSource = sotamtruBus.Get_TinhThanhPho();
+                txt_SoSoTamTru.Text = sosotamtru;
+                btnTim_Click(sender, e);
+                DataGridViewCellEventArgs ee = new DataGridViewCellEventArgs(0,0);
+                dataGridView1_CellClick(sender, ee);
+            }
+
 
         }
 

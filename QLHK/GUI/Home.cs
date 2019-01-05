@@ -14,7 +14,7 @@ namespace GUI
 {
     public partial class Home : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public CanBoDTO cb;
+        public CanBoDTO cb = new CanBoDTO();
         public Home()
         {
             InitializeComponent();
@@ -210,7 +210,7 @@ namespace GUI
 
         private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ThongTinCaNhanGUI thongtin = new ThongTinCaNhanGUI();
+            ThongTinCaNhanGUI thongtin = new ThongTinCaNhanGUI(cb.TenTaiKhoan);
             int index = hamkiemtrtontai(tabControl1, thongtin);
             if (index >= 0)
             {

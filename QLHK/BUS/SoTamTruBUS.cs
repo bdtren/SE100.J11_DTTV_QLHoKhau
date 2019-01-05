@@ -18,6 +18,12 @@ namespace BUS
         {
             return SoTamTru.getAll();
         }
+
+        public DataSet GetAllSoTamTru()
+        {
+            return SoTamTru.getAllSoTamTru();
+        }
+
         public override bool Add(SoTamTruDTO sotamtru)
         {
             return SoTamTru.insert(sotamtru);

@@ -198,5 +198,133 @@ namespace DAO
             }
             return null;
         }
+
+        public string GetMaNhanKhauThuongTruFromCanBo(string tendangnhap)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT manhankhauthuongtru FROM canbo where tentaikhoan='" + tendangnhap + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+                string ID = "";
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
+
+        public string GetMaDinhDanhFromMaNhanKhauTamTru(string manhankhauthuongtru)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string sqltemp = "SELECT madinhdanh FROM nhankhauthuongtru where manhankhauthuongtru='" + manhankhauthuongtru + "'";
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqltemp, conn);
+                adapter.SelectCommand.CommandType = CommandType.Text;
+                adapter.Fill(dt);
+                string ID = "";
+                ID = dt.Rows[0][0].ToString();
+                return ID;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return "";
+        }
+
+
+        //Lấy thông tin cán bộ từ bảng nhân khẩu
+        public List<NhanKhauThuongTruDTO> getThongTinNhanKhau(string manhankhauthuongtru)
+        {
+            DataTable dt = new DataTable();
+            string madinhdanh = GetMaDinhDanhFromMaNhanKhauTamTru(manhankhauthuongtru);
+
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+
+            string sql = "SELECT * FROM nhankhau INNER JOIN nhankhauthuongtru ON nhankhau.madinhdanh=nhankhauthuongtru.madinhdanh WHERE nhankhau.madinhdanh='" + madinhdanh + "' ";
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+            adapter.SelectCommand.CommandType = CommandType.Text;
+            adapter.Fill(dt);
+
+            List<NhanKhauThuongTruDTO> items = dt.AsEnumerable().Select(row =>
+                 new NhanKhauThuongTruDTO
+                 {
+                     MaNhanKhauThuongTru = row.Field<string>("manhankhauthuongtru"),
+                     HoTen = row.Field<string>("hoten"),
+                     GioiTinh = row.Field<string>("gioitinh"),
+                     DanToc = row.Field<string>("dantoc"),
+                     NgheNghiep = row.Field<string>("nghenghiep"),
+                     NgaySinh = row.Field<DateTime>("ngaysinh"),
+                     NoiSinh = row.Field<string>("noisinh"),
+                     MaDinhDanh = row.Field<string>("madinhdanh"),
+                     //Ngày cấp ???
+                     //Nơi cấp ???
+                     HoChieu = row.Field<string>("hochieu"),
+                     NguyenQuan = row.Field<string>("nguyenquan"),
+                     TonGiao = row.Field<string>("tongiao"),
+                     QuocTich = row.Field<string>("quoctich"),
+                     SDT = row.Field<string>("sdt"),
+                     SoSoHoKhau = row.Field<string>("sosohokhau"),
+                     NoiThuongTru = row.Field<string>("noithuongtru"),
+                     DiaChiHienNay = row.Field<string>("diachihiennay"),
+                     TrinhDoHocVan = row.Field<string>("trinhdohocvan"),
+                     TrinhDoChuyenMon = row.Field<string>("trinhdochuyenmon"),
+                     BietTiengDanToc = row.Field<string>("biettiengdantoc"),
+                     TrinhDoNgoaiNgu = row.Field<string>("trinhdongoaingu"),
+                     //Nơi làm việc
+                     QuanHeVoiChuHo = row.Field<string>("quanhevoichuho"),
+                 }).ToList();
+
+
+            return items;
+        }
+
+
+        //Cập nhật mật khẩu cán bộ
+        public bool CapNhatMatKhau(string tentaikhoan , string matkhau)
+        {
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "update canbo set matkhau='"+matkhau+"'  where tentaikhoan ='"+tentaikhoan+"'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+
+
     }
 }
