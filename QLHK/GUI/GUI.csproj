@@ -316,6 +316,7 @@
     <None Include="Resources\user-info-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\icon_qlhk_IM6_icon.ico" />
     <Content Include="Resources\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

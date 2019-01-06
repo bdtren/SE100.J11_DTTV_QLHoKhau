@@ -68,7 +68,7 @@ namespace GUI
 
                 DateTime ngayketthuc = DateTime.Parse(dt["ngayketthuctamvang"].ToString());
                 DateTime secondDateTime = DateTime.Now;
-                int compare = DateTime.Compare(ngayketthuc, secondDateTime);
+                //int compare = DateTime.Compare(ngayketthuc, secondDateTime);
                 if (secondDateTime<ngayketthuc)
                 {
                     label_matamvang.Text = dt["manhankhautamvang"].ToString();
@@ -122,9 +122,9 @@ namespace GUI
             string noiden = textBox_noiden.Text.ToString();
             DateTime ngaybd = dtpNgayBatDau.Value.Date;
             DateTime ngaykt = dtpNgayKetThuc.Value.Date;
-            if(madinhdanh==null||lydo==null||noiden==null)
+            if(madinhdanh==null||lydo==null||noiden==null || DateTime.Compare(ngaykt, ngaybd) <= 0)
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đủ, chính xác thông tin!");
                 return;
             }
             else
@@ -145,9 +145,9 @@ namespace GUI
             string noiden = textBox_noiden.Text.ToString();
             DateTime ngaybd = dtpNgayBatDau.Value.Date;
             DateTime ngaykt = dtpNgayKetThuc.Value.Date;
-            if (madinhdanh == null || lydo == null || noiden == null)
+            if (madinhdanh == null || lydo == null || noiden == null || DateTime.Compare(ngaykt,ngaybd)<=0)
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!");
+                MessageBox.Show("Vui lòng nhập đủ, chính xác thông tin!");
                 return;
             }
             else

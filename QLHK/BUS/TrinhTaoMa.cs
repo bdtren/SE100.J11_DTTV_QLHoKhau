@@ -72,6 +72,14 @@ namespace BUS
             return string.IsNullOrEmpty(lastVal) ? "TV0000000" : lastVal;
         }
 
+        public static string getLastID_SoHoKhauSoTamTru()
+        {
+            string hk = getLastID_SoSoHoKhau();
+            string tt = getLastID_SoSoTamTru();
+
+            return Int32.Parse(hk.Substring(2)) > Int32.Parse(tt.Substring(2)) ? hk : tt;
+        }
+
         public static string GetLastValueTable(string sql)
         {
             try

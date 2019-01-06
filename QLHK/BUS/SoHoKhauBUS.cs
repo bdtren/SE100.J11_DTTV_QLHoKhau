@@ -44,28 +44,28 @@ namespace BUS
             return obj.TimKiem(query);
         }
 
-        public SoHoKhauDTO TimSo(string sosohokhau)
-        {
-            SoHoKhauDTO so;
-            DataTable ds = obj.TimKiem("sosohokhau='" + sosohokhau + "'").Tables[0];
-            if (ds != null)
-            {
-                DataRow data = ds.Rows[0];
+        //public SoHoKhauDTO TimSo(string sosohokhau)
+        //{
+        //    SoHoKhauDTO so;
+        //    DataTable ds = obj.TimKiem("sosohokhau='" + sosohokhau + "'").Tables[0];
+        //    if (ds != null)
+        //    {
+        //        DataRow data = ds.Rows[0];
 
-                so = new SoHoKhauDTO(data["sosohokhau"].ToString(), data["machuho"].ToString(), data["diachi"].ToString(),
-                    DateTime.Parse(data["ngaycap"].ToString()), data["sodangky"].ToString());
+        //        so = new SoHoKhauDTO(data["sosohokhau"].ToString(), data["machuho"].ToString(), data["diachi"].ToString(),
+        //            DateTime.Parse(data["ngaycap"].ToString()), data["sodangky"].ToString());
 
 
-                DataTable dtnhankhau = nktt.TimKiemJoinNhanKhau("sosohokhau='" + sosohokhau + "'").Tables[0];
+        //        DataTable dtnhankhau = nktt.TimKiemJoinNhanKhau("sosohokhau='" + sosohokhau + "'").Tables[0];
 
-                foreach (DataRow item in dtnhankhau.Rows)
-                {
-                    so.NhanKhau.Add(new NhanKhauThuongTruDTO(item));
-                }
+        //        foreach (DataRow item in dtnhankhau.Rows)
+        //        {
+        //            so.NhanKhau.Add(new NhanKhauThuongTruDTO(item));
+        //        }
 
-            }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }

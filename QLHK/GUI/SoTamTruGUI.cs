@@ -24,7 +24,7 @@ namespace GUI
         public string GenerateSoSoTamTru()
         {
 
-            string last_sosotamtru = TrinhTaoMa.getLastID_SoSoTamTru();
+            string last_sosotamtru = TrinhTaoMa.getLastID_SoHoKhauSoTamTru();
             return TrinhTaoMa.TangMa9kytu(last_sosotamtru);
         }
 
@@ -157,7 +157,10 @@ namespace GUI
         //Click trên các dòng trong datagridview , lấy dữ liệu dòng đó gán vào các trường input
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             string sosotamtru = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            if (string.IsNullOrEmpty(sosotamtru)) return;
+
             string chuho = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             string noitamtru = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             DateTime ngaycap = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[3].Value);

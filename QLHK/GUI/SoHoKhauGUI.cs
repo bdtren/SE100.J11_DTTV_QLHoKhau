@@ -26,7 +26,7 @@ namespace GUI
             shkDTO = new SoHoKhauDTO();
             InitializeComponent();
 
-            tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoSoHoKhau());
+            tbSoSoHoKhau.Text = TrinhTaoMa.TangMa9kytu(TrinhTaoMa.getLastID_SoHoKhauSoTamTru());
             tbSoDangKy.Text = TrinhTaoMa.random7();
             taoDanhSachNhanKhau();
         }

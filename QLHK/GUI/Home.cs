@@ -30,7 +30,12 @@ namespace GUI
 
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
+            //imageSlider.Visible = ribbonControl1.Minimized;
+        }
 
+        private void ribbonControl1_MinimizedChanged(object sender, EventArgs e)
+        {
+            imageSlider.Visible = ! imageSlider.Visible;
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -268,15 +273,16 @@ namespace GUI
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DangNhapGUI loginForm = new DangNhapGUI();
-            this.Hide();
-            loginForm.Closed += (s, args) => this.Close();
-            loginForm.Show(); ;
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Tài khoản", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DangNhapGUI loginForm = new DangNhapGUI();
+                this.Hide();
+                loginForm.Closed += (s, args) => this.Close();
+                loginForm.Show(); 
+            }
+            
         }
 
-        private void Home_MouseHover(object sender, EventArgs e)
-        {
-            imageSlider.Visible = !ribbonControl1.Minimized;
-        }
+
     }
 }
