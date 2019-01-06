@@ -65,9 +65,20 @@ namespace GUI
                     rd_tamtru.Checked = true;
                 if (nktvbus.TimKiemThuongtru(" where madinhdanh='" + textBox_madinhdanh.Text + "'") == 0)
                         rd_thuongtru.Checked = true;
-
-                DateTime ngayketthuc = DateTime.Parse(dt["ngayketthuctamvang"].ToString());
                 DateTime secondDateTime = DateTime.Now;
+
+                if (dt["ngayketthuctamvang"].ToString() == "")
+
+                {
+
+                    label_matamvang.Text = null;
+                    tbLyDo.Text = null;
+                    textBox_noiden.Text = null;
+                    dtpNgayBatDau.Value = secondDateTime;
+                    dtpNgayKetThuc.Value = secondDateTime;
+                    return;
+                }
+                    DateTime ngayketthuc = DateTime.Parse(dt["ngayketthuctamvang"].ToString());
                 //int compare = DateTime.Compare(ngayketthuc, secondDateTime);
                 if (secondDateTime<ngayketthuc)
                 {
