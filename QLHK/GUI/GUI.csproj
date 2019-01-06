@@ -78,6 +78,12 @@
     <Compile Include="ChonDonViHanhChinhGUI.Designer.cs">
       <DependentUpon>ChonDonViHanhChinhGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChuyenKhauGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChuyenKhauGUI.Designer.cs">
+      <DependentUpon>ChuyenKhauGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhapGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <Compile Include="TimKiemGUI.Designer.cs">
       <DependentUpon>TimKiemGUI.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChuyenKhauGUI.resx">
+      <DependentUpon>ChuyenKhauGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThongTinCaNhanGUI.resx">
       <DependentUpon>ThongTinCaNhanGUI.cs</DependentUpon>
     </EmbeddedResource>

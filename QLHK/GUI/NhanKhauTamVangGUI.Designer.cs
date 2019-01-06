@@ -76,6 +76,7 @@
             this.btnThemTV = new System.Windows.Forms.Button();
             this.btnSuaTV = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.btnXuatFile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox_nhankhau.SuspendLayout();
             this.groupBox_gt.SuspendLayout();
@@ -510,7 +511,7 @@
             // 
             // btnThemTV
             // 
-            this.btnThemTV.Location = new System.Drawing.Point(484, 5);
+            this.btnThemTV.Location = new System.Drawing.Point(403, 6);
             this.btnThemTV.Name = "btnThemTV";
             this.btnThemTV.Size = new System.Drawing.Size(101, 26);
             this.btnThemTV.TabIndex = 23;
@@ -520,7 +521,7 @@
             // 
             // btnSuaTV
             // 
-            this.btnSuaTV.Location = new System.Drawing.Point(591, 5);
+            this.btnSuaTV.Location = new System.Drawing.Point(510, 6);
             this.btnSuaTV.Name = "btnSuaTV";
             this.btnSuaTV.Size = new System.Drawing.Size(93, 26);
             this.btnSuaTV.TabIndex = 24;
@@ -530,7 +531,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(708, 5);
+            this.btnHuy.Location = new System.Drawing.Point(708, 6);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 26);
             this.btnHuy.TabIndex = 25;
@@ -538,14 +539,25 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // btnXuatFile
+            // 
+            this.btnXuatFile.Location = new System.Drawing.Point(609, 6);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(93, 26);
+            this.btnXuatFile.TabIndex = 26;
+            this.btnXuatFile.Text = "Xuất tạm vắng";
+            this.btnXuatFile.UseVisualStyleBackColor = true;
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
+            // 
             // NhanKhauTamVangGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnXuatFile);
             this.Controls.Add(this.btnHuy);
-            this.Controls.Add(this.btnSuaTV);
             this.Controls.Add(this.btnThemTV);
+            this.Controls.Add(this.btnSuaTV);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -617,5 +629,6 @@
         private System.Windows.Forms.GroupBox groupBox_gt;
         private System.Windows.Forms.Label label_matamvang;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnXuatFile;
     }
 }

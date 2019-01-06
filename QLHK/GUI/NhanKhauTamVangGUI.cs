@@ -170,5 +170,38 @@ namespace GUI
         {
             this.Close();
         }
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+            List<ReplacementGroup> rg = new List<ReplacementGroup>();
+
+            DateTime today = DateTime.Today;
+            rg.Add(new ReplacementGroup("<hoTen>", textBox_hoten.Text));
+            rg.Add(new ReplacementGroup("<ngaySinh>", tbNgaySinh.Text));
+            rg.Add(new ReplacementGroup("<gioiTinh>", rdNam.Checked?"Nam":"Nữ"));
+            rg.Add(new ReplacementGroup("<quocTich>", tbquoctich.Text));
+            rg.Add(new ReplacementGroup("<cmnd>", textBox_madinhdanh.Text));
+            rg.Add(new ReplacementGroup("<hoChieu>", tbhochieu.Text));
+            rg.Add(new ReplacementGroup("<noiThuongTruTamTru>", tbDCThuongTru.Text));
+            rg.Add(new ReplacementGroup("<tuNgay>", dtpNgayBatDau.Value.ToShortDateString()));
+            rg.Add(new ReplacementGroup("<denNgay>", dtpNgayKetThuc.Value.ToShortDateString()));
+            rg.Add(new ReplacementGroup("<lyDo>", tbLyDo.Text));
+            rg.Add(new ReplacementGroup("<noiDen>", textBox_noiden.Text));
+
+
+            
+
+            rg.Add(new ReplacementGroup("<d3>", today.Day.ToString()));
+            rg.Add(new ReplacementGroup("<m3>", today.Month.ToString()));
+            rg.Add(new ReplacementGroup("<y3>", today.Year.ToString()));
+
+
+            string srcPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\Mau HK05.doc";
+            string dstPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\KetQua\\Mau HK05_" + textBox_madinhdanh.Text + "_" + DateTime.Now.ToString("dd-MM-yyyy") + ".doc";
+            CreateWordHelper.CreateWordDocument(srcPath, dstPath, rg);
+
+            MessageBox.Show(this, "Đã tạo thành công file thông tin với tên: " + dstPath, "Thành công",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

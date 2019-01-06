@@ -23,6 +23,7 @@ namespace GUI
         public NhanKhauThuongTruDTO nkttDTO;
         SoHoKhauBUS shk;
         TinhThanhPhoBUS ttp;
+        string tenChuHo ="", lyDo="", noiDen="";
         public NhanKhauThuongTruGUI()
         {
             InitializeComponent();
@@ -133,6 +134,40 @@ namespace GUI
             Loadtienantiensu();
         }
 
+        private void xuatFile()
+        {
+            List<ReplacementGroup> rg = new List<ReplacementGroup>();
+
+            DateTime today = DateTime.Today;
+            rg.Add(new ReplacementGroup("<hoTen>", tbhoten.Text));
+            rg.Add(new ReplacementGroup("<tenKhac>", tbTenKhac.Text));
+            rg.Add(new ReplacementGroup("<ngaySinh>", dtpNgaySinh.Value.ToShortDateString()));
+            rg.Add(new ReplacementGroup("<gioiTinh>", rdNam.Checked ? "Nam" : "Nữ"));
+            rg.Add(new ReplacementGroup("<noiSinh>", cbbNoiSinh.Text));
+            rg.Add(new ReplacementGroup("<nguyenQuan>", tbnguyenquan.Text));
+            rg.Add(new ReplacementGroup("<danToc>", tbdantoc.Text));
+            rg.Add(new ReplacementGroup("<tonGiao>", tbtongiao.Text));
+            rg.Add(new ReplacementGroup("<quocTich>", tbquoctich.Text));
+            rg.Add(new ReplacementGroup("<noiThuongTru>", tbDCThuongTru.Text));
+            rg.Add(new ReplacementGroup("<tenChuHo>", tenChuHo));
+            rg.Add(new ReplacementGroup("<qhVoiChuHo>", tbQHVoiCH.Text));
+            rg.Add(new ReplacementGroup("<lyDo>", lyDo));
+            rg.Add(new ReplacementGroup("<noiDen>", noiDen));
+
+
+            rg.Add(new ReplacementGroup("<ngay>", today.Day.ToString()));
+            rg.Add(new ReplacementGroup("<thang>", today.Month.ToString()));
+            rg.Add(new ReplacementGroup("<nam>", today.Year.ToString()));
+
+
+            string srcPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\Mau HK07.doc";
+            string dstPath = System.Windows.Forms.Application.StartupPath + "\\MauIn\\KetQua\\Mau HK07_" + tbmadinhdanh.Text + "_" + DateTime.Now.ToString("dd-MM-yyyy") + ".doc";
+            CreateWordHelper.CreateWordDocument(srcPath, dstPath, rg);
+
+            MessageBox.Show(this, "Đã tạo thành công file thông tin với tên: " + dstPath, "Thành công",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         #endregion
 
         public NhanKhauThuongTruGUI(string sosohokhau)
@@ -183,7 +218,7 @@ namespace GUI
             cbbNoiSinh.DataSource = ttp.GetAll().Tables[0];
         }
 
-        public NhanKhauThuongTruGUI(string madinhdanh, int i)
+        public NhanKhauThuongTruGUI(string madinhdanh, int i, string tenChuHo = "")
         {
             InitializeComponent();
             nktt = new NhanKhauThuongTruBUS();
@@ -191,6 +226,7 @@ namespace GUI
             tienAn = new TienAnTienSuBUS();
             shk = new SoHoKhauBUS();
             ttp = new TinhThanhPhoBUS();
+            this.tenChuHo = tenChuHo;
 
             tbmadinhdanh.Text = madinhdanh;
             tbSoSHK.Enabled = false;
@@ -265,14 +301,22 @@ namespace GUI
                 MessageBox.Show(this, "Thiếu!", "Vui Lòng nhập mã nhân khẩu hoặc mã thường trú", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (nktt.XoaNKTT(tbMaNKTT.Text))
+            using (ChuyenKhauGUI ck = new ChuyenKhauGUI())
             {
-                MessageBox.Show(this, "Thành công!");
+                ck.ShowDialog(this);
+                this.lyDo = ck.lyDo;
+                this.noiDen = ck.noiDen;
+                xuatFile();
+                if (nktt.XoaNKTT(tbMaNKTT.Text))
+                {
+                    MessageBox.Show(this, "Thành công!");
+                }
+                else
+                {
+                    MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+             
         }
 
         private void tbDCThuongTru_Enter(object sender, EventArgs e)
