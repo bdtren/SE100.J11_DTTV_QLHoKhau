@@ -390,7 +390,7 @@
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images2"))));
             this.imageSlider.Location = new System.Drawing.Point(874, 53);
             this.imageSlider.Name = "imageSlider";
-            this.imageSlider.Size = new System.Drawing.Size(292, 87);
+            this.imageSlider.Size = new System.Drawing.Size(292, 90);
             this.imageSlider.TabIndex = 4;
             this.imageSlider.Text = "Hình ảnh";
             // 
