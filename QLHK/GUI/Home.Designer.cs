@@ -77,7 +77,10 @@
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.BackColor = System.Drawing.Color.Lime;
+            this.ribbonControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Green;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItem1,
@@ -378,12 +381,14 @@
             // 
             // imageSlider
             // 
+            this.imageSlider.AllowLooping = true;
+            this.imageSlider.AutoSlideInterval = 4800;
             this.imageSlider.CurrentImageIndex = 0;
             this.imageSlider.Cursor = System.Windows.Forms.Cursors.Default;
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images"))));
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images1"))));
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images2"))));
-            this.imageSlider.Location = new System.Drawing.Point(874, 50);
+            this.imageSlider.Location = new System.Drawing.Point(874, 53);
             this.imageSlider.Name = "imageSlider";
             this.imageSlider.Size = new System.Drawing.Size(292, 87);
             this.imageSlider.TabIndex = 4;
@@ -408,6 +413,7 @@
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÍ HỘ KHẨU";
+            this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();

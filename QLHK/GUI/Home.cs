@@ -27,7 +27,10 @@ namespace GUI
             this.cb = cb;
             if (cb.LoaiCanBo == "1") ribbonPageGroup10.Visible = false;
         }
-
+        private void Home_Load(object sender, EventArgs e)
+        {
+            imageSlider.AutoSlide = DevExpress.XtraEditors.Controls.AutoSlide.Forward;
+        }
         private void ribbonControl1_Click(object sender, EventArgs e)
         {
             //imageSlider.Visible = ribbonControl1.Minimized;
@@ -283,6 +286,6 @@ namespace GUI
             
         }
 
-
+        
     }
 }
