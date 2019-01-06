@@ -383,9 +383,9 @@
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images"))));
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images1"))));
             this.imageSlider.Images.Add(((System.Drawing.Image)(resources.GetObject("imageSlider.Images2"))));
-            this.imageSlider.Location = new System.Drawing.Point(791, 56);
+            this.imageSlider.Location = new System.Drawing.Point(874, 50);
             this.imageSlider.Name = "imageSlider";
-            this.imageSlider.Size = new System.Drawing.Size(397, 65);
+            this.imageSlider.Size = new System.Drawing.Size(292, 87);
             this.imageSlider.TabIndex = 4;
             this.imageSlider.Text = "Hình ảnh";
             // 
@@ -407,7 +407,7 @@
             this.Name = "Home";
             this.Ribbon = this.ribbonControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Home";
+            this.Text = "QUẢN LÍ HỘ KHẨU";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.galleryDropDown1)).EndInit();
