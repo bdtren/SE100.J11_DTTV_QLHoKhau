@@ -221,7 +221,7 @@ namespace GUI
                 return;
             }
 
-            using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI(nkDuocChon.MaDinhDanh, -1))
+            using (NhanKhauThuongTruGUI a = new NhanKhauThuongTruGUI(nkDuocChon.MaDinhDanh, -1,cbbChuHo.Text))
             {
                 a.ShowDialog(this);
                 if (a.nkttDTO != null && !String.IsNullOrEmpty(a.nkttDTO.MaNhanKhauThuongTru))
@@ -251,7 +251,7 @@ namespace GUI
             nktt.Update(nkDuocChon, 0);
 
             //nktt.XoaNKTT(nkDuocChon.MaNhanKhauThuongTru);
-            MessageBox.Show(this, "Đã xóa nhân khẩu thành công!", "Xóa Nhân khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(this, "Đã xóa nhân khẩu thành công!", "Xóa Nhân khẩu", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

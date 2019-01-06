@@ -238,6 +238,7 @@
             // 
             // button_xoa
             // 
+            this.button_xoa.Enabled = false;
             this.button_xoa.Location = new System.Drawing.Point(56, 124);
             this.button_xoa.Name = "button_xoa";
             this.button_xoa.Size = new System.Drawing.Size(96, 32);
