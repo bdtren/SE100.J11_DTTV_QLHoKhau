@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="AbstractFormBUS.cs" />
     <Compile Include="CanBoBUS.cs" />
+    <Compile Include="CanBoDuLieu.cs" />
+    <Compile Include="CanBoHoKhau.cs" />
     <Compile Include="CreateWordHelper.cs" />
     <Compile Include="DangNhapBUS.cs" />
     <Compile Include="NhanKhauTamVangBUS.cs" />
