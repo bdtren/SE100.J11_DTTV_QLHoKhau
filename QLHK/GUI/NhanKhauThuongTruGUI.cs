@@ -304,17 +304,22 @@ namespace GUI
             using (ChuyenKhauGUI ck = new ChuyenKhauGUI())
             {
                 ck.ShowDialog(this);
-                this.lyDo = ck.lyDo;
-                this.noiDen = ck.noiDen;
-                xuatFile();
-                if (nktt.XoaNKTT(tbMaNKTT.Text))
+
+                if (!string.IsNullOrEmpty(ck.lyDo)&&!string.IsNullOrEmpty(ck.noiDen))
                 {
-                    MessageBox.Show(this, "Thành công!");
+                    this.lyDo = ck.lyDo;
+                    this.noiDen = ck.noiDen;
+                    xuatFile();
+                    if (nktt.XoaNKTT(tbMaNKTT.Text))
+                    {
+                        MessageBox.Show(this, "Thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show(this, "Lỗi!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                
             }
              
         }
