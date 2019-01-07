@@ -299,13 +299,13 @@ namespace DAO
 
                 DataRow dr = dataset.Tables["nhankhautamtru"].NewRow();
 
-                dr["manhankhautamtru"] = data.MaNhanKhauTamTru;
-                dr["madinhdanh"] = data.MaDinhDanh;
-                dr["noitamtru"] = data.NoiTamTru;
+                dr["manhankhautamtru"] = data.MaNhanKhauTamTru.ToString();
+                dr["madinhdanh"] = data.MaDinhDanh.ToString();
+                dr["noitamtru"] = data.NoiTamTru.ToString();
                 dr["tungay"] = data.TuNgay;
                 dr["denngay"] = data.DenNgay;
-                dr["lydo"] = data.LyDo;
-                dr["sosotamtru"] = data.SoSoTamTru;
+                dr["lydo"] = data.LyDo.ToString();
+                dr["sosotamtru"] = data.SoSoTamTru.ToString();
 
 
                 dataset.Tables["nhankhautamtru"].Rows.Add(dr);

@@ -53,8 +53,8 @@ namespace DAO
                 }
                 DataRow dr = dataset.Tables["sohokhau"].NewRow();
                 dr["sosohokhau"] = data.SoSoHoKhau;
-                dr["chuho"] = data.MaChuHoThuongTru;
-                dr["diachithuongtru"] = data.DiaChi;
+                dr["machuho"] = data.MaChuHoThuongTru;
+                dr["diachi"] = data.DiaChi;
                 dr["ngaycap"] = data.NgayCap;
                 dr["sodangky"] = data.SoDangKy;
 
@@ -153,7 +153,7 @@ namespace DAO
             try
             {
 
-                string sql = "update sohokhau set chuho=@chuho, diachithuongtru=@diachithuongtru, ngaycap=@ngaycap, sodangky=@sodangky" +
+                string sql = "update sohokhau set machuho=@chuho, diachi=@diachithuongtru, ngaycap=@ngaycap, sodangky=@sodangky" +
                     " where sosohokhau=@sosohokhau";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@sosohokhau", sohk.SoSoHoKhau);

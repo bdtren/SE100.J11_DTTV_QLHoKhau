@@ -662,8 +662,8 @@ namespace GUI
                             {
                                 int row = dataGridView1.Rows.Count - 2;
                                 string sosohokhau = dataGridView1.Rows[row].Cells["sosohokhau"].Value.ToString();
-                                string chuho = dataGridView1.Rows[row].Cells["chuho"].Value.ToString();
-                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string chuho = dataGridView1.Rows[row].Cells["machuho"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachi"].Value.ToString();
                                 string ngaycap = dataGridView1.Rows[row].Cells["ngaycap"].Value.ToString();
                                 DateTime date_ngaycap = DateTime.Parse(ngaycap);
                                 string sodangky = dataGridView1.Rows[row].Cells["sodangky"].Value.ToString();
@@ -679,8 +679,8 @@ namespace GUI
                             {
                                 int row = e.RowIndex;
                                 string sosohokhau = dataGridView1.Rows[row].Cells["sosohokhau"].Value.ToString();
-                                string chuho = dataGridView1.Rows[row].Cells["chuho"].Value.ToString();
-                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachithuongtru"].Value.ToString();
+                                string chuho = dataGridView1.Rows[row].Cells["machuho"].Value.ToString();
+                                string diachithuongtru = dataGridView1.Rows[row].Cells["diachi"].Value.ToString();
                                 string ngaycap = dataGridView1.Rows[row].Cells["ngaycap"].Value.ToString();
                                 DateTime date_ngaycap = DateTime.Parse(ngaycap);
                                 string sodangky = dataGridView1.Rows[row].Cells["sodangky"].Value.ToString();
