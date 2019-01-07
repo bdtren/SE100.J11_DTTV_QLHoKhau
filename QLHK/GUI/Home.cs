@@ -32,12 +32,12 @@ namespace GUI
             }
             if(cb.LoaiCanBo=="0")
             {
-                ribbonPageGroup1.Visible = false;
-                ribbonPageGroup2.Visible = false;
+                ribbonPage1.Visible = false;
+                ribbonPage2.Visible = false;
                 tamvang.Visible = false;
-                ribbonPageGroup6.Visible = false;
-                ribbonPageGroup3.Visible = false;
-                ribbonPageGroup9.Visible = false;
+                ribbonPage3.Visible = false;
+                ribbonPage4.Visible = false;
+                ribbonPage5.Visible = false;
             }
         }
         private void Home_Load(object sender, EventArgs e)

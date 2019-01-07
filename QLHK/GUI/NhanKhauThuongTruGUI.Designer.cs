@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanKhauThuongTruGUI));
             this.dGVTieuSu = new System.Windows.Forms.DataGridView();
             this.button_sua = new System.Windows.Forms.Button();
             this.button_xoa = new System.Windows.Forms.Button();
@@ -751,6 +752,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 512);
             this.Controls.Add(this.xtraScrollableControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NhanKhauThuongTruGUI";
             this.Text = "Nhân khẩu thường trú";
             this.Load += new System.EventHandler(this.NhanKhauThuongTruGUI_Load);

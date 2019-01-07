@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_NhanKhau));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.textBox_ngaysinh = new System.Windows.Forms.TextBox();
@@ -368,6 +369,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_NhanKhau";
             this.Text = "NhanKhau";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

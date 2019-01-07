@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChonDonViHanhChinhGUI));
             this.tbDiaChi = new System.Windows.Forms.TextBox();
             this.cbbXaPhuong = new System.Windows.Forms.ComboBox();
             this.cbbQuanHuyen = new System.Windows.Forms.ComboBox();
@@ -107,6 +108,7 @@
             this.Controls.Add(this.cbbXaPhuong);
             this.Controls.Add(this.tbDiaChi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChonDonViHanhChinhGUI";

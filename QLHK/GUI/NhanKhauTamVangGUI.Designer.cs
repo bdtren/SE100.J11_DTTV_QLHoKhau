@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanKhauTamVangGUI));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_madinhdanh = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -564,6 +565,7 @@
             this.Controls.Add(this.textBox_madinhdanh);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NhanKhauTamVangGUI";
             this.Text = "Tạm Vắng";
             this.groupBox1.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimKiemGUI));
             this.rdHoKhau = new System.Windows.Forms.RadioButton();
             this.rdNhanKhau = new System.Windows.Forms.RadioButton();
             this.tbTimKiem = new System.Windows.Forms.TextBox();
@@ -96,6 +97,7 @@
             this.Controls.Add(this.rdHoKhau);
             this.Controls.Add(this.rdNhanKhau);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimKiemGUI";
             this.Text = "Tìm kiếm";
             this.ResumeLayout(false);
