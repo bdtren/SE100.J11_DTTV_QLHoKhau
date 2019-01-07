@@ -25,7 +25,20 @@ namespace GUI
             InitializeComponent();
             this.ForeColor = Color.Black;
             this.cb = cb;
-            if (cb.LoaiCanBo == "1") ribbonPageGroup10.Visible = false;
+            if (cb.LoaiCanBo == "1")
+            {
+                ribbonPageGroup10.Visible = false;
+                
+            }
+            if(cb.LoaiCanBo=="0")
+            {
+                ribbonPageGroup1.Visible = false;
+                ribbonPageGroup2.Visible = false;
+                tamvang.Visible = false;
+                ribbonPageGroup6.Visible = false;
+                ribbonPageGroup3.Visible = false;
+                ribbonPageGroup9.Visible = false;
+            }
         }
         private void Home_Load(object sender, EventArgs e)
         {
